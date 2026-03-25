@@ -11,6 +11,7 @@ const NAV_KEYS = [
   { key: "pipeline", tKey: "nav.pipeline" as const },
   { key: "ir", tKey: "nav.ir" as const },
   { key: "news", tKey: "nav.news" as const },
+  { key: "sab", tKey: "nav.sab" as const },
   { key: "about", tKey: "nav.about" as const },
   { key: "contact", tKey: "nav.contact" as const },
 ];
@@ -36,18 +37,16 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "navbar-scrolled" : "glass"}`}>
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-[72px] flex items-center justify-between">
+        <Link href={`/${locale}`} className="flex items-center group">
           <Image
-            src="/images/logo_transparent.png"
+            src="/images/logo_full.png"
             alt="RudaCure"
-            width={32}
-            height={32}
-            className="rounded transition-transform duration-300 group-hover:scale-110"
+            width={180}
+            height={40}
+            className="transition-opacity duration-300 group-hover:opacity-80"
+            priority
           />
-          <span className="text-lg font-semibold tracking-tight text-gray-900 group-hover:text-teal-700 transition-colors">
-            RudaCure
-          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
@@ -70,16 +69,17 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
         </div>
 
         {/* Language toggle */}
-        <div className="hidden md:flex items-center gap-0.5 text-xs bg-gray-100 rounded-full p-0.5">
+        <div className="hidden md:flex items-center text-xs font-medium">
           <Link
             href={`/ko${pathWithoutLocale}`}
-            className={`px-3 py-1 rounded-full transition-all ${locale === "ko" ? "bg-white text-teal-700 font-medium shadow-sm" : "text-gray-400 hover:text-gray-600"}`}
+            className={`px-2 py-1 transition-colors ${locale === "ko" ? "text-teal-700" : "text-gray-300 hover:text-gray-600"}`}
           >
             KR
           </Link>
+          <span className="text-gray-200">|</span>
           <Link
             href={`/en${pathWithoutLocale}`}
-            className={`px-3 py-1 rounded-full transition-all ${locale === "en" ? "bg-white text-teal-700 font-medium shadow-sm" : "text-gray-400 hover:text-gray-600"}`}
+            className={`px-2 py-1 transition-colors ${locale === "en" ? "text-teal-700" : "text-gray-300 hover:text-gray-600"}`}
           >
             EN
           </Link>

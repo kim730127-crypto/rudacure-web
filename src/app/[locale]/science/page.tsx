@@ -3,16 +3,16 @@ import { type Locale } from "@/lib/i18n";
 
 const CAPABILITIES = {
   ko: [
-    { title: "이온채널 전문성", description: "TRPV1, TRPA1 등 통증/감각 신호를 조절하는 이온채널에 특화. AI가 채널-리간드 상호작용을 예측하여 선택적 후보물질을 발굴합니다.", icon: "🧬" },
-    { title: "AI 분자 시뮬레이션", description: "분자 수준 시뮬레이션으로 오프타겟 효과를 사전 제거. 1세대 TRPV1 차단제의 고체온증 부작용을 원천 해결했습니다.", icon: "🤖" },
-    { title: "전기생리학 검증", description: "패치클램프 기반 고처리량 전기생리학 검증. AI 예측 결과를 실제 이온채널 활성 데이터로 확인합니다.", icon: "⚡" },
-    { title: "CRO 서비스", description: "전기생리학 전문 CRO 서비스 제공. 안구/감각 질환 특화 동물모델과 맞춤형 약효평가를 수행합니다.", icon: "🔬" },
+    { title: "이온채널 전문성", description: "TRPV1, TRPA1 등 통증/감각 신호를 조절하는 이온채널에 특화. AI가 채널-리간드 상호작용을 예측하여 선택적 후보물질을 발굴합니다.", image: "/images/science/ion-channel.jpg" },
+    { title: "AI 분자 시뮬레이션", description: "분자 수준 시뮬레이션으로 오프타겟 효과를 사전 제거. 1세대 TRPV1 차단제의 고체온증 부작용을 원천 해결했습니다.", image: "/images/science/ai-simulation.jpg" },
+    { title: "전기생리학 검증", description: "패치클램프 기반 고처리량 전기생리학 검증. AI 예측 결과를 실제 이온채널 활성 데이터로 확인합니다.", image: "/images/science/electrophysiology.jpg" },
+    { title: "CRO 서비스", description: "전기생리학 전문 CRO 서비스 제공. 안구/감각 질환 특화 동물모델과 맞춤형 약효평가를 수행합니다.", image: "/images/science/cro-lab.jpg" },
   ],
   en: [
-    { title: "Ion Channel Mastery", description: "Specialized in ion channels governing pain and sensory signals including TRPV1 and TRPA1. AI predicts channel-ligand interactions to discover selective drug candidates.", icon: "🧬" },
-    { title: "AI Molecular Simulation", description: "Molecular-level simulation eliminates off-target effects preemptively. Fully resolved the hyperthermia side effect of first-generation TRPV1 antagonists.", icon: "🤖" },
-    { title: "Electrophysiology Validation", description: "High-throughput electrophysiology validation using patch clamp technology. Confirms AI predictions against actual ion channel activity data.", icon: "⚡" },
-    { title: "CRO Services", description: "Specialized electrophysiology CRO services. Customized efficacy evaluation with animal models for ocular and sensory diseases.", icon: "🔬" },
+    { title: "Ion Channel Mastery", description: "Specialized in ion channels governing pain and sensory signals including TRPV1 and TRPA1. AI predicts channel-ligand interactions to discover selective drug candidates.", image: "/images/science/ion-channel.jpg" },
+    { title: "AI Molecular Simulation", description: "Molecular-level simulation eliminates off-target effects preemptively. Fully resolved the hyperthermia side effect of first-generation TRPV1 antagonists.", image: "/images/science/ai-simulation.jpg" },
+    { title: "Electrophysiology Validation", description: "High-throughput electrophysiology validation using patch clamp technology. Confirms AI predictions against actual ion channel activity data.", image: "/images/science/electrophysiology.jpg" },
+    { title: "CRO Services", description: "Specialized electrophysiology CRO services. Customized efficacy evaluation with animal models for ocular and sensory diseases.", image: "/images/science/cro-lab.jpg" },
   ],
 };
 
@@ -67,22 +67,33 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
   return (
     <div className="pt-24">
       <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.tag}</p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
-            {c.title[0]}<em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">{c.title[1]}</em>{c.title[2]}
-          </h1>
-          <p className="text-lg text-gray-400 max-w-3xl leading-relaxed">{c.description}</p>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.tag}</p>
+            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+              {c.title[0]}<em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">{c.title[1]}</em>{c.title[2]}
+            </h1>
+            <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">{c.description}</p>
+          </div>
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+            <Image src="/images/science/hero-platform.jpg" alt="RuCIA Drug Discovery Platform" fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+          </div>
         </div>
       </section>
 
       <section className="py-16 px-6 bg-gray-50/50">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {caps.map((cap) => (
-            <div key={cap.title} className="glass-card p-6">
-              <div className="text-3xl mb-4">{cap.icon}</div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-900">{cap.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{cap.description}</p>
+            <div key={cap.title} className="glass-card overflow-hidden">
+              <div className="relative h-48 w-full">
+                <Image src={cap.image} alt={cap.title} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">{cap.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed">{cap.description}</p>
+              </div>
             </div>
           ))}
         </div>

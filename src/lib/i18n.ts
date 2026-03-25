@@ -15,6 +15,7 @@ const translations = {
     "nav.pipeline": "Pipeline",
     "nav.ir": "IR",
     "nav.news": "News Center",
+    "nav.sab": "SAB",
     "nav.about": "About",
     "nav.contact": "Contact",
 
@@ -27,24 +28,24 @@ const translations = {
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
-    // RuCIA section
+    // Core Technology section
     "rucia.tag": "Core Technology",
-    "rucia.title1": "AI-Driven",
-    "rucia.title2": "Selectivity",
+    "rucia.title1": "Membrane Target",
+    "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "RuCIA(Rudacure Ion Channel Innovative Assessment)는 AI 기반 분자 시뮬레이션으로 이온채널-리간드 상호작용을 예측합니다. 기존 신약개발의 시행착오를 제거하고, TRPV1 길항제의 고질적 부작용인 고체온증을 완전히 해결했습니다.",
-    "rucia.metric.time": "Time Reduction",
-    "rucia.metric.time.sub": "vs Traditional Drug Discovery",
-    "rucia.metric.selectivity": "Target Selectivity",
-    "rucia.metric.selectivity.sub": "Zero Off-Target Effects",
-    "rucia.metric.market": "Market Opportunity",
-    "rucia.metric.market.sub": "Global Chronic Pain by 2030",
+      "전기생리학(Electrophysiology) 기반 이온채널 활성 측정 기술로 세포막(Membrane) 표적 약물을 개발합니다. 패치클램프와 고처리량 전기생리학 검증을 통해 TRPV1 등 이온채널의 선택적 조절제를 발굴하고, 비마약성 통증/감각질환 치료제의 효능과 안전성을 실데이터로 검증합니다.",
+    "rucia.metric.time": "Electrophysiology",
+    "rucia.metric.time.sub": "패치클램프 기반 고처리량 검증",
+    "rucia.metric.selectivity": "Membrane Target",
+    "rucia.metric.selectivity.sub": "이온채널 선택적 조절",
+    "rucia.metric.market": "$94B",
+    "rucia.metric.market.sub": "글로벌 만성통증 시장 (2030)",
 
     // Pipeline section
     "pipeline.tag": "Therapeutic Programs",
     "pipeline.title1": "The",
     "pipeline.title2": "Pipeline",
-    "pipeline.view_news": "View News & Media →",
+    "pipeline.view_news": "파이프라인 상세 →",
 
     // CTA
     "cta.title1": "Partner with",
@@ -104,6 +105,7 @@ const translations = {
     "nav.pipeline": "Pipeline",
     "nav.ir": "IR",
     "nav.news": "News Center",
+    "nav.sab": "SAB",
     "nav.about": "About",
     "nav.contact": "Contact",
 
@@ -116,24 +118,24 @@ const translations = {
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
-    // RuCIA section
+    // Core Technology section
     "rucia.tag": "Core Technology",
-    "rucia.title1": "AI-Driven",
-    "rucia.title2": "Selectivity",
+    "rucia.title1": "Membrane Target",
+    "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "RuCIA (Rudacure Ion Channel Innovative Assessment) uses AI-based molecular simulation to predict ion channel-ligand interactions. It eliminates trial-and-error in drug development, fully resolving the hyperthermia side effect of first-generation TRPV1 antagonists.",
-    "rucia.metric.time": "Time Reduction",
-    "rucia.metric.time.sub": "vs Traditional Drug Discovery",
-    "rucia.metric.selectivity": "Target Selectivity",
-    "rucia.metric.selectivity.sub": "Zero Off-Target Effects",
-    "rucia.metric.market": "Market Opportunity",
+      "We develop membrane-targeted therapeutics using electrophysiology-based ion channel activity measurement. Through patch clamp and high-throughput electrophysiology validation, we discover selective modulators of ion channels such as TRPV1, verifying efficacy and safety of non-opioid pain and sensory disease treatments with real data.",
+    "rucia.metric.time": "Electrophysiology",
+    "rucia.metric.time.sub": "Patch Clamp HT Validation",
+    "rucia.metric.selectivity": "Membrane Target",
+    "rucia.metric.selectivity.sub": "Selective Ion Channel Modulation",
+    "rucia.metric.market": "$94B",
     "rucia.metric.market.sub": "Global Chronic Pain by 2030",
 
     // Pipeline section
     "pipeline.tag": "Therapeutic Programs",
     "pipeline.title1": "The",
     "pipeline.title2": "Pipeline",
-    "pipeline.view_news": "View News & Media →",
+    "pipeline.view_news": "Pipeline Details →",
 
     // CTA
     "cta.title1": "Partner with",

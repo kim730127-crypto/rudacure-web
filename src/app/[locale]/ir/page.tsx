@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
 
 const HIGHLIGHTS = {
@@ -18,31 +19,31 @@ const HIGHLIGHTS = {
 
 const ROADMAP = {
   ko: [
-    { quarter: "Q1 2026", title: "RCI001 US Phase 2 중간 결과", status: "active" },
-    { quarter: "Q2 2026", title: "RCI002 글로벌 IND 제출", status: "upcoming" },
-    { quarter: "Q3 2026", title: "AI 플랫폼 희귀 감각질환 확장", status: "upcoming" },
-    { quarter: "Q4 2026", title: "Pre-IPO 펀딩 & 글로벌 라이선싱 (일본/유럽)", status: "upcoming" },
+    { quarter: "Q1 2026", title: "IPO 주관사 선정 및 본격 IPO 돌입", status: "active" },
+    { quarter: "Q2 2026", title: "RCI001 국내 임상 2상 진입", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 ODD 지정 / 시리즈 투자 진행", status: "upcoming" },
+    { quarter: "Q4 2026", title: "RCI002 글로벌 라이선싱", status: "upcoming" },
   ],
   en: [
-    { quarter: "Q1 2026", title: "RCI001 US Phase 2 Interim Results", status: "active" },
-    { quarter: "Q2 2026", title: "RCI002 Global IND Submission", status: "upcoming" },
-    { quarter: "Q3 2026", title: "AI Platform Expansion — Rare Sensory Disorders", status: "upcoming" },
-    { quarter: "Q4 2026", title: "Pre-IPO Funding & Global Licensing (Japan/Europe)", status: "upcoming" },
+    { quarter: "Q1 2026", title: "IPO Underwriter Selection & Full-Scale IPO Launch", status: "active" },
+    { quarter: "Q2 2026", title: "RCI001 Korea Phase 2 Clinical Trial Entry", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 ODD Designation / Series Investment", status: "upcoming" },
+    { quarter: "Q4 2026", title: "RCI002 Global Licensing", status: "upcoming" },
   ],
 };
 
 const INVESTMENT_CASE = {
   ko: [
-    { title: "검증된 라이선싱 실적", description: "한림제약에 RCI001/RCI001U 국내 라이선싱 계약 완료. 글로벌 파트너십 확대 중.", icon: "🤝" },
-    { title: "다각화된 수익원", description: "인체 치료제 + 동물 건강(Ceva) + CRO/AI 플랫폼 서비스로 수익 다변화.", icon: "📊" },
+    { title: "검증된 라이선싱 실적", description: "한림제약 RCI001/RCI001U 국내 라이선싱 계약 완료. Ceva 동물의약품 라이선싱 계약 완료. 글로벌 파트너십 확대 중.", icon: "🤝" },
+    { title: "다각화된 수익원", description: "인체 치료제 + 동물 건강(Ceva) + API 수출 + CRO/AI 플랫폼 서비스로 수익 다변화.", icon: "📊" },
     { title: "확장 가능한 AI 플랫폼", description: "RuCIA로 후보물질 발굴 시간/비용 대폭 절감. 감각 질환 전반으로 적용 확대.", icon: "🤖" },
-    { title: "Post-Opioid 시장 선점", description: "FDA/EMA가 비중독성 대안을 우선시하는 규제 환경에서 TRPV1 플랫폼의 전략적 우위.", icon: "🎯" },
+    { title: "Non-Opioid 시장 선점", description: "FDA/EMA가 비중독성 대안을 우선시하는 규제 환경에서 TRPV1 플랫폼의 전략적 우위.", icon: "🎯" },
   ],
   en: [
-    { title: "Proven Licensing Track Record", description: "Successful licensing to Hanlim Pharmaceuticals for RCI001/RCI001U domestic commercialization.", icon: "🤝" },
-    { title: "Diversified Revenue Streams", description: "Human therapeutics + Animal health (Ceva) + CRO/AI platform services.", icon: "📊" },
+    { title: "Proven Licensing Track Record", description: "Hanlim Pharma RCI001/RCI001U domestic licensing. Ceva veterinary pharmaceutical licensing completed. Expanding global partnerships.", icon: "🤝" },
+    { title: "Diversified Revenue Streams", description: "Human therapeutics + Animal health (Ceva) + API export + CRO/AI platform services.", icon: "📊" },
     { title: "Scalable AI Platform", description: "RuCIA enables rapid candidate identification with significantly reduced cost and development time.", icon: "🤖" },
-    { title: "Post-Opioid Market Leadership", description: "Strategic advantage in a regulatory environment where FDA/EMA prioritize non-addictive alternatives.", icon: "🎯" },
+    { title: "Non-Opioid Market Leadership", description: "Strategic advantage in a regulatory environment where FDA/EMA prioritize non-addictive alternatives.", icon: "🎯" },
   ],
 };
 
@@ -50,7 +51,7 @@ const FINANCIALS = {
   ko: [
     { label: "설립", value: "2018년" },
     { label: "누적 정부 과제", value: "약 50억원+" },
-    { label: "주요 라이선싱", value: "한림제약 (RCI001)" },
+    { label: "주요 라이선싱", value: "한림제약 (RCI001/RCI001U), Ceva (동물용 RCI001AH)" },
     { label: "IPO 준비", value: "주관사 선정 완료 (2025)" },
     { label: "핵심 자산", value: "RuCIA 플랫폼 + 3개 파이프라인" },
     { label: "특허 포트폴리오", value: "한국/일본/미국 다수 등록" },
@@ -58,7 +59,7 @@ const FINANCIALS = {
   en: [
     { label: "Founded", value: "2018" },
     { label: "Cumulative Gov't Grants", value: "~$4M+" },
-    { label: "Key Licensing", value: "Hanlim Pharma (RCI001)" },
+    { label: "Key Licensing", value: "Hanlim Pharma (RCI001/RCI001U), Ceva (RCI001AH Vet)" },
     { label: "IPO Preparation", value: "Underwriter Selected (2025)" },
     { label: "Core Assets", value: "RuCIA Platform + 3 Pipelines" },
     { label: "Patent Portfolio", value: "Korea / Japan / US" },
@@ -69,7 +70,8 @@ const PARTNERS = [
   { name: "Hanlim Pharmaceuticals", type: "Licensing" },
   { name: "Ceva Animal Health", type: "Animal Health" },
   { name: "DT&CRO", type: "Research CRO" },
-  { name: "Ion Cell", type: "CAR-T / ADC" },
+  { name: "WuXi AppTec", type: "CDMO" },
+  { name: "Hanmi Fine Chemical", type: "CDMO" },
   { name: "Hallim Univ. Hospital", type: "Clinical Data" },
 ];
 
@@ -90,19 +92,25 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
     <div className="pt-24">
       {/* Header */}
       <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
-            {isEn ? "Investors" : "투자자 정보"}
-          </p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
-            Investor{" "}
-            <em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">Relations</em>
-          </h1>
-          <p className="text-lg text-gray-400 max-w-3xl leading-relaxed">
-            {isEn
-              ? "RudaCure is an AI-driven biotech company developing non-opioid therapeutics for pain and sensory diseases. We are preparing for IPO with a proven pipeline and scalable AI platform."
-              : "루다큐어는 AI 기반 이온채널 신약개발 기업으로, 비마약성 통증/감각질환 치료제를 개발하고 있습니다. 검증된 파이프라인과 확장 가능한 AI 플랫폼으로 IPO를 준비하고 있습니다."}
-          </p>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+              {isEn ? "Investors" : "투자자 정보"}
+            </p>
+            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+              Investor{" "}
+              <em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">Relations</em>
+            </h1>
+            <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">
+              {isEn
+                ? "RudaCure is an AI-driven biotech company developing non-opioid therapeutics for pain and sensory diseases. We are preparing for IPO with a proven pipeline and scalable AI platform."
+                : "루다큐어는 AI 기반 이온채널 신약개발 기업으로, 비마약성 통증/감각질환 치료제를 개발하고 있습니다. 검증된 파이프라인과 확장 가능한 AI 플랫폼으로 IPO를 준비하고 있습니다."}
+            </p>
+          </div>
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+            <Image src="/images/unnamed.jpg" alt="KOSDAQ IPO Listing Celebration" fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+          </div>
         </div>
       </section>
 

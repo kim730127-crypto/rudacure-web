@@ -4,7 +4,7 @@ const C = {
   ko: {
     tag: "문의하기", title1: "Contact", title2: "Us",
     description: "파트너십, 라이선싱, 투자, CRO 서비스에 관한 문의를 환영합니다.",
-    hq: "본사", rnd: "R&D 센터", phone: "전화 / 팩스",
+    hq: "본사", seoul: "서울사무소", phone: "전화 / 팩스",
     inquiries: "문의처", business: "사업 제휴", ir: "투자 / IR", cro: "CRO 서비스",
     formTitle: "메시지 보내기",
     name: "이름", email: "이메일", company: "회사", type: "문의 유형", message: "메시지", submit: "보내기",
@@ -13,7 +13,7 @@ const C = {
   en: {
     tag: "Get in Touch", title1: "Contact", title2: "Us",
     description: "We welcome inquiries regarding partnerships, licensing, investment, and CRO services.",
-    hq: "Headquarters", rnd: "R&D Center", phone: "Phone & Fax",
+    hq: "Headquarters", seoul: "Seoul Office", phone: "Phone & Fax",
     inquiries: "Inquiries", business: "Business", ir: "IR / Investment", cro: "CRO Services",
     formTitle: "Send a Message",
     name: "Name", email: "Email", company: "Company", type: "Inquiry Type", message: "Message", submit: "Send Message",
@@ -47,22 +47,20 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             <div className="space-y-6">
               <div className="glass-card p-6">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.hq}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">인천광역시 연수구 컨벤션대로 204<br />인천스타트업파크 I</p>
+                <p className="text-gray-600 text-sm leading-relaxed">인천광역시 연수구 미래로 9, 1동 302호</p>
+                <p className="text-gray-500 text-sm mt-2">Tel: 032-724-9070 | Fax: 032-724-9071</p>
               </div>
               <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.rnd}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">인천광역시 연수구 송도과학로 32<br />IT센터 S동 1703호</p>
-              </div>
-              <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.phone}</h3>
-                <p className="text-gray-600 text-sm">Tel: 032-459-2281~5<br />Fax: 032-459-2280</p>
+                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.seoul}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">서울시 금천구 가산디지털1로 145, 1001호</p>
+                <p className="text-gray-500 text-sm mt-2">Tel: 02-2138-2115 | Fax: 02-2138-2551</p>
               </div>
               <div className="glass-card p-6">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.inquiries}</h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.business}</span><span className="text-teal-600 font-medium">bd@rudacure.com</span></div>
-                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.ir}</span><span className="text-teal-600 font-medium">ir@rudacure.com</span></div>
-                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.cro}</span><span className="text-teal-600 font-medium">cro@rudacure.com</span></div>
+                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.business}</span><span className="text-teal-600 font-medium">sh.kim@rudacure.com</span></div>
+                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.ir}</span><span className="text-teal-600 font-medium">js.shin@rudacure.com</span></div>
+                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.cro}</span><span className="text-teal-600 font-medium">jyshin@rudacure.com</span></div>
                 </div>
               </div>
             </div>
