@@ -1,26 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+/* Paperlogy Korean font */
+@font-face { font-family: 'Paperlogy'; src: url('/fonts/Paperlogy-3Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Paperlogy'; src: url('/fonts/Paperlogy-4Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Paperlogy'; src: url('/fonts/Paperlogy-5Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Paperlogy'; src: url('/fonts/Paperlogy-6SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Paperlogy'; src: url('/fonts/Paperlogy-7Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* RudaCure brand */
+  --rc-emerald: #0d9488;
+  --rc-emerald-light: #14b8a6;
+  --rc-emerald-dark: #0f766e;
+  --rc-teal: #0891b2;
+
+  /* Neutrals */
+  --rc-white: #ffffff;
+  --rc-off-white: #f8fafb;
+  --rc-gray-50: #f1f5f9;
+  --rc-gray-100: #e2e8f0;
+  --rc-gray-200: #cbd5e1;
+  --rc-gray-400: #94a3b8;
+  --rc-gray-600: #475569;
+  --rc-gray-800: #1e293b;
+  --rc-gray-900: #0f172a;
+
+  --border-subtle: rgba(0, 0, 0, 0.06);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--rc-white);
+  --color-foreground: var(--rc-gray-900);
+  --color-emerald: var(--rc-emerald);
+  --font-display: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: 'Roboto Mono', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-size: 18px; /* base 16px + 2px */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--rc-white);
+  color: var(--rc-gray-800);
+  font-family: 'Paperlogy', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== Utility: Glass on white ========== */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.glass-card {
+  background: var(--rc-white);
+  border: 1px solid var(--rc-gray-100);
+  border-radius: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--rc-emerald);
+  box-shadow: 0 8px 40px rgba(13, 148, 136, 0.08);
+  transform: translateY(-3px);
+}
+
+/* ========== Text gradients ========== */
+.text-gradient-emerald {
+  background: linear-gradient(135deg, var(--rc-emerald), var(--rc-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========== Dividers ========== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rc-gray-100), transparent);
+}
+
+/* ========== Scroll ========== */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(13, 148, 136, 0.15);
+  color: var(--rc-gray-900);
+}
+
+/* ========== Animations ========== */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes progress-fill {
+  from { width: 0; }
+}
+
+@keyframes scroll-hint {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.6; transform: translateY(6px); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-progress {
+  animation: progress-fill 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ========== Grid Pattern (subtle) ========== */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ========== Navbar scroll ========== */
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.97) !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ========== Buttons ========== */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: var(--rc-emerald);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--rc-emerald-dark);
+  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  transition: all 0.3s ease;
+  border-color: var(--rc-gray-200);
+  color: var(--rc-gray-600);
+}
+
+.btn-outline:hover {
+  border-color: var(--rc-emerald);
+  color: var(--rc-emerald);
+  box-shadow: 0 2px 12px rgba(13, 148, 136, 0.08);
+}
+
+/* ========== Metric shimmer ========== */
+.metric-value {
+  background: linear-gradient(135deg, var(--rc-emerald) 0%, var(--rc-teal) 50%, var(--rc-emerald-light) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ========== Progress bar ========== */
+.progress-bar-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-animated::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s linear infinite;
+}
+
+/* ========== Hero accent shapes ========== */
+.hero-accent {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero-accent-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.08), transparent 70%);
+  top: -10%; right: 5%;
+  animation: float 10s ease-in-out infinite;
+}
+
+.hero-accent-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(8, 145, 178, 0.06), transparent 70%);
+  bottom: 0; left: 0;
+  animation: float 12s ease-in-out infinite reverse;
+}
+
+/* ========== Scrollbar ========== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rc-off-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rc-gray-200);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rc-gray-400);
 }
