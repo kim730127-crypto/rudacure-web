@@ -266,7 +266,7 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
           </p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6">
             {h.title1}{" "}
-            <em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">
+            <em className="font-playfair italic font-semibold text-gradient-emerald">
               {h.title2}
             </em>
           </h1>

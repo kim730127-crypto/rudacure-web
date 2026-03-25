@@ -117,8 +117,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             style={{ animationDelay: "0.3s" }}
           >
             <Image
-              src="/images/molecule_viz.jpg"
-              alt="Molecular visualization"
+              src="/images/TRPV1-Linked-Circuit-Drives-Corneal-Neuropathy-1771998637.jpg"
+              alt="TRPV1 linked circuit drives corneal neuropathy"
               fill
               className="object-cover"
               priority
@@ -362,7 +362,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="max-w-2xl mx-auto text-center relative">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-6 text-white">
               {t("cta.title1")}{" "}
-              <em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">
+              <em className="font-playfair italic font-semibold text-gradient-emerald">
                 {t("cta.title2")}
               </em>
             </h2>

@@ -34,7 +34,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
         <div className="max-w-4xl mx-auto">
           <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{t("news.tag")}</p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
-            {t("news.title1")} <em className="font-['Playfair_Display'] italic font-semibold">{t("news.title2")}</em>
+            {t("news.title1")} <em className="font-playfair italic font-semibold">{t("news.title2")}</em>
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">{t("news.description")}</p>
         </div>

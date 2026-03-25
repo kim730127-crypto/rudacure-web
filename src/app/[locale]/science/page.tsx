@@ -71,7 +71,7 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
           <div>
             <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.tag}</p>
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
-              {c.title[0]}<em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">{c.title[1]}</em>{c.title[2]}
+              {c.title[0]}<em className="font-playfair italic font-semibold text-gradient-emerald">{c.title[1]}</em>{c.title[2]}
             </h1>
             <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">{c.description}</p>
           </div>
@@ -103,7 +103,7 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
         <div className="max-w-4xl mx-auto">
           <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.compTag}</p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">
-            {c.compTitle[0]}<em className="font-['Playfair_Display'] italic font-semibold">{c.compTitle[1]}</em>{c.compTitle[2]}
+            {c.compTitle[0]}<em className="font-playfair italic font-semibold">{c.compTitle[1]}</em>{c.compTitle[2]}
           </h2>
           <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm">
             <table className="w-full">
@@ -134,13 +134,13 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-light mb-6 text-gray-900">
-              {c.beyondTitle[0]}<em className="font-['Playfair_Display'] italic font-semibold">{c.beyondTitle[1]}</em>
+              {c.beyondTitle[0]}<em className="font-playfair italic font-semibold">{c.beyondTitle[1]}</em>
             </h2>
             <p className="text-gray-500 leading-relaxed mb-4">{c.beyondP1}</p>
             <p className="text-gray-500 leading-relaxed">{c.beyondP2}</p>
           </div>
           <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
-            <Image src="/images/molecule_viz.jpg" alt="Molecular Visualization" fill className="object-cover" />
+            <Image src="/images/Gemini_Generated_Image_2hkt252hkt252hkt.png" alt="Ion Channel Research" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
           </div>
         </div>

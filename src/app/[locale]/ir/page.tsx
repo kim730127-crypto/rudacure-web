@@ -99,7 +99,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
             </p>
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
               Investor{" "}
-              <em className="font-['Playfair_Display'] italic font-semibold text-gradient-emerald">Relations</em>
+              <em className="font-playfair italic font-semibold text-gradient-emerald">Relations</em>
             </h1>
             <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">
               {isEn
@@ -134,7 +134,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
             {isEn ? "Strategic Roadmap" : "전략 로드맵"}
           </p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">
-            2026 <em className="font-['Playfair_Display'] italic font-semibold">Milestones</em>
+            2026 <em className="font-playfair italic font-semibold">Milestones</em>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {ROADMAP[locale].map((item) => (
@@ -157,7 +157,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
             {isEn ? "Why Invest" : "투자 포인트"}
           </p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">
-            The Investment <em className="font-['Playfair_Display'] italic font-semibold">Case</em>
+            The Investment <em className="font-playfair italic font-semibold">Case</em>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {INVESTMENT_CASE[locale].map((item) => (
@@ -179,7 +179,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
               {isEn ? "Company Snapshot" : "회사 개요"}
             </p>
             <h2 className="text-3xl font-light mb-8 text-gray-900">
-              Key <em className="font-['Playfair_Display'] italic font-semibold">Facts</em>
+              Key <em className="font-playfair italic font-semibold">Facts</em>
             </h2>
             <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm">
               <table className="w-full">
@@ -216,7 +216,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
       {/* CTA */}
       <section className="py-20 px-6 text-center bg-white">
         <div className="max-w-2xl mx-auto">
-          <blockquote className="text-xl sm:text-2xl font-light italic text-gray-400 mb-8 font-['Playfair_Display']">
+          <blockquote className="text-xl sm:text-2xl font-light italic text-gray-400 mb-8 font-playfair">
             &ldquo;We don&rsquo;t just treat symptoms; we heal the source of sensory signals.&rdquo;
           </blockquote>
           <p className="text-gray-400 mb-8">

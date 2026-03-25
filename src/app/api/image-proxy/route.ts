@@ -6,6 +6,9 @@ const ALLOWED_DOMAINS = [
   "pds.dailypharm.com",
   "image.edaily.co.kr",
   "img.etoday.co.kr",
+  "img3.daumcdn.net",
+  "t1.daumcdn.net",
+  "image.zdnet.co.kr",
 ];
 
 export async function GET(request: NextRequest) {
