@@ -1,4 +1,5 @@
 import { type Locale } from "@/lib/i18n";
+import { ProgressBar } from "@/components/progress-bar";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -42,7 +43,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
         "NCT07068958 등록 완료",
         "국내 임상 2상 진행 예정 (2026 상반기)",
         "한림제약 국내 라이선싱 (RCI001/RCI001U)",
-        "Ceva 동물의약품 공동개발 (RCI001AH)",
+        "프랑스 동물의약품 회사 공동개발 (RCI001AH)",
         "중간 분석 2026 Q1",
       ],
       details: [
@@ -65,8 +66,8 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       progress: 40,
       color: "blue",
       milestones: [
-        "비임상 시험 완료",
-        "MOR biased 듀얼 타깃 제형 확보",
+        "비임상 효력시험 완료",
+        "제형 연구 (가원대 장동진 박사)",
         "CRPS(복합부위통증증후군) ODD 신청 준비 중",
         "SfN 학회 연구성과 발표 (2025.11)",
         "스케일업 TIPS 12억원 지원 (2024)",
@@ -93,6 +94,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       progress: 15,
       color: "violet",
       milestones: [
+        "신테카바이오 산학연 Collabo R&D 2단계 선정 (2026)",
         "신테카바이오 산학연 Collabo R&D 선정 (2024)",
         "서강대·인제대 컨소시엄 공동연구",
         "AI 플랫폼(STB) 기반 표적 분석",
@@ -104,7 +106,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
         "루다큐어 TRPV1 조절 기술 전문성 활용 (피부질환 이온채널)",
         "서강대학교: 화합물 합성·최적화",
         "인제대학교: 후보 화합물 효능 평가",
-        "연구기간: 2025.05 ~ 2026.05",
+        "연구기간: 2026.04 ~ 2028.03",
       ],
       detailsLabel: "주요 특징",
       milestonesLabel: "마일스톤",
@@ -118,9 +120,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       progress: 20,
       color: "indigo",
       milestones: [
+        "민간투자기반 스케일업 지원사업 선정 (2026.4)",
         "농식품벤처육성사업 선정 (2025)",
-        "Ceva 동물의약품 공동개발 파트너십",
-        "AAV 벡터 기반 PoC 진행 중",
+        "AAV 벡터 기반 PoC 완료",
         "단회 투여 3개월 이상 진통 효과 확인",
         "반려동물·경주마 적용 목표",
       ],
@@ -149,7 +151,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
         "NCT07068958 Registered",
         "Korea Phase 2 Planned (H1 2026)",
         "Hanlim Pharma Licensing (RCI001/RCI001U)",
-        "Ceva Veterinary Co-development (RCI001AH)",
+        "French Veterinary Pharma Co-development (RCI001AH)",
         "Interim Analysis Q1 2026",
       ],
       details: [
@@ -172,8 +174,8 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       progress: 40,
       color: "blue",
       milestones: [
-        "Pre-clinical Studies Complete",
-        "MOR Biased Dual-target Formulation",
+        "Pre-clinical Efficacy Studies Complete",
+        "Formulation Research (Dr. Dongjin Jang, Gawon Univ.)",
         "CRPS Orphan Drug Designation (ODD) in Preparation",
         "SfN Conference Presentation (2025.11)",
         "Scale-up TIPS KRW 1.2B Funded (2024)",
@@ -200,6 +202,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       progress: 15,
       color: "violet",
       milestones: [
+        "Syntekabio Collabo R&D Phase 2 Selected (2026)",
         "Syntekabio Collabo R&D Selected (2024)",
         "Sogang Univ. & Inje Univ. Consortium",
         "AI Platform (STB) Target Analysis",
@@ -211,7 +214,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
         "RudaCure TRPV1 expertise applied to skin disease ion channels",
         "Sogang University: compound synthesis & optimization",
         "Inje University: candidate compound efficacy evaluation",
-        "Research period: May 2025 – May 2026",
+        "Research period: Apr 2026 – Mar 2028",
       ],
       detailsLabel: "Key Details",
       milestonesLabel: "Milestones",
@@ -225,9 +228,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       progress: 20,
       color: "indigo",
       milestones: [
+        "Private Investment Scale-Up Program Selected (2026.4)",
         "Agri-Food Venture Program Selected (2025)",
-        "Ceva Veterinary Co-development Partnership",
-        "AAV Vector-based PoC in Progress",
+        "AAV Vector-based PoC Complete",
         "Single Dose 3+ Month Analgesic Effect Confirmed",
         "Targeting Companion Animals & Racehorses",
       ],
@@ -270,7 +273,7 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
               {h.title2}
             </em>
           </h1>
-          <p className="text-lg text-gray-400 max-w-3xl leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
             {h.description}
           </p>
         </div>
@@ -284,7 +287,7 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
               {stages.map((stage, i) => (
                 <div key={stage} className="flex-1 flex items-center">
                   <div className="text-center flex-1">
-                    <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{stage}</div>
+                    <div className="text-xs text-gray-600 uppercase tracking-wider font-medium">{stage}</div>
                   </div>
                   {i < stages.length - 1 && <div className="w-px h-4 bg-gray-200" />}
                 </div>
@@ -292,11 +295,13 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
             </div>
             {/* Pipeline bars */}
             <div className="mt-6 space-y-3">
-              {pipeline.map((p) => (
+              {pipeline.map((p, i) => (
                 <div key={p.name} className="flex items-center gap-3">
                   <span className="text-sm font-mono font-semibold text-gray-700 w-20">{p.name}</span>
                   <div className="flex-1 h-8 bg-gray-100 rounded-full overflow-hidden relative">
-                    <div
+                    <ProgressBar
+                      progress={p.progress}
+                      delay={i * 200}
                       className={`h-full rounded-full flex items-center px-3 ${
                         p.color === "emerald"
                           ? "bg-teal-100"
@@ -306,14 +311,13 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
                           ? "bg-violet-100"
                           : "bg-indigo-100"
                       }`}
-                      style={{ width: `${p.progress}%` }}
                     >
-                      <span className={`text-xs font-semibold ${
+                      <span className={`text-xs font-semibold whitespace-nowrap ${
                         p.color === "emerald" ? "text-teal-700" : p.color === "blue" ? "text-blue-700" : p.color === "violet" ? "text-violet-700" : "text-indigo-700"
                       }`}>
                         {p.status}
                       </span>
-                    </div>
+                    </ProgressBar>
                   </div>
                 </div>
               ))}
@@ -343,21 +347,21 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
                     >
                       {p.indication}
                     </span>
-                    <span className="text-sm text-gray-500 font-medium">{p.status}</span>
+                    <span className="text-sm text-gray-600 font-medium">{p.status}</span>
                   </div>
 
                   <h2 className="text-2xl font-semibold mb-2 text-gray-900">{p.name}</h2>
                   <p className="text-base text-gray-600 mb-1"><span className="font-medium">Target:</span> {p.target}</p>
-                  <p className="text-base text-gray-500 leading-relaxed mb-4">{p.mechanism}</p>
+                  <p className="text-base text-gray-600 leading-relaxed mb-4">{p.mechanism}</p>
 
                   {/* Progress */}
                   <div className="mb-6">
                     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div
+                      <ProgressBar
+                        progress={p.progress}
                         className={`h-full rounded-full ${
                           p.color === "emerald" ? "bg-emerald-500" : p.color === "blue" ? "bg-blue-500" : p.color === "violet" ? "bg-violet-500" : "bg-indigo-500"
                         }`}
-                        style={{ width: `${p.progress}%` }}
                       />
                     </div>
                   </div>

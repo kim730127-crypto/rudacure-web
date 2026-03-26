@@ -6,11 +6,21 @@ import { useState, useEffect } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getTranslations } from "@/lib/i18n";
 
+/* ── Flag icons as image files (works on all platforms) ── */
+function FlagKR({ className = "w-5 h-3.5" }: { className?: string }) {
+  return <img src="/images/flag-kr.svg" alt="KR" className={className} />;
+}
+
+function FlagUS({ className = "w-5 h-3.5" }: { className?: string }) {
+  return <img src="/images/flag-us.svg" alt="US" className={className} />;
+}
+
 const NAV_KEYS = [
   { key: "science", tKey: "nav.science" as const },
   { key: "pipeline", tKey: "nav.pipeline" as const },
   { key: "ir", tKey: "nav.ir" as const },
   { key: "news", tKey: "nav.news" as const },
+  { key: "publications", tKey: "nav.publications" as const },
   { key: "sab", tKey: "nav.sab" as const },
   { key: "about", tKey: "nav.about" as const },
   { key: "contact", tKey: "nav.contact" as const },
@@ -57,7 +67,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
               className={`relative text-sm font-medium transition-colors ${
                 pathname.startsWith(link.href)
                   ? "text-teal-700"
-                  : "text-gray-500 hover:text-gray-900"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
               {link.label}
@@ -69,24 +79,26 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
         </div>
 
         {/* Language toggle */}
-        <div className="hidden md:flex items-center text-xs font-medium">
+        <div className="hidden md:flex items-center text-xs font-medium gap-1">
           <Link
             href={`/ko${pathWithoutLocale}`}
-            className={`px-2 py-1 transition-colors ${locale === "ko" ? "text-teal-700" : "text-gray-300 hover:text-gray-600"}`}
+            className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${locale === "ko" ? "text-teal-700" : "text-gray-600 hover:text-gray-600"}`}
           >
+            <FlagKR className="w-5 h-3.5 rounded-[2px] overflow-hidden shadow-sm" />
             KR
           </Link>
           <span className="text-gray-200">|</span>
           <Link
             href={`/en${pathWithoutLocale}`}
-            className={`px-2 py-1 transition-colors ${locale === "en" ? "text-teal-700" : "text-gray-300 hover:text-gray-600"}`}
+            className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${locale === "en" ? "text-teal-700" : "text-gray-600 hover:text-gray-600"}`}
           >
+            <FlagUS className="w-5 h-3.5 rounded-[2px] overflow-hidden shadow-sm" />
             EN
           </Link>
         </div>
 
         <button
-          className="md:hidden text-gray-500 hover:text-gray-900 transition-colors"
+          className="md:hidden text-gray-600 hover:text-gray-900 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -114,8 +126,8 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
             </Link>
           ))}
           <div className="flex gap-2 pt-3 mt-2 border-t border-gray-100">
-            <Link href={`/ko${pathWithoutLocale}`} className={`text-xs px-3 py-1.5 rounded-full ${locale === "ko" ? "bg-teal-50 text-teal-700" : "text-gray-400"}`}>KR</Link>
-            <Link href={`/en${pathWithoutLocale}`} className={`text-xs px-3 py-1.5 rounded-full ${locale === "en" ? "bg-teal-50 text-teal-700" : "text-gray-400"}`}>EN</Link>
+            <Link href={`/ko${pathWithoutLocale}`} className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === "ko" ? "bg-teal-50 text-teal-700" : "text-gray-600"}`}><FlagKR className="w-5 h-3.5 rounded-[2px]" /> KR</Link>
+            <Link href={`/en${pathWithoutLocale}`} className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === "en" ? "bg-teal-50 text-teal-700" : "text-gray-600"}`}><FlagUS className="w-5 h-3.5 rounded-[2px]" /> EN</Link>
           </div>
         </div>
       )}

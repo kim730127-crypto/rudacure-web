@@ -45,14 +45,14 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
             <em className="font-playfair italic font-semibold">{c.title1}</em> {c.title2}
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl leading-relaxed mb-16">{c.description}</p>
+          <p className="text-lg text-gray-600 max-w-2xl leading-relaxed mb-16">{c.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.hq}</h3>
+                <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.hq}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{c.hqAddr}</p>
-                <p className="text-gray-500 text-sm mt-2">Tel: 032-724-9070 | Fax: 032-724-9071</p>
+                <p className="text-gray-600 text-sm mt-2">Tel: 032-724-9070 | Fax: 032-724-9071</p>
                 <div className="mt-4 rounded-lg overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.5!2d126.656!3d37.381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7d5c5e5c5c5d%3A0x0!2z7J247LKc6rSR7Jet7IucIOyXsOyImOq1rCDrr7jrnpjroZwgOQ!5e0!3m2!1sko!2skr!4v1"
@@ -66,9 +66,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 </div>
               </div>
               <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.seoul}</h3>
+                <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.seoul}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{c.seoulAddr}</p>
-                <p className="text-gray-500 text-sm mt-2">Tel: 02-2138-2115 | Fax: 02-2138-2551</p>
+                <p className="text-gray-600 text-sm mt-2">Tel: 02-2138-2115 | Fax: 02-2138-2551</p>
                 <div className="mt-4 rounded-lg overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.5!2d126.882!3d37.478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3e5e5e5e5e5%3A0x0!2z7ISc7Jq47IucIOq4iOyynOq1rCDqsIDsgrDrlJTsp4Dthrgx66GcIDE0NQ!5e0!3m2!1sko!2skr!4v1"
@@ -82,11 +82,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 </div>
               </div>
               <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{c.inquiries}</h3>
+                <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.inquiries}</h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.business}</span><span className="text-teal-600 font-medium">sh.kim@rudacure.com</span></div>
-                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.ir}</span><span className="text-teal-600 font-medium">js.shin@rudacure.com</span></div>
-                  <div className="flex items-center gap-3"><span className="text-gray-400 w-24">{c.cro}</span><span className="text-teal-600 font-medium">jyshin@rudacure.com</span></div>
+                  <div className="flex items-center gap-3"><span className="text-gray-600 w-24">{c.business}</span><span className="text-teal-600 font-medium">sh.kim@rudacure.com</span></div>
+                  <div className="flex items-center gap-3"><span className="text-gray-600 w-24">{c.ir}</span><span className="text-teal-600 font-medium">js.shin@rudacure.com</span></div>
+                  <div className="flex items-center gap-3"><span className="text-gray-600 w-24">{c.cro}</span><span className="text-teal-600 font-medium">jyshin@rudacure.com</span></div>
                 </div>
               </div>
             </div>
@@ -95,25 +95,25 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <h3 className="text-lg font-semibold mb-6 text-gray-900">{c.formTitle}</h3>
               <form className="space-y-4">
                 <div>
-                  <label className="text-xs text-gray-500 block mb-1">{c.name}</label>
+                  <label className="text-xs text-gray-600 block mb-1">{c.name}</label>
                   <input type="text" className={inputCls} />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500 block mb-1">{c.email}</label>
+                  <label className="text-xs text-gray-600 block mb-1">{c.email}</label>
                   <input type="email" className={inputCls} />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500 block mb-1">{c.company}</label>
+                  <label className="text-xs text-gray-600 block mb-1">{c.company}</label>
                   <input type="text" className={inputCls} />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500 block mb-1">{c.type}</label>
+                  <label className="text-xs text-gray-600 block mb-1">{c.type}</label>
                   <select className={inputCls}>
                     {c.typeOptions.map((opt, i) => <option key={i} value={i === 0 ? "" : opt}>{opt}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500 block mb-1">{c.message}</label>
+                  <label className="text-xs text-gray-600 block mb-1">{c.message}</label>
                   <textarea rows={4} className={`${inputCls} resize-none`} />
                 </div>
                 <button type="submit" className="btn-primary w-full py-3 rounded-lg font-semibold text-sm">{c.submit}</button>

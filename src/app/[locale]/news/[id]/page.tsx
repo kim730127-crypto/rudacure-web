@@ -56,7 +56,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ lo
             {article.title}
           </h1>
 
-          <p className="text-sm text-gray-500 mb-8">{article.date}</p>
+          <p className="text-sm text-gray-600 mb-8">{article.date}</p>
 
           <div className="section-divider mb-8" />
 

@@ -36,7 +36,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
             {t("news.title1")} <em className="font-playfair italic font-semibold">{t("news.title2")}</em>
           </h1>
-          <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">{t("news.description")}</p>
+          <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">{t("news.description")}</p>
         </div>
       </section>
 
@@ -50,10 +50,10 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-3 mb-1.5">
-                  <span className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full ${CATEGORY_COLORS[article.category] || "bg-gray-100 text-gray-500"}`}>
+                  <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${CATEGORY_COLORS[article.category] || "bg-gray-100 text-gray-600"}`}>
                     {article.category}
                   </span>
-                  <span className="text-xs text-gray-500">{article.date}</span>
+                  <span className="text-xs text-gray-600">{article.date}</span>
                 </div>
                 <h3 className="text-[15px] font-medium text-gray-700 group-hover:text-teal-600 transition-colors truncate">
                   {article.title}

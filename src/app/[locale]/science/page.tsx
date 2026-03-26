@@ -73,7 +73,7 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
               {c.title[0]}<em className="font-playfair italic font-semibold text-gradient-emerald">{c.title[1]}</em>{c.title[2]}
             </h1>
-            <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">{c.description}</p>
+            <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">{c.description}</p>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
             <Image src="/images/science/hero-platform.jpg" alt="RuCIA Drug Discovery Platform" fill className="object-cover" />
@@ -92,7 +92,7 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-2 text-gray-900">{cap.title}</h3>
-                <p className="text-[15px] text-gray-500 leading-relaxed">{cap.description}</p>
+                <p className="text-[15px] text-gray-600 leading-relaxed">{cap.description}</p>
               </div>
             </div>
           ))}
@@ -109,17 +109,17 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100 bg-gray-50">
-                  <th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider p-4">{c.thMetric}</th>
-                  <th className="text-center text-xs font-semibold text-gray-400 uppercase tracking-wider p-4">{c.thTraditional}</th>
+                  <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">{c.thMetric}</th>
+                  <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">{c.thTraditional}</th>
                   <th className="text-center text-xs font-semibold text-teal-600 uppercase tracking-wider p-4">{c.thRucia}</th>
-                  <th className="text-center text-xs font-semibold text-gray-400 uppercase tracking-wider p-4 w-20">{c.thGap}</th>
+                  <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4 w-20">{c.thGap}</th>
                 </tr>
               </thead>
               <tbody>
                 {advs.map((a) => (
                   <tr key={a.label} className="border-b border-gray-50">
                     <td className="p-4 text-sm text-gray-600 font-medium">{a.label}</td>
-                    <td className="p-4 text-sm text-gray-400 text-center">{a.before}</td>
+                    <td className="p-4 text-sm text-gray-600 text-center">{a.before}</td>
                     <td className="p-4 text-sm text-teal-600 text-center font-medium">{a.after}</td>
                     <td className="p-4 text-sm text-teal-500 text-center font-mono">{a.reduction || "—"}</td>
                   </tr>
@@ -136,8 +136,8 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
             <h2 className="text-3xl font-light mb-6 text-gray-900">
               {c.beyondTitle[0]}<em className="font-playfair italic font-semibold">{c.beyondTitle[1]}</em>
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-4">{c.beyondP1}</p>
-            <p className="text-gray-500 leading-relaxed">{c.beyondP2}</p>
+            <p className="text-gray-600 leading-relaxed mb-4">{c.beyondP1}</p>
+            <p className="text-gray-600 leading-relaxed">{c.beyondP2}</p>
           </div>
           <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
             <Image src="/images/Gemini_Generated_Image_2hkt252hkt252hkt.png" alt="Ion Channel Research" fill className="object-cover" />

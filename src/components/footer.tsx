@@ -27,11 +27,11 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
               {t("footer.description")}
             </p>
             <div className="space-y-1">
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-gray-400">
                 {isKo ? "인천광역시 연수구 미래로 9, 1동 302호" : "9 Mirae-ro, Yeonsu-gu, Incheon, Korea"}
               </p>
-              <p className="text-xs text-gray-600">Tel: 032-724-9070 | Fax: 032-724-9071</p>
-              <p className="text-xs text-gray-600">sh.kim@rudacure.com</p>
+              <p className="text-xs text-gray-400">Tel: 032-724-9070 | Fax: 032-724-9071</p>
+              <p className="text-xs text-gray-400">sh.kim@rudacure.com</p>
             </div>
           </div>
 
@@ -83,10 +83,10 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
 
         <div className="h-px bg-gray-800 mt-12 mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-gray-400">
             &copy; {new Date().getFullYear()} RudaCure Co., Ltd. All rights reserved.
           </p>
-          <p className="text-[10px] text-gray-600 font-['Roboto_Mono']">
+          <p className="text-[10px] text-gray-400 font-['Roboto_Mono']">
             Redefining Pain, Restoring Sensation
           </p>
         </div>

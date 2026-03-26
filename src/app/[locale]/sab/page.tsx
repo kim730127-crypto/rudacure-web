@@ -124,7 +124,7 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
             {h.title1}{" "}
             <em className="font-playfair italic font-semibold text-gradient-emerald">{h.title2}</em>
           </h1>
-          <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">{h.description}</p>
+          <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">{h.description}</p>
         </div>
       </section>
 
@@ -136,7 +136,7 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
               <div className="mb-4">
                 <h3 className="text-xl font-semibold text-gray-900">{advisor.name}</h3>
                 <p className="text-teal-600 text-sm font-medium mt-1">{advisor.title}</p>
-                <p className="text-sm text-gray-500 mt-0.5">{advisor.affiliation}</p>
+                <p className="text-sm text-gray-600 mt-0.5">{advisor.affiliation}</p>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-4">

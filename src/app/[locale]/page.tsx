@@ -2,54 +2,64 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { HeroParticles } from "@/components/hero-particles";
+import { PartnerLogo } from "@/components/partner-logo";
 import newsKo from "@/data/news.json";
 import newsEn from "@/data/news_en.json";
 
-const PIPELINE = [
-  {
-    id: "RCI001",
-    name: "RCI001",
-    indication: "Dry Eye Disease",
-    target: "TRPV1-Rac1",
-    status: "US FDA Phase 2",
-    progress: 75,
-    color: "teal" as const,
-    milestone: "Interim Analysis Q1 2026",
-    description:
-      "TRPV1 하부 시그널 조절을 통한 Rac1 타깃 항염증/항산화 기전. 빠른 눈물 분비 촉진과 각막 손상 회복으로 기존 스테로이드 한계를 극복.",
-  },
-  {
-    id: "RCI002",
-    name: "RCI002",
-    indication: "Non-Opioid Pain",
-    target: "TRPV1-MOR Biased Dual",
-    status: "Pre-clinical / IND",
-    progress: 40,
-    color: "blue" as const,
-    milestone: "Global IND Filing Q2 2026",
-    description:
-      "TRPV1과 MOR을 동시 조절하는 MOR biased 듀얼 타깃 비마약성 진통제. 이상발열 Zero, 중독/내성 위험 없이 장기 지속 통증 완화.",
-  },
-];
+const PIPELINE = {
+  ko: [
+    {
+      id: "RCI001", name: "RCI001", indication: "Dry Eye Disease", target: "TRPV1-Rac1",
+      status: "US FDA Phase 2", progress: 75, color: "teal" as const,
+      milestone: "Phase 2 IND Q2 2026",
+      description: "TRPV1 하부 시그널 조절을 통한 Rac1 타깃 항염증/항산화 기전. 빠른 눈물 분비 촉진과 각막 손상 회복으로 기존 스테로이드 한계를 극복.",
+    },
+    {
+      id: "RCI002", name: "RCI002", indication: "Non-Opioid Pain", target: "TRPV1-MOR Biased Dual",
+      status: "Pre-clinical / IND", progress: 40, color: "blue" as const,
+      milestone: "Tox Study 3Q 2026",
+      description: "TRPV1과 MOR을 동시 조절하는 MOR biased 듀얼 타깃 비마약성 진통제. 이상발열 Zero, 중독/내성 위험 없이 장기 지속 통증 완화.",
+    },
+  ],
+  en: [
+    {
+      id: "RCI001", name: "RCI001", indication: "Dry Eye Disease", target: "TRPV1-Rac1",
+      status: "US FDA Phase 2", progress: 75, color: "teal" as const,
+      milestone: "Phase 2 IND Q2 2026",
+      description: "Anti-inflammatory/antioxidant mechanism targeting Rac1 via TRPV1 downstream signal modulation. Overcomes steroid limitations with rapid tear secretion and corneal wound healing.",
+    },
+    {
+      id: "RCI002", name: "RCI002", indication: "Non-Opioid Pain", target: "TRPV1-MOR Biased Dual",
+      status: "Pre-clinical / IND", progress: 40, color: "blue" as const,
+      milestone: "Tox Study 3Q 2026",
+      description: "MOR biased dual-target non-opioid analgesic simultaneously modulating TRPV1 and MOR. Zero hyperthermia, long-lasting pain relief without addiction or tolerance risk.",
+    },
+  ],
+};
 
 const PARTNERS = {
   ko: [
-    { name: "한림제약", role: "RCI001 국내 라이선싱(공동연구)" },
-    { name: "Ceva", role: "동물의약품 공동개발" },
-    { name: "WuXi AppTec", role: "CDMO" },
-    { name: "한미정밀화학", role: "CDMO" },
-    { name: "동아ST", role: "CDMO" },
-    { name: "Pharmaron", role: "CDMO" },
-    { name: "DT&CRO", role: "CRO" },
+    { name: "서울대학교 병원", role: "임상시험 수행 기관, 제3자 검증기관", logo: "/images/partners/snuh.jpg", initials: "SNUH", color: "blue" },
+    { name: "POSTECH", role: "Cryo-EM, MoA 검증기관", logo: "/images/partners/postech.png", initials: "POST", color: "red" },
+    { name: "한림제약", role: "RCI001 국내 라이선싱(공동연구)", logo: "/images/partners/hanlim.png", initials: "HL", color: "teal" },
+    { name: "프랑스 동물의약품 회사", role: "동물의약품 공동개발", logo: "/images/partners/vet-pharma.jpg", initials: "VP", color: "indigo" },
+    { name: "WuXi AppTec", role: "CDMO, Process Development", logo: "/images/partners/wuxi.jpg", initials: "WX", color: "emerald" },
+    { name: "한미정밀화학", role: "RCI001/RCI002 GMP 생산", logo: "/images/partners/hanmi.gif", initials: "HM", color: "violet" },
+    { name: "동아ST", role: "CDMO", logo: "/images/partners/dongast.png", initials: "DA", color: "orange" },
+    { name: "Pharmaron", role: "CDMO", logo: "/images/partners/pharmaron.svg", initials: "PR", color: "cyan" },
+    { name: "DT&CRO", role: "독성시험 평가기관", logo: "/images/partners/dtcro.png", initials: "DT", color: "rose" },
   ],
   en: [
-    { name: "Hanlim Pharma", role: "RCI001 Domestic Licensing (Co-research)" },
-    { name: "Ceva", role: "Veterinary Co-development" },
-    { name: "WuXi AppTec", role: "CDMO" },
-    { name: "Hanmi Fine Chemical", role: "CDMO" },
-    { name: "Dong-A ST", role: "CDMO" },
-    { name: "Pharmaron", role: "CDMO" },
-    { name: "DT&CRO", role: "CRO" },
+    { name: "Seoul National Univ. Hospital", role: "Clinical Trial Conducting Org, Third-Party Validation", logo: "/images/partners/snuh.jpg", initials: "SNUH", color: "blue" },
+    { name: "POSTECH", role: "Cryo-EM, MoA Validation", logo: "/images/partners/postech.png", initials: "POST", color: "red" },
+    { name: "Hanlim Pharma", role: "RCI001 Domestic Licensing (Co-research)", logo: "/images/partners/hanlim.png", initials: "HL", color: "teal" },
+    { name: "French Veterinary Pharma", role: "Veterinary Co-development", logo: "/images/partners/vet-pharma.jpg", initials: "VP", color: "indigo" },
+    { name: "WuXi AppTec", role: "CDMO, Process Development", logo: "/images/partners/wuxi.jpg", initials: "WX", color: "emerald" },
+    { name: "Hanmi Fine Chemical", role: "RCI001/RCI002 GMP Production", logo: "/images/partners/hanmi.gif", initials: "HM", color: "violet" },
+    { name: "Dong-A ST", role: "CDMO", logo: "/images/partners/dongast.png", initials: "DA", color: "orange" },
+    { name: "Pharmaron", role: "CDMO", logo: "/images/partners/pharmaron.svg", initials: "PR", color: "cyan" },
+    { name: "DT&CRO", role: "Toxicology Testing Agency", logo: "/images/partners/dtcro.png", initials: "DT", color: "rose" },
   ],
 };
 
@@ -58,6 +68,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = getTranslations(locale as Locale);
   const loc = (locale === "en" ? "en" : "ko") as Locale;
   const partners = PARTNERS[loc];
+  const pipeline = PIPELINE[loc];
 
   const METRICS = [
     { value: "EP", label: t("rucia.metric.time"), sub: t("rucia.metric.time.sub") },
@@ -68,69 +79,74 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       {/* ===== Hero ===== */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
-        {/* Geometric accent line */}
-        <div className="absolute top-0 right-0 w-1/3 h-full border-l border-gray-100 hidden lg:block" />
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Full background image */}
+        <Image
+          src="/images/dry-eye-hero.jpg"
+          alt="Dry eye disease - bloodshot eye close-up"
+          fill
+          className="object-cover hero-bg-zoom"
+          priority
+        />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-28 pb-16 lg:pt-24">
-          {/* Left content */}
-          <div className="lg:col-span-7">
-            <p className="section-label mb-6 animate-fade-up">
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/70 to-gray-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-gray-950/30" />
+
+        {/* Animated particle background */}
+        <HeroParticles />
+
+        {/* Ambient glow */}
+        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-teal-400/10 rounded-full blur-3xl hero-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-red-400/8 rounded-full blur-3xl hero-glow" style={{ animationDelay: "1.5s" }} />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pt-32 pb-24 lg:pt-36">
+          <div className="max-w-2xl">
+            <p className="text-teal-400 text-xs font-semibold tracking-[0.25em] uppercase mb-6 animate-hero-blur-in">
               {t("hero.tagline")}
             </p>
+
+            {/* Decorative line draw */}
+            <div className="h-px w-16 bg-gradient-to-r from-teal-400 to-cyan-400 mb-6 hero-line-accent" />
+
             <h1
-              className="text-4xl sm:text-5xl lg:text-7xl section-heading mb-8 animate-fade-up"
-              style={{ animationDelay: "0.15s" }}
+              className="text-4xl sm:text-5xl lg:text-7xl font-light leading-[1.1] mb-8 text-white animate-hero-blur-in"
+              style={{ animationDelay: "0.2s" }}
             >
               {t("hero.title1")}
               <br />
-              <em className="text-gradient-emerald">{t("hero.title2")}</em>
+              <em className="font-playfair italic font-semibold hero-gradient-text">{t("hero.title2")}</em>
             </h1>
             <p
-              className="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed mb-10 animate-fade-up"
-              style={{ animationDelay: "0.3s" }}
+              className="text-base sm:text-lg text-gray-300 max-w-xl leading-relaxed mb-10 animate-hero-blur-in"
+              style={{ animationDelay: "0.4s" }}
             >
               {t("hero.description")}
             </p>
             <div
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-fade-up"
-              style={{ animationDelay: "0.45s" }}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-hero-blur-in"
+              style={{ animationDelay: "0.6s" }}
             >
               <Link
                 href={`/${locale}/pipeline`}
-                className="btn-primary px-7 py-3.5 font-medium text-sm"
+                className="px-7 py-3.5 rounded-lg font-medium text-sm bg-teal-500 text-white hover:bg-teal-400 transition-colors"
               >
                 {t("hero.cta.pipeline")}
               </Link>
               <Link
                 href={`/${locale}/science`}
-                className="btn-outline px-7 py-3.5 border text-sm font-medium"
+                className="px-7 py-3.5 rounded-lg border border-white/20 text-sm font-medium text-white/80 hover:text-white hover:border-white/40 transition-colors"
               >
                 {t("hero.cta.science")}
               </Link>
             </div>
           </div>
-
-          {/* Right visual */}
-          <div
-            className="lg:col-span-5 relative aspect-[16/9] lg:aspect-[3/4] rounded-2xl overflow-hidden animate-fade-up"
-            style={{ animationDelay: "0.3s" }}
-          >
-            <Image
-              src="/images/TRPV1-Linked-Circuit-Drives-Corneal-Neuropathy-1771998637.jpg"
-              alt="TRPV1 linked circuit drives corneal neuropathy"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 to-transparent" />
-          </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-scroll-hint">
-          <span className="text-[10px] tracking-[0.2em] uppercase text-gray-300">Scroll</span>
-          <div className="w-px h-10 bg-gradient-to-b from-gray-300 to-transparent" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-scroll-hint z-10">
+          <span className="text-xs tracking-[0.2em] uppercase text-white/40">Scroll</span>
+          <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
         </div>
       </section>
 
@@ -142,7 +158,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <h2 className="text-3xl sm:text-4xl lg:text-5xl section-heading mb-6">
               {t("rucia.title1")} <em>{t("rucia.title2")}</em>
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-10">{t("rucia.description")}</p>
+            <p className="text-gray-600 leading-relaxed mb-10">{t("rucia.description")}</p>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {METRICS.map((m) => (
                 <div
@@ -152,8 +168,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <div className="text-xl sm:text-2xl lg:text-3xl font-bold font-['Roboto_Mono'] text-gradient-emerald">
                     {m.value}
                   </div>
-                  <div className="text-[11px] sm:text-xs text-gray-500 mt-1.5 font-medium">{m.label}</div>
-                  <div className="text-[10px] text-gray-300 mt-0.5">{m.sub}</div>
+                  <div className="text-xs sm:text-xs text-gray-600 mt-1.5 font-medium">{m.label}</div>
+                  <div className="text-xs text-gray-600 mt-0.5">{m.sub}</div>
                 </div>
               ))}
             </div>
@@ -185,7 +201,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
               <Link
                 href={`/${locale}/pipeline`}
-                className="text-sm text-gray-400 hover:text-teal-600 transition-colors hidden sm:flex items-center gap-2 group"
+                className="text-sm text-gray-600 hover:text-teal-600 transition-colors hidden sm:flex items-center gap-2 group"
               >
                 {t("pipeline.view_news")}
                 <svg
@@ -201,7 +217,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PIPELINE.map((p, i) => (
+            {pipeline.map((p, i) => (
               <ScrollReveal key={p.id} delay={i * 150}>
                 <Link
                   href={`/${locale}/pipeline`}
@@ -214,20 +230,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     <span className="text-xs font-semibold px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200 font-['Roboto_Mono']">
                       {p.id}
                     </span>
-                    <span className="text-xs text-gray-400 font-['Roboto_Mono']">{p.status}</span>
+                    <span className="text-xs text-gray-600 font-['Roboto_Mono']">{p.status}</span>
                   </div>
 
                   {/* Indication */}
                   <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-gray-900 group-hover:text-teal-700 transition-colors">
                     {p.indication}
                   </h3>
-                  <p className="text-sm text-gray-400 mb-6 leading-relaxed line-clamp-2">
+                  <p className="text-sm text-gray-600 mb-6 leading-relaxed line-clamp-2">
                     {p.description}
                   </p>
 
                   {/* Progress */}
                   <div className="mb-4">
-                    <div className="flex justify-between text-xs text-gray-400 mb-2">
+                    <div className="flex justify-between text-xs text-gray-600 mb-2">
                       <span>Progress</span>
                       <span className="font-['Roboto_Mono']">{p.progress}%</span>
                     </div>
@@ -245,8 +261,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
                   {/* Footer */}
                   <div className="flex items-center justify-between text-xs pt-4 border-t border-gray-100">
-                    <span className="text-gray-300 font-['Roboto_Mono']">Target: {p.target}</span>
-                    <span className="text-gray-400 group-hover:text-teal-600 transition-colors flex items-center gap-1">
+                    <span className="text-gray-600 font-['Roboto_Mono']">Target: {p.target}</span>
+                    <span className="text-gray-600 group-hover:text-teal-600 transition-colors flex items-center gap-1">
                       {p.milestone}
                       <svg
                         className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform"
@@ -280,16 +296,34 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {partners.map((p, i) => (
-              <ScrollReveal key={p.name} delay={i * 100}>
-                <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 group cursor-default hover:border-teal-300 transition-all duration-300">
-                  <div className="text-sm font-semibold text-gray-800 group-hover:text-teal-700 transition-colors">
-                    {p.name}
+            {partners.map((p, i) => {
+              const colorMap: Record<string, string> = {
+                blue: "bg-blue-50 text-blue-600",
+                red: "bg-red-50 text-red-600",
+                teal: "bg-teal-50 text-teal-600",
+                indigo: "bg-indigo-50 text-indigo-600",
+                emerald: "bg-emerald-50 text-emerald-600",
+                violet: "bg-violet-50 text-violet-600",
+                orange: "bg-orange-50 text-orange-600",
+                cyan: "bg-cyan-50 text-cyan-600",
+                rose: "bg-rose-50 text-rose-600",
+              };
+              const badgeClass = colorMap[p.color] || "bg-gray-50 text-gray-600";
+              return (
+                <ScrollReveal key={p.name} delay={i * 100}>
+                  <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 group cursor-default hover:border-teal-300 transition-all duration-300 flex items-center gap-4">
+                    {/* Logo or initials fallback */}
+                    <PartnerLogo src={p.logo} alt={p.name} initials={p.initials} badgeClass={badgeClass} />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-semibold text-gray-800 group-hover:text-teal-700 transition-colors">
+                        {p.name}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-0.5 leading-snug">{p.role}</div>
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">{p.role}</div>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -310,7 +344,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
               <Link
                 href={`/${locale}/news`}
-                className="text-sm text-gray-400 hover:text-teal-600 transition-colors hidden sm:flex items-center gap-2 group"
+                className="text-sm text-gray-600 hover:text-teal-600 transition-colors hidden sm:flex items-center gap-2 group"
               >
                 {loc === "ko" ? "전체보기 →" : "View All →"}
                 <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -328,10 +362,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-1">
-                      <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+                      <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
                         {article.category}
                       </span>
-                      <span className="text-xs text-gray-500">{article.date}</span>
+                      <span className="text-xs text-gray-600">{article.date}</span>
                     </div>
                     <h3 className="text-sm sm:text-[15px] font-medium text-gray-700 group-hover:text-teal-600 transition-colors truncate">
                       {article.title}

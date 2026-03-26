@@ -32,18 +32,50 @@ const ROADMAP = {
   ],
 };
 
+const ICONS = {
+  handshake: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <path d="M20.5 11.5L14 18l-2.5-2.5" />
+      <path d="M3.5 11.5L10 18l1.5-1.5" />
+      <path d="M2 7.5h5l3-3 4 4 3-3h5" />
+      <path d="M2 7.5l4 4" />
+      <path d="M22 7.5l-4 4" />
+    </svg>
+  ),
+  chart: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <path d="M3 3v18h18" />
+      <path d="M7 16l4-6 4 3 5-7" />
+    </svg>
+  ),
+  ai: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
+      <path d="M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+    </svg>
+  ),
+  target: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  ),
+};
+
 const INVESTMENT_CASE = {
   ko: [
-    { title: "검증된 라이선싱 실적", description: "한림제약 RCI001/RCI001U 국내 라이선싱 계약 완료. Ceva 동물의약품 라이선싱 계약 완료. 글로벌 파트너십 확대 중.", icon: "🤝" },
-    { title: "다각화된 수익원", description: "인체 치료제 + 동물 건강(Ceva) + API 수출 + CRO/AI 플랫폼 서비스로 수익 다변화.", icon: "📊" },
-    { title: "확장 가능한 AI 플랫폼", description: "RuCIA로 후보물질 발굴 시간/비용 대폭 절감. 감각 질환 전반으로 적용 확대.", icon: "🤖" },
-    { title: "Non-Opioid 시장 선점", description: "FDA/EMA가 비중독성 대안을 우선시하는 규제 환경에서 TRPV1 플랫폼의 전략적 우위.", icon: "🎯" },
+    { title: "검증된 라이선싱 실적", description: "한림제약 RCI001/RCI001U 국내 라이선싱 계약 완료. 프랑스 동물의약품 회사 라이선싱 계약 완료. 글로벌 파트너십 확대 중.", icon: "handshake" as const },
+    { title: "다각화된 수익원", description: "인체 의약품, 동물의약품, 의약품 원료 공급, CRO 서비스로 수익 다변화 및 지속가능기업 구현.", icon: "chart" as const },
+    { title: "확장 가능한 AI 플랫폼", description: "RuCIA로 후보물질 발굴 시간/비용 대폭 절감. 감각 질환 전반으로 적용 확대.", icon: "ai" as const },
+    { title: "Non-Opioid 시장 선점", description: "FDA/EMA가 비중독성 대안을 우선시하는 규제 환경에서 TRPV1 플랫폼의 전략적 우위.", icon: "target" as const },
   ],
   en: [
-    { title: "Proven Licensing Track Record", description: "Hanlim Pharma RCI001/RCI001U domestic licensing. Ceva veterinary pharmaceutical licensing completed. Expanding global partnerships.", icon: "🤝" },
-    { title: "Diversified Revenue Streams", description: "Human therapeutics + Animal health (Ceva) + API export + CRO/AI platform services.", icon: "📊" },
-    { title: "Scalable AI Platform", description: "RuCIA enables rapid candidate identification with significantly reduced cost and development time.", icon: "🤖" },
-    { title: "Non-Opioid Market Leadership", description: "Strategic advantage in a regulatory environment where FDA/EMA prioritize non-addictive alternatives.", icon: "🎯" },
+    { title: "Proven Licensing Track Record", description: "Hanlim Pharma RCI001/RCI001U domestic licensing. French veterinary pharmaceutical licensing completed. Expanding global partnerships.", icon: "handshake" as const },
+    { title: "Diversified Revenue Streams", description: "Human pharmaceuticals, veterinary medicines, API supply, and CRO services for revenue diversification and sustainable growth.", icon: "chart" as const },
+    { title: "Scalable AI Platform", description: "RuCIA enables rapid candidate identification with significantly reduced cost and development time.", icon: "ai" as const },
+    { title: "Non-Opioid Market Leadership", description: "Strategic advantage in a regulatory environment where FDA/EMA prioritize non-addictive alternatives.", icon: "target" as const },
   ],
 };
 
@@ -51,7 +83,7 @@ const FINANCIALS = {
   ko: [
     { label: "설립", value: "2018년" },
     { label: "누적 정부 과제", value: "약 50억원+" },
-    { label: "주요 라이선싱", value: "한림제약 (RCI001/RCI001U), Ceva (동물용 RCI001AH)" },
+    { label: "주요 라이선싱", value: "한림제약 (RCI001/RCI001U), 프랑스 동물의약품 회사 (RCI001AH)" },
     { label: "IPO 준비", value: "주관사 선정 완료 (2025)" },
     { label: "핵심 자산", value: "RuCIA 플랫폼 + 3개 파이프라인" },
     { label: "특허 포트폴리오", value: "한국/일본/미국 다수 등록" },
@@ -59,7 +91,7 @@ const FINANCIALS = {
   en: [
     { label: "Founded", value: "2018" },
     { label: "Cumulative Gov't Grants", value: "~$4M+" },
-    { label: "Key Licensing", value: "Hanlim Pharma (RCI001/RCI001U), Ceva (RCI001AH Vet)" },
+    { label: "Key Licensing", value: "Hanlim Pharma (RCI001/RCI001U), French Vet Pharma (RCI001AH)" },
     { label: "IPO Preparation", value: "Underwriter Selected (2025)" },
     { label: "Core Assets", value: "RuCIA Platform + 3 Pipelines" },
     { label: "Patent Portfolio", value: "Korea / Japan / US" },
@@ -68,7 +100,7 @@ const FINANCIALS = {
 
 const PARTNERS = [
   { name: "Hanlim Pharmaceuticals", type: "Licensing" },
-  { name: "Ceva Animal Health", type: "Animal Health" },
+  { name: "French Veterinary Pharma", type: "Animal Health" },
   { name: "DT&CRO", type: "Research CRO" },
   { name: "WuXi AppTec", type: "CDMO" },
   { name: "Hanmi Fine Chemical", type: "CDMO" },
@@ -101,7 +133,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
               Investor{" "}
               <em className="font-playfair italic font-semibold text-gradient-emerald">Relations</em>
             </h1>
-            <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
               {isEn
                 ? "RudaCure is an AI-driven biotech company developing non-opioid therapeutics for pain and sensory diseases. We are preparing for IPO with a proven pipeline and scalable AI platform."
                 : "루다큐어는 AI 기반 이온채널 신약개발 기업으로, 비마약성 통증/감각질환 치료제를 개발하고 있습니다. 검증된 파이프라인과 확장 가능한 AI 플랫폼으로 IPO를 준비하고 있습니다."}
@@ -121,7 +153,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
             <div key={h.label} className="glass-card p-5 text-center">
               <div className="text-3xl font-bold text-gradient-emerald mb-1">{h.value}</div>
               <div className="text-sm text-gray-600">{h.label}</div>
-              <div className="text-[11px] text-gray-400 mt-0.5">{h.sub}</div>
+              <div className="text-xs text-gray-600 mt-0.5">{h.sub}</div>
             </div>
           ))}
         </div>
@@ -141,7 +173,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
               <div key={item.quarter} className={`glass-card p-5 ${item.status === "active" ? "border-teal-400" : ""}`}>
                 <div className="flex items-center gap-2 mb-3">
                   <div className={`w-2 h-2 rounded-full ${item.status === "active" ? "bg-teal-500 animate-pulse" : "bg-gray-200"}`} />
-                  <span className="text-xs font-mono text-gray-400">{item.quarter}</span>
+                  <span className="text-xs font-mono text-gray-600">{item.quarter}</span>
                 </div>
                 <p className="text-sm text-gray-700 font-medium leading-relaxed">{item.title}</p>
               </div>
@@ -162,9 +194,11 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {INVESTMENT_CASE[locale].map((item) => (
               <div key={item.title} className="glass-card p-6">
-                <div className="text-3xl mb-3">{item.icon}</div>
+                <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600 mb-4">
+                  {ICONS[item.icon]}
+                </div>
                 <h3 className="text-lg font-semibold mb-2 text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -186,7 +220,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
                 <tbody>
                   {FINANCIALS[locale].map((row, i) => (
                     <tr key={row.label} className={i < FINANCIALS[locale].length - 1 ? "border-b border-gray-100" : ""}>
-                      <td className="p-4 text-sm text-gray-500">{row.label}</td>
+                      <td className="p-4 text-sm text-gray-600">{row.label}</td>
                       <td className="p-4 text-sm text-gray-800 font-medium text-right">{row.value}</td>
                     </tr>
                   ))}
@@ -216,10 +250,10 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
       {/* CTA */}
       <section className="py-20 px-6 text-center bg-white">
         <div className="max-w-2xl mx-auto">
-          <blockquote className="text-xl sm:text-2xl font-light italic text-gray-400 mb-8 font-playfair">
+          <blockquote className="text-xl sm:text-2xl font-light italic text-gray-600 mb-8 font-playfair">
             &ldquo;We don&rsquo;t just treat symptoms; we heal the source of sensory signals.&rdquo;
           </blockquote>
-          <p className="text-gray-400 mb-8">
+          <p className="text-gray-600 mb-8">
             {isEn
               ? "For investor inquiries, partnership proposals, or IR materials, please contact us."
               : "투자 문의, 파트너십 제안, IR 자료 요청은 아래로 연락해 주세요."}

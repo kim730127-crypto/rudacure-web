@@ -24,7 +24,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
       events: [
         { month: "1월", text: "2025 시무식 및 우수사원·모범사원 시상" },
         { month: "2월", text: "포스텍 권도훈 교수 TRPV1 구조분석 세미나" },
-        { month: "3월", text: "RCI001 임상 2상 자문회의 (안과 전문의 13인). Bio-Europe Spring 참석 및 Ceva사 미팅" },
+        { month: "3월", text: "RCI001 임상 2상 자문회의 (안과 전문의 13인). Bio-Europe Spring 참석 및 프랑스 동물의약품 회사 미팅" },
         { month: "4월", text: "ESG 경영 실천 — 안양천 플로깅 & 헌혈 캠페인" },
         { month: "5월", text: "농식품벤처육성사업 선정 (동물용 유전자 진통제). Bio-Korea 부스 운영. 신테카바이오 산학연 R&D 선정" },
         { month: "6월", text: "BIO-USA 글로벌 파트너링 (Santen·Thea). 유럽건성안학회 RCI001 발표" },
@@ -40,7 +40,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
       description: "RCI001 국내 임상 1상 돌입. 아기유니콘 선정. 스케일업 TIPS 12억원.",
       events: [
         { month: "1월", text: "2024 시무식 개최" },
-        { month: "3월", text: "RCI001 국내 임상 1상 승인. 프랑스 Ceva사 방문 (동물용 RCI001AH 공동연구)" },
+        { month: "3월", text: "RCI001 국내 임상 1상 승인. 프랑스 동물의약품 회사 방문 (동물용 RCI001AH 공동연구)" },
         { month: "4월", text: "IBK창공 유럽 액셀러레이팅 프로그램 선정" },
         { month: "5월", text: "ESG 경영 본격 실천. Bio-Korea 바이오헬스 특별관 참가" },
         { month: "6월", text: "중소벤처기업부 '아기유니콘' 선정. BIO-USA 2024 참석" },
@@ -130,7 +130,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
       events: [
         { month: "Jan", text: "2025 New Year ceremony & Outstanding/Model Employee awards" },
         { month: "Feb", text: "POSTECH Prof. Kwon TRPV1 structural analysis seminar" },
-        { month: "Mar", text: "RCI001 Phase 2 advisory meeting (13 ophthalmologists). Bio-Europe Spring & Ceva meeting" },
+        { month: "Mar", text: "RCI001 Phase 2 advisory meeting (13 ophthalmologists). Bio-Europe Spring & French Veterinary Pharma meeting" },
         { month: "Apr", text: "ESG activities — Anyang Stream plogging & blood donation campaign" },
         { month: "May", text: "Agri-Food Venture Program selected (veterinary gene therapy). Bio-Korea booth. Syntekabio Collabo R&D" },
         { month: "Jun", text: "BIO-USA global partnering (Santen, Thea). European Dry Eye Society — RCI001 presentation" },
@@ -146,7 +146,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
       description: "RCI001 domestic Phase 1 clinical trial. Baby Unicorn designation. Scale-up TIPS KRW 1.2B.",
       events: [
         { month: "Jan", text: "2024 New Year ceremony" },
-        { month: "Mar", text: "RCI001 domestic Phase 1 clinical trial approval. Visit to Ceva, France (RCI001AH co-development)" },
+        { month: "Mar", text: "RCI001 domestic Phase 1 clinical trial approval. Visit to French Veterinary Pharma (RCI001AH co-development)" },
         { month: "Apr", text: "IBK Innovation Hub Europe accelerator program" },
         { month: "May", text: "ESG management initiatives launched. Bio-Korea BioHealth pavilion" },
         { month: "Jun", text: "Selected as 'Baby Unicorn' by Ministry of SMEs. BIO-USA 2024 attendance" },
@@ -259,7 +259,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
             {c.title1} <em className="font-playfair italic font-semibold">{c.title2}</em>
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">{c.description}</p>
+          <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">{c.description}</p>
         </div>
       </section>
 
@@ -272,9 +272,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <div key={item.year} className="relative pl-10">
                   <div className={`absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 ${item.highlight ? "border-teal-500 bg-teal-50" : "border-gray-200 bg-white"}`} />
                   <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <span className={`text-sm font-mono font-medium ${item.highlight ? "text-teal-600" : "text-gray-300"}`}>{item.year}</span>
+                    <span className={`text-sm font-mono font-medium ${item.highlight ? "text-teal-600" : "text-gray-600"}`}>{item.year}</span>
                     <h3 className="text-xl font-semibold mt-1 mb-2 text-gray-900">{item.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
                     {item.events && item.events.length > 0 && (
                       <div className="mt-4 space-y-2">
                         {item.events.map((event, idx) => (
@@ -304,7 +304,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div key={person.name} className="glass-card p-6">
                 <h3 className="text-lg font-semibold text-gray-900">{person.name}</h3>
                 <p className="text-teal-600 text-sm mb-3">{person.role}</p>
-                <p className="text-sm text-gray-400 leading-relaxed">{person.description}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{person.description}</p>
               </div>
             ))}
           </div>
