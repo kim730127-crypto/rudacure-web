@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { type Locale, getTranslations } from "@/lib/i18n";
+import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { HeroParticles } from "@/components/hero-particles";
 import { PartnerLogo } from "@/components/partner-logo";
@@ -66,7 +66,7 @@ const PARTNERS = {
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = getTranslations(locale as Locale);
-  const loc = (locale === "en" ? "en" : "ko") as Locale;
+  const loc = toDataLocale(locale as Locale);
   const partners = PARTNERS[loc];
   const pipeline = PIPELINE[loc];
 

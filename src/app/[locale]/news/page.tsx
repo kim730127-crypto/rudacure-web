@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import articlesKo from "@/data/news.json";
 import articlesEn from "@/data/news_en.json";
-import { type Locale, getTranslations } from "@/lib/i18n";
+import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -65,7 +65,7 @@ const MAGAZINE_CONTENT = {
 export default async function NewsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = getTranslations(locale as Locale);
-  const loc = (locale === "en" ? "en" : "ko") as Locale;
+  const loc = toDataLocale(locale as Locale);
   const articles = locale === "en" ? articlesEn : articlesKo;
   const mc = MAGAZINE_CONTENT[loc];
 

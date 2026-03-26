@@ -4,17 +4,15 @@ import { getTranslations } from "@/lib/i18n";
 
 export function Footer({ locale = "ko" }: { locale?: Locale }) {
   const t = getTranslations(locale);
-  const isKo = locale === "ko";
-
   const companyLinks = [
-    { href: `/${locale}/science`, label: isKo ? "기술 플랫폼" : "Science" },
-    { href: `/${locale}/pipeline`, label: isKo ? "파이프라인" : "Pipeline" },
-    { href: `/${locale}/ir`, label: "IR" },
-    { href: `/${locale}/news`, label: isKo ? "뉴스센터" : "News Center" },
-    { href: `/${locale}/publications`, label: isKo ? "특허/논문" : "Publications" },
-    { href: `/${locale}/sab`, label: "SAB" },
-    { href: `/${locale}/about`, label: isKo ? "회사 소개" : "About Us" },
-    { href: `/${locale}/contact`, label: isKo ? "문의하기" : "Contact" },
+    { href: `/${locale}/science`, label: t("nav.science") },
+    { href: `/${locale}/pipeline`, label: t("nav.pipeline") },
+    { href: `/${locale}/ir`, label: t("nav.ir") },
+    { href: `/${locale}/news`, label: t("nav.news") },
+    { href: `/${locale}/publications`, label: t("nav.publications") },
+    { href: `/${locale}/sab`, label: t("nav.sab") },
+    { href: `/${locale}/about`, label: t("nav.about") },
+    { href: `/${locale}/contact`, label: t("nav.contact") },
   ];
 
   return (
@@ -31,7 +29,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
             </p>
             <div className="space-y-1">
               <p className="text-xs text-gray-400">
-                {isKo ? "인천광역시 연수구 미래로 9, 1동 302호" : "9 Mirae-ro, Yeonsu-gu, Incheon, Korea"}
+                {locale === "ko" ? "인천광역시 연수구 미래로 9, 1동 302호" : "9 Mirae-ro, Yeonsu-gu, Incheon, Korea"}
               </p>
               <p className="text-xs text-gray-400">Tel: 032-724-9070 | Fax: 032-724-9071</p>
               <p className="text-xs text-gray-400">sh.kim@rudacure.com</p>
@@ -41,7 +39,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
           {/* Company */}
           <div className="md:col-span-3">
             <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-5">
-              {isKo ? "회사" : "Company"}
+              {locale === "ko" ? "회사" : "Company"}
             </h4>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
@@ -57,7 +55,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
           {/* Social */}
           <div className="md:col-span-4">
             <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-5">
-              {isKo ? "소셜" : "Social"}
+              {locale === "ko" ? "소셜" : "Social"}
             </h4>
             <div className="flex gap-3">
               <a

@@ -7,13 +7,24 @@ import type { Locale } from "@/lib/i18n";
 import { getTranslations } from "@/lib/i18n";
 
 /* ── Flag icons as image files (works on all platforms) ── */
-function FlagKR({ className = "w-5 h-3.5" }: { className?: string }) {
-  return <img src="/images/flag-kr.svg" alt="KR" className={className} />;
+function Flag({ code, className = "w-5 h-3.5" }: { code: string; className?: string }) {
+  const src: Record<string, string> = {
+    kr: "/images/flag-kr.svg",
+    us: "/images/flag-us.svg",
+    cn: "/images/flag-cn.svg",
+    jp: "/images/flag-jp.svg",
+    es: "/images/flag-es.svg",
+  };
+  return <img src={src[code] || ""} alt={code.toUpperCase()} className={className} />;
 }
 
-function FlagUS({ className = "w-5 h-3.5" }: { className?: string }) {
-  return <img src="/images/flag-us.svg" alt="US" className={className} />;
-}
+const LANG_OPTIONS = [
+  { locale: "ko", flag: "kr", label: "KR" },
+  { locale: "en", flag: "us", label: "EN" },
+  { locale: "zh", flag: "cn", label: "CN" },
+  { locale: "ja", flag: "jp", label: "JP" },
+  { locale: "es", flag: "es", label: "ES" },
+] as const;
 
 const NAV_KEYS = [
   { key: "science", tKey: "nav.science" as const },
@@ -43,7 +54,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
     label: t(n.tKey),
   }));
 
-  const pathWithoutLocale = pathname.replace(/^\/(ko|en)/, "") || "";
+  const pathWithoutLocale = pathname.replace(/^\/(ko|en|zh|ja|es)/, "") || "";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "navbar-scrolled" : "glass"}`}>
@@ -79,22 +90,19 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
         </div>
 
         {/* Language toggle */}
-        <div className="hidden md:flex items-center text-xs font-medium gap-1">
-          <Link
-            href={`/ko${pathWithoutLocale}`}
-            className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${locale === "ko" ? "text-teal-700" : "text-gray-600 hover:text-gray-600"}`}
-          >
-            <FlagKR className="w-5 h-3.5 rounded-[2px] overflow-hidden shadow-sm" />
-            KR
-          </Link>
-          <span className="text-gray-200">|</span>
-          <Link
-            href={`/en${pathWithoutLocale}`}
-            className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${locale === "en" ? "text-teal-700" : "text-gray-600 hover:text-gray-600"}`}
-          >
-            <FlagUS className="w-5 h-3.5 rounded-[2px] overflow-hidden shadow-sm" />
-            EN
-          </Link>
+        <div className="hidden md:flex items-center text-xs font-medium gap-0.5">
+          {LANG_OPTIONS.map((lang, i) => (
+            <span key={lang.locale} className="flex items-center">
+              {i > 0 && <span className="text-gray-200 mx-0.5">|</span>}
+              <Link
+                href={`/${lang.locale}${pathWithoutLocale}`}
+                className={`flex items-center gap-1 px-1.5 py-1 rounded transition-colors ${locale === lang.locale ? "text-teal-700" : "text-gray-600 hover:text-gray-900"}`}
+              >
+                <Flag code={lang.flag} className="w-4 h-3 rounded-[2px] overflow-hidden shadow-sm" />
+                {lang.label}
+              </Link>
+            </span>
+          ))}
         </div>
 
         <button
@@ -125,9 +133,17 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
               {link.label}
             </Link>
           ))}
-          <div className="flex gap-2 pt-3 mt-2 border-t border-gray-100">
-            <Link href={`/ko${pathWithoutLocale}`} className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === "ko" ? "bg-teal-50 text-teal-700" : "text-gray-600"}`}><FlagKR className="w-5 h-3.5 rounded-[2px]" /> KR</Link>
-            <Link href={`/en${pathWithoutLocale}`} className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === "en" ? "bg-teal-50 text-teal-700" : "text-gray-600"}`}><FlagUS className="w-5 h-3.5 rounded-[2px]" /> EN</Link>
+          <div className="flex flex-wrap gap-2 pt-3 mt-2 border-t border-gray-100">
+            {LANG_OPTIONS.map((lang) => (
+              <Link
+                key={lang.locale}
+                href={`/${lang.locale}${pathWithoutLocale}`}
+                className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === lang.locale ? "bg-teal-50 text-teal-700" : "text-gray-600"}`}
+                onClick={() => setMobileOpen(false)}
+              >
+                <Flag code={lang.flag} className="w-4 h-3 rounded-[2px]" /> {lang.label}
+              </Link>
+            ))}
           </div>
         </div>
       )}

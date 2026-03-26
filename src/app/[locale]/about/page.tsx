@@ -1,4 +1,4 @@
-import { type Locale } from "@/lib/i18n";
+import { type Locale, toDataLocale } from "@/lib/i18n";
 
 type TimelineItem = {
   year: string;
@@ -241,12 +241,12 @@ const CONTENT = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return { title: locale === "en" ? "About | RudaCure" : "회사 소개 | RudaCure", description: CONTENT[locale === "en" ? "en" : "ko"].description };
+  return { title: locale === "en" ? "About | RudaCure" : "회사 소개 | RudaCure", description: CONTENT[(locale === "ko" ? "ko" : "en") as "ko" | "en"].description };
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = (loc === "en" ? "en" : "ko") as Locale;
+  const locale = toDataLocale(loc as Locale);
   const c = CONTENT[locale];
   const timeline = TIMELINE[locale];
   const leaders = LEADERSHIP[locale];

@@ -23,7 +23,11 @@ export function middleware(request: NextRequest) {
 
   // Detect preferred language from Accept-Language header
   const acceptLang = request.headers.get("accept-language") || "";
-  const preferredLocale = acceptLang.includes("ko") ? "ko" : "en";
+  const preferredLocale = acceptLang.includes("ko") ? "ko"
+    : acceptLang.includes("zh") ? "zh"
+    : acceptLang.includes("ja") ? "ja"
+    : acceptLang.includes("es") ? "es"
+    : "en";
 
   // Redirect to locale-prefixed path
   const locale = preferredLocale || DEFAULT_LOCALE;

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { type Locale } from "@/lib/i18n";
+import { type Locale, toDataLocale } from "@/lib/i18n";
 
 type AdvisorItem = {
   name: string;
@@ -144,13 +144,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   return {
     title: locale === "en" ? "Science Advisory Board | RudaCure" : "과학자문위원회 | RudaCure",
-    description: HEADER[locale === "en" ? "en" : "ko"].description,
+    description: HEADER[(locale === "ko" ? "ko" : "en") as "ko" | "en"].description,
   };
 }
 
 export default async function SABPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = (loc === "en" ? "en" : "ko") as Locale;
+  const locale = toDataLocale(loc as Locale);
   const h = HEADER[locale];
   const advisors = ADVISORS[locale];
 

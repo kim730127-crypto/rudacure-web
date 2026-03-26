@@ -1,4 +1,4 @@
-import { type Locale } from "@/lib/i18n";
+import { type Locale, toDataLocale } from "@/lib/i18n";
 
 /* ── Patent Families (grouped by product, from Excel data) ── */
 type PatentFamily = {
@@ -335,13 +335,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   return {
     title: locale === "en" ? "Patents & Papers | RudaCure" : "특허 & 논문 | RudaCure",
-    description: CONTENT[locale === "en" ? "en" : "ko"].description,
+    description: CONTENT[(locale === "ko" ? "ko" : "en") as "ko" | "en"].description,
   };
 }
 
 export default async function PublicationsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = (loc === "en" ? "en" : "ko") as Locale;
+  const locale = toDataLocale(loc as Locale);
   const c = CONTENT[locale];
 
   const totalFilings = PATENT_FAMILIES.reduce((sum, f) => sum + f.filings.length, 0);

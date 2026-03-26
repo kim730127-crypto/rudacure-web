@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
 export function generateStaticParams() {
-  return [{ locale: "ko" }, { locale: "en" }];
+  return [{ locale: "ko" }, { locale: "en" }, { locale: "zh" }, { locale: "ja" }, { locale: "es" }];
 }
 
 export default async function LocaleLayout({

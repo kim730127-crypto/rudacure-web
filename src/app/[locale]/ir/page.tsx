@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { type Locale } from "@/lib/i18n";
+import { type Locale, toDataLocale } from "@/lib/i18n";
 
 const HIGHLIGHTS = {
   ko: [
@@ -117,7 +117,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function IRPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = (loc === "en" ? "en" : "ko") as Locale;
+  const locale = toDataLocale(loc as Locale);
   const isEn = locale === "en";
 
   return (

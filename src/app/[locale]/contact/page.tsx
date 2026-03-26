@@ -1,4 +1,4 @@
-import { type Locale } from "@/lib/i18n";
+import { type Locale, toDataLocale } from "@/lib/i18n";
 
 const C = {
   ko: {
@@ -34,7 +34,7 @@ const inputCls = "w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = (loc === "en" ? "en" : "ko") as Locale;
+  const locale = toDataLocale(loc as Locale);
   const c = C[locale];
 
   return (
