@@ -394,7 +394,7 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
               { label: c.globalCountries, value: `${countries.size}${c.국}`, accent: true },
               { label: c.totalPapers, value: `${PAPERS.length}${c.편}`, accent: false },
             ].map((s) => (
-              <div key={s.label} className="glass-card p-5 text-center">
+              <div key={s.label} className="liquid-glass p-5 text-center">
                 <p className={`text-3xl font-bold mb-1 ${s.accent ? "text-teal-600" : "text-gray-900"}`}>{s.value}</p>
                 <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">{s.label}</p>
               </div>
@@ -429,7 +429,7 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
 
                 <div className="space-y-4">
                   {families.map((fam, fi) => (
-                    <div key={fi} className="glass-card p-6 hover:shadow-md transition-shadow">
+                    <div key={fi} className="liquid-glass p-6 hover:shadow-md transition-shadow">
                       {/* Title */}
                       <h3 className="text-base font-semibold text-gray-900 leading-snug mb-1">
                         {fam[locale].title}
@@ -474,7 +474,7 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
               </span>
               <div className="flex-1 h-px bg-gray-200" />
             </div>
-            <div className="glass-card p-6">
+            <div className="liquid-glass p-6">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {TRADEMARKS.map((tm) => {
                   const ss = statusStyle[tm.status];
@@ -523,7 +523,7 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
                   {yearPapers.map((paper) => {
                     const pp = paper[locale];
                     return (
-                      <div key={paper.doi} className="glass-card p-6 hover:shadow-md transition-shadow">
+                      <div key={paper.doi} className="liquid-glass p-6 hover:shadow-md transition-shadow">
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0 mt-1">
                             <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${

@@ -129,10 +129,10 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
       </section>
 
       {/* Advisors */}
-      <section className="py-16 px-6 bg-gray-50/50">
+      <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {advisors.map((advisor) => (
-            <div key={advisor.name} className="glass-card p-8">
+            <div key={advisor.name} className="liquid-glass p-8">
               <div className="mb-4">
                 <h3 className="text-xl font-semibold text-gray-900">{advisor.name}</h3>
                 <p className="text-teal-600 text-sm font-medium mt-1">{advisor.title}</p>
@@ -167,7 +167,7 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {h.roleItems.map((item, i) => (
-              <div key={i} className="glass-card p-6 flex items-start gap-4">
+              <div key={i} className="liquid-glass p-6 flex items-start gap-4">
                 <div className="w-8 h-8 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shrink-0">
                   <span className="text-teal-600 text-sm font-semibold">{i + 1}</span>
                 </div>

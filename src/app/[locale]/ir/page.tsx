@@ -104,7 +104,7 @@ const PARTNERS = [
   { name: "DT&CRO", type: "Research CRO" },
   { name: "WuXi AppTec", type: "CDMO" },
   { name: "Hanmi Fine Chemical", type: "CDMO" },
-  { name: "Hallim Univ. Hospital", type: "Clinical Data" },
+  { name: "Hallym Univ. Hospital", type: "Clinical Data" },
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -150,7 +150,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
       <section className="px-6 pb-20 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
           {HIGHLIGHTS[locale].map((h) => (
-            <div key={h.label} className="glass-card p-5 text-center">
+            <div key={h.label} className="liquid-glass p-5 text-center">
               <div className="text-3xl font-bold text-gradient-emerald mb-1">{h.value}</div>
               <div className="text-sm text-gray-600">{h.label}</div>
               <div className="text-xs text-gray-600 mt-0.5">{h.sub}</div>
@@ -160,7 +160,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
       </section>
 
       {/* 2026 Roadmap */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto">
           <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
             {isEn ? "Strategic Roadmap" : "전략 로드맵"}
@@ -170,7 +170,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {ROADMAP[locale].map((item) => (
-              <div key={item.quarter} className={`glass-card p-5 ${item.status === "active" ? "border-teal-400" : ""}`}>
+              <div key={item.quarter} className={`liquid-glass p-5 ${item.status === "active" ? "border-teal-400" : ""}`}>
                 <div className="flex items-center gap-2 mb-3">
                   <div className={`w-2 h-2 rounded-full ${item.status === "active" ? "bg-teal-500 animate-pulse" : "bg-gray-200"}`} />
                   <span className="text-xs font-mono text-gray-600">{item.quarter}</span>
@@ -193,7 +193,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {INVESTMENT_CASE[locale].map((item) => (
-              <div key={item.title} className="glass-card p-6">
+              <div key={item.title} className="liquid-glass p-6">
                 <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600 mb-4">
                   {ICONS[item.icon]}
                 </div>
@@ -206,7 +206,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
       </section>
 
       {/* Company Snapshot */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
@@ -215,7 +215,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
             <h2 className="text-3xl font-light mb-8 text-gray-900">
               Key <em className="font-playfair italic font-semibold">Facts</em>
             </h2>
-            <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm">
+            <div className="liquid-glass overflow-hidden">
               <table className="w-full">
                 <tbody>
                   {FINANCIALS[locale].map((row, i) => (
@@ -237,7 +237,7 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
             </h2>
             <div className="space-y-3">
               {PARTNERS.map((p) => (
-                <div key={p.name} className="glass-card p-4 flex items-center justify-between">
+                <div key={p.name} className="liquid-glass p-4 flex items-center justify-between">
                   <span className="text-sm text-gray-700 font-medium">{p.name}</span>
                   <span className="text-xs text-teal-600 px-2.5 py-0.5 rounded-full bg-teal-50 border border-teal-200">{p.type}</span>
                 </div>
@@ -259,8 +259,8 @@ export default async function IRPage({ params }: { params: Promise<{ locale: str
               : "투자 문의, 파트너십 제안, IR 자료 요청은 아래로 연락해 주세요."}
           </p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <a href="mailto:ir@rudacure.com" className="btn-primary px-8 py-3 rounded-full font-semibold text-sm">
-              ir@rudacure.com
+            <a href="mailto:js.shin@rudacure.com" className="btn-primary px-8 py-3 rounded-full font-semibold text-sm">
+              js.shin@rudacure.com
             </a>
             <Link href={`/${locale}/contact`} className="btn-outline px-8 py-3 rounded-full border text-sm font-medium">
               {isEn ? "Contact Us" : "문의하기"}

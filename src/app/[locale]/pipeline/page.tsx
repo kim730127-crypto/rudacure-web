@@ -36,7 +36,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 Target",
       mechanism: "TRPV1 하부 시그널 조절을 통한 Rac1/NLRP3 염증 억제 — 눈물 분비 촉진 및 각막 치유",
       status: "US FDA Phase 2 / 국내 임상 2상",
-      progress: 75,
+      progress: 62,
       color: "emerald",
       milestones: [
         "US FDA Phase 2 IND 승인 (2025.08)",
@@ -67,7 +67,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       color: "blue",
       milestones: [
         "비임상 효력시험 완료",
-        "제형 연구 (가원대 장동진 박사)",
+        "제형 연구 (강원대 장동진 박사)",
         "CRPS(복합부위통증증후군) ODD 신청 준비 중",
         "SfN 학회 연구성과 발표 (2025.11)",
         "스케일업 TIPS 12억원 지원 (2024)",
@@ -144,7 +144,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 Target",
       mechanism: "TRPV1 downstream signal modulation inhibiting Rac1/NLRP3 inflammation — promotes tear secretion and corneal healing",
       status: "US FDA Phase 2 / Korea Phase 2",
-      progress: 75,
+      progress: 62,
       color: "emerald",
       milestones: [
         "FDA Phase 2 IND Approved (2025.08)",
@@ -175,7 +175,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       color: "blue",
       milestones: [
         "Pre-clinical Efficacy Studies Complete",
-        "Formulation Research (Dr. Dongjin Jang, Gawon Univ.)",
+        "Formulation Research (Dr. Dongjin Jang, Gangwon Univ.)",
         "CRPS Orphan Drug Designation (ODD) in Preparation",
         "SfN Conference Presentation (2025.11)",
         "Scale-up TIPS KRW 1.2B Funded (2024)",
@@ -282,7 +282,7 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
       {/* Stage overview bar */}
       <section className="px-6 pb-16">
         <div className="max-w-5xl mx-auto">
-          <div className="glass-card p-6 overflow-x-auto">
+          <div className="liquid-glass p-6 overflow-x-auto">
             <div className="flex items-center min-w-[600px]">
               {stages.map((stage, i) => (
                 <div key={stage} className="flex-1 flex items-center">
@@ -330,7 +330,7 @@ export default async function PipelinePage({ params }: { params: Promise<{ local
       <section className="px-6 pb-32">
         <div className="max-w-5xl mx-auto space-y-8">
           {pipeline.map((p) => (
-            <div key={p.name} className="glass-card p-8">
+            <div key={p.name} className="liquid-glass p-8">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-4">

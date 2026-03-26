@@ -82,10 +82,10 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-gray-50/50">
+      <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {caps.map((cap) => (
-            <div key={cap.title} className="glass-card overflow-hidden">
+            <div key={cap.title} className="liquid-glass overflow-hidden">
               <div className="relative h-48 w-full">
                 <Image src={cap.image} alt={cap.title} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -105,7 +105,7 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
           <h2 className="text-3xl font-light mb-10 text-gray-900">
             {c.compTitle[0]}<em className="font-playfair italic font-semibold">{c.compTitle[1]}</em>{c.compTitle[2]}
           </h2>
-          <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm">
+          <div className="liquid-glass overflow-hidden">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100 bg-gray-50">
@@ -130,7 +130,7 @@ export default async function SciencePage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-gray-50/50">
+      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-light mb-6 text-gray-900">

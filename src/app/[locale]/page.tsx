@@ -151,7 +151,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ===== RuCIA Platform ===== */}
-      <section className="py-20 lg:py-36 px-6 lg:px-12 bg-gray-50/50">
+      <section className="py-20 lg:py-36 px-6 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <ScrollReveal animation="reveal-left">
             <p className="section-label mb-4">{t("rucia.tag")}</p>
@@ -163,7 +163,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {METRICS.map((m) => (
                 <div
                   key={m.label}
-                  className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 text-center hover:border-teal-300 transition-colors duration-300"
+                  className="liquid-glass p-4 sm:p-5 text-center"
                 >
                   <div className="text-xl sm:text-2xl lg:text-3xl font-bold font-['Roboto_Mono'] text-gradient-emerald">
                     {m.value}
@@ -189,7 +189,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ===== Pipeline Grid ===== */}
-      <section className="py-20 lg:py-32 px-6 lg:px-12 bg-white">
+      <section className="py-20 lg:py-32 px-6 lg:px-12 bg-gradient-to-b from-white to-gray-50/50">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-14">
@@ -221,7 +221,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <ScrollReveal key={p.id} delay={i * 150}>
                 <Link
                   href={`/${locale}/pipeline`}
-                  className={`block bg-white border border-gray-200 rounded-xl p-6 sm:p-8 group hover:border-teal-300 transition-all duration-300 border-l-4 ${
+                  className={`block liquid-glass-teal p-6 sm:p-8 group border-l-4 ${
                     p.color === "teal" ? "border-l-teal-500" : "border-l-blue-500"
                   }`}
                 >
@@ -282,7 +282,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ===== Partners & Recognition ===== */}
-      <section className="py-20 lg:py-24 px-6 lg:px-12 bg-gray-50/50">
+      <section className="py-20 lg:py-24 px-6 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-blue-50/20">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-14">
@@ -311,7 +311,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               const badgeClass = colorMap[p.color] || "bg-gray-50 text-gray-600";
               return (
                 <ScrollReveal key={p.name} delay={i * 100}>
-                  <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 group cursor-default hover:border-teal-300 transition-all duration-300 flex items-center gap-4">
+                  <div className="liquid-glass px-6 py-5 group cursor-default flex items-center gap-4">
                     {/* Logo or initials fallback */}
                     <PartnerLogo src={p.logo} alt={p.name} initials={p.initials} badgeClass={badgeClass} />
                     <div className="flex-1 min-w-0">
@@ -358,7 +358,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <ScrollReveal key={article.id} delay={i * 80}>
                 <Link
                   href={`/${locale}/news/${article.id}`}
-                  className="flex items-center gap-4 p-4 bg-white border border-gray-200 rounded-xl group hover:border-teal-300 transition-all"
+                  className="flex items-center gap-4 p-4 liquid-glass group"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-1">
@@ -393,7 +393,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         />
 
         <ScrollReveal>
-          <div className="max-w-2xl mx-auto text-center relative">
+          <div className="max-w-2xl mx-auto text-center relative liquid-glass-dark p-12 sm:p-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-6 text-white">
               {t("cta.title1")}{" "}
               <em className="font-playfair italic font-semibold text-gradient-emerald">

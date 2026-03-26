@@ -49,7 +49,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
-              <div className="glass-card p-6">
+              <div className="liquid-glass p-6">
                 <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.hq}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{c.hqAddr}</p>
                 <p className="text-gray-600 text-sm mt-2">Tel: 032-724-9070 | Fax: 032-724-9071</p>
@@ -65,7 +65,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   />
                 </div>
               </div>
-              <div className="glass-card p-6">
+              <div className="liquid-glass p-6">
                 <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.seoul}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{c.seoulAddr}</p>
                 <p className="text-gray-600 text-sm mt-2">Tel: 02-2138-2115 | Fax: 02-2138-2551</p>
@@ -81,7 +81,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   />
                 </div>
               </div>
-              <div className="glass-card p-6">
+              <div className="liquid-glass p-6">
                 <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.inquiries}</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-3"><span className="text-gray-600 w-24">{c.business}</span><span className="text-teal-600 font-medium">sh.kim@rudacure.com</span></div>
@@ -91,7 +91,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               </div>
             </div>
 
-            <div className="glass-card p-6">
+            <div className="liquid-glass p-6">
               <h3 className="text-lg font-semibold mb-6 text-gray-900">{c.formTitle}</h3>
               <form className="space-y-4">
                 <div>
