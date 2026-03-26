@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
 
 type AdvisorItem = {
@@ -6,6 +7,7 @@ type AdvisorItem = {
   affiliation: string;
   expertise: string[];
   description: string;
+  image?: string;
 };
 
 const HEADER = {
@@ -45,6 +47,7 @@ const ADVISORS: Record<string, AdvisorItem[]> = {
       affiliation: "가천대학교 의과대학 교수",
       expertise: ["이온채널 약리학", "통증 연구", "TRPV1"],
       description: "15년 이상 통증과 감각 질환 관련 기초의학 연구를 수행한 전문가. TRPV1 이온채널 조절 기반 신약개발 플랫폼의 창시자.",
+      image: "/images/sab/yongho-kim.jpg",
     },
     {
       name: "신지윤 박사",
@@ -59,6 +62,7 @@ const ADVISORS: Record<string, AdvisorItem[]> = {
       affiliation: "고려대학교 안암병원 안과",
       expertise: ["안과학", "안구건조증", "각막질환"],
       description: "RCI001 장기 안전성 연구 및 쇼그렌 증후군 치료효과를 입증. 한국외안부학회 학술상, 태준안과논문상 최우수상 수상.",
+      image: "/images/sab/donghyun-kim.jpg",
     },
     {
       name: "권도훈 교수",
@@ -66,6 +70,23 @@ const ADVISORS: Record<string, AdvisorItem[]> = {
       affiliation: "POSTECH (포항공과대학교)",
       expertise: ["TRPV1 구조분석", "단백질 구조생물학", "Cryo-EM"],
       description: "TRPV1 이온채널 구조 분석 전문가. 루다큐어와 TRPV1 구조-활성 관계 공동연구 수행 중.",
+      image: "/images/sab/dohun-kwon.jpg",
+    },
+    {
+      name: "Dr. Anat Galor, MD, MSPH",
+      title: "외부 자문",
+      affiliation: "Bascom Palmer Eye Institute, University of Miami",
+      expertise: ["안구건조증", "안구 통증", "안구 표면 질환"],
+      description: "Bascom Palmer Eye Institute 안과학 교수. 안구건조증 및 신경병성 안구 통증 분야 세계적 권위자. NIH 다수 연구과제 수행, 논문 355편 이상 발표 (h-index 51). The Ophthalmologist Power List 선정.",
+      image: "/images/sab/anat-galor.jpg",
+    },
+    {
+      name: "Dr. Victor L. Perez, MD",
+      title: "외부 자문",
+      affiliation: "Bascom Palmer Eye Institute, University of Miami",
+      expertise: ["안구 면역학", "각막질환", "안구건조증"],
+      description: "Bascom Palmer Eye Institute 안과학 교수, 각막 연구 디렉터. TFOS DEWS III 글로벌 안구건조증 가이드라인을 주도. Harvard Medical School 수련, NIH/CDC 연구원 경력. The Ophthalmologist Power List 2026 선정.",
+      image: "/images/sab/victor-perez.jpg",
     },
   ],
   en: [
@@ -75,6 +96,7 @@ const ADVISORS: Record<string, AdvisorItem[]> = {
       affiliation: "Professor, Gachon University College of Medicine",
       expertise: ["Ion Channel Pharmacology", "Pain Research", "TRPV1"],
       description: "Over 15 years of basic medical research in pain and sensory disorders. Founder of the TRPV1 ion channel modulation-based drug development platform.",
+      image: "/images/sab/yongho-kim.jpg",
     },
     {
       name: "Dr. Jiyoon Shin",
@@ -89,6 +111,7 @@ const ADVISORS: Record<string, AdvisorItem[]> = {
       affiliation: "Korea University Anam Hospital, Dept. of Ophthalmology",
       expertise: ["Ophthalmology", "Dry Eye Disease", "Corneal Disorders"],
       description: "Demonstrated RCI001 long-term safety and Sjögren's syndrome efficacy. Recipient of KOES Academic Award and Taejun Best Ophthalmology Paper Award.",
+      image: "/images/sab/donghyun-kim.jpg",
     },
     {
       name: "Prof. Dohun Kwon",
@@ -96,6 +119,23 @@ const ADVISORS: Record<string, AdvisorItem[]> = {
       affiliation: "POSTECH (Pohang University of Science and Technology)",
       expertise: ["TRPV1 Structural Analysis", "Protein Structural Biology", "Cryo-EM"],
       description: "Expert in TRPV1 ion channel structural analysis. Conducting joint research with RudaCure on TRPV1 structure-activity relationships.",
+      image: "/images/sab/dohun-kwon.jpg",
+    },
+    {
+      name: "Dr. Anat Galor, MD, MSPH",
+      title: "External Advisor",
+      affiliation: "Bascom Palmer Eye Institute, University of Miami",
+      expertise: ["Dry Eye Disease", "Ocular Pain", "Ocular Surface Disease"],
+      description: "Professor of Ophthalmology at Bascom Palmer Eye Institute. World-renowned authority on dry eye disease and neuropathic ocular pain. PI on multiple NIH grants, 355+ publications (h-index 51). Named to The Ophthalmologist Power List.",
+      image: "/images/sab/anat-galor.jpg",
+    },
+    {
+      name: "Dr. Victor L. Perez, MD",
+      title: "External Advisor",
+      affiliation: "Bascom Palmer Eye Institute, University of Miami",
+      expertise: ["Ocular Immunology", "Corneal Disease", "Dry Eye Disease"],
+      description: "Professor of Ophthalmology and Director of Cornea Research at Bascom Palmer Eye Institute. Led the TFOS DEWS III global dry eye consensus guidelines. Harvard Medical School trained, NIH/CDC research fellow. The Ophthalmologist Power List 2026.",
+      image: "/images/sab/victor-perez.jpg",
     },
   ],
 };
@@ -133,10 +173,21 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {advisors.map((advisor) => (
             <div key={advisor.name} className="liquid-glass p-8">
-              <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-900">{advisor.name}</h3>
-                <p className="text-teal-600 text-sm font-medium mt-1">{advisor.title}</p>
-                <p className="text-sm text-gray-600 mt-0.5">{advisor.affiliation}</p>
+              <div className="flex items-start gap-5 mb-4">
+                {advisor.image ? (
+                  <div className="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-white shadow-md">
+                    <Image src={advisor.image} alt={advisor.name} width={80} height={80} className="object-cover w-full h-full" />
+                  </div>
+                ) : (
+                  <div className="w-20 h-20 rounded-full bg-teal-50 border-2 border-teal-200 flex items-center justify-center shrink-0">
+                    <span className="text-teal-600 text-lg font-semibold">{advisor.name.split(" ").map(n => n[0]).slice(0, 2).join("")}</span>
+                  </div>
+                )}
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">{advisor.name}</h3>
+                  <p className="text-teal-600 text-sm font-medium mt-1">{advisor.title}</p>
+                  <p className="text-sm text-gray-600 mt-0.5">{advisor.affiliation}</p>
+                </div>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-4">

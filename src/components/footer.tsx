@@ -7,11 +7,14 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
   const isKo = locale === "ko";
 
   const companyLinks = [
-    { href: `/${locale}/about`, label: isKo ? "회사 소개" : "About Us" },
     { href: `/${locale}/science`, label: isKo ? "기술 플랫폼" : "Science" },
     { href: `/${locale}/pipeline`, label: isKo ? "파이프라인" : "Pipeline" },
     { href: `/${locale}/ir`, label: "IR" },
     { href: `/${locale}/news`, label: isKo ? "뉴스센터" : "News Center" },
+    { href: `/${locale}/publications`, label: isKo ? "특허/논문" : "Publications" },
+    { href: `/${locale}/sab`, label: "SAB" },
+    { href: `/${locale}/about`, label: isKo ? "회사 소개" : "About Us" },
+    { href: `/${locale}/contact`, label: isKo ? "문의하기" : "Contact" },
   ];
 
   return (
@@ -51,24 +54,14 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
             </ul>
           </div>
 
-          {/* Resources */}
-          <div className="md:col-span-2">
-            <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-5">
-              {isKo ? "문의" : "Resources"}
-            </h4>
-            <ul className="space-y-3">
-              <li><Link href={`/${locale}/contact`} className="text-sm text-gray-500 hover:text-teal-400 transition-colors">{isKo ? "문의하기" : "Contact"}</Link></li>
-            </ul>
-          </div>
-
           {/* Social */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-4">
             <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-5">
               {isKo ? "소셜" : "Social"}
             </h4>
             <div className="flex gap-3">
               <a
-                href="https://www.linkedin.com/company/rudacure"
+                href="https://kr.linkedin.com/company/rudacure"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-500 hover:text-teal-400 hover:bg-gray-700 transition-all"
@@ -86,7 +79,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
           <p className="text-xs text-gray-400">
             &copy; {new Date().getFullYear()} RudaCure Co., Ltd. All rights reserved.
           </p>
-          <p className="text-[10px] text-gray-400 font-['Roboto_Mono']">
+          <p className="text-[10px] text-gray-400">
             Redefining Pain, Restoring Sensation
           </p>
         </div>
