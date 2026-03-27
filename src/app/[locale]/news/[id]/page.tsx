@@ -2,10 +2,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import newsDataKo from "@/data/news.json";
 import newsDataEn from "@/data/news_en.json";
+import newsDataZh from "@/data/news_zh.json";
+import newsDataJa from "@/data/news_ja.json";
+import newsDataEs from "@/data/news_es.json";
+import newsDataFr from "@/data/news_fr.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 
+const NEWS_MAP: Record<string, typeof newsDataKo> = {
+  ko: newsDataKo, en: newsDataEn, zh: newsDataZh as typeof newsDataKo,
+  ja: newsDataJa as typeof newsDataKo, es: newsDataEs as typeof newsDataKo, fr: newsDataFr as typeof newsDataKo,
+};
+
 function getNewsData(locale: string) {
-  return locale === "en" ? newsDataEn : newsDataKo;
+  return NEWS_MAP[locale] ?? newsDataEn;
 }
 
 function proxyImages(html: string): string {
@@ -16,7 +25,7 @@ function proxyImages(html: string): string {
 }
 
 export function generateStaticParams() {
-  const locales = ["ko", "en"];
+  const locales = ["ko", "en", "zh", "ja", "es", "fr"];
   return locales.flatMap((locale) =>
     newsDataKo.map((article) => ({ locale, id: String(article.id) }))
   );

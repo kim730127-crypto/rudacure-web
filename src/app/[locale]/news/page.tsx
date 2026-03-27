@@ -1,6 +1,10 @@
 import Image from "next/image";
 import articlesKo from "@/data/news.json";
 import articlesEn from "@/data/news_en.json";
+import articlesZh from "@/data/news_zh.json";
+import articlesJa from "@/data/news_ja.json";
+import articlesEs from "@/data/news_es.json";
+import articlesFr from "@/data/news_fr.json";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { NewsYearFilter } from "@/components/news-year-filter";
 
@@ -32,7 +36,7 @@ const MAGAZINES = [
   { vol: 1, quarter: "2021.3Q~2022.3Q", pdf: "vol1.pdf" },
 ];
 
-const MAGAZINE_CONTENT = {
+const MAGAZINE_CONTENT: Record<string, { sectionTag: string; sectionTitle: string; sectionTitleEm: string; sectionDescription: string; download: string; latest: string }> = {
   ko: {
     sectionTag: "Quarterly Magazine",
     sectionTitle: "RudaCure ",
@@ -49,14 +53,50 @@ const MAGAZINE_CONTENT = {
     download: "Download PDF",
     latest: "Latest",
   },
+  zh: {
+    sectionTag: "季刊杂志",
+    sectionTitle: "RudaCure ",
+    sectionTitleEm: "杂志",
+    sectionDescription: "汇总RudaCure每季度的最新动态和研究成果的杂志。可免费下载PDF版本。",
+    download: "下载PDF",
+    latest: "最新刊",
+  },
+  ja: {
+    sectionTag: "季刊マガジン",
+    sectionTitle: "RudaCure ",
+    sectionTitleEm: "マガジン",
+    sectionDescription: "RudaCureの四半期ごとのニュースと研究成果をまとめたマガジンです。PDFで無料ダウンロードいただけます。",
+    download: "PDFダウンロード",
+    latest: "最新号",
+  },
+  es: {
+    sectionTag: "Revista Trimestral",
+    sectionTitle: "RudaCure ",
+    sectionTitleEm: "Revista",
+    sectionDescription: "Nuestra revista trimestral con los últimos avances en investigación y novedades de la empresa. Disponible para descarga gratuita en PDF.",
+    download: "Descargar PDF",
+    latest: "Último",
+  },
+  fr: {
+    sectionTag: "Magazine Trimestriel",
+    sectionTitle: "RudaCure ",
+    sectionTitleEm: "Magazine",
+    sectionDescription: "Notre magazine trimestriel couvrant les dernières avancées de la recherche et les actualités de l'entreprise. Téléchargement PDF gratuit.",
+    download: "Télécharger PDF",
+    latest: "Dernier",
+  },
 };
 
 export default async function NewsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = getTranslations(locale as Locale);
   const loc = toDataLocale(locale as Locale);
-  const articles = locale === "en" ? articlesEn : articlesKo;
-  const mc = MAGAZINE_CONTENT[loc];
+  const articlesMap: Record<string, typeof articlesKo> = {
+    ko: articlesKo, en: articlesEn, zh: articlesZh as typeof articlesKo,
+    ja: articlesJa as typeof articlesKo, es: articlesEs as typeof articlesKo, fr: articlesFr as typeof articlesKo,
+  };
+  const articles = articlesMap[locale] ?? articlesEn;
+  const mc = MAGAZINE_CONTENT[locale] ?? MAGAZINE_CONTENT.en;
 
   return (
     <div className="pt-24">

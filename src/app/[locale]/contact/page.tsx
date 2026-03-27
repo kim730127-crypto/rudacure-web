@@ -23,11 +23,64 @@ const C = {
     name: "Name", email: "Email", company: "Company", type: "Inquiry Type", message: "Message", submit: "Send Message",
     typeOptions: ["Select...", "Partnership / Licensing", "Investment / IR", "CRO Services", "Other"],
   },
+  zh: {
+    tag: "联系我们", title1: "Contact", title2: "Us",
+    description: "欢迎咨询合作、许可、投资和CRO服务相关事宜。",
+    hq: "总部", seoul: "首尔办公室", phone: "电话 / 传真",
+    hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
+    seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
+    inquiries: "联系方式", business: "商务合作", ir: "投资 / IR", cro: "CRO 服务",
+    formTitle: "发送消息",
+    name: "姓名", email: "邮箱", company: "公司", type: "咨询类型", message: "留言", submit: "发送",
+    typeOptions: ["请选择…", "合作 / 许可", "投资 / IR", "CRO 服务", "其他"],
+  },
+  ja: {
+    tag: "お問い合わせ", title1: "Contact", title2: "Us",
+    description: "パートナーシップ、ライセンシング、投資、CROサービスに関するお問い合わせを歓迎いたします。",
+    hq: "本社", seoul: "ソウルオフィス", phone: "電話 / FAX",
+    hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
+    seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
+    inquiries: "お問い合わせ先", business: "事業提携", ir: "投資 / IR", cro: "CROサービス",
+    formTitle: "メッセージを送る",
+    name: "お名前", email: "メールアドレス", company: "会社名", type: "お問い合わせ種別", message: "メッセージ", submit: "送信",
+    typeOptions: ["選択してください…", "パートナーシップ / ライセンシング", "投資 / IR", "CROサービス", "その他"],
+  },
+  es: {
+    tag: "Contáctenos", title1: "Contact", title2: "Us",
+    description: "Damos la bienvenida a consultas sobre alianzas, licencias, inversión y servicios CRO.",
+    hq: "Sede Central", seoul: "Oficina de Seúl", phone: "Teléfono / Fax",
+    hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
+    seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
+    inquiries: "Consultas", business: "Negocios", ir: "Inversión / IR", cro: "Servicios CRO",
+    formTitle: "Enviar un mensaje",
+    name: "Nombre", email: "Correo electrónico", company: "Empresa", type: "Tipo de consulta", message: "Mensaje", submit: "Enviar",
+    typeOptions: ["Seleccionar…", "Alianza / Licencia", "Inversión / IR", "Servicios CRO", "Otro"],
+  },
+  fr: {
+    tag: "Nous contacter", title1: "Contact", title2: "Us",
+    description: "Nous accueillons les demandes concernant les partenariats, les licences, l'investissement et les services CRO.",
+    hq: "Siège social", seoul: "Bureau de Séoul", phone: "Téléphone / Fax",
+    hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
+    seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
+    inquiries: "Contacts", business: "Partenariats", ir: "Investissement / IR", cro: "Services CRO",
+    formTitle: "Envoyer un message",
+    name: "Nom", email: "E-mail", company: "Entreprise", type: "Type de demande", message: "Message", submit: "Envoyer",
+    typeOptions: ["Sélectionner…", "Partenariat / Licence", "Investissement / IR", "Services CRO", "Autre"],
+  },
+};
+
+const META_TITLE: Record<string, string> = {
+  ko: "문의하기 | RudaCure",
+  en: "Contact | RudaCure",
+  zh: "联系我们 | RudaCure",
+  ja: "お問い合わせ | RudaCure",
+  es: "Contacto | RudaCure",
+  fr: "Contact | RudaCure",
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return { title: locale === "en" ? "Contact | RudaCure" : "문의하기 | RudaCure" };
+  return { title: META_TITLE[locale] ?? META_TITLE.en };
 }
 
 const inputCls = "w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-800 focus:border-teal-500 focus:ring-1 focus:ring-teal-500/20 focus:outline-none transition-colors";

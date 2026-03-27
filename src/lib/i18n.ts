@@ -60,6 +60,17 @@ const translations = {
     "cta.description": "글로벌 제약사와의 라이선싱, 공동연구, 투자에 관심이 있으시면 연락해 주세요.",
     "cta.button": "Get in Touch",
 
+    // Home – Partners section
+    "home.partners.tag": "파트너 & 수상",
+    "home.partners.title1": "함께하는 ",
+    "home.partners.title2": "파트너",
+
+    // Home – News section
+    "home.news.tag": "최근 소식",
+    "home.news.title1": "뉴스 & ",
+    "home.news.title2": "공지",
+    "home.news.viewAll": "전체보기 →",
+
     // About
     "about.tag": "Company",
     "about.title1": "Our",
@@ -152,6 +163,17 @@ const translations = {
       "We welcome inquiries regarding global licensing, collaborative research, and investment opportunities.",
     "cta.button": "Get in Touch",
 
+    // Home – Partners section
+    "home.partners.tag": "Partners & Recognition",
+    "home.partners.title1": "Trusted ",
+    "home.partners.title2": "Partners",
+
+    // Home – News section
+    "home.news.tag": "Latest News",
+    "home.news.title1": "News & ",
+    "home.news.title2": "Updates",
+    "home.news.viewAll": "View All →",
+
     // About
     "about.tag": "Company",
     "about.title1": "Our",
@@ -232,6 +254,18 @@ const translations = {
     "cta.title2": "RudaCure",
     "cta.description": "欢迎咨询全球许可、合作研究和投资机会。",
     "cta.button": "联系我们",
+
+    // Home – Partners section
+    "home.partners.tag": "合作伙伴与荣誉",
+    "home.partners.title1": "值得信赖的",
+    "home.partners.title2": "合作伙伴",
+
+    // Home – News section
+    "home.news.tag": "最新动态",
+    "home.news.title1": "新闻 & ",
+    "home.news.title2": "公告",
+    "home.news.viewAll": "查看全部 →",
+
     "about.tag": "公司介绍",
     "about.title1": "Our",
     "about.title2": "Journey",
@@ -296,6 +330,18 @@ const translations = {
     "cta.title2": "RudaCure",
     "cta.description": "グローバルライセンシング、共同研究、投資に関するお問い合わせを歓迎いたします。",
     "cta.button": "お問い合わせ",
+
+    // Home – Partners section
+    "home.partners.tag": "パートナー & 受賞",
+    "home.partners.title1": "信頼の",
+    "home.partners.title2": "パートナー",
+
+    // Home – News section
+    "home.news.tag": "最新ニュース",
+    "home.news.title1": "ニュース & ",
+    "home.news.title2": "お知らせ",
+    "home.news.viewAll": "すべて見る →",
+
     "about.tag": "会社概要",
     "about.title1": "Our",
     "about.title2": "Journey",
@@ -459,7 +505,8 @@ const translations = {
 type TranslationKey = keyof (typeof translations)["ko"];
 
 export function t(locale: Locale, key: TranslationKey): string {
-  return translations[locale]?.[key] ?? translations.en[key] ?? translations.ko[key] ?? key;
+  const dict = translations[locale] as Record<string, string>;
+  return dict?.[key] ?? (translations.en as Record<string, string>)[key] ?? translations.ko[key] ?? key;
 }
 
 export function getTranslations(locale: Locale) {

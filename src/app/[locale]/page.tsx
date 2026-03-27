@@ -6,6 +6,10 @@ import { HeroParticles } from "@/components/hero-particles";
 import { PartnerLogo } from "@/components/partner-logo";
 import newsKo from "@/data/news.json";
 import newsEn from "@/data/news_en.json";
+import newsZh from "@/data/news_zh.json";
+import newsJa from "@/data/news_ja.json";
+import newsEs from "@/data/news_es.json";
+import newsFr from "@/data/news_fr.json";
 
 const PIPELINE = {
   ko: [
@@ -38,7 +42,8 @@ const PIPELINE = {
   ],
 };
 
-const PARTNERS = {
+type Partner = { name: string; role: string; logo: string; initials: string; color: string };
+const PARTNERS: Record<string, Partner[]> = {
   ko: [
     { name: "서울대학교 병원", role: "임상시험 수행 기관, 제3자 검증기관", logo: "/images/partners/snuh.jpg", initials: "SNUH", color: "blue" },
     { name: "POSTECH", role: "Cryo-EM, MoA 검증기관", logo: "/images/partners/postech.png", initials: "POST", color: "red" },
@@ -61,13 +66,57 @@ const PARTNERS = {
     { name: "Pharmaron", role: "CDMO", logo: "/images/partners/pharmaron.svg", initials: "PR", color: "cyan" },
     { name: "DT&CRO", role: "Toxicology Testing Agency", logo: "/images/partners/dtcro.png", initials: "DT", color: "rose" },
   ],
+  zh: [
+    { name: "Seoul National Univ. Hospital", role: "临床试验执行机构，第三方验证机构", logo: "/images/partners/snuh.jpg", initials: "SNUH", color: "blue" },
+    { name: "POSTECH", role: "冷冻电镜，作用机制验证机构", logo: "/images/partners/postech.png", initials: "POST", color: "red" },
+    { name: "Hanlim Pharma", role: "RCI001 国内许可（合作研究）", logo: "/images/partners/hanlim.png", initials: "HL", color: "teal" },
+    { name: "French Veterinary Pharma", role: "动物药品联合开发", logo: "pictogram:animal", initials: "VP", color: "indigo" },
+    { name: "WuXi AppTec", role: "CDMO，工艺开发", logo: "/images/partners/wuxi.jpg", initials: "WX", color: "emerald" },
+    { name: "Hanmi Fine Chemical", role: "RCI001/RCI002 GMP生产", logo: "/images/partners/hanmi.gif", initials: "HM", color: "violet" },
+    { name: "Dong-A ST", role: "CDMO", logo: "/images/partners/dongast.png", initials: "DA", color: "orange" },
+    { name: "Pharmaron", role: "CDMO", logo: "/images/partners/pharmaron.svg", initials: "PR", color: "cyan" },
+    { name: "DT&CRO", role: "毒理试验评估机构", logo: "/images/partners/dtcro.png", initials: "DT", color: "rose" },
+  ],
+  ja: [
+    { name: "Seoul National Univ. Hospital", role: "臨床試験実施機関、第三者検証機関", logo: "/images/partners/snuh.jpg", initials: "SNUH", color: "blue" },
+    { name: "POSTECH", role: "Cryo-EM、MoA検証機関", logo: "/images/partners/postech.png", initials: "POST", color: "red" },
+    { name: "Hanlim Pharma", role: "RCI001 国内ライセンシング（共同研究）", logo: "/images/partners/hanlim.png", initials: "HL", color: "teal" },
+    { name: "French Veterinary Pharma", role: "動物用医薬品共同開発", logo: "pictogram:animal", initials: "VP", color: "indigo" },
+    { name: "WuXi AppTec", role: "CDMO、プロセス開発", logo: "/images/partners/wuxi.jpg", initials: "WX", color: "emerald" },
+    { name: "Hanmi Fine Chemical", role: "RCI001/RCI002 GMP製造", logo: "/images/partners/hanmi.gif", initials: "HM", color: "violet" },
+    { name: "Dong-A ST", role: "CDMO", logo: "/images/partners/dongast.png", initials: "DA", color: "orange" },
+    { name: "Pharmaron", role: "CDMO", logo: "/images/partners/pharmaron.svg", initials: "PR", color: "cyan" },
+    { name: "DT&CRO", role: "毒性試験評価機関", logo: "/images/partners/dtcro.png", initials: "DT", color: "rose" },
+  ],
+  es: [
+    { name: "Seoul National Univ. Hospital", role: "Organización de ensayos clínicos, validación independiente", logo: "/images/partners/snuh.jpg", initials: "SNUH", color: "blue" },
+    { name: "POSTECH", role: "Cryo-EM, validación de MoA", logo: "/images/partners/postech.png", initials: "POST", color: "red" },
+    { name: "Hanlim Pharma", role: "Licencia nacional de RCI001 (investigación conjunta)", logo: "/images/partners/hanlim.png", initials: "HL", color: "teal" },
+    { name: "French Veterinary Pharma", role: "Codesarrollo veterinario", logo: "pictogram:animal", initials: "VP", color: "indigo" },
+    { name: "WuXi AppTec", role: "CDMO, desarrollo de procesos", logo: "/images/partners/wuxi.jpg", initials: "WX", color: "emerald" },
+    { name: "Hanmi Fine Chemical", role: "Producción GMP de RCI001/RCI002", logo: "/images/partners/hanmi.gif", initials: "HM", color: "violet" },
+    { name: "Dong-A ST", role: "CDMO", logo: "/images/partners/dongast.png", initials: "DA", color: "orange" },
+    { name: "Pharmaron", role: "CDMO", logo: "/images/partners/pharmaron.svg", initials: "PR", color: "cyan" },
+    { name: "DT&CRO", role: "Agencia de evaluación toxicológica", logo: "/images/partners/dtcro.png", initials: "DT", color: "rose" },
+  ],
+  fr: [
+    { name: "Seoul National Univ. Hospital", role: "Organisation d'essais cliniques, validation tierce", logo: "/images/partners/snuh.jpg", initials: "SNUH", color: "blue" },
+    { name: "POSTECH", role: "Cryo-EM, validation du MoA", logo: "/images/partners/postech.png", initials: "POST", color: "red" },
+    { name: "Hanlim Pharma", role: "Licence nationale RCI001 (recherche conjointe)", logo: "/images/partners/hanlim.png", initials: "HL", color: "teal" },
+    { name: "French Veterinary Pharma", role: "Co-développement vétérinaire", logo: "pictogram:animal", initials: "VP", color: "indigo" },
+    { name: "WuXi AppTec", role: "CDMO, développement de procédés", logo: "/images/partners/wuxi.jpg", initials: "WX", color: "emerald" },
+    { name: "Hanmi Fine Chemical", role: "Production GMP RCI001/RCI002", logo: "/images/partners/hanmi.gif", initials: "HM", color: "violet" },
+    { name: "Dong-A ST", role: "CDMO", logo: "/images/partners/dongast.png", initials: "DA", color: "orange" },
+    { name: "Pharmaron", role: "CDMO", logo: "/images/partners/pharmaron.svg", initials: "PR", color: "cyan" },
+    { name: "DT&CRO", role: "Agence d'évaluation toxicologique", logo: "/images/partners/dtcro.png", initials: "DT", color: "rose" },
+  ],
 };
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = getTranslations(locale as Locale);
   const loc = toDataLocale(locale as Locale);
-  const partners = PARTNERS[loc];
+  const partners = PARTNERS[locale] ?? PARTNERS.en;
   const pipeline = PIPELINE[loc];
 
   const METRICS = [
@@ -287,11 +336,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <ScrollReveal>
             <div className="text-center mb-14">
               <p className="section-label mb-4">
-                {loc === "ko" ? "파트너 & 수상" : "Partners & Recognition"}
+                {t("home.partners.tag")}
               </p>
               <h2 className="text-3xl sm:text-4xl section-heading">
-                {loc === "ko" ? "함께하는 " : "Trusted "}
-                <em>{loc === "ko" ? "파트너" : "Partners"}</em>
+                {t("home.partners.title1")}
+                <em>{t("home.partners.title2")}</em>
               </h2>
             </div>
           </ScrollReveal>
@@ -335,18 +384,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div className="flex items-end justify-between mb-10">
               <div>
                 <p className="section-label mb-4">
-                  {loc === "ko" ? "최근 소식" : "Latest News"}
+                  {t("home.news.tag")}
                 </p>
                 <h2 className="text-3xl sm:text-4xl section-heading">
-                  {loc === "ko" ? "뉴스 & " : "News & "}
-                  <em>{loc === "ko" ? "공지" : "Updates"}</em>
+                  {t("home.news.title1")}
+                  <em>{t("home.news.title2")}</em>
                 </h2>
               </div>
               <Link
                 href={`/${locale}/news`}
                 className="text-sm text-gray-600 hover:text-teal-600 transition-colors hidden sm:flex items-center gap-2 group"
               >
-                {loc === "ko" ? "전체보기 →" : "View All →"}
+                {t("home.news.viewAll")}
                 <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -354,7 +403,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </div>
           </ScrollReveal>
           <div className="space-y-3">
-            {(loc === "ko" ? newsKo : newsEn).slice(0, 5).map((article: { id: number; title: string; date: string; category: string }, i: number) => (
+            {({ ko: newsKo, en: newsEn, zh: newsZh, ja: newsJa, es: newsEs, fr: newsFr }[locale] ?? newsEn).slice(0, 5).map((article: { id: number; title: string; date: string; category: string }, i: number) => (
               <ScrollReveal key={article.id} delay={i * 80}>
                 <Link
                   href={`/${locale}/news/${article.id}`}

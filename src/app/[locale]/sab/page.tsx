@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { type Locale, toDataLocale } from "@/lib/i18n";
+/* ── Local locale helper ── */
+type SABLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
+const SAB_SUPPORTED: ReadonlySet<string> = new Set(["ko", "en", "zh", "ja", "es", "fr"]);
+function toSABLocale(locale: string): SABLocale {
+  return SAB_SUPPORTED.has(locale) ? (locale as SABLocale) : "en";
+}
 
 type AdvisorItem = {
   name: string;
@@ -10,7 +15,14 @@ type AdvisorItem = {
   image?: string;
 };
 
-const HEADER = {
+const HEADER: Record<SABLocale, {
+  tag: string;
+  title1: string;
+  title2: string;
+  description: string;
+  roleTitle: string;
+  roleItems: string[];
+}> = {
   ko: {
     tag: "과학자문위원회",
     title1: "Science Advisory",
@@ -37,9 +49,61 @@ const HEADER = {
       "New indication discovery and technology expansion advisory",
     ],
   },
+  zh: {
+    tag: "科学顾问委员会",
+    title1: "Science Advisory",
+    title2: "Board",
+    description: "RudaCure的科学顾问委员会（SAB）由离子通道药理学、疼痛研究、眼科学和AI驱动药物发现领域的世界级专家组成，为我们的核心管线提供战略指导。",
+    roleTitle: "SAB的职责",
+    roleItems: [
+      "管线项目的科学验证和战略指导",
+      "临床试验设计和监管策略咨询",
+      "全球学术网络连接",
+      "新适应症发现和技术扩展咨询",
+    ],
+  },
+  ja: {
+    tag: "科学諮問委員会",
+    title1: "Science Advisory",
+    title2: "Board",
+    description: "RudaCureの科学諮問委員会（SAB）は、イオンチャネル薬理学、疼痛研究、眼科学、AI創薬分野の世界的な専門家で構成され、コアパイプラインの戦略的方向性を助言します。",
+    roleTitle: "SABの役割",
+    roleItems: [
+      "パイプラインプログラムの科学的妥当性検証と戦略的助言",
+      "臨床試験設計および規制戦略の助言",
+      "グローバル学術ネットワークとの連携",
+      "新規適応症の発掘と技術拡張に関する助言",
+    ],
+  },
+  es: {
+    tag: "Comité Científico Asesor",
+    title1: "Science Advisory",
+    title2: "Board",
+    description: "El Comité Científico Asesor (SAB) de RudaCure está compuesto por expertos de clase mundial en farmacología de canales iónicos, investigación del dolor, oftalmología y descubrimiento de fármacos impulsado por IA, proporcionando orientación estratégica para nuestro pipeline principal.",
+    roleTitle: "Rol del SAB",
+    roleItems: [
+      "Validación científica y orientación estratégica para los programas del pipeline",
+      "Asesoramiento en diseño de ensayos clínicos y estrategia regulatoria",
+      "Conectividad con redes académicas globales",
+      "Asesoramiento en descubrimiento de nuevas indicaciones y expansión tecnológica",
+    ],
+  },
+  fr: {
+    tag: "Comité Consultatif Scientifique",
+    title1: "Science Advisory",
+    title2: "Board",
+    description: "Le Comité Consultatif Scientifique (SAB) de RudaCure est composé d'experts de renommée mondiale en pharmacologie des canaux ioniques, recherche sur la douleur, ophtalmologie et découverte de médicaments par IA, fournissant des orientations stratégiques pour notre pipeline principal.",
+    roleTitle: "Rôle du SAB",
+    roleItems: [
+      "Validation scientifique et orientation stratégique des programmes du pipeline",
+      "Conseil en conception d'essais cliniques et stratégie réglementaire",
+      "Connexion aux réseaux académiques mondiaux",
+      "Conseil en découverte de nouvelles indications et expansion technologique",
+    ],
+  },
 };
 
-const ADVISORS: Record<string, AdvisorItem[]> = {
+const ADVISORS: Record<SABLocale, AdvisorItem[]> = {
   ko: [
     {
       name: "김용호 박사",
@@ -138,19 +202,216 @@ const ADVISORS: Record<string, AdvisorItem[]> = {
       image: "/images/sab/victor-perez.jpg",
     },
   ],
+  zh: [
+    {
+      name: "Dr. Yong-ho Kim",
+      title: "SAB主席 / 首席执行官",
+      affiliation: "嘉泉大学医学院教授",
+      expertise: ["离子通道药理学", "疼痛研究", "TRPV1"],
+      description: "在疼痛和感觉障碍领域拥有超过15年的基础医学研究经验。TRPV1离子通道调控药物开发平台的创始人。",
+      image: "/images/sab/yongho-kim.jpg",
+    },
+    {
+      name: "Dr. Jiyoon Shin",
+      title: "研究总监",
+      affiliation: "RudaCure中央研究院",
+      expertise: ["AI药物发现", "分子模拟", "计算药物设计"],
+      description: "AI驱动药物开发效率化专家。主导RuCIA平台核心技术开发，负责基于结构的分子设计。",
+    },
+    {
+      name: "Prof. Donghyun Kim",
+      title: "执行副总裁 / 临床顾问",
+      affiliation: "高丽大学安岩医院眼科",
+      expertise: ["眼科学", "干眼症", "角膜疾病"],
+      description: "验证了RCI001的长期安全性和干燥综合征疗效。荣获韩国外眼部学会学术奖和太俊眼科最佳论文奖。",
+      image: "/images/sab/donghyun-kim.jpg",
+    },
+    {
+      name: "Prof. Dohun Kwon",
+      title: "外部顾问",
+      affiliation: "浦项工科大学（POSTECH）",
+      expertise: ["TRPV1结构分析", "蛋白质结构生物学", "冷冻电镜"],
+      description: "TRPV1离子通道结构分析专家。与RudaCure合作开展TRPV1构效关系联合研究。",
+      image: "/images/sab/dohun-kwon.jpg",
+    },
+    {
+      name: "Dr. Anat Galor, MD, MSPH",
+      title: "外部顾问",
+      affiliation: "迈阿密大学Bascom Palmer眼科研究所",
+      expertise: ["干眼症", "眼部疼痛", "眼表疾病"],
+      description: "Bascom Palmer眼科研究所眼科学教授。干眼症和神经性眼部疼痛领域的世界权威。主持多项NIH资助项目，发表论文355篇以上（h指数51）。入选The Ophthalmologist Power List。",
+      image: "/images/sab/anat-galor.jpg",
+    },
+    {
+      name: "Dr. Victor L. Perez, MD",
+      title: "外部顾问",
+      affiliation: "迈阿密大学Bascom Palmer眼科研究所",
+      expertise: ["眼部免疫学", "角膜疾病", "干眼症"],
+      description: "Bascom Palmer眼科研究所眼科学教授兼角膜研究主任。主导TFOS DEWS III全球干眼症共识指南。哈佛医学院培训，NIH/CDC研究员。入选The Ophthalmologist Power List 2026。",
+      image: "/images/sab/victor-perez.jpg",
+    },
+  ],
+  ja: [
+    {
+      name: "Dr. Yong-ho Kim",
+      title: "SAB議長 / CEO",
+      affiliation: "嘉泉大学医学部教授",
+      expertise: ["イオンチャネル薬理学", "疼痛研究", "TRPV1"],
+      description: "疼痛および感覚障害に関する15年以上の基礎医学研究実績を持つ専門家。TRPV1イオンチャネル調節に基づく創薬プラットフォームの創設者。",
+      image: "/images/sab/yongho-kim.jpg",
+    },
+    {
+      name: "Dr. Jiyoon Shin",
+      title: "研究所長",
+      affiliation: "RudaCure中央研究所",
+      expertise: ["AI創薬", "分子シミュレーション", "計算薬物設計"],
+      description: "AI駆動型創薬効率化の専門家。RuCIAプラットフォームのコア技術開発を主導し、構造ベースの分子設計を担当。",
+    },
+    {
+      name: "Prof. Donghyun Kim",
+      title: "専務 / 臨床アドバイザー",
+      affiliation: "高麗大学安岩病院眼科",
+      expertise: ["眼科学", "ドライアイ", "角膜疾患"],
+      description: "RCI001の長期安全性およびシェーグレン症候群の治療効果を実証。韓国外眼部学会学術賞、太俊眼科論文最優秀賞を受賞。",
+      image: "/images/sab/donghyun-kim.jpg",
+    },
+    {
+      name: "Prof. Dohun Kwon",
+      title: "外部アドバイザー",
+      affiliation: "POSTECH（浦項工科大学）",
+      expertise: ["TRPV1構造解析", "タンパク質構造生物学", "クライオ電子顕微鏡"],
+      description: "TRPV1イオンチャネル構造解析の専門家。RudaCureとTRPV1の構造活性相関に関する共同研究を実施中。",
+      image: "/images/sab/dohun-kwon.jpg",
+    },
+    {
+      name: "Dr. Anat Galor, MD, MSPH",
+      title: "外部アドバイザー",
+      affiliation: "マイアミ大学Bascom Palmer Eye Institute",
+      expertise: ["ドライアイ", "眼痛", "眼表面疾患"],
+      description: "Bascom Palmer Eye Institute眼科学教授。ドライアイおよび神経障害性眼痛分野の世界的権威。NIH複数研究課題を遂行、論文355編以上発表（h指数51）。The Ophthalmologist Power Listに選出。",
+      image: "/images/sab/anat-galor.jpg",
+    },
+    {
+      name: "Dr. Victor L. Perez, MD",
+      title: "外部アドバイザー",
+      affiliation: "マイアミ大学Bascom Palmer Eye Institute",
+      expertise: ["眼免疫学", "角膜疾患", "ドライアイ"],
+      description: "Bascom Palmer Eye Institute眼科学教授兼角膜研究ディレクター。TFOS DEWS IIIグローバルドライアイコンセンサスガイドラインを主導。ハーバード大学医学部修練、NIH/CDC研究員。The Ophthalmologist Power List 2026に選出。",
+      image: "/images/sab/victor-perez.jpg",
+    },
+  ],
+  es: [
+    {
+      name: "Dr. Yong-ho Kim",
+      title: "Presidente del SAB / CEO",
+      affiliation: "Profesor, Facultad de Medicina de la Universidad Gachon",
+      expertise: ["Farmacología de canales iónicos", "Investigación del dolor", "TRPV1"],
+      description: "Más de 15 años de investigación médica básica en dolor y trastornos sensoriales. Fundador de la plataforma de desarrollo de fármacos basada en la modulación del canal iónico TRPV1.",
+      image: "/images/sab/yongho-kim.jpg",
+    },
+    {
+      name: "Dr. Jiyoon Shin",
+      title: "Directora de Investigación",
+      affiliation: "Instituto Central de Investigación de RudaCure",
+      expertise: ["Descubrimiento de fármacos con IA", "Simulación molecular", "Diseño computacional de fármacos"],
+      description: "Experta en eficiencia del desarrollo de fármacos impulsado por IA. Lidera el desarrollo de la tecnología central de la plataforma RuCIA con diseño molecular basado en estructuras.",
+    },
+    {
+      name: "Prof. Donghyun Kim",
+      title: "Vicepresidente ejecutivo / Asesor clínico",
+      affiliation: "Hospital Anam de la Universidad de Corea, Departamento de Oftalmología",
+      expertise: ["Oftalmología", "Ojo seco", "Trastornos corneales"],
+      description: "Demostró la seguridad a largo plazo de RCI001 y la eficacia en el síndrome de Sjögren. Galardonado con el Premio Académico KOES y el Premio al Mejor Artículo Oftalmológico Taejun.",
+      image: "/images/sab/donghyun-kim.jpg",
+    },
+    {
+      name: "Prof. Dohun Kwon",
+      title: "Asesor externo",
+      affiliation: "POSTECH (Universidad de Ciencia y Tecnología de Pohang)",
+      expertise: ["Análisis estructural de TRPV1", "Biología estructural de proteínas", "Cryo-EM"],
+      description: "Experto en análisis estructural del canal iónico TRPV1. Realiza investigación conjunta con RudaCure sobre relaciones estructura-actividad de TRPV1.",
+      image: "/images/sab/dohun-kwon.jpg",
+    },
+    {
+      name: "Dr. Anat Galor, MD, MSPH",
+      title: "Asesora externa",
+      affiliation: "Bascom Palmer Eye Institute, Universidad de Miami",
+      expertise: ["Ojo seco", "Dolor ocular", "Enfermedad de la superficie ocular"],
+      description: "Profesora de Oftalmología en el Bascom Palmer Eye Institute. Autoridad mundial en ojo seco y dolor ocular neuropático. Investigadora principal en múltiples subvenciones del NIH, más de 355 publicaciones (índice h 51). Nombrada en The Ophthalmologist Power List.",
+      image: "/images/sab/anat-galor.jpg",
+    },
+    {
+      name: "Dr. Victor L. Perez, MD",
+      title: "Asesor externo",
+      affiliation: "Bascom Palmer Eye Institute, Universidad de Miami",
+      expertise: ["Inmunología ocular", "Enfermedad corneal", "Ojo seco"],
+      description: "Profesor de Oftalmología y Director de Investigación Corneal en el Bascom Palmer Eye Institute. Lideró las guías de consenso global TFOS DEWS III sobre ojo seco. Formado en Harvard Medical School, investigador del NIH/CDC. The Ophthalmologist Power List 2026.",
+      image: "/images/sab/victor-perez.jpg",
+    },
+  ],
+  fr: [
+    {
+      name: "Dr. Yong-ho Kim",
+      title: "Président du SAB / PDG",
+      affiliation: "Professeur, Faculté de Médecine de l'Université Gachon",
+      expertise: ["Pharmacologie des canaux ioniques", "Recherche sur la douleur", "TRPV1"],
+      description: "Plus de 15 ans de recherche médicale fondamentale sur la douleur et les troubles sensoriels. Fondateur de la plateforme de développement de médicaments basée sur la modulation du canal ionique TRPV1.",
+      image: "/images/sab/yongho-kim.jpg",
+    },
+    {
+      name: "Dr. Jiyoon Shin",
+      title: "Directrice de recherche",
+      affiliation: "Institut Central de Recherche de RudaCure",
+      expertise: ["Découverte de médicaments par IA", "Simulation moléculaire", "Conception computationnelle de médicaments"],
+      description: "Experte en efficacité du développement de médicaments par IA. Dirige le développement technologique central de la plateforme RuCIA avec conception moléculaire basée sur les structures.",
+    },
+    {
+      name: "Prof. Donghyun Kim",
+      title: "Vice-président exécutif / Conseiller clinique",
+      affiliation: "Hôpital Anam de l'Université de Corée, Département d'Ophtalmologie",
+      expertise: ["Ophtalmologie", "Sécheresse oculaire", "Maladies cornéennes"],
+      description: "A démontré la sécurité à long terme du RCI001 et l'efficacité dans le syndrome de Sjögren. Lauréat du Prix Académique KOES et du Prix du Meilleur Article Ophtalmologique Taejun.",
+      image: "/images/sab/donghyun-kim.jpg",
+    },
+    {
+      name: "Prof. Dohun Kwon",
+      title: "Conseiller externe",
+      affiliation: "POSTECH (Université des Sciences et Technologies de Pohang)",
+      expertise: ["Analyse structurale de TRPV1", "Biologie structurale des protéines", "Cryo-EM"],
+      description: "Expert en analyse structurale du canal ionique TRPV1. Mène des recherches conjointes avec RudaCure sur les relations structure-activité de TRPV1.",
+      image: "/images/sab/dohun-kwon.jpg",
+    },
+    {
+      name: "Dr. Anat Galor, MD, MSPH",
+      title: "Conseillère externe",
+      affiliation: "Bascom Palmer Eye Institute, Université de Miami",
+      expertise: ["Sécheresse oculaire", "Douleur oculaire", "Maladie de la surface oculaire"],
+      description: "Professeure d'Ophtalmologie au Bascom Palmer Eye Institute. Autorité mondiale en sécheresse oculaire et douleur oculaire neuropathique. Chercheuse principale sur plusieurs subventions du NIH, plus de 355 publications (indice h 51). Nommée dans The Ophthalmologist Power List.",
+      image: "/images/sab/anat-galor.jpg",
+    },
+    {
+      name: "Dr. Victor L. Perez, MD",
+      title: "Conseiller externe",
+      affiliation: "Bascom Palmer Eye Institute, Université de Miami",
+      expertise: ["Immunologie oculaire", "Maladie cornéenne", "Sécheresse oculaire"],
+      description: "Professeur d'Ophtalmologie et Directeur de la Recherche Cornéenne au Bascom Palmer Eye Institute. A dirigé les lignes directrices consensuelles mondiales TFOS DEWS III sur la sécheresse oculaire. Formé à Harvard Medical School, chercheur NIH/CDC. The Ophthalmologist Power List 2026.",
+      image: "/images/sab/victor-perez.jpg",
+    },
+  ],
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const sl = toSABLocale(locale);
   return {
-    title: locale === "en" ? "Science Advisory Board | RudaCure" : "과학자문위원회 | RudaCure",
-    description: HEADER[(locale === "ko" ? "ko" : "en") as "ko" | "en"].description,
+    title: locale === "ko" ? "과학자문위원회 | RudaCure" : "Science Advisory Board | RudaCure",
+    description: HEADER[sl].description,
   };
 }
 
 export default async function SABPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = toDataLocale(loc as Locale);
+  const locale = toSABLocale(loc);
   const h = HEADER[locale];
   const advisors = ADVISORS[locale];
 
