@@ -22,54 +22,56 @@ const CATEGORY_COLORS: Record<string, string> = {
   Industry: "bg-indigo-50 text-indigo-700 border border-indigo-200",
 };
 
+const CATEGORY_TAB_COLORS: Record<string, string> = {
+  Clinical: "bg-teal-600 text-white shadow-md",
+  Science: "bg-blue-600 text-white shadow-md",
+  Partnership: "bg-purple-600 text-white shadow-md",
+  IR: "bg-amber-600 text-white shadow-md",
+  Award: "bg-pink-600 text-white shadow-md",
+  Patent: "bg-cyan-600 text-white shadow-md",
+  CSR: "bg-orange-600 text-white shadow-md",
+  Company: "bg-slate-600 text-white shadow-md",
+  Industry: "bg-indigo-600 text-white shadow-md",
+};
+
 export function NewsYearFilter({
   articles,
   locale,
-  allLabel,
 }: {
   articles: Article[];
   locale: string;
-  allLabel: string;
+  allLabel?: string;
 }) {
-  // Extract unique years, sorted descending
-  const years = Array.from(
-    new Set(articles.map((a) => a.date.slice(0, 4)))
-  ).sort((a, b) => b.localeCompare(a));
+  // Extract unique categories, sorted by article count descending
+  const categories = Array.from(
+    new Set(articles.map((a) => a.category))
+  ).sort((a, b) => {
+    const countA = articles.filter((ar) => ar.category === a).length;
+    const countB = articles.filter((ar) => ar.category === b).length;
+    return countB - countA;
+  });
 
-  const [selectedYear, setSelectedYear] = useState<string>("all");
+  const [selected, setSelected] = useState<string>(categories[0] || "");
 
-  const filtered =
-    selectedYear === "all"
-      ? articles
-      : articles.filter((a) => a.date.startsWith(selectedYear));
+  const filtered = articles.filter((a) => a.category === selected);
 
   return (
     <>
-      {/* Year tabs */}
+      {/* Category tabs */}
       <div className="flex flex-wrap gap-2 mb-8">
-        <button
-          onClick={() => setSelectedYear("all")}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            selectedYear === "all"
-              ? "bg-teal-600 text-white shadow-md"
-              : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
-          }`}
-        >
-          {allLabel} ({articles.length})
-        </button>
-        {years.map((year) => {
-          const count = articles.filter((a) => a.date.startsWith(year)).length;
+        {categories.map((cat) => {
+          const count = articles.filter((a) => a.category === cat).length;
           return (
             <button
-              key={year}
-              onClick={() => setSelectedYear(year)}
+              key={cat}
+              onClick={() => setSelected(cat)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                selectedYear === year
-                  ? "bg-teal-600 text-white shadow-md"
+                selected === cat
+                  ? CATEGORY_TAB_COLORS[cat] || "bg-teal-600 text-white shadow-md"
                   : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
               }`}
             >
-              {year} ({count})
+              {cat} ({count})
             </button>
           );
         })}

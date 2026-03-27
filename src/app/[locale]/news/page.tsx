@@ -134,7 +134,6 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
           <NewsYearFilter
             articles={articles as { id: number; title: string; date: string; category: string }[]}
             locale={locale}
-            allLabel={locale === "ko" ? "전체" : "All"}
           />
         </div>
       </section>
