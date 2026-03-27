@@ -99,7 +99,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
             {MAGAZINES.map((mag, i) => (
               <a
                 key={mag.vol}
-                href={`/magazines/${mag.pdf}`}
+                href={`https://github.com/kim730127-crypto/rudacure-web/releases/download/magazines-v1/${mag.pdf}`}
                 download
                 className="group relative"
               >

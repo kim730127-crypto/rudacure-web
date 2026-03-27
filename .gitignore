@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# magazine PDFs (hosted on GitHub Releases)
+public/magazines/*.pdf
+
+# screenshots & temp images
+*.png
+*.jpeg
+!public/**/*.png
+!public/**/*.jpeg
+!src/**/*.png
+
+# playwright
+.playwright-mcp/
