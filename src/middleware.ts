@@ -27,6 +27,7 @@ export function middleware(request: NextRequest) {
     : acceptLang.includes("zh") ? "zh"
     : acceptLang.includes("ja") ? "ja"
     : acceptLang.includes("es") ? "es"
+    : acceptLang.includes("fr") ? "fr"
     : "en";
 
   // Redirect to locale-prefixed path

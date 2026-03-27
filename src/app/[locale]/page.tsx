@@ -177,8 +177,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <ScrollReveal animation="scale-in" delay={200}>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/membrane_target_moa.png"
-                alt="RCI002 Dual Target Peptide Mechanism of Action — TRPV1 & MOR Membrane Target"
+                src="/images/science/slide1.png"
+                alt="Membrane Target Drug Discovery — RCI001 & RCI002 Overview"
                 fill
                 className="object-cover"
               />
@@ -215,6 +215,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Link>
             </div>
           </ScrollReveal>
+
+          {/* Pipeline slide images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <ScrollReveal animation="reveal-left">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/science/slide2.png"
+                  alt="RCI001 — Dry Eye Disease Corneal TRPV1 Modulation"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="reveal-right" delay={200}>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/science/slide3.png"
+                  alt="RCI002 — Non-Opioid Chronic Pain Dual Receptor Strategy"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {pipeline.map((p, i) => (

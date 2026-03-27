@@ -15,6 +15,7 @@ const HEADER: Record<string, { tag: string; title1: string; title2: string; desc
   zh: { tag: "药物开发", title1: "Therapeutic", title2: "Pipeline", description: "离子通道靶向非阿片类治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验阶段。" },
   ja: { tag: "医薬品開発", title1: "Therapeutic", title2: "Pipeline", description: "イオンチャネル標的非オピオイド治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。" },
   es: { tag: "Desarrollo de Fármacos", title1: "Therapeutic", title2: "Pipeline", description: "Pipeline terapéutico no opioide dirigido a canales iónicos. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales." },
+  fr: { tag: "Développement de Médicaments", title1: "Therapeutic", title2: "Pipeline", description: "Pipeline thérapeutique non opioïde ciblant les canaux ioniques. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux." },
 };
 
 type PipelineItem = {
@@ -410,6 +411,60 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       milestonesLabel: "Hitos",
     },
   ],
+  fr: [
+    {
+      name: "RCI001",
+      indication: "Sécheresse Oculaire",
+      target: "TRPV1-Rac1 Target",
+      mechanism: "Modulation du signal en aval de TRPV1 inhibant l'inflammation Rac1/NLRP3 — favorise la sécrétion lacrymale et la cicatrisation cornéenne",
+      status: "US FDA Phase 2 / Corée Phase 2",
+      progress: 62,
+      color: "emerald",
+      milestones: ["FDA Phase 2 IND Approuvé (2025.08)", "NCT07068958 Enregistré", "Corée Phase 2 Prévu (S1 2026)", "Licence Hanlim Pharma (RCI001/RCI001U)", "Co-développement Pharma Vétérinaire Français (RCI001AH)", "Analyse Intermédiaire Q1 2026"],
+      details: ["Solution ophtalmique 0.25%", "Sécrétion lacrymale plus rapide vs stéroïdes traditionnels", "Modèle Sjögren : augmentation de la sécrétion lacrymale en 1 semaine", "Brevet japonais TRPV1 enregistré", "Surmonte les effets secondaires des stéroïdes (PIO, rougeur, brûlure)", "Effets thérapeutiques en 4 semaines"],
+      detailsLabel: "Caractéristiques Clés",
+      milestonesLabel: "Jalons",
+    },
+    {
+      name: "RCI002",
+      indication: "Douleur Chronique Non Opioïde",
+      target: "TRPV1-MOR Biased Dual Target",
+      mechanism: "Analgésique non opioïde à double cible MOR biased modulant simultanément TRPV1 et MOR — préparation de la Désignation de Médicament Orphelin pour le CRPS",
+      status: "Préclinique / Préparation IND (CRPS ODD)",
+      progress: 40,
+      color: "blue",
+      milestones: ["Études d'Efficacité Précliniques Terminées", "Recherche de Formulation (Dr. Dongjin Jang, Univ. Gangwon)", "Désignation de Médicament Orphelin (ODD) pour CRPS en Préparation", "Présentation Conférence SfN (2025.11)", "Scale-up TIPS 1,2 Mrd KRW (2024)", "Dépôt IND Global Q2 2026", "Début Phase 1 S2 2026"],
+      details: ["Indications : CRPS, arthrose, neuropathie diabétique, CIPN, fibromyalgie", "Agonisme MOR biased minimise le risque d'addiction/tolérance", "Dose unique : réduction de la douleur 2+ semaines dans le modèle arthrose", "Pas d'effet secondaire de fièvre anormale (problème TRPV1 1ère gén. résolu)", "Efficacité à concentration 650x inférieure vs traitements existants", "Désignation FDA ODD pour CRPS en préparation"],
+      detailsLabel: "Caractéristiques Clés",
+      milestonesLabel: "Jalons",
+    },
+    {
+      name: "RCI003",
+      indication: "Psoriasis",
+      target: "Modulateur Sélectif des Protéines Cibles du Psoriasis",
+      mechanism: "Modulation sélective des protéines cibles du psoriasis basée sur plateforme IA — exploitant l'expertise TRPV1 en canaux ioniques",
+      status: "Découverte",
+      progress: 15,
+      color: "violet",
+      milestones: ["Syntekabio Collabo R&D Phase 2 Sélectionné (2026)", "Syntekabio Collabo R&D Sélectionné (2024)", "Consortium Univ. Sogang & Univ. Inje", "Analyse des Cibles avec Plateforme IA (STB)", "Synthèse de Composés Candidats en Cours", "Évaluation d'Efficacité In-vitro/In-vivo Prévue"],
+      details: ["Plateforme IA Syntekabio (STB) pour analyse des protéines cibles", "Expertise TRPV1 de RudaCure appliquée aux canaux ioniques des maladies cutanées", "Université Sogang : synthèse et optimisation des composés", "Université Inje : évaluation d'efficacité des composés candidats", "Période de recherche : Avr 2026 – Mar 2028"],
+      detailsLabel: "Caractéristiques Clés",
+      milestonesLabel: "Jalons",
+    },
+    {
+      name: "RCI0165",
+      indication: "Traitement Vétérinaire de la Douleur (Thérapie Génique)",
+      target: "TRPV1 Only Target (Vecteur AAV)",
+      mechanism: "Thérapie génique ciblant TRPV1 basée sur vecteur AAV — administration unique pour soulagement durable de la douleur chez les animaux",
+      status: "Préclinique / PoC",
+      progress: 20,
+      color: "indigo",
+      milestones: ["Programme de Scale-Up à Investissement Privé Sélectionné (2026.4)", "Programme d'Entrepreneuriat Agro-Alimentaire Sélectionné (2025)", "PoC Basé sur Vecteur AAV Terminé", "Effet Analgésique 3+ Mois Confirmé en Dose Unique", "Objectif : Animaux de Compagnie et Chevaux de Course"],
+      details: ["Thérapie génique basée sur vecteur AAV (virus adéno-associé)", "Cible unique du canal ionique TRPV1", "Administration unique offrant 3+ mois de soulagement durable", "Pour la gestion de la douleur chronique chez les animaux de compagnie et de haute valeur (chevaux de course)", "Marché mondial du traitement vétérinaire de la douleur ~2 Mrd $ par an"],
+      detailsLabel: "Caractéristiques Clés",
+      milestonesLabel: "Jalons",
+    },
+  ],
 };
 
 const STAGES: Record<string, string[]> = {
@@ -418,11 +473,12 @@ const STAGES: Record<string, string[]> = {
   zh: ["候选发现", "临床前", "IND", "1期", "2期", "3期", "批准"],
   ja: ["候補発見", "前臨床", "IND", "第1相", "第2相", "第3相", "承認"],
   es: ["Descubrimiento", "Preclínico", "IND", "Fase 1", "Fase 2", "Fase 3", "Aprobación"],
+  fr: ["Découverte", "Préclinique", "IND", "Phase 1", "Phase 2", "Phase 3", "Approbation"],
 };
 
 export default async function PipelinePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = (["ko", "en", "zh", "ja", "es"].includes(loc) ? loc : "en") as string;
+  const locale = (["ko", "en", "zh", "ja", "es", "fr"].includes(loc) ? loc : "en") as string;
   const h = HEADER[locale] || HEADER.en;
   const pipeline = PIPELINE[locale] || PIPELINE.en;
   const stages = STAGES[locale] || STAGES.en;

@@ -29,7 +29,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
             </p>
             <div className="space-y-1">
               <p className="text-xs text-gray-400">
-                {locale === "ko" ? "인천광역시 연수구 미래로 9, 1동 302호" : "9 Mirae-ro, Yeonsu-gu, Incheon, Korea"}
+                {locale === "ko" ? "인천광역시 연수구 송도미래로 9, 1동 302호" : "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Korea"}
               </p>
               <p className="text-xs text-gray-400">Tel: 032-724-9070 | Fax: 032-724-9071</p>
               <p className="text-xs text-gray-400">sh.kim@rudacure.com</p>

@@ -14,6 +14,7 @@ function Flag({ code, className = "w-5 h-3.5" }: { code: string; className?: str
     cn: "/images/flag-cn.svg",
     jp: "/images/flag-jp.svg",
     es: "/images/flag-es.svg",
+    fr: "/images/flag-fr.svg",
   };
   return <img src={src[code] || ""} alt={code.toUpperCase()} className={className} />;
 }
@@ -24,6 +25,7 @@ const LANG_OPTIONS = [
   { locale: "zh", flag: "cn", label: "CN" },
   { locale: "ja", flag: "jp", label: "JP" },
   { locale: "es", flag: "es", label: "ES" },
+  { locale: "fr", flag: "fr", label: "FR" },
 ] as const;
 
 const NAV_KEYS = [
@@ -54,7 +56,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
     label: t(n.tKey),
   }));
 
-  const pathWithoutLocale = pathname.replace(/^\/(ko|en|zh|ja|es)/, "") || "";
+  const pathWithoutLocale = pathname.replace(/^\/(ko|en|zh|ja|es|fr)/, "") || "";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "navbar-scrolled" : "glass"}`}>
