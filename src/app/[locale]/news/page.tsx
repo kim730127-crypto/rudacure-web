@@ -1,8 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
 import articlesKo from "@/data/news.json";
 import articlesEn from "@/data/news_en.json";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
+import { NewsYearFilter } from "@/components/news-year-filter";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -12,17 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t("news.description"),
   };
 }
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Clinical: "bg-teal-50 text-teal-700 border border-teal-200",
-  Science: "bg-blue-50 text-blue-700 border border-blue-200",
-  Partnership: "bg-purple-50 text-purple-700 border border-purple-200",
-  IR: "bg-amber-50 text-amber-700 border border-amber-200",
-  Award: "bg-pink-50 text-pink-700 border border-pink-200",
-  Patent: "bg-cyan-50 text-cyan-700 border border-cyan-200",
-  CSR: "bg-orange-50 text-orange-700 border border-orange-200",
-  Company: "bg-slate-100 text-slate-600 border border-slate-200",
-};
 
 /* ── Quarterly Magazines (Vol.15 = newest, Vol.1 = oldest) ── */
 const MAGAZINES = [
@@ -141,29 +130,12 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
 
       {/* News Articles */}
       <section className="px-6 pb-32 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
-        <div className="max-w-4xl mx-auto space-y-3 pt-8">
-          {(articles as { id: number; title: string; date: string; category: string }[]).map((article) => (
-            <Link
-              key={article.id}
-              href={`/${locale}/news/${article.id}`}
-              className="liquid-glass p-5 flex items-center gap-4 group transition-all block"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-1.5">
-                  <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${CATEGORY_COLORS[article.category] || "bg-gray-100 text-gray-600"}`}>
-                    {article.category}
-                  </span>
-                  <span className="text-xs text-gray-600">{article.date}</span>
-                </div>
-                <h3 className="text-[15px] font-medium text-gray-700 group-hover:text-teal-600 transition-colors truncate">
-                  {article.title}
-                </h3>
-              </div>
-              <svg className="w-4 h-4 text-gray-200 group-hover:text-teal-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          ))}
+        <div className="max-w-4xl mx-auto pt-8">
+          <NewsYearFilter
+            articles={articles as { id: number; title: string; date: string; category: string }[]}
+            locale={locale}
+            allLabel={locale === "ko" ? "전체" : "All"}
+          />
         </div>
       </section>
     </div>
