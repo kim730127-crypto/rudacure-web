@@ -1,4 +1,5 @@
 import { type Locale, toDataLocale } from "@/lib/i18n";
+import ContactForm from "./contact-form";
 
 const C = {
   ko: {
@@ -146,31 +147,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
             <div className="liquid-glass p-6">
               <h3 className="text-lg font-semibold mb-6 text-gray-900">{c.formTitle}</h3>
-              <form className="space-y-4">
-                <div>
-                  <label className="text-xs text-gray-600 block mb-1">{c.name}</label>
-                  <input type="text" className={inputCls} />
-                </div>
-                <div>
-                  <label className="text-xs text-gray-600 block mb-1">{c.email}</label>
-                  <input type="email" className={inputCls} />
-                </div>
-                <div>
-                  <label className="text-xs text-gray-600 block mb-1">{c.company}</label>
-                  <input type="text" className={inputCls} />
-                </div>
-                <div>
-                  <label className="text-xs text-gray-600 block mb-1">{c.type}</label>
-                  <select className={inputCls}>
-                    {c.typeOptions.map((opt, i) => <option key={i} value={i === 0 ? "" : opt}>{opt}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="text-xs text-gray-600 block mb-1">{c.message}</label>
-                  <textarea rows={4} className={`${inputCls} resize-none`} />
-                </div>
-                <button type="submit" className="btn-primary w-full py-3 rounded-lg font-semibold text-sm">{c.submit}</button>
-              </form>
+              <ContactForm c={c} inputCls={inputCls} />
             </div>
           </div>
         </div>
