@@ -5,7 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { submitContactForm } from './actions'
 
 interface ContactFormProps {
-  c: Record<string, string | string[]>
+  c: {
+    name: string
+    email: string
+    company: string
+    type: string
+    message: string
+    submit: string
+    typeOptions: string[]
+    [key: string]: unknown
+  }
   inputCls: string
 }
 

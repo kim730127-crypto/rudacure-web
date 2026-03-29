@@ -2,7 +2,35 @@ import { type Locale, toDataLocale } from "@/lib/i18n";
 import ContactForm from "./contact-form-v2";
 import DynamicTitle from "./dynamic-title";
 
-const C = {
+interface ContactContent {
+  tag: string;
+  title1: string;
+  title2: string;
+  description: string;
+  titleByType: Record<string, [string, string]>;
+  hq: string;
+  seoul: string;
+  phone: string;
+  hqAddr: string;
+  seoulAddr: string;
+  inquiries: string;
+  business: string;
+  ir: string;
+  cro: string;
+  formTitle: string;
+  name: string;
+  email: string;
+  company: string;
+  type: string;
+  message: string;
+  submit: string;
+  typeOptions: string[];
+  [key: string]: unknown;
+}
+
+type ContentMap = Record<string, ContactContent>;
+
+const C: ContentMap = {
   ko: {
     tag: "문의하기", title1: "함께", title2: "꿈꾸기",
     description: "인간의 기본 존엄성인 통증 없는 삶을 지키기 위해, 첨단 이온채널 기술로 인류의 미래를 만드는 회사입니다. 이 철학과 비전을 함께할 파트너, 투자사, CRO 협력기관을 찾고 있습니다.",
@@ -143,9 +171,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           {/* 2026 Blue-Green trend */}
           <p className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.tag}</p>
           <DynamicTitle
-            title1={c.title1 as string}
-            title2={c.title2 as string}
-            titleByType={c.titleByType as Record<string, [string, string]>}
+            title1={c.title1}
+            title2={c.title2}
+            titleByType={c.titleByType}
           />
           <p className="text-lg text-gray-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-16">{c.description}</p>
 
