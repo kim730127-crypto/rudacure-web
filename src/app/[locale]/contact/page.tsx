@@ -1,10 +1,18 @@
 import { type Locale, toDataLocale } from "@/lib/i18n";
 import ContactForm from "./contact-form-v2";
+import DynamicTitle from "./dynamic-title";
 
 const C = {
   ko: {
-    tag: "문의하기", title1: "Contact", title2: "Us",
-    description: "파트너십, 라이선싱, 투자, CRO 서비스에 관한 문의를 환영합니다.",
+    tag: "문의하기", title1: "함께", title2: "꿈꾸기",
+    description: "인간의 기본 존엄성인 통증 없는 삶을 지키기 위해, 첨단 이온채널 기술로 인류의 미래를 만드는 회사입니다. 이 철학과 비전을 함께할 파트너, 투자사, CRO 협력기관을 찾고 있습니다.",
+    titleByType: {
+      default: ["함께", "꿈꾸기"],
+      "파트너십 / 라이선싱": ["함께", "만드는 혁신"],
+      "투자 / IR": ["투자로", "구하는 미래"],
+      "CRO 서비스": ["치료로", "구하는 생명"],
+      "기타": ["함께", "꿈꾸기"],
+    },
     hq: "본사", seoul: "서울사무소", phone: "전화 / 팩스",
     hqAddr: "인천광역시 연수구 송도미래로 9, 1동 302호",
     seoulAddr: "서울시 금천구 가산디지털1로 145, 1001호",
@@ -14,8 +22,15 @@ const C = {
     typeOptions: ["선택하세요", "파트너십 / 라이선싱", "투자 / IR", "CRO 서비스", "기타"],
   },
   en: {
-    tag: "Get in Touch", title1: "Contact", title2: "Us",
-    description: "We welcome inquiries regarding partnerships, licensing, investment, and CRO services.",
+    tag: "Get in Touch", title1: "Shape", title2: "Tomorrow",
+    description: "Grounded in the philosophy that freedom from pain is fundamental to human dignity, we harness cutting-edge ion channel technology to restore the quality of life and shape the future of humanity. We seek partners who share this vision.",
+    titleByType: {
+      default: ["Shape", "Tomorrow"],
+      "Partnership / Licensing": ["Build", "Together"],
+      "Investment / IR": ["Invest", "in Hope"],
+      "CRO Services": ["Heal", "Lives"],
+      "Other": ["Shape", "Tomorrow"],
+    },
     hq: "Headquarters", seoul: "Seoul Office", phone: "Phone & Fax",
     hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
     seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
@@ -25,8 +40,15 @@ const C = {
     typeOptions: ["Select...", "Partnership / Licensing", "Investment / IR", "CRO Services", "Other"],
   },
   zh: {
-    tag: "联系我们", title1: "Contact", title2: "Us",
-    description: "欢迎咨询合作、许可、投资和CRO服务相关事宜。",
+    tag: "联系我们", title1: "塑造", title2: "未来",
+    description: "基于无痛是人类基本尊严的哲学，我们运用尖端离子通道技术来恢复生活质量，塑造人类的未来。我们寻找志同道合的合作伙伴、投资者和CRO机构。",
+    titleByType: {
+      default: ["塑造", "未来"],
+      "合作 / 许可": ["携手", "创新"],
+      "投资 / IR": ["投资", "希望"],
+      "CRO 服务": ["治愈", "生命"],
+      "其他": ["塑造", "未来"],
+    },
     hq: "总部", seoul: "首尔办公室", phone: "电话 / 传真",
     hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
     seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
@@ -36,8 +58,15 @@ const C = {
     typeOptions: ["请选择…", "合作 / 许可", "投资 / IR", "CRO 服务", "其他"],
   },
   ja: {
-    tag: "お問い合わせ", title1: "Contact", title2: "Us",
-    description: "パートナーシップ、ライセンシング、投資、CROサービスに関するお問い合わせを歓迎いたします。",
+    tag: "お問い合わせ", title1: "未来を", title2: "つくる",
+    description: "痛みのない生活は人間の基本的な尊厳である、という哲学に基づき、先端的なイオンチャネル技術で生活の質を取り戻し、人類の未来を創造します。このビジョンを共有するパートナーを募集しています。",
+    titleByType: {
+      default: ["未来を", "つくる"],
+      "パートナーシップ / ライセンシング": ["一緒に", "創造する"],
+      "投資 / IR": ["投資で", "希望を"],
+      "CROサービス": ["治療で", "命を"],
+      "その他": ["未来を", "つくる"],
+    },
     hq: "本社", seoul: "ソウルオフィス", phone: "電話 / FAX",
     hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
     seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
@@ -47,8 +76,15 @@ const C = {
     typeOptions: ["選択してください…", "パートナーシップ / ライセンシング", "投資 / IR", "CROサービス", "その他"],
   },
   es: {
-    tag: "Contáctenos", title1: "Contact", title2: "Us",
-    description: "Damos la bienvenida a consultas sobre alianzas, licencias, inversión y servicios CRO.",
+    tag: "Contáctenos", title1: "Moldear", title2: "el Futuro",
+    description: "Basados en la filosofía de que una vida libre del dolor es fundamental para la dignidad humana, utilizamos tecnología de canales iónicos de vanguardia para restaurar la calidad de vida y moldear el futuro de la humanidad. Buscamos socios que compartan esta visión.",
+    titleByType: {
+      default: ["Moldear", "el Futuro"],
+      "Alianza / Licencia": ["Construir", "Juntos"],
+      "Inversión / IR": ["Invertir", "en Esperanza"],
+      "Servicios CRO": ["Sanar", "Vidas"],
+      "Otro": ["Moldear", "el Futuro"],
+    },
     hq: "Sede Central", seoul: "Oficina de Seúl", phone: "Teléfono / Fax",
     hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
     seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
@@ -58,8 +94,15 @@ const C = {
     typeOptions: ["Seleccionar…", "Alianza / Licencia", "Inversión / IR", "Servicios CRO", "Otro"],
   },
   fr: {
-    tag: "Nous contacter", title1: "Contact", title2: "Us",
-    description: "Nous accueillons les demandes concernant les partenariats, les licences, l'investissement et les services CRO.",
+    tag: "Nous contacter", title1: "Façonner", title2: "l'Avenir",
+    description: "Fondés sur la philosophie que la vie sans douleur est fondamentale à la dignité humaine, nous exploitons la technologie des canaux ioniques de pointe pour restaurer la qualité de vie et façonner l'avenir de l'humanité. Nous recherchons des partenaires qui partagent cette vision.",
+    titleByType: {
+      default: ["Façonner", "l'Avenir"],
+      "Partenariat / Licence": ["Construire", "Ensemble"],
+      "Investissement / IR": ["Investir", "dans l'Espoir"],
+      "Services CRO": ["Guérir", "des Vies"],
+      "Autre": ["Façonner", "l'Avenir"],
+    },
     hq: "Siège social", seoul: "Bureau de Séoul", phone: "Téléphone / Fax",
     hqAddr: "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Bldg 1, #302, Republic of Korea",
     seoulAddr: "145 Gasan Digital 1-ro, Geumcheon-gu, Seoul, #1001, Republic of Korea",
@@ -99,9 +142,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         <div className="max-w-4xl mx-auto">
           {/* 2026 Blue-Green trend */}
           <p className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.tag}</p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900 dark:text-slate-100">
-            <em className="font-playfair italic font-semibold">{c.title1}</em> {c.title2}
-          </h1>
+          <DynamicTitle
+            title1={c.title1 as string}
+            title2={c.title2 as string}
+            titleByType={c.titleByType as Record<string, [string, string]>}
+          />
           <p className="text-lg text-gray-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-16">{c.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

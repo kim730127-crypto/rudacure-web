@@ -68,6 +68,14 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
 
+    // Emit custom event when inquiry type changes
+    if (name === 'type' && value) {
+      const event = new CustomEvent('inquiryTypeChanged', {
+        detail: { type: value }
+      })
+      window.dispatchEvent(event)
+    }
+
     // Real-time validation feedback
     if (validationErrors[name as keyof FormData]) {
       const error = validateField(name, value)
