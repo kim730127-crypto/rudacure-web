@@ -37,7 +37,7 @@ const C: ContentMap = {
     titleByType: {
       default: ["함께", "꿈꾸기"],
       "파트너십 / 라이선싱": ["함께", "만드는 혁신"],
-      "투자 / IR": ["투자로", "구하는 미래"],
+      "투자 / IR": ["투자로", "여는 미래"],
       "CRO 서비스": ["치료로", "구하는 생명"],
       "기타": ["함께", "꿈꾸기"],
     },
@@ -166,7 +166,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <div className="pt-24">
       {/* 2026 Trend: Elevated Neutral Background */}
-      <section className="py-20 px-6 bg-white dark:bg-slate-950 transition-colors duration-300">
+      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
         <div className="max-w-4xl mx-auto">
           {/* 2026 Blue-Green trend */}
           <p className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.tag}</p>
