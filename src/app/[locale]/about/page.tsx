@@ -11,11 +11,11 @@ type TimelineItem = {
 const TIMELINE: Record<string, TimelineItem[]> = {
   ko: [
     {
-      year: "2026", title: "Series B & 글로벌 확장", highlight: true,
-      description: "RCI001 FDA Phase 2 중간 결과. RuCIA 플랫폼 희귀 감각질환 확장. Pre-IPO 펀딩 및 일본/유럽 라이선싱.",
+      year: "2026", title: "임상 2상 & 글로벌 확장", highlight: true,
+      description: "RCI001 FDA Phase 2 중간 결과. RuCIA 플랫폼 희귀 감각질환 확장. 일본/유럽 라이선싱.",
       events: [
-        { month: "Q1", text: "Pre-IPO 펀딩 라운드 진행" },
-        { month: "Q2", text: "RCI001 FDA Phase 2 중간 결과 발표 예정" },
+        { month: "Q1", text: "Bio China 글로벌 파트너링" },
+        { month: "Q2", text: "IFRS 전환 및 내부통제 구축" },
       ],
     },
     {
@@ -117,11 +117,11 @@ const TIMELINE: Record<string, TimelineItem[]> = {
   ],
   en: [
     {
-      year: "2026", title: "Series B & Global Expansion", highlight: true,
-      description: "RCI001 FDA Phase 2 interim results. RuCIA platform expansion into rare sensory diseases. Pre-IPO funding and Japan/Europe licensing deals.",
+      year: "2026", title: "Phase 2 Clinical & Global Expansion", highlight: true,
+      description: "RCI001 FDA Phase 2 interim results. RuCIA platform expansion into rare sensory diseases. Japan/Europe licensing deals.",
       events: [
-        { month: "Q1", text: "Pre-IPO funding round in progress" },
-        { month: "Q2", text: "RCI001 FDA Phase 2 interim results expected" },
+        { month: "Q1", text: "BioChina global partnership" },
+        { month: "Q2", text: "IFRS conversion & internal control infrastructure" },
       ],
     },
     {
@@ -223,11 +223,11 @@ const TIMELINE: Record<string, TimelineItem[]> = {
   ],
   zh: [
     {
-      year: "2026", title: "B轮融资与全球扩张", highlight: true,
-      description: "RCI001 FDA Phase 2中期结果。RuCIA平台拓展至罕见感觉疾病。Pre-IPO融资及日本/欧洲授权合作。",
+      year: "2026", title: "二期临床与全球扩张", highlight: true,
+      description: "RCI001 FDA Phase 2中期结果。RuCIA平台拓展至罕见感觉疾病。日本/欧洲授权合作。",
       events: [
-        { month: "Q1", text: "Pre-IPO融资轮进行中" },
-        { month: "Q2", text: "RCI001 FDA Phase 2中期结果预计发布" },
+        { month: "Q1", text: "Bio China全球合作" },
+        { month: "Q2", text: "IFRS转换及内部控制构建" },
       ],
     },
     {
@@ -329,11 +329,11 @@ const TIMELINE: Record<string, TimelineItem[]> = {
   ],
   ja: [
     {
-      year: "2026", title: "シリーズB＆グローバル展開", highlight: true,
-      description: "RCI001 FDA Phase 2中間結果。RuCIAプラットフォームの希少感覚疾患への拡張。Pre-IPO資金調達および日本/欧州ライセンシング。",
+      year: "2026", title: "臨床第2相＆グローバル展開", highlight: true,
+      description: "RCI001 FDA Phase 2中間結果。RuCIAプラットフォームの希少感覚疾患への拡張。日本/欧州ライセンシング。",
       events: [
-        { month: "Q1", text: "Pre-IPO資金調達ラウンド進行中" },
-        { month: "Q2", text: "RCI001 FDA Phase 2中間結果発表予定" },
+        { month: "Q1", text: "Bio China グローバルパートナーシップ" },
+        { month: "Q2", text: "IFRS移行および内部統制構築" },
       ],
     },
     {
@@ -435,11 +435,11 @@ const TIMELINE: Record<string, TimelineItem[]> = {
   ],
   es: [
     {
-      year: "2026", title: "Serie B y Expansión Global", highlight: true,
-      description: "Resultados intermedios de RCI001 FDA Phase 2. Expansión de la plataforma RuCIA a enfermedades sensoriales raras. Financiación Pre-IPO y acuerdos de licencia en Japón/Europa.",
+      year: "2026", title: "Fase 2 Clínica y Expansión Global", highlight: true,
+      description: "Resultados intermedios de RCI001 FDA Phase 2. Expansión de la plataforma RuCIA a enfermedades sensoriales raras. Acuerdos de licencia en Japón/Europa.",
       events: [
-        { month: "Q1", text: "Ronda de financiación Pre-IPO en curso" },
-        { month: "Q2", text: "Resultados intermedios de RCI001 FDA Phase 2 esperados" },
+        { month: "Q1", text: "BioChina asociación global" },
+        { month: "Q2", text: "Conversión de IFRS y construcción de controles internos" },
       ],
     },
     {
@@ -541,11 +541,11 @@ const TIMELINE: Record<string, TimelineItem[]> = {
   ],
   fr: [
     {
-      year: "2026", title: "Série B et Expansion Mondiale", highlight: true,
-      description: "Résultats intermédiaires de RCI001 FDA Phase 2. Extension de la plateforme RuCIA aux maladies sensorielles rares. Financement Pre-IPO et accords de licence au Japon/Europe.",
+      year: "2026", title: "Phase 2 Clinique et Expansion Mondiale", highlight: true,
+      description: "Résultats intermédiaires de RCI001 FDA Phase 2. Extension de la plateforme RuCIA aux maladies sensorielles rares. Accords de licence au Japon/Europe.",
       events: [
-        { month: "Q1", text: "Tour de financement Pre-IPO en cours" },
-        { month: "Q2", text: "Résultats intermédiaires de RCI001 FDA Phase 2 attendus" },
+        { month: "Q1", text: "Partenariat mondial BioChina" },
+        { month: "Q2", text: "Conversion IFRS et mise en place des contrôles internes" },
       ],
     },
     {

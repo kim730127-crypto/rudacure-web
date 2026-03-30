@@ -59,37 +59,37 @@ const ROADMAP: Record<IRLocale, { quarter: string; title: string; status: string
   ko: [
     { quarter: "Q1 2026", title: "IPO 주관사 선정 및 본격 IPO 돌입", status: "active" },
     { quarter: "Q2 2026", title: "RCI001 국내 임상 2상 진입", status: "upcoming" },
-    { quarter: "Q3 2026", title: "RCI002 ODD 지정 / 시리즈 투자 진행", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 ODD 지정", status: "upcoming" },
     { quarter: "Q4 2026", title: "RCI002 글로벌 라이선싱", status: "upcoming" },
   ],
   en: [
     { quarter: "Q1 2026", title: "IPO Underwriter Selection & Full-Scale IPO Launch", status: "active" },
     { quarter: "Q2 2026", title: "RCI001 Korea Phase 2 Clinical Trial Entry", status: "upcoming" },
-    { quarter: "Q3 2026", title: "RCI002 ODD Designation / Series Investment", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 ODD Designation", status: "upcoming" },
     { quarter: "Q4 2026", title: "RCI002 Global Licensing", status: "upcoming" },
   ],
   zh: [
     { quarter: "Q1 2026", title: "IPO承销商选定及全面启动IPO", status: "active" },
     { quarter: "Q2 2026", title: "RCI001韩国二期临床试验启动", status: "upcoming" },
-    { quarter: "Q3 2026", title: "RCI002 ODD认定 / 系列融资", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 ODD认定", status: "upcoming" },
     { quarter: "Q4 2026", title: "RCI002全球授权许可", status: "upcoming" },
   ],
   ja: [
     { quarter: "Q1 2026", title: "IPO主幹事選定及び本格IPO開始", status: "active" },
     { quarter: "Q2 2026", title: "RCI001韓国第2相臨床試験開始", status: "upcoming" },
-    { quarter: "Q3 2026", title: "RCI002 ODD指定 / シリーズ投資", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 ODD指定", status: "upcoming" },
     { quarter: "Q4 2026", title: "RCI002グローバルライセンシング", status: "upcoming" },
   ],
   es: [
     { quarter: "Q1 2026", title: "Seleccion de Suscriptor de IPO y Lanzamiento Completo", status: "active" },
     { quarter: "Q2 2026", title: "RCI001 Entrada a Fase 2 en Corea", status: "upcoming" },
-    { quarter: "Q3 2026", title: "RCI002 Designacion ODD / Inversion en Serie", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 Designacion ODD", status: "upcoming" },
     { quarter: "Q4 2026", title: "RCI002 Licenciamiento Global", status: "upcoming" },
   ],
   fr: [
     { quarter: "Q1 2026", title: "Selection du Souscripteur IPO et Lancement Complet", status: "active" },
     { quarter: "Q2 2026", title: "RCI001 Entree en Phase 2 en Coree", status: "upcoming" },
-    { quarter: "Q3 2026", title: "RCI002 Designation ODD / Investissement en Serie", status: "upcoming" },
+    { quarter: "Q3 2026", title: "RCI002 Designation ODD", status: "upcoming" },
     { quarter: "Q4 2026", title: "RCI002 Licence Mondiale", status: "upcoming" },
   ],
 };

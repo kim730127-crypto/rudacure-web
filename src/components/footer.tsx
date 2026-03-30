@@ -27,10 +27,23 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
             <p className="text-sm text-gray-500 leading-relaxed max-w-md mb-6">
               {t("footer.description")}
             </p>
-            <div className="space-y-1">
-              <p className="text-xs text-gray-400">
-                {locale === "ko" ? "인천광역시 연수구 송도미래로 9, 1동 302호" : "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Korea"}
-              </p>
+            <div className="space-y-2">
+              <div>
+                <p className="text-xs font-semibold text-gray-300 mb-1">
+                  {locale === "ko" ? "본사" : "Headquarters"}
+                </p>
+                <p className="text-xs text-gray-400">
+                  {locale === "ko" ? "인천광역시 연수구 송도미래로 9, 1동 302호" : "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Korea"}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-gray-300 mb-1">
+                  {locale === "ko" ? "서울사무소" : "Seoul Office"}
+                </p>
+                <p className="text-xs text-gray-400">
+                  {locale === "ko" ? "서울시 금천구 가산디지털1로 145, 1001호" : "1001, 145 Gasandigital 1-ro, Geumcheon-gu, Seoul, Korea"}
+                </p>
+              </div>
               <p className="text-xs text-gray-400">Tel: 032-724-9070 | Fax: 032-724-9071</p>
               <p className="text-xs text-gray-400">sh.kim@rudacure.com</p>
             </div>
