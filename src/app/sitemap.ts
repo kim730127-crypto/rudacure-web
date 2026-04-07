@@ -11,6 +11,7 @@ const ROUTES: {
   { path: "", priority: 1.0, changeFrequency: "weekly" },
   { path: "/science", priority: 0.9, changeFrequency: "monthly" },
   { path: "/pipeline", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/cro", priority: 0.9, changeFrequency: "monthly" },
   { path: "/ir", priority: 0.95, changeFrequency: "weekly" },
   { path: "/news", priority: 0.85, changeFrequency: "weekly" },
   { path: "/publications", priority: 0.8, changeFrequency: "monthly" },

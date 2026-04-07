@@ -7,7 +7,13 @@ import type { Locale } from "@/lib/i18n";
 import { getTranslations } from "@/lib/i18n";
 
 /* ── Flag icons as image files (works on all platforms) ── */
-function Flag({ code, className = "w-5 h-3.5" }: { code: string; className?: string }) {
+function Flag({
+  code,
+  className = "w-5 h-3.5",
+}: {
+  code: string;
+  className?: string;
+}) {
   const src: Record<string, string> = {
     kr: "/images/flag-kr.svg",
     us: "/images/flag-us.svg",
@@ -16,7 +22,9 @@ function Flag({ code, className = "w-5 h-3.5" }: { code: string; className?: str
     es: "/images/flag-es.svg",
     fr: "/images/flag-fr.svg",
   };
-  return <img src={src[code] || ""} alt={code.toUpperCase()} className={className} />;
+  return (
+    <img src={src[code] || ""} alt={code.toUpperCase()} className={className} />
+  );
 }
 
 const LANG_OPTIONS = [
@@ -31,6 +39,7 @@ const LANG_OPTIONS = [
 const NAV_KEYS = [
   { key: "science", tKey: "nav.science" as const },
   { key: "pipeline", tKey: "nav.pipeline" as const },
+  { key: "cro", tKey: "nav.cro" as const },
   { key: "ir", tKey: "nav.ir" as const },
   { key: "news", tKey: "nav.news" as const },
   { key: "publications", tKey: "nav.publications" as const },
@@ -57,10 +66,13 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
     label: t(n.tKey),
   }));
 
-  const pathWithoutLocale = pathname.replace(/^\/(ko|en|zh|ja|es|fr)/, "") || "";
+  const pathWithoutLocale =
+    pathname.replace(/^\/(ko|en|zh|ja|es|fr)/, "") || "";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "navbar-scrolled" : "glass"}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "navbar-scrolled" : "glass"}`}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-[72px] flex items-center justify-between">
         <Link href={`/${locale}`} className="flex items-center group">
           <Image
@@ -98,18 +110,44 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
             onClick={() => setLangOpen(!langOpen)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
           >
-            <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9 9 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            <svg
+              className="w-3.5 h-3.5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9 9 0 013 12c0-1.605.42-3.113 1.157-4.418"
+              />
             </svg>
-            <Flag code={LANG_OPTIONS.find(l => l.locale === locale)?.flag || "us"} className="w-4 h-3 rounded-[2px] overflow-hidden shadow-sm" />
-            {LANG_OPTIONS.find(l => l.locale === locale)?.label || "EN"}
-            <svg className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            <Flag
+              code={LANG_OPTIONS.find((l) => l.locale === locale)?.flag || "us"}
+              className="w-4 h-3 rounded-[2px] overflow-hidden shadow-sm"
+            />
+            {LANG_OPTIONS.find((l) => l.locale === locale)?.label || "EN"}
+            <svg
+              className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
             </svg>
           </button>
           {langOpen && (
             <>
-              <div className="fixed inset-0 z-40" onClick={() => setLangOpen(false)} />
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setLangOpen(false)}
+              />
               <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50 min-w-[120px]">
                 {LANG_OPTIONS.map((lang) => (
                   <Link
@@ -122,7 +160,10 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                     }`}
                     onClick={() => setLangOpen(false)}
                   >
-                    <Flag code={lang.flag} className="w-4 h-3 rounded-[2px] overflow-hidden shadow-sm" />
+                    <Flag
+                      code={lang.flag}
+                      className="w-4 h-3 rounded-[2px] overflow-hidden shadow-sm"
+                    />
                     {lang.label}
                   </Link>
                 ))}
@@ -135,7 +176,14 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
           className="md:hidden text-gray-600 hover:text-gray-900 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             {mobileOpen ? (
               <path d="M6 6l12 12M6 18L18 6" />
             ) : (
@@ -152,7 +200,9 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
               key={link.href}
               href={link.href}
               className={`block text-sm font-medium py-2.5 px-3 rounded-lg transition-colors ${
-                pathname.startsWith(link.href) ? "text-teal-700 bg-teal-50" : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                pathname.startsWith(link.href)
+                  ? "text-teal-700 bg-teal-50"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
               }`}
               onClick={() => setMobileOpen(false)}
             >
@@ -167,7 +217,8 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                 className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === lang.locale ? "bg-teal-50 text-teal-700" : "text-gray-600"}`}
                 onClick={() => setMobileOpen(false)}
               >
-                <Flag code={lang.flag} className="w-4 h-3 rounded-[2px]" /> {lang.label}
+                <Flag code={lang.flag} className="w-4 h-3 rounded-[2px]" />{" "}
+                {lang.label}
               </Link>
             ))}
           </div>

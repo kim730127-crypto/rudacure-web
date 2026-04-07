@@ -19,6 +19,7 @@ const translations = {
     // Nav
     "nav.science": "Science",
     "nav.pipeline": "Pipeline",
+    "nav.cro": "CRO",
     "nav.ir": "IR",
     "nav.news": "News Center",
     "nav.publications": "Publications",
@@ -57,7 +58,8 @@ const translations = {
     // CTA
     "cta.title1": "Partner with",
     "cta.title2": "RudaCure",
-    "cta.description": "글로벌 제약사와의 라이선싱, 공동연구, 투자에 관심이 있으시면 연락해 주세요.",
+    "cta.description":
+      "글로벌 제약사와의 라이선싱, 공동연구, 투자에 관심이 있으시면 연락해 주세요.",
     "cta.button": "Get in Touch",
 
     // Home – Partners section
@@ -97,14 +99,16 @@ const translations = {
     "news.tag": "Press & Media",
     "news.title1": "News",
     "news.title2": "Center",
-    "news.description": "루다큐어의 최신 소식과 보도자료를 확인하실 수 있습니다.",
+    "news.description":
+      "루다큐어의 최신 소식과 보도자료를 확인하실 수 있습니다.",
     "news.back": "목록으로 돌아가기",
 
     // Contact
     "contact.tag": "Get in Touch",
     "contact.title1": "Contact",
     "contact.title2": "Us",
-    "contact.description": "파트너십, 라이선싱, 투자, CRO 서비스에 관한 문의를 환영합니다.",
+    "contact.description":
+      "파트너십, 라이선싱, 투자, CRO 서비스에 관한 문의를 환영합니다.",
     "contact.form.name": "이름",
     "contact.form.email": "이메일",
     "contact.form.company": "회사",
@@ -121,6 +125,7 @@ const translations = {
     // Nav
     "nav.science": "Science",
     "nav.pipeline": "Pipeline",
+    "nav.cro": "CRO",
     "nav.ir": "IR",
     "nav.news": "News Center",
     "nav.publications": "Publications",
@@ -200,7 +205,8 @@ const translations = {
     "news.tag": "Press & Media",
     "news.title1": "News",
     "news.title2": "Center",
-    "news.description": "Stay updated with the latest press releases and news from RudaCure.",
+    "news.description":
+      "Stay updated with the latest press releases and news from RudaCure.",
     "news.back": "Back to List",
 
     // Contact
@@ -224,6 +230,7 @@ const translations = {
   zh: {
     "nav.science": "Science",
     "nav.pipeline": "Pipeline",
+    "nav.cro": "CRO",
     "nav.ir": "IR",
     "nav.news": "新闻中心",
     "nav.publications": "专利/论文",
@@ -233,13 +240,15 @@ const translations = {
     "hero.tagline": "2026 战略愿景",
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
-    "hero.description": "基于RuCIA平台的AI分子设计预测离子通道选择性，开发非阿片类镇痛药物。与传统新药开发相比，开发周期缩短70%，靶点选择性达100%。",
+    "hero.description":
+      "基于RuCIA平台的AI分子设计预测离子通道选择性，开发非阿片类镇痛药物。与传统新药开发相比，开发周期缩短70%，靶点选择性达100%。",
     "hero.cta.pipeline": "探索管线",
     "hero.cta.science": "核心技术",
     "rucia.tag": "核心技术",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
-    "rucia.description": "基于电生理学的离子通道活性测量技术开发细胞膜靶向药物。通过膜片钳和高通量电生理学验证，发现TRPV1等离子通道的选择性调节剂，以实际数据验证非阿片类镇痛药和感觉疾病治疗药物的疗效与安全性。",
+    "rucia.description":
+      "基于电生理学的离子通道活性测量技术开发细胞膜靶向药物。通过膜片钳和高通量电生理学验证，发现TRPV1等离子通道的选择性调节剂，以实际数据验证非阿片类镇痛药和感觉疾病治疗药物的疗效与安全性。",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "膜片钳高通量验证",
     "rucia.metric.selectivity": "Membrane Target",
@@ -269,16 +278,19 @@ const translations = {
     "about.tag": "公司介绍",
     "about.title1": "Our",
     "about.title2": "Journey",
-    "about.description": "从2018年的离子通道专业实验室出发，到2026年成长为基于AI的全球生物科技公司——RudaCure的历程。",
+    "about.description":
+      "从2018年的离子通道专业实验室出发，到2026年成长为基于AI的全球生物科技公司——RudaCure的历程。",
     "science.tag": "技术平台",
     "science.title1": "The",
     "science.title2": "RuCIA",
     "science.title3": "Platform",
-    "science.description": "Rudacure Ion Channel Innovative Assessment — 整合AI分子预测与高通量电生理学验证的离子通道新药开发核心引擎。",
+    "science.description":
+      "Rudacure Ion Channel Innovative Assessment — 整合AI分子预测与高通量电生理学验证的离子通道新药开发核心引擎。",
     "pipeline.page.tag": "药物开发",
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
-    "pipeline.page.description": "离子通道靶向非阿片类治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验。",
+    "pipeline.page.description":
+      "离子通道靶向非阿片类治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验。",
     "news.tag": "新闻媒体",
     "news.title1": "News",
     "news.title2": "Center",
@@ -294,12 +306,14 @@ const translations = {
     "contact.form.type": "咨询类型",
     "contact.form.message": "留言",
     "contact.form.submit": "发送",
-    "footer.description": "基于AI的离子通道新药开发平台，开发非阿片类疼痛/感觉疾病治疗药物。",
+    "footer.description":
+      "基于AI的离子通道新药开发平台，开发非阿片类疼痛/感觉疾病治疗药物。",
   },
 
   ja: {
     "nav.science": "Science",
     "nav.pipeline": "Pipeline",
+    "nav.cro": "CRO",
     "nav.ir": "IR",
     "nav.news": "ニュースセンター",
     "nav.publications": "特許/論文",
@@ -309,13 +323,15 @@ const translations = {
     "hero.tagline": "2026 戦略ビジョン",
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
-    "hero.description": "RuCIAプラットフォームベースのAI分子設計によりイオンチャネル選択性を予測し、非オピオイド系鎮痛薬を開発しています。従来の新薬開発と比較して開発期間を70%短縮、ターゲット選択性100%を実現します。",
+    "hero.description":
+      "RuCIAプラットフォームベースのAI分子設計によりイオンチャネル選択性を予測し、非オピオイド系鎮痛薬を開発しています。従来の新薬開発と比較して開発期間を70%短縮、ターゲット選択性100%を実現します。",
     "hero.cta.pipeline": "パイプライン",
     "hero.cta.science": "コア技術",
     "rucia.tag": "コアテクノロジー",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
-    "rucia.description": "電気生理学ベースのイオンチャネル活性測定技術で細胞膜ターゲット薬物を開発しています。パッチクランプとハイスループット電気生理学検証を通じてTRPV1等のイオンチャネル選択的モジュレーターを発掘し、非オピオイド系鎮痛薬・感覚疾患治療薬の有効性と安全性を実データで検証します。",
+    "rucia.description":
+      "電気生理学ベースのイオンチャネル活性測定技術で細胞膜ターゲット薬物を開発しています。パッチクランプとハイスループット電気生理学検証を通じてTRPV1等のイオンチャネル選択的モジュレーターを発掘し、非オピオイド系鎮痛薬・感覚疾患治療薬の有効性と安全性を実データで検証します。",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "パッチクランプHT検証",
     "rucia.metric.selectivity": "Membrane Target",
@@ -328,7 +344,8 @@ const translations = {
     "pipeline.view_news": "パイプライン詳細 →",
     "cta.title1": "Partner with",
     "cta.title2": "RudaCure",
-    "cta.description": "グローバルライセンシング、共同研究、投資に関するお問い合わせを歓迎いたします。",
+    "cta.description":
+      "グローバルライセンシング、共同研究、投資に関するお問い合わせを歓迎いたします。",
     "cta.button": "お問い合わせ",
 
     // Home – Partners section
@@ -345,37 +362,44 @@ const translations = {
     "about.tag": "会社概要",
     "about.title1": "Our",
     "about.title2": "Journey",
-    "about.description": "2018年のイオンチャネル専門研究室から、2026年にAIベースのグローバルバイオテック企業へ成長するRudaCureの歩み。",
+    "about.description":
+      "2018年のイオンチャネル専門研究室から、2026年にAIベースのグローバルバイオテック企業へ成長するRudaCureの歩み。",
     "science.tag": "技術プラットフォーム",
     "science.title1": "The",
     "science.title2": "RuCIA",
     "science.title3": "Platform",
-    "science.description": "Rudacure Ion Channel Innovative Assessment — AI駆動の分子予測とハイスループット電気生理学検証を統合したイオンチャネル新薬開発のコアエンジン。",
+    "science.description":
+      "Rudacure Ion Channel Innovative Assessment — AI駆動の分子予測とハイスループット電気生理学検証を統合したイオンチャネル新薬開発のコアエンジン。",
     "pipeline.page.tag": "医薬品開発",
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
-    "pipeline.page.description": "イオンチャネル標的非オピオイド治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
+    "pipeline.page.description":
+      "イオンチャネル標的非オピオイド治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
     "news.tag": "プレス＆メディア",
     "news.title1": "News",
     "news.title2": "Center",
-    "news.description": "RudaCureの最新ニュースとプレスリリースをご覧ください。",
+    "news.description":
+      "RudaCureの最新ニュースとプレスリリースをご覧ください。",
     "news.back": "一覧に戻る",
     "contact.tag": "お問い合わせ",
     "contact.title1": "Contact",
     "contact.title2": "Us",
-    "contact.description": "パートナーシップ、ライセンシング、投資、CROサービスに関するお問い合わせを歓迎いたします。",
+    "contact.description":
+      "パートナーシップ、ライセンシング、投資、CROサービスに関するお問い合わせを歓迎いたします。",
     "contact.form.name": "お名前",
     "contact.form.email": "メールアドレス",
     "contact.form.company": "会社名",
     "contact.form.type": "お問い合わせ種別",
     "contact.form.message": "メッセージ",
     "contact.form.submit": "送信",
-    "footer.description": "AI駆動のイオンチャネル新薬開発プラットフォームで、非オピオイド系疼痛・感覚疾患治療薬を開発しています。",
+    "footer.description":
+      "AI駆動のイオンチャネル新薬開発プラットフォームで、非オピオイド系疼痛・感覚疾患治療薬を開発しています。",
   },
 
   es: {
     "nav.science": "Ciencia",
     "nav.pipeline": "Pipeline",
+    "nav.cro": "CRO",
     "nav.ir": "IR",
     "nav.news": "Noticias",
     "nav.publications": "Publicaciones",
@@ -385,13 +409,15 @@ const translations = {
     "hero.tagline": "Visión Estratégica 2026",
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
-    "hero.description": "Nuestra plataforma RuCIA utiliza diseño molecular con IA para predecir la selectividad de canales iónicos, desarrollando analgésicos no opioides. Reducción del 70% en tiempo de desarrollo con 100% de selectividad sobre el objetivo.",
+    "hero.description":
+      "Nuestra plataforma RuCIA utiliza diseño molecular con IA para predecir la selectividad de canales iónicos, desarrollando analgésicos no opioides. Reducción del 70% en tiempo de desarrollo con 100% de selectividad sobre el objetivo.",
     "hero.cta.pipeline": "Ver Pipeline",
     "hero.cta.science": "Nuestra Ciencia",
     "rucia.tag": "Tecnología Central",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
-    "rucia.description": "Desarrollamos fármacos dirigidos a la membrana celular utilizando tecnología de medición de actividad de canales iónicos basada en electrofisiología. A través de patch clamp y validación electrofisiológica de alto rendimiento, descubrimos moduladores selectivos de canales iónicos como TRPV1, verificando la eficacia y seguridad con datos reales.",
+    "rucia.description":
+      "Desarrollamos fármacos dirigidos a la membrana celular utilizando tecnología de medición de actividad de canales iónicos basada en electrofisiología. A través de patch clamp y validación electrofisiológica de alto rendimiento, descubrimos moduladores selectivos de canales iónicos como TRPV1, verificando la eficacia y seguridad con datos reales.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Validación HT Patch Clamp",
     "rucia.metric.selectivity": "Membrane Target",
@@ -404,42 +430,50 @@ const translations = {
     "pipeline.view_news": "Detalles del Pipeline →",
     "cta.title1": "Partner with",
     "cta.title2": "RudaCure",
-    "cta.description": "Damos la bienvenida a consultas sobre licencias globales, investigación colaborativa y oportunidades de inversión.",
+    "cta.description":
+      "Damos la bienvenida a consultas sobre licencias globales, investigación colaborativa y oportunidades de inversión.",
     "cta.button": "Contáctenos",
     "about.tag": "Empresa",
     "about.title1": "Our",
     "about.title2": "Journey",
-    "about.description": "Desde un laboratorio especializado en canales iónicos en 2018 hasta una empresa biotecnológica global impulsada por IA en 2026 — la historia de RudaCure.",
+    "about.description":
+      "Desde un laboratorio especializado en canales iónicos en 2018 hasta una empresa biotecnológica global impulsada por IA en 2026 — la historia de RudaCure.",
     "science.tag": "Plataforma Tecnológica",
     "science.title1": "The",
     "science.title2": "RuCIA",
     "science.title3": "Platform",
-    "science.description": "Rudacure Ion Channel Innovative Assessment — el motor central que integra predicción molecular impulsada por IA con validación electrofisiológica de alto rendimiento.",
+    "science.description":
+      "Rudacure Ion Channel Innovative Assessment — el motor central que integra predicción molecular impulsada por IA con validación electrofisiológica de alto rendimiento.",
     "pipeline.page.tag": "Desarrollo de Fármacos",
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
-    "pipeline.page.description": "Pipeline terapéutico no opioide dirigido a canales iónicos. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
+    "pipeline.page.description":
+      "Pipeline terapéutico no opioide dirigido a canales iónicos. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
     "news.tag": "Prensa y Medios",
     "news.title1": "News",
     "news.title2": "Center",
-    "news.description": "Manténgase actualizado con las últimas noticias y comunicados de prensa de RudaCure.",
+    "news.description":
+      "Manténgase actualizado con las últimas noticias y comunicados de prensa de RudaCure.",
     "news.back": "Volver a la lista",
     "contact.tag": "Contáctenos",
     "contact.title1": "Contact",
     "contact.title2": "Us",
-    "contact.description": "Damos la bienvenida a consultas sobre alianzas, licencias, inversión y servicios CRO.",
+    "contact.description":
+      "Damos la bienvenida a consultas sobre alianzas, licencias, inversión y servicios CRO.",
     "contact.form.name": "Nombre",
     "contact.form.email": "Correo electrónico",
     "contact.form.company": "Empresa",
     "contact.form.type": "Tipo de consulta",
     "contact.form.message": "Mensaje",
     "contact.form.submit": "Enviar",
-    "footer.description": "Plataforma de descubrimiento de fármacos basada en IA para canales iónicos, desarrollando terapias no opioides para dolor y enfermedades sensoriales.",
+    "footer.description":
+      "Plataforma de descubrimiento de fármacos basada en IA para canales iónicos, desarrollando terapias no opioides para dolor y enfermedades sensoriales.",
   },
 
   fr: {
     "nav.science": "Science",
     "nav.pipeline": "Pipeline",
+    "nav.cro": "CRO",
     "nav.ir": "IR",
     "nav.news": "Actualités",
     "nav.publications": "Publications",
@@ -449,13 +483,15 @@ const translations = {
     "hero.tagline": "Vision Stratégique 2026",
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
-    "hero.description": "Notre plateforme RuCIA utilise la conception moléculaire par IA pour prédire la sélectivité des canaux ioniques, développant des analgésiques non opioïdes. Réduction de 70 % du temps de développement avec une sélectivité cible de 100 %.",
+    "hero.description":
+      "Notre plateforme RuCIA utilise la conception moléculaire par IA pour prédire la sélectivité des canaux ioniques, développant des analgésiques non opioïdes. Réduction de 70 % du temps de développement avec une sélectivité cible de 100 %.",
     "hero.cta.pipeline": "Voir le Pipeline",
     "hero.cta.science": "Notre Science",
     "rucia.tag": "Technologie Clé",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
-    "rucia.description": "Nous développons des médicaments ciblant la membrane cellulaire grâce à la technologie de mesure d'activité des canaux ioniques basée sur l'électrophysiologie. Par le patch clamp et la validation électrophysiologique à haut débit, nous découvrons des modulateurs sélectifs des canaux ioniques tels que TRPV1, vérifiant l'efficacité et la sécurité avec des données réelles.",
+    "rucia.description":
+      "Nous développons des médicaments ciblant la membrane cellulaire grâce à la technologie de mesure d'activité des canaux ioniques basée sur l'électrophysiologie. Par le patch clamp et la validation électrophysiologique à haut débit, nous découvrons des modulateurs sélectifs des canaux ioniques tels que TRPV1, vérifiant l'efficacité et la sécurité avec des données réelles.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Validation HT Patch Clamp",
     "rucia.metric.selectivity": "Membrane Target",
@@ -468,37 +504,44 @@ const translations = {
     "pipeline.view_news": "Détails du Pipeline →",
     "cta.title1": "Partner with",
     "cta.title2": "RudaCure",
-    "cta.description": "Nous accueillons les demandes concernant les licences mondiales, la recherche collaborative et les opportunités d'investissement.",
+    "cta.description":
+      "Nous accueillons les demandes concernant les licences mondiales, la recherche collaborative et les opportunités d'investissement.",
     "cta.button": "Nous Contacter",
     "about.tag": "Entreprise",
     "about.title1": "Our",
     "about.title2": "Journey",
-    "about.description": "D'un laboratoire spécialisé en canaux ioniques en 2018 à une entreprise biotech mondiale propulsée par l'IA en 2026 — l'histoire de RudaCure.",
+    "about.description":
+      "D'un laboratoire spécialisé en canaux ioniques en 2018 à une entreprise biotech mondiale propulsée par l'IA en 2026 — l'histoire de RudaCure.",
     "science.tag": "Plateforme Technologique",
     "science.title1": "The",
     "science.title2": "RuCIA",
     "science.title3": "Platform",
-    "science.description": "Rudacure Ion Channel Innovative Assessment — le moteur central intégrant la prédiction moléculaire par IA avec la validation électrophysiologique à haut débit.",
+    "science.description":
+      "Rudacure Ion Channel Innovative Assessment — le moteur central intégrant la prédiction moléculaire par IA avec la validation électrophysiologique à haut débit.",
     "pipeline.page.tag": "Développement de Médicaments",
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
-    "pipeline.page.description": "Pipeline thérapeutique non opioïde ciblant les canaux ioniques. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
+    "pipeline.page.description":
+      "Pipeline thérapeutique non opioïde ciblant les canaux ioniques. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
     "news.tag": "Presse et Médias",
     "news.title1": "News",
     "news.title2": "Center",
-    "news.description": "Restez informé des dernières actualités et communiqués de presse de RudaCure.",
+    "news.description":
+      "Restez informé des dernières actualités et communiqués de presse de RudaCure.",
     "news.back": "Retour à la liste",
     "contact.tag": "Nous Contacter",
     "contact.title1": "Contact",
     "contact.title2": "Us",
-    "contact.description": "Nous accueillons les demandes concernant les partenariats, les licences, l'investissement et les services CRO.",
+    "contact.description":
+      "Nous accueillons les demandes concernant les partenariats, les licences, l'investissement et les services CRO.",
     "contact.form.name": "Nom",
     "contact.form.email": "E-mail",
     "contact.form.company": "Entreprise",
     "contact.form.type": "Type de demande",
     "contact.form.message": "Message",
     "contact.form.submit": "Envoyer",
-    "footer.description": "Plateforme de découverte de médicaments par IA ciblant les canaux ioniques, développant des thérapies non opioïdes pour la douleur et les maladies sensorielles.",
+    "footer.description":
+      "Plateforme de découverte de médicaments par IA ciblant les canaux ioniques, développant des thérapies non opioïdes pour la douleur et les maladies sensorielles.",
   },
 } as const;
 
@@ -506,7 +549,12 @@ type TranslationKey = keyof (typeof translations)["ko"];
 
 export function t(locale: Locale, key: TranslationKey): string {
   const dict = translations[locale] as Record<string, string>;
-  return dict?.[key] ?? (translations.en as Record<string, string>)[key] ?? translations.ko[key] ?? key;
+  return (
+    dict?.[key] ??
+    (translations.en as Record<string, string>)[key] ??
+    translations.ko[key] ??
+    key
+  );
 }
 
 export function getTranslations(locale: Locale) {
