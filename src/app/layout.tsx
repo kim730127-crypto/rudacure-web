@@ -100,7 +100,8 @@ export const metadata: Metadata = {
       "1b4XIWnmwkjWaNO9LyTxrIA2UScNwJD3st5zpFBMtwQ",
     other: {
       "naver-site-verification":
-        process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION ?? "",
+        process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION ??
+        "e559a9a7005bcad977e79eb5361b777adfeadde4",
       "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ?? "",
       "baidu-site-verification":
         process.env.NEXT_PUBLIC_BAIDU_SITE_VERIFICATION ?? "",
