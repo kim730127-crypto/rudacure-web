@@ -811,8 +811,6 @@ const STAGES: Record<string, string[]> = {
   ],
 };
 
-const SITE_URL = "https://www.rudacure.com";
-
 export default async function PipelinePage({
   params,
 }: {
@@ -826,63 +824,8 @@ export default async function PipelinePage({
   const pipeline = PIPELINE[locale] || PIPELINE.en;
   const stages = STAGES[locale] || STAGES.en;
 
-  // Always use English data for structured data (Google indexes EN best)
-  // Use MedicalTrial/ResearchProject instead of Drug to avoid
-  // Google "Product snippet" validation (which requires offers/review/rating)
-  const pipelineEn = PIPELINE.en;
-
-  const drugListJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "RudaCure Therapeutic Pipeline",
-    description:
-      "Ion channel-targeted non-opioid therapeutic pipeline developed by RudaCure using the RuCIA AI drug discovery platform",
-    url: `${SITE_URL}/en/pipeline`,
-    numberOfItems: pipelineEn.length,
-    itemListElement: pipelineEn.map((drug, idx) => ({
-      "@type": "ListItem",
-      position: idx + 1,
-      item: {
-        "@type": "MedicalTrial",
-        "@id": `${SITE_URL}/en/pipeline#${drug.name.toLowerCase()}`,
-        url: `${SITE_URL}/en/pipeline`,
-        name: `${drug.name} — ${drug.indication}`,
-        alternateName: drug.name,
-        description: drug.mechanism,
-        trialDesign: "https://schema.org/InternationalTrial",
-        status: drug.status.toLowerCase().includes("phase 2")
-          ? "https://schema.org/ActiveNotRecruiting"
-          : "https://schema.org/NotYetRecruiting",
-        phase: drug.status,
-        sponsor: {
-          "@type": "Organization",
-          name: "RudaCure Co., Ltd.",
-          url: SITE_URL,
-        },
-        healthCondition: {
-          "@type": "MedicalCondition",
-          name: drug.indication,
-        },
-        studySubject: {
-          "@type": "MedicalEntity",
-          name: drug.name,
-          description: drug.target,
-        },
-        recognizingAuthority: {
-          "@type": "Organization",
-          name: "U.S. Food and Drug Administration",
-          url: "https://www.fda.gov",
-        },
-      },
-    })),
-  };
-
   return (
     <div className="pt-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(drugListJsonLd) }}
-      />
       {/* Header */}
       <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
