@@ -828,6 +828,17 @@ export default async function PipelinePage({
 
   // Always use English data for structured data (Google indexes EN best)
   const pipelineEn = PIPELINE.en;
+
+  // Map internal status strings to schema.org MedicalStudyStatus enum values
+  const toSchemaStatus = (status: string): string => {
+    const s = status.toLowerCase();
+    if (s.includes("phase 2") || s.includes("phase 1"))
+      return "ActiveNotRecruiting";
+    if (s.includes("recruiting")) return "Recruiting";
+    if (s.includes("completed")) return "Completed";
+    return "NotYetRecruiting";
+  };
+
   const drugListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -839,23 +850,37 @@ export default async function PipelinePage({
       position: idx + 1,
       item: {
         "@type": "Drug",
+        "@id": `${SITE_URL}/en/pipeline#${drug.name.toLowerCase()}`,
+        url: `${SITE_URL}/en/pipeline`,
         name: drug.name,
         alternateName: drug.name,
         description: drug.mechanism,
         clinicalPharmacology: drug.target,
-        drugClass: "Non-opioid therapeutic",
+        drugClass: "Non-opioid ion channel therapeutic",
+        // Required by Google for Drug rich results
+        prescriptionStatus: "https://schema.org/PrescriptionOnly",
+        legalStatus: "Investigational",
+        nonProprietaryName: drug.name,
+        activeIngredient: drug.target,
         manufacturer: {
           "@type": "Organization",
           name: "RudaCure Co., Ltd.",
           url: SITE_URL,
         },
         clinicalTrial: {
-          "@type": "MedicalStudy",
-          status: drug.status,
+          "@type": "MedicalTrial",
+          trialDesign: "https://schema.org/InternationalTrial",
+          status: toSchemaStatus(drug.status),
+          description: drug.status,
         },
         indication: {
           "@type": "MedicalIndication",
           name: drug.indication,
+        },
+        recognizingAuthority: {
+          "@type": "Organization",
+          name: "U.S. Food and Drug Administration",
+          url: "https://www.fda.gov",
         },
       },
     })),
