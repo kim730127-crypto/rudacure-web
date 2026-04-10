@@ -827,55 +827,46 @@ export default async function PipelinePage({
   const stages = STAGES[locale] || STAGES.en;
 
   // Always use English data for structured data (Google indexes EN best)
+  // Use MedicalTrial/ResearchProject instead of Drug to avoid
+  // Google "Product snippet" validation (which requires offers/review/rating)
   const pipelineEn = PIPELINE.en;
-
-  // Map internal status strings to schema.org MedicalStudyStatus enum values
-  const toSchemaStatus = (status: string): string => {
-    const s = status.toLowerCase();
-    if (s.includes("phase 2") || s.includes("phase 1"))
-      return "ActiveNotRecruiting";
-    if (s.includes("recruiting")) return "Recruiting";
-    if (s.includes("completed")) return "Completed";
-    return "NotYetRecruiting";
-  };
 
   const drugListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "RudaCure Therapeutic Pipeline",
     description:
-      "Ion channel-targeted non-opioid therapeutic pipeline developed by RudaCure",
+      "Ion channel-targeted non-opioid therapeutic pipeline developed by RudaCure using the RuCIA AI drug discovery platform",
+    url: `${SITE_URL}/en/pipeline`,
+    numberOfItems: pipelineEn.length,
     itemListElement: pipelineEn.map((drug, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
       item: {
-        "@type": "Drug",
+        "@type": "MedicalTrial",
         "@id": `${SITE_URL}/en/pipeline#${drug.name.toLowerCase()}`,
         url: `${SITE_URL}/en/pipeline`,
-        name: drug.name,
+        name: `${drug.name} — ${drug.indication}`,
         alternateName: drug.name,
         description: drug.mechanism,
-        clinicalPharmacology: drug.target,
-        drugClass: "Non-opioid ion channel therapeutic",
-        // Required by Google for Drug rich results
-        prescriptionStatus: "https://schema.org/PrescriptionOnly",
-        legalStatus: "Investigational",
-        nonProprietaryName: drug.name,
-        activeIngredient: drug.target,
-        manufacturer: {
+        trialDesign: "https://schema.org/InternationalTrial",
+        status: drug.status.toLowerCase().includes("phase 2")
+          ? "https://schema.org/ActiveNotRecruiting"
+          : "https://schema.org/NotYetRecruiting",
+        phase: drug.status,
+        sponsor: {
           "@type": "Organization",
           name: "RudaCure Co., Ltd.",
           url: SITE_URL,
         },
-        clinicalTrial: {
-          "@type": "MedicalTrial",
-          trialDesign: "https://schema.org/InternationalTrial",
-          status: toSchemaStatus(drug.status),
-          description: drug.status,
-        },
-        indication: {
-          "@type": "MedicalIndication",
+        healthCondition: {
+          "@type": "MedicalCondition",
           name: drug.indication,
+        },
+        studySubject: {
+          "@type": "MedicalEntity",
+          name: drug.name,
+          description: drug.target,
         },
         recognizingAuthority: {
           "@type": "Organization",
