@@ -825,191 +825,304 @@ export default async function PipelinePage({
   const stages = STAGES[locale] || STAGES.en;
 
   return (
-    <div className="pt-24">
-      {/* Header */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-medium tracking-widest uppercase mb-4">
-            {h.tag}
-          </p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6">
-            {h.title1}{" "}
-            <em className="font-playfair italic font-semibold text-gradient-emerald">
-              {h.title2}
-            </em>
-          </h1>
-          <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
-            {h.description}
-          </p>
-        </div>
-      </section>
-
-      {/* Stage overview bar */}
-      <section className="px-6 pb-16">
-        <div className="max-w-5xl mx-auto">
-          <div className="liquid-glass p-6 overflow-x-auto">
-            <div className="flex items-center min-w-[600px]">
-              {stages.map((stage, i) => (
-                <div key={stage} className="flex-1 flex items-center">
-                  <div className="text-center flex-1">
-                    <div className="text-xs text-gray-600 uppercase tracking-wider font-medium">
-                      {stage}
-                    </div>
-                  </div>
-                  {i < stages.length - 1 && (
-                    <div className="w-px h-4 bg-gray-200" />
-                  )}
-                </div>
-              ))}
-            </div>
-            {/* Pipeline bars */}
-            <div className="mt-6 space-y-3">
-              {pipeline.map((p, i) => (
-                <div key={p.name} className="flex items-center gap-3">
-                  <span className="text-sm font-mono font-semibold text-gray-700 w-20">
-                    {p.name}
-                  </span>
-                  <div className="flex-1 h-8 bg-gray-100 rounded-full overflow-hidden relative">
-                    <ProgressBar
-                      progress={p.progress}
-                      delay={i * 200}
-                      className={`h-full rounded-full flex items-center px-3 ${
-                        p.color === "emerald"
-                          ? "bg-teal-100"
-                          : p.color === "blue"
-                            ? "bg-blue-100"
-                            : p.color === "violet"
-                              ? "bg-violet-100"
-                              : "bg-indigo-100"
-                      }`}
-                    >
-                      <span
-                        className={`text-xs font-semibold whitespace-nowrap ${
-                          p.color === "emerald"
-                            ? "text-teal-700"
-                            : p.color === "blue"
-                              ? "text-blue-700"
-                              : p.color === "violet"
-                                ? "text-violet-700"
-                                : "text-indigo-700"
-                        }`}
-                      >
-                        {p.status}
-                      </span>
-                    </ProgressBar>
-                  </div>
-                </div>
-              ))}
-            </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "ClinicalTrial",
+                "@id": "https://clinicaltrials.gov/study/NCT07068958",
+                name: "RCI001 for Dry Eye Disease — FDA Phase 2",
+                identifier: "NCT07068958",
+                description:
+                  "Phase 2 randomized controlled trial of RCI001 (0.25% topical ophthalmic solution, TRPV1-Rac1/NLRP3 downstream modulator) for moderate-to-severe dry eye disease. IND approved August 2025.",
+                url: "https://clinicaltrials.gov/study/NCT07068958",
+                status: "Recruiting",
+                phase: "Phase 2",
+                sponsor: {
+                  "@type": "Organization",
+                  name: "RudaCure Co., Ltd.",
+                  url: "https://www.rudacure.com",
+                },
+                studyDesign:
+                  "Randomized, double-blind, placebo-controlled, multicenter",
+                healthCondition: {
+                  "@type": "MedicalCondition",
+                  name: "Dry Eye Disease",
+                  alternateName: ["DED", "Keratoconjunctivitis sicca"],
+                },
+                drug: {
+                  "@type": "Drug",
+                  name: "RCI001",
+                  description:
+                    "TRPV1 downstream signal modulator (not a direct TRPV1 antagonist). Modulates Rac1/NLRP3 inflammatory cascade to restore tear film homeostasis and corneal epithelial healing without blocking thermosensation.",
+                  administrationRoute: "Topical ophthalmic",
+                  dosageForm: "0.25% eye drop solution",
+                  mechanismOfAction:
+                    "TRPV1-Rac1/NLRP3 downstream pathway modulation — neurogenic inflammation suppression",
+                  proprietaryName: "RCI001",
+                  manufacturer: {
+                    "@type": "Organization",
+                    name: "RudaCure Co., Ltd.",
+                  },
+                },
+              },
+              {
+                "@type": "Drug",
+                name: "RCI001",
+                description:
+                  "Non-steroidal topical ophthalmic solution for dry eye disease. TRPV1 downstream modulator. FDA Phase 2 (NCT07068958). Korea Phase 2 planned 2026. Licensed to Hanlim Pharma (KRW 15B). Patent granted: Korea, Japan, USA.",
+                mechanismOfAction: "TRPV1-Rac1/NLRP3 pathway modulation",
+                administrationRoute: "Topical ophthalmic",
+                drugClass: "TRPV1 downstream modulator",
+                clinicalPhase: "Phase 2",
+                manufacturer: {
+                  "@type": "Organization",
+                  name: "RudaCure Co., Ltd.",
+                  url: "https://www.rudacure.com",
+                },
+              },
+              {
+                "@type": "Drug",
+                name: "RCI002",
+                description:
+                  "Non-opioid chronic pain analgesic. MOR-biased dual TRPV1/MOR modulator. Indications: CRPS, osteoarthritis, diabetic neuropathy, CIPN, fibromyalgia. FDA Orphan Drug Designation (ODD) preparation for CRPS. No hyperthermia side effect. Efficacy at 650x lower concentration vs existing analgesics. Global IND Q2 2026.",
+                mechanismOfAction:
+                  "MOR-biased dual TRPV1/MOR modulation — pain relief without opioid side effects",
+                drugClass: "Non-opioid analgesic",
+                clinicalPhase: "Pre-clinical",
+                manufacturer: {
+                  "@type": "Organization",
+                  name: "RudaCure Co., Ltd.",
+                  url: "https://www.rudacure.com",
+                },
+              },
+              {
+                "@type": "Drug",
+                name: "RCI0165",
+                description:
+                  "AAV vector-based TRPV1-targeted gene therapy for veterinary chronic pain (companion animals, racehorses). Single administration provides 3+ months sustained analgesia. PoC complete. Private investment scale-up program 2026.",
+                mechanismOfAction:
+                  "AAV-mediated TRPV1 gene modulation for sustained analgesia",
+                drugClass: "Gene therapy — TRPV1 antagonist",
+                administrationRoute: "Injection (veterinary)",
+                clinicalPhase: "Pre-clinical",
+                manufacturer: {
+                  "@type": "Organization",
+                  name: "RudaCure Co., Ltd.",
+                  url: "https://www.rudacure.com",
+                },
+              },
+              {
+                "@type": "Drug",
+                name: "RCI003",
+                description:
+                  "AI-discovered selective modulator of psoriasis target proteins. Leverages RudaCure's TRPV1 ion channel platform for skin disease. In collaboration with Syntekabio AI platform (STB), Sogang University, and Inje University. Discovery stage 2026-2028.",
+                mechanismOfAction:
+                  "Selective modulation of psoriasis target proteins via ion channel pathway",
+                drugClass: "Psoriasis modulator",
+                clinicalPhase: "Discovery",
+                manufacturer: {
+                  "@type": "Organization",
+                  name: "RudaCure Co., Ltd.",
+                  url: "https://www.rudacure.com",
+                },
+              },
+            ],
+          }),
+        }}
+      />
+      <div className="pt-24">
+        {/* Header */}
+        <section className="py-20 px-6">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-teal-600 text-xs font-medium tracking-widest uppercase mb-4">
+              {h.tag}
+            </p>
+            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6">
+              {h.title1}{" "}
+              <em className="font-playfair italic font-semibold text-gradient-emerald">
+                {h.title2}
+              </em>
+            </h1>
+            <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+              {h.description}
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Detailed cards */}
-      <section className="px-6 pb-32">
-        <div className="max-w-5xl mx-auto space-y-8">
-          {pipeline.map((p) => (
-            <div key={p.name} className="liquid-glass p-8">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span
-                      className={`text-sm font-medium px-4 py-1.5 rounded-full ${
-                        p.color === "emerald"
-                          ? "bg-teal-50 text-teal-600"
-                          : p.color === "blue"
-                            ? "bg-blue-50 text-blue-400"
-                            : p.color === "violet"
-                              ? "bg-violet-50 text-violet-500"
-                              : "bg-indigo-50 text-indigo-400"
-                      }`}
-                    >
-                      {p.indication}
-                    </span>
-                    <span className="text-sm text-gray-600 font-medium">
-                      {p.status}
-                    </span>
+        {/* Stage overview bar */}
+        <section className="px-6 pb-16">
+          <div className="max-w-5xl mx-auto">
+            <div className="liquid-glass p-6 overflow-x-auto">
+              <div className="flex items-center min-w-[600px]">
+                {stages.map((stage, i) => (
+                  <div key={stage} className="flex-1 flex items-center">
+                    <div className="text-center flex-1">
+                      <div className="text-xs text-gray-600 uppercase tracking-wider font-medium">
+                        {stage}
+                      </div>
+                    </div>
+                    {i < stages.length - 1 && (
+                      <div className="w-px h-4 bg-gray-200" />
+                    )}
                   </div>
-
-                  <h2 className="text-2xl font-semibold mb-2 text-gray-900">
-                    {p.name}
-                  </h2>
-                  <p className="text-base text-gray-600 mb-1">
-                    <span className="font-medium">Target:</span> {p.target}
-                  </p>
-                  <p className="text-base text-gray-600 leading-relaxed mb-4">
-                    {p.mechanism}
-                  </p>
-
-                  {/* Progress */}
-                  <div className="mb-6">
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                ))}
+              </div>
+              {/* Pipeline bars */}
+              <div className="mt-6 space-y-3">
+                {pipeline.map((p, i) => (
+                  <div key={p.name} className="flex items-center gap-3">
+                    <span className="text-sm font-mono font-semibold text-gray-700 w-20">
+                      {p.name}
+                    </span>
+                    <div className="flex-1 h-8 bg-gray-100 rounded-full overflow-hidden relative">
                       <ProgressBar
                         progress={p.progress}
-                        className={`h-full rounded-full ${
+                        delay={i * 200}
+                        className={`h-full rounded-full flex items-center px-3 ${
                           p.color === "emerald"
-                            ? "bg-emerald-500"
+                            ? "bg-teal-100"
                             : p.color === "blue"
-                              ? "bg-blue-500"
+                              ? "bg-blue-100"
                               : p.color === "violet"
-                                ? "bg-violet-500"
-                                : "bg-indigo-500"
+                                ? "bg-violet-100"
+                                : "bg-indigo-100"
                         }`}
-                      />
+                      >
+                        <span
+                          className={`text-xs font-semibold whitespace-nowrap ${
+                            p.color === "emerald"
+                              ? "text-teal-700"
+                              : p.color === "blue"
+                                ? "text-blue-700"
+                                : p.color === "violet"
+                                  ? "text-violet-700"
+                                  : "text-indigo-700"
+                          }`}
+                        >
+                          {p.status}
+                        </span>
+                      </ProgressBar>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Detailed cards */}
+        <section className="px-6 pb-32">
+          <div className="max-w-5xl mx-auto space-y-8">
+            {pipeline.map((p) => (
+              <div key={p.name} className="liquid-glass p-8">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span
+                        className={`text-sm font-medium px-4 py-1.5 rounded-full ${
+                          p.color === "emerald"
+                            ? "bg-teal-50 text-teal-600"
+                            : p.color === "blue"
+                              ? "bg-blue-50 text-blue-400"
+                              : p.color === "violet"
+                                ? "bg-violet-50 text-violet-500"
+                                : "bg-indigo-50 text-indigo-400"
+                        }`}
+                      >
+                        {p.indication}
+                      </span>
+                      <span className="text-sm text-gray-600 font-medium">
+                        {p.status}
+                      </span>
+                    </div>
+
+                    <h2 className="text-2xl font-semibold mb-2 text-gray-900">
+                      {p.name}
+                    </h2>
+                    <p className="text-base text-gray-600 mb-1">
+                      <span className="font-medium">Target:</span> {p.target}
+                    </p>
+                    <p className="text-base text-gray-600 leading-relaxed mb-4">
+                      {p.mechanism}
+                    </p>
+
+                    {/* Progress */}
+                    <div className="mb-6">
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <ProgressBar
+                          progress={p.progress}
+                          className={`h-full rounded-full ${
+                            p.color === "emerald"
+                              ? "bg-emerald-500"
+                              : p.color === "blue"
+                                ? "bg-blue-500"
+                                : p.color === "violet"
+                                  ? "bg-violet-500"
+                                  : "bg-indigo-500"
+                          }`}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Details */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
+                        {p.detailsLabel}
+                      </h4>
+                      <ul className="space-y-2">
+                        {p.details.map((d, i) => (
+                          <li
+                            key={i}
+                            className="text-[15px] text-gray-600 flex items-start gap-2 leading-relaxed"
+                          >
+                            <span className="text-teal-600 mt-0.5">
+                              &#8226;
+                            </span>
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
 
-                  {/* Details */}
-                  <div>
+                  {/* Milestones */}
+                  <div className="md:w-72 shrink-0">
                     <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
-                      {p.detailsLabel}
+                      {p.milestonesLabel}
                     </h4>
-                    <ul className="space-y-2">
-                      {p.details.map((d, i) => (
-                        <li
-                          key={i}
-                          className="text-[15px] text-gray-600 flex items-start gap-2 leading-relaxed"
-                        >
-                          <span className="text-teal-600 mt-0.5">&#8226;</span>
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Milestones */}
-                <div className="md:w-72 shrink-0">
-                  <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
-                    {p.milestonesLabel}
-                  </h4>
-                  <div className="space-y-2.5">
-                    {p.milestones.map((m, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-2 text-[15px] text-gray-600"
-                      >
+                    <div className="space-y-2.5">
+                      {p.milestones.map((m, i) => (
                         <div
-                          className={`w-1.5 h-1.5 rounded-full ${
-                            p.color === "emerald"
-                              ? "bg-emerald-400"
-                              : p.color === "blue"
-                                ? "bg-blue-400"
-                                : p.color === "violet"
-                                  ? "bg-violet-400"
-                                  : "bg-indigo-400"
-                          }`}
-                        />
-                        {m}
-                      </div>
-                    ))}
+                          key={i}
+                          className="flex items-center gap-2 text-[15px] text-gray-600"
+                        >
+                          <div
+                            className={`w-1.5 h-1.5 rounded-full ${
+                              p.color === "emerald"
+                                ? "bg-emerald-400"
+                                : p.color === "blue"
+                                  ? "bg-blue-400"
+                                  : p.color === "violet"
+                                    ? "bg-violet-400"
+                                    : "bg-indigo-400"
+                            }`}
+                          />
+                          {m}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   );
 }

@@ -494,138 +494,195 @@ export default async function SciencePage({
   const advs = ADVANTAGES[locale];
 
   return (
-    <div className="pt-24">
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
-              {c.tag}
-            </p>
-            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
-              {c.title[0]}
-              <em className="font-playfair italic font-semibold text-gradient-emerald">
-                {c.title[1]}
-              </em>
-              {c.title[2]}
-            </h1>
-            <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
-              {c.description}
-            </p>
-          </div>
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src="/images/science/hero-platform.jpg"
-              alt="RuCIA Drug Discovery Platform"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {caps.map((cap) => (
-            <div key={cap.title} className="liquid-glass overflow-hidden">
-              <div className="relative h-48 w-full">
-                <Image
-                  src={cap.image}
-                  alt={cap.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-2 text-gray-900">
-                  {cap.title}
-                </h3>
-                <p className="text-[15px] text-gray-600 leading-relaxed">
-                  {cap.description}
-                </p>
-              </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "SoftwareApplication",
+                name: "RuCIA",
+                applicationCategory: "Drug Discovery AI Platform",
+                description:
+                  "RudaCure's proprietary AI platform for ion channel drug discovery. Combines AI-predicted molecular binding (structure-based virtual screening, molecular dynamics simulation) with high-throughput electrophysiology validation (FLIPR Penta, patch clamp). Enables 70% faster drug development vs traditional methods. Trained on ion channel-ligand interaction data for TRPV1, TRPA1, and Nav targets.",
+                operatingSystem: "Enterprise",
+                creator: {
+                  "@type": "Organization",
+                  name: "RudaCure Co., Ltd.",
+                  url: "https://www.rudacure.com",
+                },
+                featureList: [
+                  "AI-predicted ion channel-ligand binding",
+                  "Structure-based virtual screening",
+                  "Molecular dynamics simulation",
+                  "FLIPR Penta high-throughput fluorescence assay",
+                  "Patch clamp electrophysiology validation",
+                  "TRPV1, TRPA1, Nav channel targeting",
+                  "70% faster development timeline vs traditional methods",
+                ],
+              },
+              {
+                "@type": "ResearchProject",
+                name: "RudaCure Ion Channel Drug Discovery Program",
+                description:
+                  "AI-powered ion channel drug discovery program targeting TRPV1, TRPA1, and Nav channels for pain, dry eye disease, and dermatology. Uses RuCIA platform combining molecular simulation with high-throughput electrophysiology. Ion channels account for ~60% of approved drug targets but remain technically difficult to screen without specialized platforms.",
+                url: "https://www.rudacure.com/science",
+                foundingOrganization: {
+                  "@type": "Organization",
+                  name: "RudaCure Co., Ltd.",
+                  url: "https://www.rudacure.com",
+                },
+                knowsAbout: [
+                  "TRPV1",
+                  "TRPA1",
+                  "Nav channels",
+                  "ion channel pharmacology",
+                  "patch clamp electrophysiology",
+                  "FLIPR assay",
+                  "dry eye disease",
+                  "neuropathic pain",
+                  "CRPS",
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+      <div className="pt-24">
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+                {c.tag}
+              </p>
+              <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+                {c.title[0]}
+                <em className="font-playfair italic font-semibold text-gradient-emerald">
+                  {c.title[1]}
+                </em>
+                {c.title[2]}
+              </h1>
+              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+                {c.description}
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
-            {c.compTag}
-          </p>
-          <h2 className="text-3xl font-light mb-10 text-gray-900">
-            {c.compTitle[0]}
-            <em className="font-playfair italic font-semibold">
-              {c.compTitle[1]}
-            </em>
-            {c.compTitle[2]}
-          </h2>
-          <div className="liquid-glass overflow-hidden">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-100 bg-gray-50">
-                  <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
-                    {c.thMetric}
-                  </th>
-                  <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
-                    {c.thTraditional}
-                  </th>
-                  <th className="text-center text-xs font-semibold text-teal-600 uppercase tracking-wider p-4">
-                    {c.thRucia}
-                  </th>
-                  <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4 w-20">
-                    {c.thGap}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {advs.map((a) => (
-                  <tr key={a.label} className="border-b border-gray-50">
-                    <td className="p-4 text-sm text-gray-600 font-medium">
-                      {a.label}
-                    </td>
-                    <td className="p-4 text-sm text-gray-600 text-center">
-                      {a.before}
-                    </td>
-                    <td className="p-4 text-sm text-teal-600 text-center font-medium">
-                      {a.after}
-                    </td>
-                    <td className="p-4 text-sm text-teal-500 text-center font-mono">
-                      {a.reduction || "—"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/science/hero-platform.jpg"
+                alt="RuCIA Drug Discovery Platform"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-light mb-6 text-gray-900">
-              {c.beyondTitle[0]}
+        <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            {caps.map((cap) => (
+              <div key={cap.title} className="liquid-glass overflow-hidden">
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={cap.image}
+                    alt={cap.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                    {cap.title}
+                  </h3>
+                  <p className="text-[15px] text-gray-600 leading-relaxed">
+                    {cap.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+              {c.compTag}
+            </p>
+            <h2 className="text-3xl font-light mb-10 text-gray-900">
+              {c.compTitle[0]}
               <em className="font-playfair italic font-semibold">
-                {c.beyondTitle[1]}
+                {c.compTitle[1]}
               </em>
+              {c.compTitle[2]}
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-4">{c.beyondP1}</p>
-            <p className="text-gray-600 leading-relaxed">{c.beyondP2}</p>
+            <div className="liquid-glass overflow-hidden">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-100 bg-gray-50">
+                    <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
+                      {c.thMetric}
+                    </th>
+                    <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
+                      {c.thTraditional}
+                    </th>
+                    <th className="text-center text-xs font-semibold text-teal-600 uppercase tracking-wider p-4">
+                      {c.thRucia}
+                    </th>
+                    <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4 w-20">
+                      {c.thGap}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {advs.map((a) => (
+                    <tr key={a.label} className="border-b border-gray-50">
+                      <td className="p-4 text-sm text-gray-600 font-medium">
+                        {a.label}
+                      </td>
+                      <td className="p-4 text-sm text-gray-600 text-center">
+                        {a.before}
+                      </td>
+                      <td className="p-4 text-sm text-teal-600 text-center font-medium">
+                        {a.after}
+                      </td>
+                      <td className="p-4 text-sm text-teal-500 text-center font-mono">
+                        {a.reduction || "—"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src="/images/Gemini_Generated_Image_2hkt252hkt252hkt.png"
-              alt="Ion Channel Research"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
+        </section>
+
+        <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-light mb-6 text-gray-900">
+                {c.beyondTitle[0]}
+                <em className="font-playfair italic font-semibold">
+                  {c.beyondTitle[1]}
+                </em>
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">{c.beyondP1}</p>
+              <p className="text-gray-600 leading-relaxed">{c.beyondP2}</p>
+            </div>
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/Gemini_Generated_Image_2hkt252hkt252hkt.png"
+                alt="Ion Channel Research"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }
