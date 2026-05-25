@@ -209,7 +209,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RC0125 AAV",
-      indication: "CMT2C (샤르코마리투스병 2C형)",
+      indication: "CMT2C (샤르코마리투스병 2C형), 골격이형성증, 척추측만증, 골격기형",
       target: "TRPV4 Intracellular Target (AAV 벡터)",
       mechanism:
         "AAV 벡터 기반의 TRPV4 세포 내 표적 유전자치료제 — 희귀질환으로 개발하여 연관 질환 치료제로 확장 예정",
@@ -347,7 +347,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RC0125 AAV",
-      indication: "CMT2C (Charcot-Marie-Tooth Disease 2C)",
+      indication: "CMT2C (Charcot-Marie-Tooth Disease 2C), Skeletal Dysplasia, Scoliosis, Skeletal Malformations",
       target: "TRPV4 Intracellular Target (AAV Vector)",
       mechanism:
         "AAV vector-based gene therapy targeting intracellular TRPV4 — developed as an orphan drug with plans to expand to related diseases",
@@ -482,7 +482,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RC0125 AAV",
-      indication: "CMT2C (腓骨肌萎缩症 2C型)",
+      indication: "CMT2C (腓骨肌萎缩症 2C型), 骨骼发育不良, 脊柱侧弯, 骨骼畸形",
       target: "TRPV4 Intracellular Target (AAV 载体)",
       mechanism:
         "基于AAV载体的靶向细胞内TRPV4基因疗法 — 作为罕见病药物开发，计划扩展至相关疾病",
@@ -618,7 +618,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RC0125 AAV",
-      indication: "CMT2C (シャルコー・マリー・トゥース病 2C型)",
+      indication: "CMT2C (シャルコー・マリー・トゥース病 2C型), 骨格異形成症, 脊椎側弯症, 骨格奇形",
       target: "TRPV4 Intracellular Target (AAV ベクター)",
       mechanism:
         "AAVベクターベースの細胞内TRPV4標的遺伝子治療薬 — 希少疾患薬として開発、関連疾患への拡大を計画",
@@ -754,7 +754,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RC0125 AAV",
-      indication: "CMT2C (Enfermedad de Charcot-Marie-Tooth 2C)",
+      indication: "CMT2C (Enfermedad de Charcot-Marie-Tooth 2C), Displasia Esquelética, Escoliosis, Malformaciones Esqueléticas",
       target: "TRPV4 Intracellular Target (Vector AAV)",
       mechanism:
         "Terapia génica basada en vector AAV dirigida a TRPV4 intracelular — desarrollada como medicamento huérfano con planes de expansión a enfermedades relacionadas",
@@ -890,7 +890,7 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RC0125 AAV",
-      indication: "CMT2C (Maladie de Charcot-Marie-Tooth 2C)",
+      indication: "CMT2C (Maladie de Charcot-Marie-Tooth 2C), Dysplasie Squelettique, Scoliose, Malformations Squelettiques",
       target: "TRPV4 Intracellular Target (Vecteur AAV)",
       mechanism:
         "Thérapie génique basée sur un vecteur AAV ciblant TRPV4 intracellulaire — développée comme médicament orphelin avec des projets d'extension aux maladies apparentées",
