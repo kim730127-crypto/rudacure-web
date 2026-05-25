@@ -207,6 +207,30 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       detailsLabel: "주요 특징",
       milestonesLabel: "마일스톤",
     },
+    {
+      name: "RC0125 AAV",
+      indication: "CMT2C (샤르코마리투스병 2C형)",
+      target: "TRPV4 Intracellular Target (AAV 벡터)",
+      mechanism:
+        "AAV 벡터 기반의 TRPV4 세포 내 표적 유전자치료제 — 희귀질환으로 개발하여 연관 질환 치료제로 확장 예정",
+      status: "약물 최적화 (Optimization)",
+      progress: 25,
+      color: "teal",
+      milestones: [
+        "골관절염(OA) 동물모델에서 진통 효능 확인 완료",
+        "TRPV4 세포 내 표적(Intracellular target) 기전 검증",
+        "AAV 유전자치료제 약물 최적화(Optimization) 진행 중",
+        "희귀질환(CMT2C) 대상 개발 및 연관 질환 파이프라인 확장 예정",
+      ],
+      details: [
+        "AAV 벡터 기반 유전자치료제로 TRPV4 세포 내 표적 작용",
+        "골관절염(OA) 마우스 모델에서 뛰어난 진통 효능 입증 완료",
+        "현재 후보물질 최적화(Optimization) 연구 진행 중",
+        "희귀 난치성 신경질환인 CMT2C 치료제로 우선 개발 후 연관 질환으로 적응증 확대",
+      ],
+      detailsLabel: "주요 특징",
+      milestonesLabel: "마일스톤",
+    },
   ],
   en: [
     {
@@ -321,6 +345,30 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       detailsLabel: "Key Details",
       milestonesLabel: "Milestones",
     },
+    {
+      name: "RC0125 AAV",
+      indication: "CMT2C (Charcot-Marie-Tooth Disease 2C)",
+      target: "TRPV4 Intracellular Target (AAV Vector)",
+      mechanism:
+        "AAV vector-based gene therapy targeting intracellular TRPV4 — developed as an orphan drug with plans to expand to related diseases",
+      status: "Drug Optimization",
+      progress: 25,
+      color: "teal",
+      milestones: [
+        "Analgesic efficacy confirmed in OA (Osteoarthritis) models",
+        "Validation of intracellular TRPV4 targeting mechanism",
+        "Ongoing AAV gene therapy drug optimization",
+        "Orphan disease (CMT2C) development with plans to expand to related indications",
+      ],
+      details: [
+        "AAV vector-based gene therapy targeting intracellular TRPV4 channel",
+        "Proven analgesic efficacy in osteoarthritis (OA) animal models",
+        "Currently undergoing candidate drug optimization",
+        "Initial development targets rare orphan disease CMT2C, with plans for expansion to related disorders",
+      ],
+      detailsLabel: "Key Details",
+      milestonesLabel: "Milestones",
+    },
   ],
   zh: [
     {
@@ -428,6 +476,30 @@ const PIPELINE: Record<string, PipelineItem[]> = {
         "单次给药3个月以上持续疼痛缓解",
         "宠物及高价值动物（赛马）慢性疼痛管理",
         "全球动物用疼痛治疗市场每年约$2B规模",
+      ],
+      detailsLabel: "主要特点",
+      milestonesLabel: "里程碑",
+    },
+    {
+      name: "RC0125 AAV",
+      indication: "CMT2C (腓骨肌萎缩症 2C型)",
+      target: "TRPV4 Intracellular Target (AAV 载体)",
+      mechanism:
+        "基于AAV载体的靶向细胞内TRPV4基因疗法 — 作为罕见病药物开发，计划扩展至相关疾病",
+      status: "药物优化中",
+      progress: 25,
+      color: "teal",
+      milestones: [
+        "在骨关节炎 (OA) 模型中确认了镇痛疗效",
+        "验证了细胞内 TRPV4 靶向机制",
+        "AAV 基因疗法药物优化进行中",
+        "针对罕见病 (CMT2C) 开发并计划扩展至相关适应症",
+      ],
+      details: [
+        "基于 AAV 载体靶向细胞内 TRPV4 通道的基因疗法",
+        "在骨关节炎 (OA) 动物模型中证实了卓越之镇痛效果",
+        "目前正在进行候选药物的优化研究",
+        "优先开发治疗罕见难治性神经疾病 CMT2C，并计划扩大到相关疾病",
       ],
       detailsLabel: "主要特点",
       milestonesLabel: "里程碑",
@@ -544,6 +616,30 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       detailsLabel: "主な特徴",
       milestonesLabel: "マイルストーン",
     },
+    {
+      name: "RC0125 AAV",
+      indication: "CMT2C (シャルコー・マリー・トゥース病 2C型)",
+      target: "TRPV4 Intracellular Target (AAV ベクター)",
+      mechanism:
+        "AAVベクターベースの細胞内TRPV4標的遺伝子治療薬 — 希少疾患薬として開発、関連疾患への拡大を計画",
+      status: "薬物最適化中",
+      progress: 25,
+      color: "teal",
+      milestones: [
+        "変形性関節症(OA)モデルでの鎮痛効果確認済み",
+        "細胞内TRPV4標的メカニズムの検証",
+        "AAV遺伝子治療薬の最適化(Optimization)進行中",
+        "希少疾患(CMT2C)対象の開発および関連疾患へのパイプライン拡大予定",
+      ],
+      details: [
+        "AAVベクターベースの細胞内TRPV4チャネル標的遺伝子治療薬",
+        "変形性関節症(OA)動物モデルにおいて優れた鎮痛効果を立証済み",
+        "現在、候補物質の最適化(Optimization)研究が進行中",
+        "希少難治性神経疾患であるCMT2C治療薬として優先的に開発後、関連疾患への適応症拡大を計画",
+      ],
+      detailsLabel: "主な特徴",
+      milestonesLabel: "マイルストーン",
+    },
   ],
   es: [
     {
@@ -656,6 +752,30 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       detailsLabel: "Características Clave",
       milestonesLabel: "Hitos",
     },
+    {
+      name: "RC0125 AAV",
+      indication: "CMT2C (Enfermedad de Charcot-Marie-Tooth 2C)",
+      target: "TRPV4 Intracellular Target (Vector AAV)",
+      mechanism:
+        "Terapia génica basada en vector AAV dirigida a TRPV4 intracelular — desarrollada como medicamento huérfano con planes de expansión a enfermedades relacionadas",
+      status: "Optimización de Fármaco",
+      progress: 25,
+      color: "teal",
+      milestones: [
+        "Eficacia analgésica confirmada en modelos de OA (artrosis)",
+        "Validación del mecanismo de direccionamiento intracelular de TRPV4",
+        "Optimización en curso del fármaco de terapia génica AAV",
+        "Desarrollo para enfermedad huérfana (CMT2C) con planes de expandirse a indicaciones relacionadas",
+      ],
+      details: [
+        "Terapia génica basada en vector AAV dirigida al canal TRPV4 intracelular",
+        "Eficacia analgésica probada en modelos animales de osteoartritis (OA)",
+        "Actualmente en proceso de optimización del candidato a fármaco",
+        "Desarrollo inicial enfocado en la enfermedad huérfana rara CMT2C, con planes de expansión a trastornos relacionados",
+      ],
+      detailsLabel: "Características Clave",
+      milestonesLabel: "Hitos",
+    },
   ],
   fr: [
     {
@@ -764,6 +884,30 @@ const PIPELINE: Record<string, PipelineItem[]> = {
         "Administration unique offrant 3+ mois de soulagement durable",
         "Pour la gestion de la douleur chronique chez les animaux de compagnie et de haute valeur (chevaux de course)",
         "Marché mondial du traitement vétérinaire de la douleur ~2 Mrd $ par an",
+      ],
+      detailsLabel: "Caractéristiques Clés",
+      milestonesLabel: "Jalons",
+    },
+    {
+      name: "RC0125 AAV",
+      indication: "CMT2C (Maladie de Charcot-Marie-Tooth 2C)",
+      target: "TRPV4 Intracellular Target (Vecteur AAV)",
+      mechanism:
+        "Thérapie génique basée sur un vecteur AAV ciblant TRPV4 intracellulaire — développée comme médicament orphelin avec des projets d'extension aux maladies apparentées",
+      status: "Optimisation du Médicament",
+      progress: 25,
+      color: "teal",
+      milestones: [
+        "Efficacité analgésique confirmée dans les modèles d'arthrose (OA)",
+        "Validation du mécanisme de ciblage intracellulaire de TRPV4",
+        "Optimisation en cours du médicament de thérapie génique AAV",
+        "Développement pour la maladie orpheline (CMT2C) avec projets d'extension aux indications apparentées",
+      ],
+      details: [
+        "Thérapie génique basée sur un vecteur AAV ciblant le canal TRPV4 intracellulaire",
+        "Efficacité analgésique prouvée dans les modèles animaux d'arthrose (OA)",
+        "Actuellement en phase d'optimisation du candidat médicament",
+        "Développement initial ciblant la maladie orpheline rare CMT2C, avec des projets d'extension aux troubles apparentés",
       ],
       detailsLabel: "Caractéristiques Clés",
       milestonesLabel: "Jalons",
