@@ -1,4 +1,5 @@
 import { type Locale, toDataLocale } from "@/lib/i18n";
+import { localizedAlternates } from "@/lib/seo";
 
 type TimelineItem = {
   year: string;
@@ -1576,6 +1577,7 @@ export async function generateMetadata({
   return {
     title: META_TITLES[locale] ?? META_TITLES.en,
     description: CONTENT[key].description,
+    alternates: localizedAlternates(locale, "/about"),
   };
 }
 

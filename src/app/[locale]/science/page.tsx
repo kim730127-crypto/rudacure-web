@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { type Locale } from "@/lib/i18n";
+import { localizedAlternates } from "@/lib/seo";
 
 type ScienceLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
 
@@ -466,6 +466,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: localizedAlternates(locale, "/science"),
     openGraph: {
       title,
       description,

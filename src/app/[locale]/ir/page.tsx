@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
+import { localizedAlternates } from "@/lib/seo";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
 type IRLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
@@ -633,6 +634,7 @@ export async function generateMetadata({
   return {
     title: TEXT_META_TITLE[locale],
     description,
+    alternates: localizedAlternates(loc, "/ir"),
     openGraph: {
       title: TEXT_META_TITLE[locale],
       description,

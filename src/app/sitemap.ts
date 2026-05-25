@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { LOCALES } from "@/lib/i18n";
-
-const SITE_URL = "https://www.rudacure.com";
+import { SITE_URL } from "@/lib/seo";
+import newsDataKo from "@/data/news.json";
 
 const ROUTES: {
   path: string;
@@ -22,8 +22,7 @@ const ROUTES: {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-
-  return ROUTES.flatMap((route) =>
+  const staticRoutes = ROUTES.flatMap((route) =>
     LOCALES.map((locale) => {
       const url = `${SITE_URL}/${locale}${route.path}`;
       const languages: Record<string, string> = {};
@@ -41,4 +40,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     }),
   );
+
+  const newsRoutes = newsDataKo.flatMap((article) =>
+    LOCALES.map((locale) => {
+      const path = `/news/${article.id}`;
+      const url = `${SITE_URL}/${locale}${path}`;
+      const languages: Record<string, string> = {};
+      LOCALES.forEach((l) => {
+        languages[l] = `${SITE_URL}/${l}${path}`;
+      });
+      languages["x-default"] = `${SITE_URL}/en${path}`;
+
+      return {
+        url,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.65,
+        alternates: { languages },
+      };
+    }),
+  );
+
+  return [...staticRoutes, ...newsRoutes];
 }

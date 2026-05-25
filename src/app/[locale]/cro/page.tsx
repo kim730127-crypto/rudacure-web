@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { type Locale } from "@/lib/i18n";
+import { localizedAlternates } from "@/lib/seo";
 
 const SITE_URL = "https://www.rudacure.com";
 
@@ -32,6 +33,7 @@ export async function generateMetadata({
   return {
     title: m.title,
     description: m.description,
+    alternates: localizedAlternates(locale, "/cro"),
     openGraph: {
       title: m.title,
       description: m.description,

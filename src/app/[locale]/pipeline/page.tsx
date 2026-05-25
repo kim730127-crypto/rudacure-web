@@ -1,5 +1,5 @@
-import { type Locale, toDataLocale } from "@/lib/i18n";
 import { ProgressBar } from "@/components/progress-bar";
+import { localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -14,6 +14,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: localizedAlternates(locale, "/pipeline"),
     openGraph: {
       title,
       description,

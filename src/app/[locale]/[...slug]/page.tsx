@@ -1,11 +1,10 @@
-import { redirect } from "next/navigation";
-import { isValidLocale } from "@/lib/i18n";
+import { notFound } from "next/navigation";
 
 export default async function CatchAll({
   params,
 }: {
   params: Promise<{ locale: string; slug: string[] }>;
 }) {
-  const { locale } = await params;
-  redirect(isValidLocale(locale) ? `/${locale}` : "/ko");
+  await params;
+  notFound();
 }

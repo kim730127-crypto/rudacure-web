@@ -1,4 +1,6 @@
 /* ── Locale helper: default to "en" for unsupported locales ── */
+import { localizedAlternates } from "@/lib/seo";
+
 type SupportedLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
 const SUPPORTED: readonly SupportedLocale[] = [
   "ko",
@@ -1162,6 +1164,7 @@ export async function generateMetadata({
   return {
     title: c.metaTitle,
     description: c.description,
+    alternates: localizedAlternates(rawLocale, "/publications"),
   };
 }
 

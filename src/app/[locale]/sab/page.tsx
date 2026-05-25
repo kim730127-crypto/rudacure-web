@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { localizedAlternates } from "@/lib/seo";
 /* ── Local locale helper ── */
 type SABLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
 const SAB_SUPPORTED: ReadonlySet<string> = new Set(["ko", "en", "zh", "ja", "es", "fr"]);
@@ -406,6 +407,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: locale === "ko" ? "과학자문위원회 | RudaCure" : "Science Advisory Board | RudaCure",
     description: HEADER[sl].description,
+    alternates: localizedAlternates(locale, "/sab"),
   };
 }
 

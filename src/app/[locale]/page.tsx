@@ -226,7 +226,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <ScrollReveal animation="scale-in" delay={200}>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/membrane_target_moa.png"
+                src="/images/membrane_target_moa_v2.png"
                 alt="RCI002 Dual Target Peptide Mechanism of Action — TRPV1 & MOR Membrane Target"
                 fill
                 className="object-cover"

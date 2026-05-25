@@ -1,4 +1,5 @@
 import { type Locale, toDataLocale } from "@/lib/i18n";
+import { localizedAlternates } from "@/lib/seo";
 import ContactForm from "./contact-form-v2";
 import DynamicTitle from "./dynamic-title";
 
@@ -152,7 +153,10 @@ const META_TITLE: Record<string, string> = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return { title: META_TITLE[locale] ?? META_TITLE.en };
+  return {
+    title: META_TITLE[locale] ?? META_TITLE.en,
+    alternates: localizedAlternates(locale, "/contact"),
+  };
 }
 
 // 2026 Trending: Elevated Neutrals + Blue-Green accents

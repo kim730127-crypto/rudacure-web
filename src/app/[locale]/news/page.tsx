@@ -5,8 +5,9 @@ import articlesZh from "@/data/news_zh.json";
 import articlesJa from "@/data/news_ja.json";
 import articlesEs from "@/data/news_es.json";
 import articlesFr from "@/data/news_fr.json";
-import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
+import { type Locale, getTranslations } from "@/lib/i18n";
 import { NewsYearFilter } from "@/components/news-year-filter";
+import { localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -14,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: `${t("news.title1")} ${t("news.title2")} | RudaCure`,
     description: t("news.description"),
+    alternates: localizedAlternates(locale, "/news"),
   };
 }
 
@@ -90,7 +92,6 @@ const MAGAZINE_CONTENT: Record<string, { sectionTag: string; sectionTitle: strin
 export default async function NewsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = getTranslations(locale as Locale);
-  const loc = toDataLocale(locale as Locale);
   const articlesMap: Record<string, typeof articlesKo> = {
     ko: articlesKo, en: articlesEn, zh: articlesZh as typeof articlesKo,
     ja: articlesJa as typeof articlesKo, es: articlesEs as typeof articlesKo, fr: articlesFr as typeof articlesKo,
