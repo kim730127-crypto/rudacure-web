@@ -7,28 +7,36 @@ const SITE_URL = "https://www.rudacure.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "RudaCure | Healing the Source of Pain",
+    default: "RudaCure | AI Drug Discovery for Non-Opioid Pain & Dry Eye",
     template: "%s | RudaCure",
   },
   description:
-    "AI-driven ion channel drug discovery platform. Developing non-opioid therapeutics for pain and sensory diseases. RuCIA platform, TRPV1 modulators, and clinical-stage pipeline.",
+    "AI-driven membrane protein drug discovery company. Targeting ion channels (TRPV1/TRPA1) and GPCRs to develop non-opioid pain, dry eye, and chronic pain therapeutics. RuCIA platform with an FDA Phase 2 clinical-stage pipeline.",
   keywords: [
     "RudaCure",
     "루다큐어",
-    "TRPV1",
+    "membrane protein drug discovery",
+    "membrane protein targets",
     "ion channel drug discovery",
-    "non-opioid pain",
+    "GPCR drug discovery",
+    "TRPV1",
+    "non-opioid pain treatment",
     "non-opioid analgesic",
+    "chronic pain drug",
+    "dry eye disease treatment",
+    "CRPS treatment",
+    "osteoarthritis pain",
     "RuCIA",
     "AI drug discovery",
-    "dry eye disease",
     "RCI001",
     "RCI002",
-    "ion channel therapeutics",
     "biotech IPO",
     "Korean biotech",
+    "막단백질 신약개발",
     "이온채널 신약",
     "비마약성 진통제",
+    "안구건조증 치료제",
+    "만성통증 신약",
   ],
   authors: [{ name: "RudaCure Co., Ltd." }],
   creator: "RudaCure Co., Ltd.",
@@ -55,9 +63,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "RudaCure",
-    title: "RudaCure | Healing the Source of Pain",
+    title: "RudaCure | AI Drug Discovery for Non-Opioid Pain & Dry Eye",
     description:
-      "AI-driven ion channel drug discovery for non-opioid pain therapeutics. RuCIA platform delivers 70% faster development.",
+      "AI-driven membrane protein drug discovery — ion channels and GPCRs — for non-opioid pain and dry eye therapeutics. RuCIA platform delivers 70% faster development.",
     url: SITE_URL,
     locale: "en_US",
     alternateLocale: ["ko_KR", "zh_CN", "ja_JP", "es_ES", "fr_FR"],
@@ -72,9 +80,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RudaCure | Healing the Source of Pain",
+    title: "RudaCure | AI Drug Discovery for Non-Opioid Pain & Dry Eye",
     description:
-      "AI-driven ion channel drug discovery for non-opioid pain therapeutics.",
+      "AI-driven membrane protein drug discovery for non-opioid pain and dry eye therapeutics.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -128,7 +136,7 @@ const organizationJsonLd = {
   logo: `${SITE_URL}/images/logo_full.png`,
   image: `${SITE_URL}/og-image.jpg`,
   description:
-    "AI-driven ion channel drug discovery platform developing non-opioid therapeutics for pain and sensory diseases.",
+    "AI-driven membrane protein drug discovery company targeting ion channels (TRPV1/TRPA1) and GPCRs to develop non-opioid pain, dry eye, and chronic pain therapeutics.",
   foundingDate: "2018",
   founders: [
     {
@@ -173,9 +181,12 @@ const organizationJsonLd = {
   ],
   sameAs: ["https://kr.linkedin.com/company/rudacure"],
   knowsAbout: [
+    "Membrane protein drug discovery",
     "Ion channel drug discovery",
+    "GPCR drug discovery",
     "TRPV1",
     "Non-opioid analgesics",
+    "Chronic pain",
     "Dry eye disease",
     "AI drug discovery",
     "RuCIA platform",
@@ -190,7 +201,7 @@ const websiteJsonLd = {
   url: SITE_URL,
   name: "RudaCure",
   description:
-    "AI-driven ion channel drug discovery for non-opioid pain therapeutics",
+    "AI-driven membrane protein drug discovery for non-opioid pain and dry eye therapeutics",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: ["ko-KR", "en-US", "zh-CN", "ja-JP", "es-ES", "fr-FR"],
 };

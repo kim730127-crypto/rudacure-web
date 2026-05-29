@@ -11,39 +11,39 @@ const LOCALE_META: Record<
   { title: string; description: string; ogLocale: string }
 > = {
   ko: {
-    title: "루다큐어 | 통증의 근원을 치료합니다",
+    title: "루다큐어 | 비마약성 통증·안구건조증 AI 신약개발",
     description:
-      "AI 기반 이온채널 신약개발 플랫폼 RuCIA로 비마약성 통증·감각질환 치료제를 개발하는 한국 바이오텍 기업.",
+      "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업 루다큐어. RuCIA 플랫폼으로 비마약성 진통제, 안구건조증 치료제(FDA 2상), 만성통증 신약을 개발합니다.",
     ogLocale: "ko_KR",
   },
   en: {
-    title: "RudaCure | Healing the Source of Pain",
+    title: "RudaCure | AI Drug Discovery for Non-Opioid Pain & Dry Eye",
     description:
-      "AI-driven ion channel drug discovery platform developing non-opioid therapeutics for pain and sensory diseases.",
+      "RudaCure is an AI-driven drug discovery company targeting membrane proteins — ion channels (TRPV1/TRPA1) and GPCRs — to develop non-opioid pain, dry eye, and chronic pain therapeutics. RuCIA platform; FDA Phase 2 (NCT07068958).",
     ogLocale: "en_US",
   },
   zh: {
-    title: "RudaCure | 治愈疼痛之源",
+    title: "RudaCure | 非阿片类镇痛·干眼症 AI 新药研发",
     description:
-      "基于AI离子通道新药研发平台RuCIA，专注于开发非阿片类疼痛与感觉疾病治疗药物的韩国生物科技公司。",
+      "靶向膜蛋白（离子通道·GPCR）的AI新药研发企业RudaCure。通过RuCIA平台开发非阿片类镇痛药、干眼症治疗药（FDA 2期临床）和慢性疼痛新药。",
     ogLocale: "zh_CN",
   },
   ja: {
-    title: "RudaCure | 痛みの根源を治療する",
+    title: "RudaCure | 非オピオイド鎮痛・ドライアイ AI創薬",
     description:
-      "AI駆動のイオンチャネル創薬プラットフォームRuCIAにより、非オピオイド系の疼痛・感覚疾患治療薬を開発する韓国バイオテック企業。",
+      "膜タンパク質（イオンチャネル・GPCR）を標的とするAI創薬企業RudaCure。RuCIAプラットフォームで非オピオイド鎮痛薬、ドライアイ治療薬（FDA Phase 2）、慢性疼痛の新薬を開発します。",
     ogLocale: "ja_JP",
   },
   es: {
-    title: "RudaCure | Sanando el Origen del Dolor",
+    title: "RudaCure | IA para Fármacos del Dolor No Opioide y Ojo Seco",
     description:
-      "Plataforma de descubrimiento de fármacos de canales iónicos impulsada por IA para terapias no opioides del dolor y enfermedades sensoriales.",
+      "RudaCure es una empresa de descubrimiento de fármacos con IA que se dirige a proteínas de membrana — canales iónicos (TRPV1/TRPA1) y GPCR — para desarrollar terapias no opioides para el dolor, el ojo seco y el dolor crónico. Plataforma RuCIA; Fase 2 FDA.",
     ogLocale: "es_ES",
   },
   fr: {
-    title: "RudaCure | Guérir la Source de la Douleur",
+    title: "RudaCure | IA pour Médicaments Douleur Non Opioïde et Œil Sec",
     description:
-      "Plateforme de découverte de médicaments à canaux ioniques pilotée par l'IA pour des thérapies non opioïdes contre la douleur et les maladies sensorielles.",
+      "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires — canaux ioniques (TRPV1/TRPA1) et RCPG — pour développer des thérapies non opioïdes contre la douleur, l'œil sec et la douleur chronique. Plateforme RuCIA ; Phase 2 FDA.",
     ogLocale: "fr_FR",
   },
 };
@@ -70,7 +70,9 @@ export async function generateMetadata({
   languages["x-default"] = `${SITE_URL}/en`;
 
   return {
-    title: meta.title,
+    // `absolute` prevents the root "%s | RudaCure" template from doubling the
+    // brand (titles already contain "RudaCure").
+    title: { absolute: meta.title },
     description: meta.description,
     alternates: {
       canonical: url,
