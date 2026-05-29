@@ -32,7 +32,7 @@ const translations = {
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
     "hero.description":
-      "RuCIA 플랫폼 기반 AI 분자 설계로 이온채널 선택성을 예측하고, 비마약성 통증 치료제를 개발합니다. 기존 신약개발 대비 개발 기간 70% 단축, 표적 선택성 100%를 실현합니다.",
+      "RuCIA 플랫폼 기반 AI 분자 설계로 막단백질(이온채널) 선택성을 예측하여, 비마약성 통증 치료제와 안구건조증 치료제(FDA 2상)를 개발합니다. 기존 신약개발 대비 개발 기간 70% 단축, 표적 선택성 100%를 실현합니다.",
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
@@ -41,7 +41,7 @@ const translations = {
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "전기생리학(Electrophysiology) 기반 이온채널 활성 측정 기술로 세포막(Membrane) 표적 약물을 개발합니다. 패치클램프와 고처리량 전기생리학 검증을 통해 TRPV1 등 이온채널의 선택적 조절제를 발굴하고, 비마약성 통증/감각질환 치료제의 효능과 안전성을 실데이터로 검증합니다.",
+      "전기생리학(Electrophysiology) 기반 이온채널 활성 측정 기술로 세포막(Membrane) 표적 약물을 개발합니다. 패치클램프와 고처리량 전기생리학 검증을 통해 TRPV1 등 이온채널의 선택적 조절제를 발굴하고, 비마약성 통증 및 안구건조증 등 감각질환 치료제의 효능과 안전성을 실데이터로 검증합니다.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "패치클램프 기반 고처리량 검증",
     "rucia.metric.selectivity": "Membrane Target",
@@ -138,7 +138,7 @@ const translations = {
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
     "hero.description":
-      "Our RuCIA platform leverages AI molecular design to predict ion channel selectivity, developing non-opioid pain therapeutics. 70% faster development timeline with 100% target selectivity.",
+      "Our RuCIA platform leverages AI molecular design to predict membrane-protein (ion channel) selectivity, developing non-opioid pain and dry eye therapeutics (FDA Phase 2). 70% faster development timeline with 100% target selectivity.",
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
@@ -147,7 +147,7 @@ const translations = {
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "We develop membrane-targeted therapeutics using electrophysiology-based ion channel activity measurement. Through patch clamp and high-throughput electrophysiology validation, we discover selective modulators of ion channels such as TRPV1, verifying efficacy and safety of non-opioid pain and sensory disease treatments with real data.",
+      "We develop membrane-targeted therapeutics using electrophysiology-based ion channel activity measurement. Through patch clamp and high-throughput electrophysiology validation, we discover selective modulators of ion channels such as TRPV1, verifying efficacy and safety of non-opioid pain and dry eye (sensory disease) treatments with real data.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Patch Clamp HT Validation",
     "rucia.metric.selectivity": "Membrane Target",
@@ -241,14 +241,14 @@ const translations = {
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
     "hero.description":
-      "基于RuCIA平台的AI分子设计预测离子通道选择性，开发非阿片类镇痛药物。与传统新药开发相比，开发周期缩短70%，靶点选择性达100%。",
+      "基于RuCIA平台的AI分子设计预测膜蛋白（离子通道）选择性，开发非阿片类镇痛药物和干眼症治疗药物（FDA 2期）。与传统新药开发相比，开发周期缩短70%，靶点选择性达100%。",
     "hero.cta.pipeline": "探索管线",
     "hero.cta.science": "核心技术",
     "rucia.tag": "核心技术",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "基于电生理学的离子通道活性测量技术开发细胞膜靶向药物。通过膜片钳和高通量电生理学验证，发现TRPV1等离子通道的选择性调节剂，以实际数据验证非阿片类镇痛药和感觉疾病治疗药物的疗效与安全性。",
+      "基于电生理学的离子通道活性测量技术开发细胞膜靶向药物。通过膜片钳和高通量电生理学验证，发现TRPV1等离子通道的选择性调节剂，以实际数据验证非阿片类镇痛药和干眼症等感觉疾病治疗药物的疗效与安全性。",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "膜片钳高通量验证",
     "rucia.metric.selectivity": "Membrane Target",
@@ -324,14 +324,14 @@ const translations = {
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
     "hero.description":
-      "RuCIAプラットフォームベースのAI分子設計によりイオンチャネル選択性を予測し、非オピオイド系鎮痛薬を開発しています。従来の新薬開発と比較して開発期間を70%短縮、ターゲット選択性100%を実現します。",
+      "RuCIAプラットフォームベースのAI分子設計により膜タンパク質（イオンチャネル）選択性を予測し、非オピオイド系鎮痛薬とドライアイ治療薬（FDA Phase 2）を開発しています。従来の新薬開発と比較して開発期間を70%短縮、ターゲット選択性100%を実現します。",
     "hero.cta.pipeline": "パイプライン",
     "hero.cta.science": "コア技術",
     "rucia.tag": "コアテクノロジー",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "電気生理学ベースのイオンチャネル活性測定技術で細胞膜ターゲット薬物を開発しています。パッチクランプとハイスループット電気生理学検証を通じてTRPV1等のイオンチャネル選択的モジュレーターを発掘し、非オピオイド系鎮痛薬・感覚疾患治療薬の有効性と安全性を実データで検証します。",
+      "電気生理学ベースのイオンチャネル活性測定技術で細胞膜ターゲット薬物を開発しています。パッチクランプとハイスループット電気生理学検証を通じてTRPV1等のイオンチャネル選択的モジュレーターを発掘し、非オピオイド系鎮痛薬・ドライアイなど感覚疾患治療薬の有効性と安全性を実データで検証します。",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "パッチクランプHT検証",
     "rucia.metric.selectivity": "Membrane Target",
@@ -410,14 +410,14 @@ const translations = {
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
     "hero.description":
-      "Nuestra plataforma RuCIA utiliza diseño molecular con IA para predecir la selectividad de canales iónicos, desarrollando analgésicos no opioides. Reducción del 70% en tiempo de desarrollo con 100% de selectividad sobre el objetivo.",
+      "Nuestra plataforma RuCIA utiliza diseño molecular con IA para predecir la selectividad de proteínas de membrana (canales iónicos), desarrollando analgésicos no opioides y tratamientos para el ojo seco (Fase 2 FDA). Reducción del 70% en tiempo de desarrollo con 100% de selectividad sobre el objetivo.",
     "hero.cta.pipeline": "Ver Pipeline",
     "hero.cta.science": "Nuestra Ciencia",
     "rucia.tag": "Tecnología Central",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "Desarrollamos fármacos dirigidos a la membrana celular utilizando tecnología de medición de actividad de canales iónicos basada en electrofisiología. A través de patch clamp y validación electrofisiológica de alto rendimiento, descubrimos moduladores selectivos de canales iónicos como TRPV1, verificando la eficacia y seguridad con datos reales.",
+      "Desarrollamos fármacos dirigidos a la membrana celular utilizando tecnología de medición de actividad de canales iónicos basada en electrofisiología. A través de patch clamp y validación electrofisiológica de alto rendimiento, descubrimos moduladores selectivos de canales iónicos como TRPV1, verificando la eficacia y seguridad de tratamientos para el dolor no opioide y el ojo seco con datos reales.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Validación HT Patch Clamp",
     "rucia.metric.selectivity": "Membrane Target",
@@ -484,14 +484,14 @@ const translations = {
     "hero.title1": "Healing the",
     "hero.title2": "Source of Pain",
     "hero.description":
-      "Notre plateforme RuCIA utilise la conception moléculaire par IA pour prédire la sélectivité des canaux ioniques, développant des analgésiques non opioïdes. Réduction de 70 % du temps de développement avec une sélectivité cible de 100 %.",
+      "Notre plateforme RuCIA utilise la conception moléculaire par IA pour prédire la sélectivité des protéines membranaires (canaux ioniques), développant des analgésiques non opioïdes et des traitements de l'œil sec (Phase 2 FDA). Réduction de 70 % du temps de développement avec une sélectivité cible de 100 %.",
     "hero.cta.pipeline": "Voir le Pipeline",
     "hero.cta.science": "Notre Science",
     "rucia.tag": "Technologie Clé",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "Nous développons des médicaments ciblant la membrane cellulaire grâce à la technologie de mesure d'activité des canaux ioniques basée sur l'électrophysiologie. Par le patch clamp et la validation électrophysiologique à haut débit, nous découvrons des modulateurs sélectifs des canaux ioniques tels que TRPV1, vérifiant l'efficacité et la sécurité avec des données réelles.",
+      "Nous développons des médicaments ciblant la membrane cellulaire grâce à la technologie de mesure d'activité des canaux ioniques basée sur l'électrophysiologie. Par le patch clamp et la validation électrophysiologique à haut débit, nous découvrons des modulateurs sélectifs des canaux ioniques tels que TRPV1, vérifiant l'efficacité et la sécurité des traitements de la douleur non opioïde et de l'œil sec avec des données réelles.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Validation HT Patch Clamp",
     "rucia.metric.selectivity": "Membrane Target",
