@@ -115,10 +115,14 @@ export default async function LocaleLayout({
   if (!isValidLocale(locale)) redirect("/ko");
 
   return (
-    <>
+    // `display: contents` keeps this wrapper out of the layout box tree (body
+    // stays the flex container) while giving screen readers the correct
+    // per-locale language via nearest-ancestor `lang`. The root <html> carries
+    // a default `lang` so root-level routes (e.g. not-found) remain valid.
+    <div lang={locale} className="contents">
       <Navbar locale={locale as Locale} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale as Locale} />
-    </>
+    </div>
   );
 }

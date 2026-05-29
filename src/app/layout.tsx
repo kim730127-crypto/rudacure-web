@@ -92,7 +92,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/images/logo_transparent.png",
   },
   verification: {
     google:
@@ -125,7 +125,7 @@ const organizationJsonLd = {
   name: "RudaCure Co., Ltd.",
   alternateName: ["루다큐어", "RudaCure"],
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}/images/logo_full.png`,
   image: `${SITE_URL}/og-image.jpg`,
   description:
     "AI-driven ion channel drug discovery platform developing non-opioid therapeutics for pain and sensory diseases.",
@@ -508,7 +508,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="h-full antialiased">
+    <html lang="ko" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
         {children}
         <Script
