@@ -1,7 +1,10 @@
 /* Inter, Playfair Display, Roboto Mono are self-hosted via next/font/google
    (see app/layout.tsx) and exposed as --font-inter / --font-playfair /
-   --font-roboto-mono on <html>. Pretendard (Korean) stays on jsdelivr. */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+   --font-roboto-mono on <html>. Pretendard (Korean) is self-hosted too:
+   the dynamic-subset @font-face rules live in ./pretendard-subset.css and
+   load woff2 from /fonts/pretendard/ (same-origin, on-demand per glyph range).
+   Relative @import is bundled by PostCSS at build (no runtime @import drop). */
+@import "./pretendard-subset.css";
 @import "tailwindcss";
 
 /* Paperlogy Korean font */
