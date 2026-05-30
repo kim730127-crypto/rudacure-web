@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# LinkedIn API token (never commit)
+scripts/linkedin/token.json
+
 # vercel
 .vercel
 
