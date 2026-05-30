@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | RudaCure",
   },
   description:
-    "AI-driven membrane protein drug discovery company. Targeting ion channels (TRPV1/TRPA1) and GPCRs to develop non-opioid pain, dry eye, and chronic pain therapeutics. RuCIA platform with an FDA Phase 2 clinical-stage pipeline.",
+    "AI-driven membrane protein drug discovery company. Targeting ion channels (TRPV1/TRPA1/TRPV4) and GPCRs to develop non-opioid pain, dry eye, and chronic pain therapeutics. RuCIA platform with an FDA Phase 2 clinical-stage pipeline.",
   keywords: [
     "RudaCure",
     "루다큐어",
@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     "ion channel drug discovery",
     "GPCR drug discovery",
     "TRPV1",
+    "TRPV4",
+    "TRPV4 gene therapy",
+    "CMT2C gene therapy",
     "non-opioid pain treatment",
     "non-opioid analgesic",
     "chronic pain drug",
@@ -156,7 +159,7 @@ const organizationJsonLd = {
   logo: `${SITE_URL}/images/logo_full.png`,
   image: `${SITE_URL}/og-image.jpg`,
   description:
-    "AI-driven membrane protein drug discovery company targeting ion channels (TRPV1/TRPA1) and GPCRs to develop non-opioid pain, dry eye, and chronic pain therapeutics.",
+    "AI-driven membrane protein drug discovery company targeting ion channels (TRPV1/TRPA1/TRPV4) and GPCRs to develop non-opioid pain, dry eye, and chronic pain therapeutics.",
   foundingDate: "2018",
   founders: [
     {
@@ -205,9 +208,12 @@ const organizationJsonLd = {
     "Ion channel drug discovery",
     "GPCR drug discovery",
     "TRPV1",
+    "TRPV4",
+    "Gene therapy",
     "Non-opioid analgesics",
     "Chronic pain",
     "Dry eye disease",
+    "CMT2C",
     "AI drug discovery",
     "RuCIA platform",
   ],

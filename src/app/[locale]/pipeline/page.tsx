@@ -7,12 +7,44 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const title =
-    locale === "en"
-      ? "Pipeline: Dry Eye (FDA Phase 2) & Non-Opioid Pain | RudaCure"
-      : "파이프라인: 안구건조증(FDA 2상)·비마약성 진통제 | RudaCure";
-  const description =
-    "RudaCure's ion channel drug pipeline — RCI001 dry eye disease (FDA Phase 2, NCT07068958), RCI002 non-opioid pain, RCI003 psoriasis, RCI0165 osteoarthritis.";
+  // Per-locale SERP title + description. Non-en/ko locales previously fell back
+  // to the Korean string; now each locale is localized (fallback = English).
+  const META: Record<string, { title: string; description: string }> = {
+    en: {
+      title: "Pipeline: Dry Eye (FDA Phase 2) & Non-Opioid Pain | RudaCure",
+      description:
+        "RudaCure's ion channel & gene-therapy pipeline: RCI001 dry eye (FDA Phase 2, NCT07068958), RCI002 non-opioid pain, RC0125 TRPV4 gene therapy for CMT2C.",
+    },
+    ko: {
+      title: "파이프라인: 안구건조증(FDA 2상)·비마약성 진통제 | RudaCure",
+      description:
+        "루다큐어의 이온채널·유전자치료 파이프라인: RCI001 안구건조증(FDA 2상, NCT07068958), RCI002 비마약성 진통제, RC0125 TRPV4 유전자치료제(CMT2C).",
+    },
+    zh: {
+      title: "研发管线：干眼症（FDA 2期）与非阿片类镇痛 | RudaCure",
+      description:
+        "RudaCure离子通道与基因疗法管线：RCI001干眼症（FDA 2期，NCT07068958）、RCI002非阿片类镇痛、RC0125靶向TRPV4的CMT2C基因疗法。",
+    },
+    ja: {
+      title:
+        "パイプライン：ドライアイ（FDA第2相）・非オピオイド鎮痛 | RudaCure",
+      description:
+        "RudaCureのイオンチャネル・遺伝子治療パイプライン：RCI001ドライアイ（FDA第2相、NCT07068958）、RCI002非オピオイド鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
+    },
+    es: {
+      title: "Pipeline: Ojo Seco (Fase 2 FDA) y Dolor No Opioide | RudaCure",
+      description:
+        "Pipeline de canales iónicos y terapia génica de RudaCure: RCI001 ojo seco (Fase 2 FDA, NCT07068958), RCI002 dolor no opioide, RC0125 terapia génica TRPV4 para CMT2C.",
+    },
+    fr: {
+      title:
+        "Pipeline : Œil Sec (Phase 2 FDA) et Douleur Non Opioïde | RudaCure",
+      description:
+        "Pipeline canaux ioniques et thérapie génique de RudaCure : RCI001 œil sec (Phase 2 FDA, NCT07068958), RCI002 douleur non opioïde, RC0125 thérapie génique TRPV4 pour la CMT2C.",
+    },
+  };
+  const m = META[locale] ?? META.en;
+  const { title, description } = m;
   return {
     // `absolute` so the SERP <title> is exactly this string (no template doubling).
     title: { absolute: title },

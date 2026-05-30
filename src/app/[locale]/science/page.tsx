@@ -18,7 +18,7 @@ const CAPABILITIES: Record<
     {
       title: "이온채널 전문성",
       description:
-        "TRPV1, TRPA1 등 통증/감각 신호를 조절하는 이온채널에 특화. AI가 채널-리간드 상호작용을 예측하여 선택적 후보물질을 발굴합니다.",
+        "TRPV1, TRPA1, TRPV4 등 통증/감각 신호를 조절하는 이온채널에 특화. AI가 채널-리간드 상호작용을 예측하여 선택적 후보물질을 발굴합니다.",
       image: "/images/science/ion-channel.jpg",
     },
     {
@@ -44,7 +44,7 @@ const CAPABILITIES: Record<
     {
       title: "Ion Channel Mastery",
       description:
-        "Specialized in ion channels governing pain and sensory signals including TRPV1 and TRPA1. AI predicts channel-ligand interactions to discover selective drug candidates.",
+        "Specialized in ion channels governing pain and sensory signals including TRPV1, TRPA1, and TRPV4. AI predicts channel-ligand interactions to discover selective drug candidates.",
       image: "/images/science/ion-channel.jpg",
     },
     {
@@ -70,7 +70,7 @@ const CAPABILITIES: Record<
     {
       title: "离子通道专业能力",
       description:
-        "专注于调控疼痛与感觉信号的离子通道，包括TRPV1和TRPA1。AI预测通道-配体相互作用，发现高选择性候选药物。",
+        "专注于调控疼痛与感觉信号的离子通道，包括TRPV1、TRPA1和TRPV4。AI预测通道-配体相互作用，发现高选择性候选药物。",
       image: "/images/science/ion-channel.jpg",
     },
     {
@@ -96,7 +96,7 @@ const CAPABILITIES: Record<
     {
       title: "イオンチャネル専門性",
       description:
-        "TRPV1、TRPA1など痛覚・感覚シグナルを制御するイオンチャネルに特化。AIがチャネル-リガンド相互作用を予測し、選択的候補物質を発掘します。",
+        "TRPV1、TRPA1、TRPV4など痛覚・感覚シグナルを制御するイオンチャネルに特化。AIがチャネル-リガンド相互作用を予測し、選択的候補物質を発掘します。",
       image: "/images/science/ion-channel.jpg",
     },
     {
@@ -122,7 +122,7 @@ const CAPABILITIES: Record<
     {
       title: "Dominio de Canales Iónicos",
       description:
-        "Especializados en canales iónicos que regulan señales de dolor y sensoriales, incluyendo TRPV1 y TRPA1. La IA predice interacciones canal-ligando para descubrir candidatos farmacológicos selectivos.",
+        "Especializados en canales iónicos que regulan señales de dolor y sensoriales, incluyendo TRPV1, TRPA1 y TRPV4. La IA predice interacciones canal-ligando para descubrir candidatos farmacológicos selectivos.",
       image: "/images/science/ion-channel.jpg",
     },
     {
@@ -148,7 +148,7 @@ const CAPABILITIES: Record<
     {
       title: "Expertise en Canaux Ioniques",
       description:
-        "Spécialisés dans les canaux ioniques régulant les signaux de douleur et sensoriels, notamment TRPV1 et TRPA1. L'IA prédit les interactions canal-ligand pour découvrir des candidats médicaments sélectifs.",
+        "Spécialisés dans les canaux ioniques régulant les signaux de douleur et sensoriels, notamment TRPV1, TRPA1 et TRPV4. L'IA prédit les interactions canal-ligand pour découvrir des candidats médicaments sélectifs.",
       image: "/images/science/ion-channel.jpg",
     },
     {
@@ -520,7 +520,7 @@ export default async function SciencePage({
                   "Molecular dynamics simulation",
                   "FLIPR Penta high-throughput fluorescence assay",
                   "Patch clamp electrophysiology validation",
-                  "TRPV1, TRPA1, Nav channel targeting",
+                  "TRPV1, TRPA1, TRPV4, Nav channel targeting",
                   "70% faster development timeline vs traditional methods",
                 ],
               },
