@@ -77,7 +77,9 @@ function escapeCommentary(s) {
 }
 
 const env = loadEnv();
-const VERSION = env.LINKEDIN_VERSION || "202505"; // LinkedIn-Version (YYYYMM)
+// LinkedIn-Version (YYYYMM). Versions are active ~12 months; bump when expired.
+// process.env override lets us change it without editing the credentials file.
+const VERSION = process.env.LINKEDIN_VERSION || env.LINKEDIN_VERSION || "202601";
 const token = loadToken();
 const args = parseArgs(process.argv.slice(2));
 

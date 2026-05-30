@@ -70,7 +70,13 @@ Flags: `--text` / `--text-file`, `--image`, `--alt`, `--comment`, `--dry-run`.
 ## Notes
 - **Confirm-before-publish:** Claude always shows the final draft and waits for
   your "go" before running `post.mjs`. No blind auto-publishing.
-- Links go in `--comment` (first comment), not the body — LinkedIn suppresses
-  reach on posts with outbound links in the body.
+- Links go in the first comment, not the body — LinkedIn suppresses reach on
+  posts with outbound links in the body.
+- **`--comment` currently fails with 403** (comment creation / `socialActions`
+  is not in the self-serve "Share on LinkedIn" scope — needs partner approval).
+  Posting text+image works; **add the first comment manually** for now.
+- `LINKEDIN_VERSION` must be a current YYYYMM (active ~12 months). 202505 is
+  expired; use `202601`+. Override without editing the env file:
+  `LINKEDIN_VERSION=202601 node scripts/linkedin/post.mjs ...`
 - Hashtags: write them in the body text; `#` is preserved.
 - Voice/format rules: see `../../docs/marketing/05-linkedin-playbook-seunghoon-kim.md`.

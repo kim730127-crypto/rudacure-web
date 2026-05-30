@@ -55,7 +55,10 @@ Then you paste into LinkedIn and publish. I log the topic below so we don't repe
 | Date | Pillar | Topic | Link |
 |---|---|---|---|
 | 2026-04-07 | Pipeline | RCI001 FDA Phase 2 milestone (Post #1, EN) | urn:li:activity:7447160810772103168 |
+| 2026-05-30 | Platform strategy | "Not just the TRPV1 company" — membrane-protein (ion channels + GPCRs), FDA Ph2, image: RCI002 MoA graphic | urn:li:share:7466303209867776000 |
 | _next_ | | | |
+
+> **API note:** auto-posting works (text + image), but the **first comment fails with 403** — comment creation (`socialActions`) is not in the self-serve "Share on LinkedIn" scope. **Add the first comment (the link) manually** after each post. Also set `LINKEDIN_VERSION` to a current YYYYMM (~last 12 months); 202505 is expired — use 202601+ (override: `LINKEDIN_VERSION=202601 node ...`).
 
 ## Guardrails (accuracy)
 - Only public, approved facts. Safe source of truth = the site's pipeline page + FAQ JSON-LD (`src/app/layout.tsx`) — vetted talking points (NCT07068958, mechanisms, partners, ODD strategy).
