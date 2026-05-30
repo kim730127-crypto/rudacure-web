@@ -23,9 +23,9 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com", // Next.js, TailwindCSS, GA4 (gtag.js)
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net", // Google Fonts + Pretendard (jsdelivr) CSS imports
+      "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net", // Pretendard (jsdelivr) CSS import; Google fonts self-hosted via next/font
       "img-src 'self' data: https:",
-      "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net", // Google Fonts + Pretendard webfont files
+      "font-src 'self' https://cdn.jsdelivr.net", // Pretendard webfonts; Google fonts served same-origin (self) by next/font
       "connect-src 'self' https://api.resend.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com", // GA4 collect beacons
       "frame-src https://www.google.com", // Allow Google Maps embeds
       "base-uri 'self'",

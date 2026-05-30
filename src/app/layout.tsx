@@ -1,8 +1,28 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Inter, Playfair_Display, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
 const SITE_URL = "https://www.rudacure.com";
+
+// Self-hosted Google fonts (build-time) — no external CDN/CSP dependency,
+// no render-blocking @import. Variable fonts: weight omitted = full axis range.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -519,7 +539,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="h-full antialiased">
+    <html
+      lang="ko"
+      className={`h-full antialiased ${inter.variable} ${playfair.variable} ${robotoMono.variable}`}
+    >
       <body className="min-h-full flex flex-col">
         {children}
         <Script
