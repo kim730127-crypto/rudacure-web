@@ -17,9 +17,9 @@ const META: Record<CROLocale, { title: string; description: string }> = {
       "이온채널 약리학에 특화된 비임상 CRO. TRPV1, TRPA1, Nav 채널 표적 만성통증·안구건조증 후보물질의 효능 평가. 19+ 위탁과제 수행 실적, FLIPR Penta HTS, 13+ 동물모델 운용.",
   },
   en: {
-    title: "CRO Services | RudaCure",
+    title: "Ion Channel CRO — Pain, Dry Eye & Electrophysiology | RudaCure",
     description:
-      "Ion channel-specialized preclinical CRO. Efficacy evaluation of TRPV1, TRPA1, Nav channel-targeted chronic pain and dry eye disease candidates. 19+ completed contracts, FLIPR Penta HTS, 13+ animal models.",
+      "Ion channel–specialized preclinical CRO: TRPV1/TRPA1/Nav screening via FLIPR Penta and patch-clamp electrophysiology, 13+ chronic pain and dry-eye models, 19+ completed contracts.",
   },
 };
 
@@ -31,7 +31,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const m = META[toCROLocale(locale)];
   return {
-    title: m.title,
+    // `absolute` so the SERP <title> is exactly this string (no "%s | RudaCure"
+    // template doubling, regardless of parent-layout title behavior).
+    title: { absolute: m.title },
     description: m.description,
     alternates: localizedAlternates(locale, "/cro"),
     openGraph: {
