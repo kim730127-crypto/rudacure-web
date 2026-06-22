@@ -55,3 +55,4 @@ public/magazines/*.pdf
 
 # playwright
 .playwright-mcp/
+.gstack/
