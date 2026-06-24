@@ -206,7 +206,7 @@ const translations = {
     "news.title1": "News",
     "news.title2": "Center",
     "news.description":
-      "Stay updated with the latest press releases and news from RudaCure.",
+      "Latest RudaCure news and press releases on dry eye and non-opioid pain therapeutics, clinical trials, and partnerships.",
     "news.back": "Back to List",
 
     // Contact

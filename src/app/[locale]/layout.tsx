@@ -19,7 +19,7 @@ const LOCALE_META: Record<
   en: {
     title: "RudaCure | AI Drug Discovery for Non-Opioid Pain & Dry Eye",
     description:
-      "RudaCure is an AI-driven drug discovery company targeting membrane proteins — ion channels (TRPV1/TRPA1) and GPCRs — to develop non-opioid pain, dry eye, and chronic pain therapeutics. RuCIA platform; FDA Phase 2 (NCT07068958).",
+      "RudaCure: AI-driven drug discovery targeting ion channels (TRPV1) and GPCRs for non-opioid pain and dry eye therapeutics. RuCIA platform; FDA Phase 2.",
     ogLocale: "en_US",
   },
   zh: {
