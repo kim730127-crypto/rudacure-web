@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { track } from '@vercel/analytics'
 import { submitContactForm } from './actions'
 
 interface ContactFormProps {
@@ -154,6 +155,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
       const result = await submitContactForm(formData)
 
       if (result.success) {
+        track('contact_submit', { type: formData.type || 'unspecified' })
         setFormState({
           loading: false,
           success: true,
