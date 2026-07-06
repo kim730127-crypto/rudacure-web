@@ -4,6 +4,7 @@ import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { HeroParticles } from "@/components/hero-particles";
 import { PartnerLogo } from "@/components/partner-logo";
+import { RecruitPopup } from "@/components/recruit-popup";
 import newsKo from "@/data/news.json";
 import newsEn from "@/data/news_en.json";
 import newsZh from "@/data/news_zh.json";
@@ -497,6 +498,9 @@ export default async function HomePage({
 
   return (
     <>
+      {/* 구인 팝업: 한국어 홈에서만, 세션당 1회 (충원 시 recruit-popup.tsx의 ACTIVE=false) */}
+      {locale === "ko" && <RecruitPopup />}
+
       {/* ===== Hero ===== */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Full background image */}
