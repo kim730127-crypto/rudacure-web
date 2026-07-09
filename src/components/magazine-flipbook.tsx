@@ -101,13 +101,17 @@ export default function MagazineFlipbook({
     };
   }, [onClose]);
 
-  // Page dimensions: fit viewport, keep the PDF aspect ratio.
+  // Page dimensions: fill the viewport, keeping the PDF aspect ratio.
+  // A portrait page on a landscape screen is height-bound; past the cover
+  // showCover renders a 2-page spread, so 2*pageW must also fit the width.
+  // Computed once at render (won't track a resize while the modal is open).
   const ratio = pages[0]?.ratio ?? 1.414;
-  const maxH = typeof window !== "undefined" ? window.innerHeight * 0.82 : 700;
-  const maxWSingle =
-    typeof window !== "undefined" ? window.innerWidth * 0.44 : 400;
-  let pageW = Math.min(maxH / ratio, maxWSingle);
-  pageW = Math.max(220, Math.min(pageW, 520));
+  const vw = typeof window !== "undefined" ? window.innerWidth : 1280;
+  const vh = typeof window !== "undefined" ? window.innerHeight : 800;
+  const availH = vh - 150; // leave room for the top bar + hint
+  const availW = vw * 0.94;
+  let pageW = Math.min(availW / 2, availH / ratio);
+  pageW = Math.max(220, pageW);
   const pageH = Math.round(pageW * ratio);
 
   return (
@@ -198,11 +202,11 @@ export default function MagazineFlipbook({
           <HTMLFlipBook
             width={pageW}
             height={pageH}
-            size="stretch"
+            size="fixed"
             minWidth={220}
-            maxWidth={520}
+            maxWidth={1600}
             minHeight={310}
-            maxHeight={735}
+            maxHeight={2200}
             showCover={true}
             mobileScrollSupport={true}
             maxShadowOpacity={0.5}
