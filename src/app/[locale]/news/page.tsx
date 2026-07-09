@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { MagazineGrid } from "@/components/magazine-grid";
 import articlesKo from "@/data/news.json";
 import articlesEn from "@/data/news_en.json";
 import articlesZh from "@/data/news_zh.json";
@@ -51,6 +51,7 @@ const MAGAZINE_CONTENT: Record<
     sectionTitleEm: string;
     sectionDescription: string;
     download: string;
+    read: string;
     latest: string;
   }
 > = {
@@ -61,6 +62,7 @@ const MAGAZINE_CONTENT: Record<
     sectionDescription:
       "루다큐어의 분기별 소식과 연구 성과를 정리한 매거진입니다. PDF로 다운로드하실 수 있습니다.",
     download: "PDF 다운로드",
+    read: "읽기",
     latest: "최신호",
   },
   en: {
@@ -70,6 +72,7 @@ const MAGAZINE_CONTENT: Record<
     sectionDescription:
       "Our quarterly magazine covering the latest research progress and company updates. Available for free PDF download.",
     download: "Download PDF",
+    read: "Read",
     latest: "Latest",
   },
   zh: {
@@ -79,6 +82,7 @@ const MAGAZINE_CONTENT: Record<
     sectionDescription:
       "汇总RudaCure每季度的最新动态和研究成果的杂志。可免费下载PDF版本。",
     download: "下载PDF",
+    read: "阅读",
     latest: "最新刊",
   },
   ja: {
@@ -88,6 +92,7 @@ const MAGAZINE_CONTENT: Record<
     sectionDescription:
       "RudaCureの四半期ごとのニュースと研究成果をまとめたマガジンです。PDFで無料ダウンロードいただけます。",
     download: "PDFダウンロード",
+    read: "読む",
     latest: "最新号",
   },
   es: {
@@ -97,6 +102,7 @@ const MAGAZINE_CONTENT: Record<
     sectionDescription:
       "Nuestra revista trimestral con los últimos avances en investigación y novedades de la empresa. Disponible para descarga gratuita en PDF.",
     download: "Descargar PDF",
+    read: "Leer",
     latest: "Último",
   },
   fr: {
@@ -106,6 +112,7 @@ const MAGAZINE_CONTENT: Record<
     sectionDescription:
       "Notre magazine trimestriel couvrant les dernières avancées de la recherche et les actualités de l'entreprise. Téléchargement PDF gratuit.",
     download: "Télécharger PDF",
+    read: "Lire",
     latest: "Dernier",
   },
 };
@@ -176,59 +183,12 @@ export default async function NewsPage({
             {mc.sectionDescription}
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {MAGAZINES.map((mag, i) => (
-              <a
-                key={mag.vol}
-                href={`https://github.com/kim730127-crypto/rudacure-web/releases/download/magazines-v1/${mag.pdf}`}
-                download
-                className="group relative"
-              >
-                {/* Cover image */}
-                <div className="relative aspect-[3/4.24] rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow bg-gray-100">
-                  <Image
-                    src={`/magazines/covers/vol${mag.vol}.jpg`}
-                    alt={`RudaCure Magazine Vol.${mag.vol}`}
-                    fill
-                    className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                  />
-                  {/* Latest badge */}
-                  {i === 0 && (
-                    <span className="absolute top-2 left-2 text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full shadow">
-                      {mc.latest}
-                    </span>
-                  )}
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 bg-white/90 text-teal-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow">
-                      <svg
-                        className="w-3.5 h-3.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                        />
-                      </svg>
-                      {mc.download}
-                    </div>
-                  </div>
-                </div>
-                {/* Label */}
-                <div className="mt-2 text-center">
-                  <p className="text-xs font-semibold text-gray-800">
-                    Vol.{mag.vol}
-                  </p>
-                  <p className="text-[11px] text-gray-400">{mag.quarter}</p>
-                </div>
-              </a>
-            ))}
-          </div>
+          <MagazineGrid
+            magazines={MAGAZINES}
+            latestLabel={mc.latest}
+            readLabel={mc.read}
+            downloadLabel={mc.download}
+          />
         </div>
       </section>
 
