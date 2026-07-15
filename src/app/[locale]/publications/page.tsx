@@ -33,6 +33,7 @@ type PatentFamily = {
     filed: string;
     registered: string;
     status: "granted" | "filed" | "pct" | "expired" | "transferred";
+    pdf?: string; // filename in /public/patents/ — shows a download link on the badge
   }[];
   inventors: string;
 };
@@ -163,10 +164,11 @@ const PATENT_FAMILIES: PatentFamily[] = [
       {
         country: "일본",
         countryEn: "Japan",
-        number: "2025-518592",
+        number: "JP7886490",
         filed: "2025.03.28",
-        registered: "-",
-        status: "filed",
+        registered: "2026.06.29",
+        status: "granted",
+        pdf: "JP7886490_certificate.pdf",
       },
       {
         country: "호주",
@@ -597,40 +599,40 @@ const PAPERS: {
     ko: {
       title: "안구 표면 질환 치료 후보물질 RCI001의 효능 평가",
       journal: "Cornea",
-      authors: "김승훈 외",
+      authors: "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
       type: "원저",
     },
     en: {
       title:
         "Efficacy of RCI001 as a Therapeutic Candidate in Ocular Surface Diseases",
       journal: "Cornea",
-      authors: "Kim SH et al.",
+      authors: "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
       type: "Original Article",
     },
     zh: {
       title: "RCI001作为眼表疾病治疗候选药物的疗效评估",
       journal: "Cornea",
-      authors: "Kim SH et al.",
+      authors: "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
       type: "原著论文",
     },
     ja: {
       title: "眼表面疾患治療候補物質RCI001の有効性評価",
       journal: "Cornea",
-      authors: "Kim SH et al.",
+      authors: "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
       type: "原著論文",
     },
     es: {
       title:
         "Eficacia de RCI001 como candidato terapéutico en enfermedades de la superficie ocular",
       journal: "Cornea",
-      authors: "Kim SH et al.",
+      authors: "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
       type: "Artículo Original",
     },
     fr: {
       title:
         "Efficacité du RCI001 en tant que candidat thérapeutique dans les maladies de la surface oculaire",
       journal: "Cornea",
-      authors: "Kim SH et al.",
+      authors: "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
       type: "Article Original",
     },
     doi: "10.1097/ICO.0000000000003696",
@@ -641,43 +643,43 @@ const PAPERS: {
     ko: {
       title:
         "마우스 안구 알칼리 화상 모델에서 RCI001, Solcoseryl, Polydeoxyribonucleotide의 각막 상피 창상 치유 비교",
-      journal: "Cornea",
-      authors: "김승훈 외",
+      journal: "Korean Journal of Ophthalmology",
+      authors: "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "원저",
     },
     en: {
       title:
         "Comparison of Corneal Epithelial Wound Healing between Topical RCI001, Solcoseryl, and Polydeoxyribonucleotide in the Murine Ocular Alkali Burn Model",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Korean Journal of Ophthalmology",
+      authors: "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Original Article",
     },
     zh: {
       title:
         "小鼠眼碱烧伤模型中RCI001、Solcoseryl和Polydeoxyribonucleotide的角膜上皮创面愈合比较",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Korean Journal of Ophthalmology",
+      authors: "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "原著论文",
     },
     ja: {
       title:
         "マウス眼アルカリ熱傷モデルにおけるRCI001、Solcoseryl、Polydeoxyribonucleotideの角膜上皮創傷治癒の比較",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Korean Journal of Ophthalmology",
+      authors: "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "原著論文",
     },
     es: {
       title:
         "Comparación de la cicatrización epitelial corneal entre RCI001 tópico, Solcoseryl y Polydeoxyribonucleotide en el modelo murino de quemadura alcalina ocular",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Korean Journal of Ophthalmology",
+      authors: "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Artículo Original",
     },
     fr: {
       title:
         "Comparaison de la cicatrisation épithéliale cornéenne entre le RCI001 topique, le Solcoseryl et le Polydeoxyribonucleotide dans le modèle murin de brûlure alcaline oculaire",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Korean Journal of Ophthalmology",
+      authors: "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Article Original",
     },
     doi: "10.3341/kjo.2023.0019",
@@ -688,42 +690,42 @@ const PAPERS: {
     ko: {
       title:
         "안구 표면 질환 치료를 위한 RCI001의 항염증 효과 연구 — 작용 기전에 대한 고찰",
-      journal: "Investigative Ophthalmology & Visual Science",
-      authors: "김승훈 외",
+      journal: "Frontiers in Immunology",
+      authors: "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "원저",
     },
     en: {
       title:
         "Investigating the Anti-Inflammatory Effects of RCI001 for Treating Ocular Surface Diseases: Insight Into the Mechanism of Action",
-      journal: "Investigative Ophthalmology & Visual Science",
-      authors: "Kim SH et al.",
+      journal: "Frontiers in Immunology",
+      authors: "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Original Article",
     },
     zh: {
       title: "RCI001治疗眼表疾病的抗炎效果研究——作用机制探讨",
-      journal: "Investigative Ophthalmology & Visual Science",
-      authors: "Kim SH et al.",
+      journal: "Frontiers in Immunology",
+      authors: "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "原著论文",
     },
     ja: {
       title:
         "眼表面疾患治療のためのRCI001の抗炎症効果の研究——作用機序に関する考察",
-      journal: "Investigative Ophthalmology & Visual Science",
-      authors: "Kim SH et al.",
+      journal: "Frontiers in Immunology",
+      authors: "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "原著論文",
     },
     es: {
       title:
         "Investigación de los efectos antiinflamatorios de RCI001 para el tratamiento de enfermedades de la superficie ocular: perspectiva del mecanismo de acción",
-      journal: "Investigative Ophthalmology & Visual Science",
-      authors: "Kim SH et al.",
+      journal: "Frontiers in Immunology",
+      authors: "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Artículo Original",
     },
     fr: {
       title:
         "Étude des effets anti-inflammatoires du RCI001 pour le traitement des maladies de la surface oculaire : aperçu du mécanisme d'action",
-      journal: "Investigative Ophthalmology & Visual Science",
-      authors: "Kim SH et al.",
+      journal: "Frontiers in Immunology",
+      authors: "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Article Original",
     },
     doi: "10.3389/fimmu.2022.850287",
@@ -734,43 +736,43 @@ const PAPERS: {
     ko: {
       title:
         "8-Oxo-2'-Deoxyguanosine 점안제와 코르티코스테로이드의 안구 알칼리 화상 모델에서의 치료 효과 비교",
-      journal: "Cornea",
-      authors: "김승훈 외",
+      journal: "Scientific Reports",
+      authors: "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
       type: "원저",
     },
     en: {
       title:
         "Comparison of Therapeutic Effects between Topical 8-oxo-2'-deoxyguanosine and Corticosteroid in Ocular Alkali Burn Model",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Scientific Reports",
+      authors: "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
       type: "Original Article",
     },
     zh: {
       title:
         "眼碱烧伤模型中局部8-oxo-2'-deoxyguanosine与皮质类固醇的治疗效果比较",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Scientific Reports",
+      authors: "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
       type: "原著论文",
     },
     ja: {
       title:
         "眼アルカリ熱傷モデルにおける局所8-oxo-2'-deoxyguanosineとコルチコステロイドの治療効果の比較",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Scientific Reports",
+      authors: "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
       type: "原著論文",
     },
     es: {
       title:
         "Comparación de los efectos terapéuticos entre 8-oxo-2'-deoxyguanosine tópico y corticosteroides en el modelo de quemadura alcalina ocular",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Scientific Reports",
+      authors: "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
       type: "Artículo Original",
     },
     fr: {
       title:
         "Comparaison des effets thérapeutiques entre la 8-oxo-2'-deoxyguanosine topique et les corticostéroïdes dans le modèle de brûlure alcaline oculaire",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Scientific Reports",
+      authors: "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
       type: "Article Original",
     },
     doi: "10.1038/s41598-021-86440-7",
@@ -781,43 +783,43 @@ const PAPERS: {
     ko: {
       title:
         "8-Oxo-2'-Deoxyguanosine의 안구 분포 및 약동학 — 안구 표면 질환의 새로운 치료 후보물질",
-      journal: "Translational Vision Science & Technology",
-      authors: "김승훈 외",
+      journal: "Journal of Ocular Pharmacology and Therapeutics",
+      authors: "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
       type: "원저",
     },
     en: {
       title:
         "Ocular Distribution and Pharmacokinetics of 8-Oxo-2'-Deoxyguanosine: A Novel Therapeutic Candidate of Ocular Surface Diseases",
-      journal: "Translational Vision Science & Technology",
-      authors: "Kim SH et al.",
+      journal: "Journal of Ocular Pharmacology and Therapeutics",
+      authors: "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
       type: "Original Article",
     },
     zh: {
       title:
         "8-Oxo-2'-Deoxyguanosine的眼部分布及药代动力学——眼表疾病的新型治疗候选药物",
-      journal: "Translational Vision Science & Technology",
-      authors: "Kim SH et al.",
+      journal: "Journal of Ocular Pharmacology and Therapeutics",
+      authors: "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
       type: "原著论文",
     },
     ja: {
       title:
         "8-Oxo-2'-Deoxyguanosineの眼内分布および薬物動態——眼表面疾患の新規治療候補物質",
-      journal: "Translational Vision Science & Technology",
-      authors: "Kim SH et al.",
+      journal: "Journal of Ocular Pharmacology and Therapeutics",
+      authors: "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
       type: "原著論文",
     },
     es: {
       title:
         "Distribución ocular y farmacocinética de 8-Oxo-2'-Deoxyguanosine: un nuevo candidato terapéutico para enfermedades de la superficie ocular",
-      journal: "Translational Vision Science & Technology",
-      authors: "Kim SH et al.",
+      journal: "Journal of Ocular Pharmacology and Therapeutics",
+      authors: "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
       type: "Artículo Original",
     },
     fr: {
       title:
         "Distribution oculaire et pharmacocinétique de la 8-Oxo-2'-Deoxyguanosine : un nouveau candidat thérapeutique pour les maladies de la surface oculaire",
-      journal: "Translational Vision Science & Technology",
-      authors: "Kim SH et al.",
+      journal: "Journal of Ocular Pharmacology and Therapeutics",
+      authors: "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
       type: "Article Original",
     },
     doi: "10.1089/jop.2022.0054",
@@ -828,43 +830,43 @@ const PAPERS: {
     ko: {
       title:
         "난치성 안구건조증에 대한 코르티코스테로이드 단기 치료 효과 — MMP-9 검사의 반응 예측 마커로서의 유용성",
-      journal: "Cornea",
-      authors: "김승훈 외",
+      journal: "Clinical Ophthalmology",
+      authors: "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
       type: "원저",
     },
     en: {
       title:
         "Short-Term Therapeutic Effects of Topical Corticosteroids on Refractory Dry Eye Disease: Clinical Usefulness of Matrix Metalloproteinase 9 Testing as a Response Prediction Marker",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Clinical Ophthalmology",
+      authors: "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
       type: "Original Article",
     },
     zh: {
       title:
         "局部皮质类固醇对难治性干眼症的短期治疗效果——MMP-9检测作为反应预测标志物的临床实用性",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Clinical Ophthalmology",
+      authors: "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
       type: "原著论文",
     },
     ja: {
       title:
         "難治性ドライアイに対するコルチコステロイドの短期治療効果——MMP-9検査の反応予測マーカーとしての有用性",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Clinical Ophthalmology",
+      authors: "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
       type: "原著論文",
     },
     es: {
       title:
         "Efectos terapéuticos a corto plazo de los corticosteroides tópicos en la enfermedad del ojo seco refractario: utilidad clínica de la prueba de MMP-9 como marcador de predicción de respuesta",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Clinical Ophthalmology",
+      authors: "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
       type: "Artículo Original",
     },
     fr: {
       title:
         "Effets thérapeutiques à court terme des corticostéroïdes topiques sur la sécheresse oculaire réfractaire : utilité clinique du test MMP-9 comme marqueur de prédiction de la réponse",
-      journal: "Cornea",
-      authors: "Kim SH et al.",
+      journal: "Clinical Ophthalmology",
+      authors: "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
       type: "Article Original",
     },
     doi: "10.2147/OPTH.S300047",
@@ -874,41 +876,41 @@ const PAPERS: {
     year: 2022,
     ko: {
       title: "안구건조증 수술 전 관리를 통한 인공수정체 도수 계산 정확도 향상",
-      journal: "Journal of Cataract & Refractive Surgery",
-      authors: "김승훈 외",
+      journal: "BMC Ophthalmology",
+      authors: "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
       type: "원저",
     },
     en: {
       title:
         "Improved Accuracy of Intraocular Lens Power Calculation by Preoperative Management of Dry Eye Disease",
-      journal: "Journal of Cataract & Refractive Surgery",
-      authors: "Kim SH et al.",
+      journal: "BMC Ophthalmology",
+      authors: "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
       type: "Original Article",
     },
     zh: {
       title: "通过术前干眼症管理提高人工晶体屈光度计算精度",
-      journal: "Journal of Cataract & Refractive Surgery",
-      authors: "Kim SH et al.",
+      journal: "BMC Ophthalmology",
+      authors: "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
       type: "原著论文",
     },
     ja: {
       title: "ドライアイの術前管理による眼内レンズ度数計算精度の向上",
-      journal: "Journal of Cataract & Refractive Surgery",
-      authors: "Kim SH et al.",
+      journal: "BMC Ophthalmology",
+      authors: "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
       type: "原著論文",
     },
     es: {
       title:
         "Mejora de la precisión del cálculo de potencia de lentes intraoculares mediante el manejo preoperatorio de la enfermedad del ojo seco",
-      journal: "Journal of Cataract & Refractive Surgery",
-      authors: "Kim SH et al.",
+      journal: "BMC Ophthalmology",
+      authors: "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
       type: "Artículo Original",
     },
     fr: {
       title:
         "Amélioration de la précision du calcul de la puissance des lentilles intraoculaires par la gestion préopératoire de la sécheresse oculaire",
-      journal: "Journal of Cataract & Refractive Surgery",
-      authors: "Kim SH et al.",
+      journal: "BMC Ophthalmology",
+      authors: "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
       type: "Article Original",
     },
     doi: "10.1186/s12886-021-02129-5",
@@ -944,6 +946,7 @@ type ContentBlock = {
   familyUnit: string;
   inventorsLabel: string;
   viewJournal: string;
+  certificateLabel: string;
   metaTitle: string;
 };
 
@@ -978,6 +981,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     familyUnit: "패밀리",
     inventorsLabel: "발명자",
     viewJournal: "저널 보기",
+    certificateLabel: "특허증 다운로드",
     metaTitle: "특허 & 논문 | RudaCure",
   },
   en: {
@@ -1010,6 +1014,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     familyUnit: "family",
     inventorsLabel: "Inventors",
     viewJournal: "View Journal",
+    certificateLabel: "Download Certificate",
     metaTitle: "Patents & Papers | RudaCure",
   },
   zh: {
@@ -1040,6 +1045,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     familyUnit: "个家族",
     inventorsLabel: "发明人",
     viewJournal: "查看期刊",
+    certificateLabel: "下载专利证书",
     metaTitle: "专利 & 论文 | RudaCure",
   },
   ja: {
@@ -1072,6 +1078,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     familyUnit: "ファミリー",
     inventorsLabel: "発明者",
     viewJournal: "ジャーナルを見る",
+    certificateLabel: "特許証をダウンロード",
     metaTitle: "特許 & 論文 | RudaCure",
   },
   es: {
@@ -1104,6 +1111,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     familyUnit: "familia",
     inventorsLabel: "Inventores",
     viewJournal: "Ver Revista",
+    certificateLabel: "Descargar certificado",
     metaTitle: "Patentes & Publicaciones | RudaCure",
   },
   fr: {
@@ -1136,6 +1144,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     familyUnit: "famille",
     inventorsLabel: "Inventeurs",
     viewJournal: "Voir la Revue",
+    certificateLabel: "Télécharger le certificat",
     metaTitle: "Brevets & Publications | RudaCure",
   },
 };
@@ -1440,6 +1449,33 @@ export default async function PublicationsPage({
                                       {statusLabel(fl.status)}
                                     </span>
                                   </>
+                                )}
+                                {fl.pdf && (
+                                  <a
+                                    href={`/patents/${fl.pdf}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title={`${countryName(fl)} ${c.certificateLabel}`}
+                                    className="inline-flex items-center gap-0.5 text-teal-600 hover:text-teal-800 transition-colors"
+                                  >
+                                    <span className="text-gray-400">|</span>
+                                    <svg
+                                      className="w-3.5 h-3.5"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                      strokeWidth={2}
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                                      />
+                                    </svg>
+                                    <span className="text-[11px] font-medium">
+                                      PDF
+                                    </span>
+                                  </a>
                                 )}
                               </div>
                             );
