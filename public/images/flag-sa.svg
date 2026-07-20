@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#006C35"/>
+  <!-- Simplified shahada script line (stylized, not literal calligraphy) -->
+  <g fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round">
+    <path d="M180 235 q40 -45 80 0 q40 45 80 0 q40 -45 80 0 q40 45 80 0 q40 -45 80 0 q40 45 80 0"/>
+  </g>
+  <!-- Sword -->
+  <g fill="#fff">
+    <rect x="180" y="360" width="470" height="26" rx="13"/>
+    <path d="M650 373 l70 -30 v60 z"/>
+    <rect x="640" y="345" width="20" height="56" rx="6"/>
+    <rect x="690" y="352" width="34" height="42" rx="8"/>
+  </g>
+</svg>

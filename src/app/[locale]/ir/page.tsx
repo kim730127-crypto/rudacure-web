@@ -790,7 +790,7 @@ export default async function IRPage({
                       }
                     >
                       <td className="p-4 text-sm text-gray-600">{row.label}</td>
-                      <td className="p-4 text-sm text-gray-800 font-medium text-right">
+                      <td className="p-4 text-sm text-gray-800 font-medium text-end">
                         {row.value}
                       </td>
                     </tr>

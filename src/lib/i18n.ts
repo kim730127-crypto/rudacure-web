@@ -1,7 +1,13 @@
-export const LOCALES = ["ko", "en", "zh", "ja", "es", "fr"] as const;
+export const LOCALES = ["ko", "en", "zh", "ja", "es", "fr", "ar"] as const;
 export type Locale = (typeof LOCALES)[number];
 export type DataLocale = "ko" | "en";
 export const DEFAULT_LOCALE: Locale = "ko";
+
+/** Right-to-left locales. Drives the `dir` attribute and RTL layout. */
+export const RTL_LOCALES: readonly Locale[] = ["ar"];
+export function getDir(locale: Locale): "rtl" | "ltr" {
+  return RTL_LOCALES.includes(locale) ? "rtl" : "ltr";
+}
 
 /** Map any locale to a data locale (ko or en) for page data lookups */
 export function toDataLocale(locale: Locale): DataLocale {
@@ -542,6 +548,91 @@ const translations = {
     "contact.form.submit": "Envoyer",
     "footer.description":
       "Plateforme de découverte de médicaments par IA ciblant les canaux ioniques, développant des thérapies non opioïdes pour la douleur et les maladies sensorielles.",
+  },
+
+  ar: {
+    "nav.science": "العلوم",
+    "nav.pipeline": "خط التطوير",
+    "nav.cro": "CRO",
+    "nav.ir": "علاقات المستثمرين",
+    "nav.news": "المركز الإخباري",
+    "nav.publications": "المنشورات",
+    "nav.sab": "SAB",
+    "nav.about": "من نحن",
+    "nav.contact": "اتصل بنا",
+    "hero.tagline": "الرؤية الاستراتيجية 2026",
+    "hero.title1": "Healing the",
+    "hero.title2": "Source of Pain",
+    "hero.description":
+      "تعتمد منصة RuCIA على التصميم الجزيئي بالذكاء الاصطناعي للتنبؤ بانتقائية البروتينات الغشائية (القنوات الأيونية)، لتطوير مسكّنات ألم غير أفيونية وعلاجات لجفاف العين (المرحلة الثانية لدى إدارة الغذاء والدواء الأمريكية). تقليص مدة التطوير بنسبة 70% مع انتقائية 100% تجاه الهدف.",
+    "hero.cta.pipeline": "استكشف خط التطوير",
+    "hero.cta.science": "علومنا",
+    "rucia.tag": "التقنية الأساسية",
+    "rucia.title1": "Membrane Target",
+    "rucia.title2": "Drug Discovery",
+    "rucia.description":
+      "نطوّر أدوية موجهة إلى غشاء الخلية باستخدام تقنية قياس نشاط القنوات الأيونية القائمة على الفيزيولوجيا الكهربية. ومن خلال تقنية «باتش-كلامب» والتحقق الكهروفيزيولوجي عالي الإنتاجية، نكتشف معدّلات انتقائية للقنوات الأيونية مثل TRPV1، ونتحقق من فعالية وسلامة علاجات الألم غير الأفيونية وجفاف العين بالبيانات الواقعية.",
+    "rucia.metric.time": "Electrophysiology",
+    "rucia.metric.time.sub": "تحقق عالي الإنتاجية بتقنية باتش-كلامب",
+    "rucia.metric.selectivity": "Membrane Target",
+    "rucia.metric.selectivity.sub": "تعديل انتقائي للقنوات الأيونية",
+    "rucia.metric.market": "$94B",
+    "rucia.metric.market.sub": "سوق الألم المزمن العالمي (2030)",
+    "pipeline.tag": "البرامج العلاجية",
+    "pipeline.title1": "The",
+    "pipeline.title2": "Pipeline",
+    "pipeline.view_news": "← تفاصيل خط التطوير",
+    "cta.title1": "Partner with",
+    "cta.title2": "RudaCure",
+    "cta.description":
+      "نرحّب بالاستفسارات حول التراخيص العالمية والبحوث المشتركة وفرص الاستثمار.",
+    "cta.button": "تواصل معنا",
+
+    // Home – Partners section
+    "home.partners.tag": "الشركاء والتقدير",
+    "home.partners.title1": "شركاؤنا ",
+    "home.partners.title2": "الموثوقون",
+
+    // Home – News section
+    "home.news.tag": "آخر الأخبار",
+    "home.news.title1": "الأخبار و",
+    "home.news.title2": "التحديثات",
+    "home.news.viewAll": "← عرض الكل",
+
+    "about.tag": "الشركة",
+    "about.title1": "Our",
+    "about.title2": "Journey",
+    "about.description":
+      "من مختبر متخصص في القنوات الأيونية عام 2018 إلى شركة تقنية حيوية عالمية مدفوعة بالذكاء الاصطناعي عام 2026 — قصة RudaCure.",
+    "science.tag": "منصة التقنية",
+    "science.title1": "The",
+    "science.title2": "RuCIA",
+    "science.title3": "Platform",
+    "science.description":
+      "Rudacure Ion Channel Innovative Assessment — المحرّك الأساسي الذي يدمج التنبؤ الجزيئي المدفوع بالذكاء الاصطناعي مع التحقق الكهروفيزيولوجي عالي الإنتاجية.",
+    "pipeline.page.tag": "تطوير الأدوية",
+    "pipeline.page.title1": "Therapeutic",
+    "pipeline.page.title2": "Pipeline",
+    "pipeline.page.description":
+      "خط تطوير علاجي غير أفيوني موجّه إلى القنوات الأيونية. المرشحات المكتشفة عبر منصة RuCIA للذكاء الاصطناعي في طريقها إلى التجارب السريرية العالمية.",
+    "news.tag": "الصحافة والإعلام",
+    "news.title1": "News",
+    "news.title2": "Center",
+    "news.description": "اطّلع على آخر أخبار RudaCure وبياناتها الصحفية.",
+    "news.back": "← العودة إلى القائمة",
+    "contact.tag": "تواصل معنا",
+    "contact.title1": "Contact",
+    "contact.title2": "Us",
+    "contact.description":
+      "نرحّب بالاستفسارات حول الشراكات والتراخيص والاستثمار وخدمات CRO.",
+    "contact.form.name": "الاسم",
+    "contact.form.email": "البريد الإلكتروني",
+    "contact.form.company": "الشركة",
+    "contact.form.type": "نوع الاستفسار",
+    "contact.form.message": "الرسالة",
+    "contact.form.submit": "إرسال",
+    "footer.description":
+      "منصة اكتشاف أدوية مدفوعة بالذكاء الاصطناعي تستهدف القنوات الأيونية، لتطوير علاجات غير أفيونية للألم والأمراض الحسّية.",
   },
 } as const;
 

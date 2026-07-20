@@ -38,7 +38,7 @@ export function MagazineGrid({
             key={mag.vol}
             type="button"
             onClick={() => setActive(mag)}
-            className="group relative text-left"
+            className="group relative text-start"
           >
             <div className="relative aspect-[3/4.24] rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow bg-gray-100">
               <Image
@@ -49,7 +49,7 @@ export function MagazineGrid({
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
               />
               {i === 0 && (
-                <span className="absolute top-2 left-2 text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full shadow">
+                <span className="absolute top-2 start-2 text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full shadow">
                   {latestLabel}
                 </span>
               )}

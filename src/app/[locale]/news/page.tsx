@@ -179,7 +179,7 @@ export default async function NewsPage({
               </em>
             </h2>
           </div>
-          <p className="text-gray-500 text-sm mb-8 ml-9">
+          <p className="text-gray-500 text-sm mb-8 ms-9">
             {mc.sectionDescription}
           </p>
 

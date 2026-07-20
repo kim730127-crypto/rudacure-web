@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+// Arabic webfont (Inter has no Arabic glyphs). Exposed as a CSS variable and
+// applied to RTL content via `:lang(ar)` in globals.css.
+const notoArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+});
 
 export const metadata: Metadata = {
   title: "RudaCure | TRPV1 Drug Discovery",
@@ -74,7 +80,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-white text-gray-900 antialiased`}>
+      <body
+        className={`${inter.className} ${notoArabic.variable} bg-white text-gray-900 antialiased`}
+      >
         {children}
         <Analytics />
       </body>

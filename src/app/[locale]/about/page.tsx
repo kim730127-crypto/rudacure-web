@@ -1664,12 +1664,12 @@ export default async function AboutPage({
       <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            <div className="absolute left-[7px] top-0 bottom-0 w-px bg-gray-200" />
+            <div className="absolute start-[7px] top-0 bottom-0 w-px bg-gray-200" />
             <div className="space-y-10">
               {timeline.map((item) => (
-                <div key={item.year} className="relative pl-10">
+                <div key={item.year} className="relative ps-10">
                   <div
-                    className={`absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 ${item.highlight ? "border-teal-500 bg-teal-50" : "border-gray-200 bg-white"}`}
+                    className={`absolute start-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 ${item.highlight ? "border-teal-500 bg-teal-50" : "border-gray-200 bg-white"}`}
                   />
                   <div className="liquid-glass p-6">
                     <span

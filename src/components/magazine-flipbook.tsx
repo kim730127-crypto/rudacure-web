@@ -127,7 +127,7 @@ export default function MagazineFlipbook({
         <p className="text-sm font-medium">
           RudaCure Magazine{" "}
           <span className="font-bold">Vol.{magazine.vol}</span>
-          <span className="text-white/60 ml-2 text-xs">{magazine.quarter}</span>
+          <span className="text-white/60 ms-2 text-xs">{magazine.quarter}</span>
         </p>
         <div className="flex items-center gap-2">
           <a

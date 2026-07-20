@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { isValidLocale, LOCALES, type Locale } from "@/lib/i18n";
+import { getDir, isValidLocale, LOCALES, type Locale } from "@/lib/i18n";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
@@ -45,6 +45,13 @@ const LOCALE_META: Record<
     description:
       "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires — canaux ioniques (TRPV1/TRPA1) et RCPG — pour développer des thérapies non opioïdes contre la douleur, l'œil sec et la douleur chronique. Plateforme RuCIA ; Phase 2 FDA.",
     ogLocale: "fr_FR",
+  },
+  ar: {
+    title:
+      "RudaCure | اكتشاف أدوية بالذكاء الاصطناعي لألم غير أفيوني وجفاف العين",
+    description:
+      "RudaCure شركة لاكتشاف الأدوية بالذكاء الاصطناعي تستهدف البروتينات الغشائية — القنوات الأيونية (TRPV1/TRPA1) ومستقبلات GPCR — لتطوير علاجات غير أفيونية للألم وجفاف العين والألم المزمن. منصة RuCIA؛ المرحلة الثانية لدى FDA.",
+    ogLocale: "ar_SA",
   },
 };
 
@@ -121,7 +128,9 @@ export default async function LocaleLayout({
     // stays the flex container) while giving screen readers the correct
     // per-locale language via nearest-ancestor `lang`. The root <html> carries
     // a default `lang` so root-level routes (e.g. not-found) remain valid.
-    <div lang={locale} className="contents">
+    // `dir` inherits through the DOM (not the box tree), so RTL propagates to
+    // descendants even though this element generates no box.
+    <div lang={locale} dir={getDir(locale)} className="contents">
       <Navbar locale={locale as Locale} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale as Locale} />

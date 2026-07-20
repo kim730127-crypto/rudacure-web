@@ -56,3 +56,6 @@ public/magazines/*.pdf
 # playwright
 .playwright-mcp/
 .gstack/
+
+# Claude Code local tooling
+.claude/

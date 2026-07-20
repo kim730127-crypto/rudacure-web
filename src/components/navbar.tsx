@@ -21,6 +21,7 @@ function Flag({
     jp: "/images/flag-jp.svg",
     es: "/images/flag-es.svg",
     fr: "/images/flag-fr.svg",
+    sa: "/images/flag-sa.svg",
   };
   return (
     <img src={src[code] || ""} alt={code.toUpperCase()} className={className} />
@@ -34,6 +35,7 @@ const LANG_OPTIONS = [
   { locale: "ja", flag: "jp", label: "JP" },
   { locale: "es", flag: "es", label: "ES" },
   { locale: "fr", flag: "fr", label: "FR" },
+  { locale: "ar", flag: "sa", label: "AR" },
 ] as const;
 
 const NAV_KEYS = [
@@ -67,7 +69,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
   }));
 
   const pathWithoutLocale =
-    pathname.replace(/^\/(ko|en|zh|ja|es|fr)/, "") || "";
+    pathname.replace(/^\/(ko|en|zh|ja|es|fr|ar)/, "") || "";
 
   return (
     <nav
@@ -148,7 +150,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setLangOpen(false)}
               />
-              <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50 min-w-[120px]">
+              <div className="absolute end-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50 min-w-[120px]">
                 {LANG_OPTIONS.map((lang) => (
                   <Link
                     key={lang.locale}

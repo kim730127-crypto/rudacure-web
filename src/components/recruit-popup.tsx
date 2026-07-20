@@ -87,7 +87,7 @@ export function RecruitPopup() {
             ref={closeRef}
             onClick={close}
             aria-label="채용 공고 닫기"
-            className="-mr-1 shrink-0 rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
+            className="-me-1 shrink-0 rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
           >
             <svg
               className="h-5 w-5"
@@ -108,7 +108,7 @@ export function RecruitPopup() {
         {/* body (scrollable) */}
         <div className="space-y-6 overflow-y-auto px-6 py-6 text-sm leading-relaxed text-gray-700 sm:px-8">
           <Section title="담당 업무">
-            <ul className="list-disc space-y-1 pl-5">
+            <ul className="list-disc space-y-1 ps-5">
               <li>
                 국내외 사업화(기술이전, 공동연구)를 위한 파트너사 네트워킹
               </li>
@@ -119,7 +119,7 @@ export function RecruitPopup() {
           </Section>
 
           <Section title="자격 요건">
-            <ul className="list-disc space-y-1 pl-5">
+            <ul className="list-disc space-y-1 ps-5">
               <li>학력: 학사 이상</li>
               <li>
                 경력: 바이오/의학/약학 관련 제약산업 전반에 지식을 보유하며, 5년
@@ -134,7 +134,7 @@ export function RecruitPopup() {
           </Section>
 
           <Section title="우대 사항">
-            <ul className="list-disc space-y-1 pl-5">
+            <ul className="list-disc space-y-1 ps-5">
               <li>
                 신약 파이프라인 기술이전(L/O) 및 공동개발 계약 전 주기 경험자
               </li>
@@ -153,7 +153,7 @@ export function RecruitPopup() {
                 <p className="font-semibold text-gray-900">
                   1. 신약 파이프라인 기술이전 및 공동연구 추진
                 </p>
-                <ul className="mt-1 list-disc space-y-1 pl-5">
+                <ul className="mt-1 list-disc space-y-1 ps-5">
                   <li>
                     국내외 바이오 파트너링 행사 참가 및 파트너링 미팅 주도
                   </li>
@@ -175,7 +175,7 @@ export function RecruitPopup() {
                 <p className="font-semibold text-gray-900">
                   2. 신사업 기획 및 파트너십 관리
                 </p>
-                <ul className="mt-1 list-disc space-y-1 pl-5">
+                <ul className="mt-1 list-disc space-y-1 ps-5">
                   <li>
                     기존 전략적 파트너사와의 네트워크 유지 및 협력 논의 주도
                   </li>
@@ -195,7 +195,7 @@ export function RecruitPopup() {
                 <p className="font-semibold text-gray-900">
                   3. 기업 홍보 및 대외 협력
                 </p>
-                <ul className="mt-1 list-disc space-y-1 pl-5">
+                <ul className="mt-1 list-disc space-y-1 ps-5">
                   <li>
                     LinkedIn 등 온라인 플랫폼 및 오프라인 채널을 통한 기업 및
                     파이프라인 홍보

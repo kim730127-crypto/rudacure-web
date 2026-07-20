@@ -660,10 +660,10 @@ export default async function HomePage({
               <ScrollReveal key={p.id} delay={i * 150}>
                 <Link
                   href={`/${locale}/pipeline`}
-                  className={`block liquid-glass-teal p-6 sm:p-8 group border-l-4 ${
+                  className={`block liquid-glass-teal p-6 sm:p-8 group border-s-4 ${
                     p.color === "teal"
-                      ? "border-l-teal-500"
-                      : "border-l-blue-500"
+                      ? "border-s-teal-500"
+                      : "border-s-blue-500"
                   }`}
                 >
                   {/* Header */}

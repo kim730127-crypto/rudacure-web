@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
 
   // Check if path already has a locale prefix
   const hasLocale = LOCALES.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   if (hasLocale) return NextResponse.next();
@@ -23,17 +23,24 @@ export function middleware(request: NextRequest) {
 
   // Detect preferred language from Accept-Language header
   const acceptLang = request.headers.get("accept-language") || "";
-  const preferredLocale = acceptLang.includes("ko") ? "ko"
-    : acceptLang.includes("zh") ? "zh"
-    : acceptLang.includes("ja") ? "ja"
-    : acceptLang.includes("es") ? "es"
-    : acceptLang.includes("fr") ? "fr"
-    : "en";
+  const preferredLocale = acceptLang.includes("ko")
+    ? "ko"
+    : acceptLang.includes("zh")
+      ? "zh"
+      : acceptLang.includes("ja")
+        ? "ja"
+        : acceptLang.includes("es")
+          ? "es"
+          : acceptLang.includes("fr")
+            ? "fr"
+            : acceptLang.includes("ar")
+              ? "ar"
+              : "en";
 
   // Redirect to locale-prefixed path
   const locale = preferredLocale || DEFAULT_LOCALE;
   return NextResponse.redirect(
-    new URL(`/${locale}${pathname === "/" ? "" : pathname}`, request.url)
+    new URL(`/${locale}${pathname === "/" ? "" : pathname}`, request.url),
   );
 }
 

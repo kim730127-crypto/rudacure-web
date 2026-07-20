@@ -623,7 +623,7 @@ export default async function SciencePage({
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-100 bg-gray-50">
-                    <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
+                    <th className="text-start text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
                       {c.thMetric}
                     </th>
                     <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">

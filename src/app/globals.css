@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* Arabic content uses Noto Sans Arabic (loaded in the root layout). It also
+   covers Latin/numeric runs (RuCIA, TRPV1, $94B); system-ui is the fallback. */
+:lang(ar) {
+  font-family: var(--font-arabic), system-ui, sans-serif;
+}
