@@ -697,13 +697,17 @@ export default async function SciencePage({
               {c.mdDesc}
             </p>
             <figure className="mb-12 rounded-2xl overflow-hidden bg-black/40 ring-1 ring-white/10">
-              <Image
-                src="/videos/rucia/membrane-trpv4-rhoa-hd.jpg"
-                alt={c.mdFeatureCaption}
-                width={2000}
-                height={965}
-                sizes="(max-width: 1152px) 100vw, 1152px"
-                className="w-full h-auto"
+              {/* 360° turntable of the TRPV4-RhoA membrane system; static hi-res render is the poster */}
+              <video
+                className="w-full h-auto block"
+                src="/videos/rucia/membrane-turntable.mp4"
+                poster="/videos/rucia/membrane-trpv4-rhoa-hd.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={c.mdFeatureCaption}
               />
               <figcaption className="p-5 text-sm sm:text-[15px] text-gray-300 leading-relaxed">
                 {c.mdFeatureCaption}
