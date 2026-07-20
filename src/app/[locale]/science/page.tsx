@@ -339,6 +339,11 @@ const CONTENT: Record<
     beyondTitle: string[];
     beyondP1: string;
     beyondP2: string;
+    mdTag: string;
+    mdTitle: string[];
+    mdDesc: string;
+    mdFeatureCaption: string;
+    mdCaptions: string[];
   }
 > = {
   ko: {
@@ -357,6 +362,17 @@ const CONTENT: Record<
       "이온채널은 통증, 온도 감각, 안구 표면 항상성의 핵심 조절자입니다. RuCIA는 이 신호의 근원을 정밀하게 조절하여, 증상이 아닌 원인을 치료합니다.",
     beyondP2:
       "Post-opioid 시대, FDA/EMA가 비중독성 대안을 우선시하는 규제 환경에서 RudaCure의 TRPV1 플랫폼은 글로벌 제약사의 핵심 파트너십 대상입니다.",
+    mdTag: "분자동역학 시뮬레이션",
+    mdTitle: ["Molecular Dynamics ", "in Action"],
+    mdDesc:
+      "RuCIA는 막단백질을 실제 지질막 환경에서 원자 수준으로 시뮬레이션하여, 표적-리간드 결합의 안정성과 구조 변화를 정밀하게 관찰합니다. AI 예측을 물리 기반 동역학으로 검증하는 과정입니다.",
+    mdFeatureCaption:
+      "TRPV4 이온채널–RhoA 복합체를 실제 원자단위 지질 이중층(POPC 막) 안에서 시뮬레이션 — 초록색이 지질막, 파랑/보라 표면이 막관통 채널(TRPV4 4량체), 마젠타가 세포내 결합 단백질(RhoA)입니다. RuCIA는 막단백질을 물이 아닌 실제 막 환경에서, 세포내 파트너까지 함께 다룹니다.",
+    mdCaptions: [
+      "지질막 내 TRP 채널-리간드 결합 동역학",
+      "막 환경에서의 채널 구조 변화",
+      "표적-리간드 상호작용 시뮬레이션",
+    ],
   },
   en: {
     tag: "Technology Platform",
@@ -374,6 +390,17 @@ const CONTENT: Record<
       "Ion channels are key regulators of pain, temperature sensation, and ocular surface homeostasis. RuCIA precisely modulates the source of these signals, treating causes rather than symptoms.",
     beyondP2:
       "In the post-opioid era, where FDA/EMA prioritize non-addictive alternatives, RudaCure's TRPV1 platform is a strategic partnership target for global pharmaceutical companies.",
+    mdTag: "Molecular Dynamics",
+    mdTitle: ["Molecular Dynamics ", "in Action"],
+    mdDesc:
+      "RuCIA simulates membrane proteins at atomic resolution within a realistic lipid environment, revealing the stability and conformational dynamics of target–ligand binding. This is where AI predictions are validated by physics-based dynamics.",
+    mdFeatureCaption:
+      "The TRPV4 ion channel–RhoA complex simulated within a real all-atom lipid bilayer (POPC membrane): green is the lipid membrane, the blue/purple surface is the transmembrane channel (TRPV4 tetramer), magenta the intracellular binding partner (RhoA). RuCIA studies membrane proteins in a real membrane environment — together with their intracellular partners, not in water alone.",
+    mdCaptions: [
+      "TRP channel–ligand binding dynamics in a lipid membrane",
+      "Conformational changes in a membrane environment",
+      "Target–ligand interaction simulation",
+    ],
   },
   zh: {
     tag: "技术平台",
@@ -391,6 +418,17 @@ const CONTENT: Record<
       "离子通道是疼痛、温度感觉和眼表稳态的关键调节因子。RuCIA精准调控这些信号的源头，治疗病因而非症状。",
     beyondP2:
       "在后阿片时代，FDA/EMA优先考虑非成瘾性替代方案的监管环境下，RudaCure的TRPV1平台是全球制药企业的核心合作目标。",
+    mdTag: "分子动力学模拟",
+    mdTitle: ["Molecular Dynamics ", "in Action"],
+    mdDesc:
+      "RuCIA在真实脂质膜环境中以原子级分辨率模拟膜蛋白，精确观察靶点-配体结合的稳定性与构象变化。这是以物理动力学验证AI预测的过程。",
+    mdFeatureCaption:
+      "在真实全原子脂质双层（POPC膜）中模拟TRPV4离子通道–RhoA复合物：绿色为脂质膜，蓝/紫色表面为跨膜通道（TRPV4四聚体），品红色为胞内结合蛋白（RhoA）。RuCIA在真实膜环境中研究膜蛋白，并与其胞内伙伴一起，而非仅在水中。",
+    mdCaptions: [
+      "脂质膜中TRP通道-配体结合动力学",
+      "膜环境中的通道构象变化",
+      "靶点-配体相互作用模拟",
+    ],
   },
   ja: {
     tag: "技術プラットフォーム",
@@ -408,6 +446,17 @@ const CONTENT: Record<
       "イオンチャネルは痛覚、温度感覚、眼表面恒常性の重要な調節因子です。RuCIAはこれらのシグナルの根源を精密に調節し、症状ではなく原因を治療します。",
     beyondP2:
       "ポストオピオイド時代、FDA/EMAが非依存性代替薬を優先する規制環境において、RudaCureのTRPV1プラットフォームはグローバル製薬企業の戦略的パートナーシップ対象です。",
+    mdTag: "分子動力学シミュレーション",
+    mdTitle: ["Molecular Dynamics ", "in Action"],
+    mdDesc:
+      "RuCIAは膜タンパク質を実際の脂質膜環境で原子レベルにシミュレーションし、標的-リガンド結合の安定性と構造変化を精密に観察します。AI予測を物理ベースの動力学で検証するプロセスです。",
+    mdFeatureCaption:
+      "TRPV4イオンチャネル–RhoA複合体を実際の全原子脂質二重層（POPC膜）内でシミュレーション：緑が脂質膜、青／紫の表面が膜貫通チャネル（TRPV4四量体）、マゼンタが細胞内結合タンパク質（RhoA）です。RuCIAは膜タンパク質を水中ではなく実際の膜環境で、細胞内パートナーとともに扱います。",
+    mdCaptions: [
+      "脂質膜内のTRPチャネル-リガンド結合動力学",
+      "膜環境におけるチャネル構造変化",
+      "標的-リガンド相互作用シミュレーション",
+    ],
   },
   es: {
     tag: "Plataforma Tecnológica",
@@ -425,6 +474,17 @@ const CONTENT: Record<
       "Los canales iónicos son reguladores clave del dolor, la sensación térmica y la homeostasis de la superficie ocular. RuCIA modula con precisión la fuente de estas señales, tratando causas en lugar de síntomas.",
     beyondP2:
       "En la era post-opioide, donde FDA/EMA priorizan alternativas no adictivas, la plataforma TRPV1 de RudaCure es un objetivo estratégico de asociación para empresas farmacéuticas globales.",
+    mdTag: "Dinámica Molecular",
+    mdTitle: ["Molecular Dynamics ", "in Action"],
+    mdDesc:
+      "RuCIA simula proteínas de membrana con resolución atómica en un entorno lipídico realista, revelando la estabilidad y la dinámica conformacional de la unión diana–ligando. Aquí las predicciones de IA se validan mediante dinámica basada en física.",
+    mdFeatureCaption:
+      "El complejo canal iónico TRPV4–RhoA simulado dentro de una bicapa lipídica atomística real (membrana POPC): el verde es la membrana lipídica, la superficie azul/púrpura el canal transmembrana (tetrámero TRPV4), el magenta la proteína de unión intracelular (RhoA). RuCIA estudia proteínas de membrana en un entorno de membrana real, junto con sus socios intracelulares, no solo en agua.",
+    mdCaptions: [
+      "Dinámica de unión canal TRP–ligando en una membrana lipídica",
+      "Cambios conformacionales en un entorno de membrana",
+      "Simulación de interacción diana–ligando",
+    ],
   },
   fr: {
     tag: "Plateforme Technologique",
@@ -442,6 +502,17 @@ const CONTENT: Record<
       "Les canaux ioniques sont des régulateurs clés de la douleur, de la sensation thermique et de l'homéostasie de la surface oculaire. RuCIA module avec précision la source de ces signaux, traitant les causes plutôt que les symptômes.",
     beyondP2:
       "Dans l'ère post-opioïde, où la FDA/EMA priorisent les alternatives non addictives, la plateforme TRPV1 de RudaCure est un objectif stratégique de partenariat pour les entreprises pharmaceutiques mondiales.",
+    mdTag: "Dynamique Moléculaire",
+    mdTitle: ["Molecular Dynamics ", "in Action"],
+    mdDesc:
+      "RuCIA simule les protéines membranaires à résolution atomique dans un environnement lipidique réaliste, révélant la stabilité et la dynamique conformationnelle de la liaison cible–ligand. C'est ici que les prédictions de l'IA sont validées par une dynamique fondée sur la physique.",
+    mdFeatureCaption:
+      "Le complexe canal ionique TRPV4–RhoA simulé au sein d'une bicouche lipidique tout-atome réelle (membrane POPC) : le vert est la membrane lipidique, la surface bleue/violette le canal transmembranaire (tétramère TRPV4), le magenta la protéine de liaison intracellulaire (RhoA). RuCIA étudie les protéines membranaires dans un environnement membranaire réel, avec leurs partenaires intracellulaires, et pas seulement dans l'eau.",
+    mdCaptions: [
+      "Dynamique de liaison canal TRP–ligand dans une membrane lipidique",
+      "Changements conformationnels dans un environnement membranaire",
+      "Simulation d'interaction cible–ligand",
+    ],
   },
 };
 
@@ -604,6 +675,63 @@ export default async function SciencePage({
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Molecular Dynamics simulation showcase — MD videos from RuCIA platform.
+            ponytail: 3 muted loops (~7MB total) autoplay with preload="metadata".
+            If Vercel bandwidth becomes an issue, switch to click-to-play or
+            IntersectionObserver lazy-load (needs a client component). */}
+        <section className="py-20 px-6 bg-gray-950">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-teal-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+              {c.mdTag}
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-white">
+              {c.mdTitle[0]}
+              <em className="font-playfair italic font-semibold text-gradient-emerald">
+                {c.mdTitle[1]}
+              </em>
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl leading-relaxed mb-12">
+              {c.mdDesc}
+            </p>
+            <figure className="mb-12 rounded-2xl overflow-hidden bg-black/40 ring-1 ring-white/10">
+              <Image
+                src="/videos/rucia/membrane-trpv4-rhoa-hd.jpg"
+                alt={c.mdFeatureCaption}
+                width={2000}
+                height={965}
+                sizes="(max-width: 1152px) 100vw, 1152px"
+                className="w-full h-auto"
+              />
+              <figcaption className="p-5 text-sm sm:text-[15px] text-gray-300 leading-relaxed">
+                {c.mdFeatureCaption}
+              </figcaption>
+            </figure>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((n) => (
+                <figure
+                  key={n}
+                  className="rounded-2xl overflow-hidden bg-black/40 ring-1 ring-white/10"
+                >
+                  <video
+                    className="w-full h-auto block"
+                    src={`/videos/rucia/md-sim-${n}.mp4`}
+                    poster={`/videos/rucia/md-sim-${n}.jpg`}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={c.mdCaptions[n - 1]}
+                  />
+                  <figcaption className="p-4 text-sm text-gray-400 leading-relaxed">
+                    {c.mdCaptions[n - 1]}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </section>
 
