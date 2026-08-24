@@ -1,5 +1,12 @@
 [
   {
+    "id": 189,
+    "category": "Patent",
+    "date": "2026-08-13",
+    "title": "RudaCure非阿片类镇痛药核心技术获日本专利授权（专利第7904628号）",
+    "content": "<p><img src=\"/images/news/patent-jp7904628-cert-p1.jpg\" alt=\"日本特许厅专利证书（特许第7904628号）\"></p>\n\n<p>[仁川] 膜蛋白及离子通道靶向新药研发生物技术企业RudaCure（代表 金龙镐）于13日宣布，其针对TRPV1靶点的新一代非阿片类镇痛肽技术已获得日本特许厅（JPO）的专利授权（专利第7904628号）。</p>\n\n<p>本次授权的专利名称为“新型肽及其用途”（新規ペプチドおよびその用途，申请号 特愿2024-513214），锁定了RudaCure核心镇痛管线RCI002的核心物质专利及在各类急慢性、神经病理性疼痛治疗中的日本独占权。</p>\n\n<h3>专利注册概要</h3>\n\n<table>\n<tbody>\n<tr><td>发明名称</td><td>新型肽及其用途 (新規ペプチドおよびその用途)</td></tr>\n<tr><td>专利号</td><td>日本专利第7904628号 (JP 7904628 B2)</td></tr>\n<tr><td>申请号</td><td>特愿 2024-513214 (国际申请 PCT/KR2023/016946)</td></tr>\n<tr><td>优先权</td><td>10-2023-0026404 (韩国, 2023.02.28)</td></tr>\n<tr><td>注册日 / 公报日</td><td>2026年8月4日注册 / 2026年8月13日公报发行</td></tr>\n<tr><td>专利权人</td><td>RudaCure Corporation (ルダキュア コーポレーション)</td></tr>\n<tr><td>发明人</td><td>金龙镐、金昇勋、全夏源、张李远</td></tr>\n<tr><td>相关管线</td><td>RCI002 (TRPV1靶向非阿片类创新镇痛药)</td></tr>\n</tbody>\n</table>\n\n<h3>专利公报核心技术要点</h3>\n\n<ul>\n<li><strong>基于GDF11优化的短肽设计：</strong> 克服了109个氨基酸完整GDF11蛋白生产困难的瓶颈，以与TRPV1辣椒素结合位点相互作用的关键第91位谷氨酰胺（Gln）残基为核心，设计了25个氨基酸以下（如11-mer）的高活性短肽。</li>\n<li><strong>纳摩尔（nM）级别强效TRPV1抑制活性：</strong> 细胞钙内流抑制实验显示，序列号5（IC50 = 3.056 nM）和序列号6（IC50 = 6.399 nM）在极低浓度下即可发挥显著的TRPV1通道阻断效果。</li>\n<li><strong>最大化体内稳定性：</strong> 采用N端硫辛酸（lipoic acid）封端、C端对硝基苯胺（p-nitroanilide）封端或环状（cyclic）肽设计，有效抵抗蛋白酶降解，大幅提高体内生物利用度。</li>\n<li><strong>在多种体内（In Vivo）疼痛模型中验证显著镇痛药效：</strong>\n<ul>\n<li><strong>福尔马林疼痛模型：</strong> 显著抑制第二阶段持续性炎症疼痛反应，药效与普瑞巴林相当。</li>\n<li><strong>辣椒素诱导疼痛模型：</strong> 显著减少TRPV1介导的疼痛行为。</li>\n<li><strong>坐骨神经损伤（CCI）慢性神经痛模型：</strong> 较低剂量下达到优于或等同于吗啡的痛阈改善及异常性疼痛（Allodynia）缓解效果。</li>\n<li><strong>脊神经结扎（SNL）神经痛模型：</strong> 展现持久的机械性异常疼痛抑制。</li>\n<li><strong>化疗药（紫杉醇）诱发周围神经病变（CIPN）模型：</strong> 显著缓解神经痛，具替代加巴喷丁/普瑞巴林之潜力。</li>\n</ul>\n</li>\n<li><strong>非阿片类、无发热安全性：</strong> 从根本上杜绝了阿片类药物成瘾与耐受风险，同时克服了传统TRPV1拮抗剂的高热（Hyperthermia）副作用。</li>\n</ul>\n\n<p>RudaCure将以此为契机，加快在美国、欧洲、中国等主要市场的专利布局，全力推进全球商业化与技术授权合作。</p>\n\n<p>▶ <a href=\"/patents/JP7904628_certificate.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">下载日本专利证书原件 PDF</a></p>"
+  },
+  {
     "id": 188,
     "category": "Award",
     "date": "2026-07-30",

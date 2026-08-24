@@ -379,10 +379,11 @@ const PATENT_FAMILIES: PatentFamily[] = [
       {
         country: "일본",
         countryEn: "Japan",
-        number: "2024-513214",
+        number: "JP7904628",
         filed: "2024.02.27",
-        registered: "-",
-        status: "filed",
+        registered: "2026.08.04",
+        status: "granted",
+        pdf: "JP7904628_certificate.pdf",
       },
       {
         country: "중국",
