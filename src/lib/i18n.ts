@@ -35,10 +35,10 @@ const translations = {
 
     // Hero
     "hero.tagline": "2026 Strategic Vision",
-    "hero.title1": "Healing the",
-    "hero.title2": "Source of Pain",
+    "hero.title1": "Membrane Targets.",
+    "hero.title2": "Quality of Life.",
     "hero.description":
-      "RuCIA 플랫폼 기반 AI 분자 설계로 막단백질(이온채널) 선택성을 예측하여, 비마약성 통증 치료제와 안구건조증 치료제(FDA 2상)를 개발합니다. 기존 신약개발 대비 개발 기간 70% 단축, 표적 선택성 100%를 실현합니다.",
+      "막단백질(이온채널·GPCR) 선택성을 예측하는 RuCIA AI 플랫폼으로 안구건조증(FDA 2상), 비마약성 만성통증, 건선, 희귀 신경질환 치료제를 개발합니다. 하나의 표적 원리를 여러 질환에 적용해 기존 신약개발 대비 개발 기간 70% 단축, 표적 선택성 100%로 환자의 삶의 질을 회복합니다.",
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
@@ -124,7 +124,7 @@ const translations = {
 
     // Footer
     "footer.description":
-      "AI 기반 이온채널 신약개발 플랫폼으로 비마약성 통증/감각 질환 치료제를 개발합니다.",
+      "막단백질을 표적하는 AI 신약개발 플랫폼으로 통증·감각·염증 질환 치료제를 개발해 환자의 삶의 질을 회복합니다.",
   },
 
   en: {
@@ -141,10 +141,10 @@ const translations = {
 
     // Hero
     "hero.tagline": "2026 Strategic Vision",
-    "hero.title1": "Healing the",
-    "hero.title2": "Source of Pain",
+    "hero.title1": "Membrane Targets.",
+    "hero.title2": "Quality of Life.",
     "hero.description":
-      "Our RuCIA platform leverages AI molecular design to predict membrane-protein (ion channel) selectivity, developing non-opioid pain and dry eye therapeutics (FDA Phase 2). 70% faster development timeline with 100% target selectivity.",
+      "Our RuCIA platform predicts membrane-protein (ion channel, GPCR) selectivity to develop therapeutics for dry eye disease (FDA Phase 2), non-opioid chronic pain, psoriasis and rare neurological disease. One targeting principle across many indications — 70% faster development, 100% target selectivity, in service of patients' quality of life.",
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
@@ -230,7 +230,7 @@ const translations = {
 
     // Footer
     "footer.description":
-      "AI-driven ion channel drug discovery platform developing non-opioid therapeutics for pain and sensory diseases.",
+      "AI-driven membrane-protein drug discovery platform developing therapeutics across pain, sensory and inflammatory disease to restore quality of life.",
   },
 
   zh: {
@@ -244,10 +244,10 @@ const translations = {
     "nav.about": "关于我们",
     "nav.contact": "联系我们",
     "hero.tagline": "2026 战略愿景",
-    "hero.title1": "Healing the",
-    "hero.title2": "Source of Pain",
+    "hero.title1": "Membrane Targets.",
+    "hero.title2": "Quality of Life.",
     "hero.description":
-      "基于RuCIA平台的AI分子设计预测膜蛋白（离子通道）选择性，开发非阿片类镇痛药物和干眼症治疗药物（FDA 2期）。与传统新药开发相比，开发周期缩短70%，靶点选择性达100%。",
+      "基于RuCIA平台的AI分子设计预测膜蛋白（离子通道·GPCR）选择性，开发干眼症（FDA 2期）、非阿片类慢性疼痛、银屑病及罕见神经疾病治疗药物。以同一靶点原理覆盖多个适应症，开发周期缩短70%，靶点选择性达100%，致力于恢复患者的生活质量。",
     "hero.cta.pipeline": "探索管线",
     "hero.cta.science": "核心技术",
     "rucia.tag": "核心技术",
@@ -313,7 +313,7 @@ const translations = {
     "contact.form.message": "留言",
     "contact.form.submit": "发送",
     "footer.description":
-      "基于AI的离子通道新药开发平台，开发非阿片类疼痛/感觉疾病治疗药物。",
+      "基于AI的膜蛋白新药开发平台，开发疼痛、感觉及炎症疾病治疗药物，恢复患者的生活质量。",
   },
 
   ja: {
@@ -327,10 +327,10 @@ const translations = {
     "nav.about": "会社概要",
     "nav.contact": "お問い合わせ",
     "hero.tagline": "2026 戦略ビジョン",
-    "hero.title1": "Healing the",
-    "hero.title2": "Source of Pain",
+    "hero.title1": "Membrane Targets.",
+    "hero.title2": "Quality of Life.",
     "hero.description":
-      "RuCIAプラットフォームベースのAI分子設計により膜タンパク質（イオンチャネル）選択性を予測し、非オピオイド系鎮痛薬とドライアイ治療薬（FDA Phase 2）を開発しています。従来の新薬開発と比較して開発期間を70%短縮、ターゲット選択性100%を実現します。",
+      "RuCIAプラットフォームのAI分子設計により膜タンパク質（イオンチャネル・GPCR）選択性を予測し、ドライアイ（FDA Phase 2）、非オピオイド性慢性疼痛、乾癣、希少神経疾患の治療薬を開発しています。単一の標的原理を複数の適応症へ展開し、開発期間を70%短縮、ターゲット選択性100%で患者さんの生活の質の回復を目指します。",
     "hero.cta.pipeline": "パイプライン",
     "hero.cta.science": "コア技術",
     "rucia.tag": "コアテクノロジー",
@@ -399,7 +399,7 @@ const translations = {
     "contact.form.message": "メッセージ",
     "contact.form.submit": "送信",
     "footer.description":
-      "AI駆動のイオンチャネル新薬開発プラットフォームで、非オピオイド系疼痛・感覚疾患治療薬を開発しています。",
+      "AI駆動の膜タンパク質創薬プラットフォームで、疼痛・感覚・炎症性疾患の治療薬を開発し、生活の質の回復を目指します。",
   },
 
   es: {
@@ -413,10 +413,10 @@ const translations = {
     "nav.about": "Nosotros",
     "nav.contact": "Contacto",
     "hero.tagline": "Visión Estratégica 2026",
-    "hero.title1": "Healing the",
-    "hero.title2": "Source of Pain",
+    "hero.title1": "Membrane Targets.",
+    "hero.title2": "Quality of Life.",
     "hero.description":
-      "Nuestra plataforma RuCIA utiliza diseño molecular con IA para predecir la selectividad de proteínas de membrana (canales iónicos), desarrollando analgésicos no opioides y tratamientos para el ojo seco (Fase 2 FDA). Reducción del 70% en tiempo de desarrollo con 100% de selectividad sobre el objetivo.",
+      "Nuestra plataforma RuCIA predice la selectividad de proteínas de membrana (canales iónicos, GPCR) para desarrollar tratamientos del ojo seco (Fase 2 FDA), el dolor crónico no opioide, la psoriasis y enfermedades neurológicas raras. Un mismo principio de diana aplicado a múltiples indicaciones: 70% menos tiempo de desarrollo y 100% de selectividad, al servicio de la calidad de vida del paciente.",
     "hero.cta.pipeline": "Ver Pipeline",
     "hero.cta.science": "Nuestra Ciencia",
     "rucia.tag": "Tecnología Central",
@@ -473,7 +473,7 @@ const translations = {
     "contact.form.message": "Mensaje",
     "contact.form.submit": "Enviar",
     "footer.description":
-      "Plataforma de descubrimiento de fármacos basada en IA para canales iónicos, desarrollando terapias no opioides para dolor y enfermedades sensoriales.",
+      "Plataforma de descubrimiento de fármacos con IA dirigida a proteínas de membrana, desarrollando terapias para el dolor y enfermedades sensoriales e inflamatorias con el fin de restaurar la calidad de vida.",
   },
 
   fr: {
@@ -487,10 +487,10 @@ const translations = {
     "nav.about": "À propos",
     "nav.contact": "Contact",
     "hero.tagline": "Vision Stratégique 2026",
-    "hero.title1": "Healing the",
-    "hero.title2": "Source of Pain",
+    "hero.title1": "Membrane Targets.",
+    "hero.title2": "Quality of Life.",
     "hero.description":
-      "Notre plateforme RuCIA utilise la conception moléculaire par IA pour prédire la sélectivité des protéines membranaires (canaux ioniques), développant des analgésiques non opioïdes et des traitements de l'œil sec (Phase 2 FDA). Réduction de 70 % du temps de développement avec une sélectivité cible de 100 %.",
+      "Notre plateforme RuCIA prédit la sélectivité des protéines membranaires (canaux ioniques, RCPG) pour développer des traitements de l'œil sec (Phase 2 FDA), de la douleur chronique non opioïde, du psoriasis et de maladies neurologiques rares. Un même principe de ciblage appliqué à plusieurs indications : 70 % de temps de développement en moins et une sélectivité de 100 %, au service de la qualité de vie des patients.",
     "hero.cta.pipeline": "Voir le Pipeline",
     "hero.cta.science": "Notre Science",
     "rucia.tag": "Technologie Clé",
@@ -547,7 +547,7 @@ const translations = {
     "contact.form.message": "Message",
     "contact.form.submit": "Envoyer",
     "footer.description":
-      "Plateforme de découverte de médicaments par IA ciblant les canaux ioniques, développant des thérapies non opioïdes pour la douleur et les maladies sensorielles.",
+      "Plateforme de découverte de médicaments par IA ciblant les protéines membranaires, développant des thérapies contre la douleur et les maladies sensorielles et inflammatoires afin de restaurer la qualité de vie.",
   },
 
   ar: {
@@ -561,10 +561,10 @@ const translations = {
     "nav.about": "من نحن",
     "nav.contact": "اتصل بنا",
     "hero.tagline": "الرؤية الاستراتيجية 2026",
-    "hero.title1": "Healing the",
-    "hero.title2": "Source of Pain",
+    "hero.title1": "Membrane Targets.",
+    "hero.title2": "Quality of Life.",
     "hero.description":
-      "تعتمد منصة RuCIA على التصميم الجزيئي بالذكاء الاصطناعي للتنبؤ بانتقائية البروتينات الغشائية (القنوات الأيونية)، لتطوير مسكّنات ألم غير أفيونية وعلاجات لجفاف العين (المرحلة الثانية لدى إدارة الغذاء والدواء الأمريكية). تقليص مدة التطوير بنسبة 70% مع انتقائية 100% تجاه الهدف.",
+      "تتنبأ منصة RuCIA بانتقائية البروتينات الغشائية (القنوات الأيونية ومستقبلات GPCR) لتطوير علاجات لجفاف العين (المرحلة الثانية لدى إدارة الغذاء والدواء الأمريكية)، والألم المزمن غير الأفيوني، والصدفية، والأمراض العصبية النادرة. مبدأ استهداف واحد عبر مؤشرات متعددة: تقليص مدة التطوير بنسبة 70% مع انتقائية 100% تجاه الهدف، خدمةً لجودة حياة المرضى.",
     "hero.cta.pipeline": "استكشف خط التطوير",
     "hero.cta.science": "علومنا",
     "rucia.tag": "التقنية الأساسية",
@@ -632,7 +632,7 @@ const translations = {
     "contact.form.message": "الرسالة",
     "contact.form.submit": "إرسال",
     "footer.description":
-      "منصة اكتشاف أدوية مدفوعة بالذكاء الاصطناعي تستهدف القنوات الأيونية، لتطوير علاجات غير أفيونية للألم والأمراض الحسّية.",
+      "منصة اكتشاف أدوية مدفوعة بالذكاء الاصطناعي تستهدف البروتينات الغشائية، لتطوير علاجات للألم والأمراض الحسّية والالتهابية بهدف استعادة جودة الحياة.",
   },
 } as const;
 

@@ -116,8 +116,11 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
             &copy; {new Date().getFullYear()} RudaCure Co., Ltd. All rights
             reserved.
           </p>
-          <p className="text-xs tracking-[0.02em] text-slate-500">
-            Redefining Pain, Restoring Sensation
+          {/* Mirrors the hero line. The previous tagline ("Redefining Pain,
+              Restoring Sensation") scoped the company to a single therapeutic
+              area, which the pipeline outgrew. */}
+          <p className="brand-line text-xs tracking-[0.02em] text-slate-500">
+            Membrane Targets. Quality of Life.
           </p>
         </div>
       </div>

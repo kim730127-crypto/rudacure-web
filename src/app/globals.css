@@ -249,6 +249,20 @@ h4 em,
   color: #5eead4;
 }
 
+/* The headline and footer signature are an English brand line in all seven
+   locales. Under `dir="rtl"` the trailing period is a bidi-neutral character,
+   so it inherits the paragraph direction and renders on the wrong side
+   (".Membrane Targets"). Isolating the run fixes the punctuation while
+   `text-align: right` keeps the block aligned with the rest of the page. */
+.brand-line {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+[dir="rtl"] .brand-line {
+  text-align: right;
+}
+
 /* Measure control — long-form Korean reads badly beyond ~44em. */
 .measure {
   max-width: 42em;

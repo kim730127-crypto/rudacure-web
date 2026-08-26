@@ -532,7 +532,7 @@ export default async function HomePage({
             <div className="hero-line-accent mt-6 mb-8 h-px w-14 bg-teal-400/60" />
 
             <h1
-              className="type-h1 animate-hero-blur-in text-white"
+              className="type-h1 brand-line animate-hero-blur-in text-white"
               style={{ animationDelay: "0.12s" }}
             >
               {t("hero.title1")}
