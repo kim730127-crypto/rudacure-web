@@ -542,12 +542,12 @@ const TEXT_INVESTORS: Record<IRLocale, string> = {
 };
 
 const TEXT_HEADER_DESC: Record<IRLocale, string> = {
-  ko: "루다큐어는 AI 기반 이온채널 신약개발 기업으로, 비마약성 통증/감각질환 치료제를 개발하고 있습니다. 검증된 파이프라인과 확장 가능한 AI 플랫폼으로 IPO를 준비하고 있습니다.",
-  en: "RudaCure is an AI-driven biotech company developing non-opioid therapeutics for pain and sensory diseases. We are preparing for IPO with a proven pipeline and scalable AI platform.",
-  zh: "RudaCure是一家AI驱动的生物技术公司，致力于开发非阿片类疼痛和感觉疾病治疗药物。我们凭借成熟的管线和可扩展的AI平台正在准备IPO。",
-  ja: "RudaCureはAI駆動のバイオテック企業として、非オピオイド系の疼痛・感覚疾患治療薬を開発しています。実績あるパイプラインとスケーラブルなAIプラットフォームでIPOを準備しています。",
-  es: "RudaCure es una empresa biotecnologica impulsada por IA que desarrolla terapeuticos no opioides para el dolor y las enfermedades sensoriales. Nos preparamos para la IPO con un pipeline probado y una plataforma de IA escalable.",
-  fr: "RudaCure est une entreprise biotech pilotee par l'IA qui developpe des therapeutiques non opioides pour la douleur et les maladies sensorielles. Nous preparons notre IPO avec un pipeline eprouve et une plateforme IA evolutive.",
+  ko: "루다큐어는 막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업입니다. 하나의 표적 원리를 안구건조증, 만성통증, 건선, 희귀 신경질환에 적용한 파이프라인과 확장 가능한 AI 플랫폼으로 IPO를 준비하고 있습니다.",
+  en: "RudaCure is an AI drug discovery company targeting membrane proteins — ion channels and GPCRs. We are preparing for IPO with one targeting principle applied across dry eye, chronic pain, psoriasis and rare neurological disease, on a scalable AI platform.",
+  zh: "RudaCure是一家靶向膜蛋白（离子通道·GPCR）的AI新药研发企业。我们以同一靶点原理覆盖干眼症、慢性疼痛、银屑病及罕见神经疾病，凭借成熟的管线和可扩展的AI平台正在准备IPO。",
+  ja: "RudaCureは膜タンパク質（イオンチャネル・GPCR）を標的とするAI創薬企業です。単一の標的原理をドライアイ・慢性疼痛・乾癬・希少神経疾患へ展開したパイプラインとスケーラブルなAIプラットフォームでIPOを準備しています。",
+  es: "RudaCure es una empresa de descubrimiento de farmacos con IA dirigida a proteinas de membrana: canales ionicos y GPCR. Nos preparamos para la IPO con un mismo principio de diana aplicado al ojo seco, el dolor cronico, la psoriasis y enfermedades neurologicas raras, sobre una plataforma de IA escalable.",
+  fr: "RudaCure est une societe de decouverte de medicaments par IA ciblant les proteines membranaires : canaux ioniques et RCPG. Nous preparons notre IPO avec un meme principe de ciblage applique a l'oeil sec, la douleur chronique, le psoriasis et des maladies neurologiques rares, sur une plateforme IA evolutive.",
 };
 
 const TEXT_STRATEGIC_ROADMAP: Record<IRLocale, string> = {

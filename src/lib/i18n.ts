@@ -38,7 +38,7 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "막단백질(이온채널·GPCR) 선택성을 예측하는 RuCIA AI 플랫폼으로 안구건조증(FDA 2상), 비마약성 만성통증, 건선, 희귀 신경질환 치료제를 개발합니다. 하나의 표적 원리를 여러 질환에 적용해 기존 신약개발 대비 개발 기간 70% 단축, 표적 선택성 100%로 환자의 삶의 질을 회복합니다.",
+      "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업입니다. RuCIA 플랫폼으로 채널·수용체 선택성을 예측해 안구건조증(FDA 2상), 만성통증, 건선, 희귀 신경질환 치료제를 개발합니다. 하나의 표적 원리를 여러 질환에 적용해 기존 신약개발 대비 개발 기간을 70% 단축하고, 환자의 삶의 질을 회복합니다.",
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
@@ -47,7 +47,7 @@ const translations = {
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "전기생리학(Electrophysiology) 기반 이온채널 활성 측정 기술로 세포막(Membrane) 표적 약물을 개발합니다. 패치클램프와 고처리량 전기생리학 검증을 통해 TRPV1 등 이온채널의 선택적 조절제를 발굴하고, 비마약성 통증 및 안구건조증 등 감각질환 치료제의 효능과 안전성을 실데이터로 검증합니다.",
+      "전기생리학(Electrophysiology) 기반 이온채널 활성 측정 기술로 세포막(Membrane) 표적 약물을 개발합니다. 패치클램프와 고처리량 전기생리학 검증을 통해 TRPV1 등 이온채널의 선택적 조절제를 발굴하고, 감각·통증·염증 질환 치료제의 효능과 안전성을 실데이터로 검증합니다.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "패치클램프 기반 고처리량 검증",
     "rucia.metric.selectivity": "Membrane Target",
@@ -99,7 +99,7 @@ const translations = {
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
     "pipeline.page.description":
-      "이온채널 표적 비마약성 치료제 파이프라인. AI 기반 RuCIA 플랫폼으로 발굴한 후보물질들이 글로벌 임상으로 진입하고 있습니다.",
+      "막단백질 표적 치료제 파이프라인. AI 기반 RuCIA 플랫폼으로 발굴한 후보물질들이 글로벌 임상으로 진입하고 있습니다.",
 
     // News
     "news.tag": "Press & Media",
@@ -124,7 +124,7 @@ const translations = {
 
     // Footer
     "footer.description":
-      "막단백질을 표적하는 AI 신약개발 플랫폼으로 통증·감각·염증 질환 치료제를 개발해 환자의 삶의 질을 회복합니다.",
+      "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업. 감각·통증·염증 질환 치료제를 개발해 환자의 삶의 질을 회복합니다.",
   },
 
   en: {
@@ -144,7 +144,7 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "Our RuCIA platform predicts membrane-protein (ion channel, GPCR) selectivity to develop therapeutics for dry eye disease (FDA Phase 2), non-opioid chronic pain, psoriasis and rare neurological disease. One targeting principle across many indications — 70% faster development, 100% target selectivity, in service of patients' quality of life.",
+      "RudaCure is an AI drug discovery company targeting membrane proteins. The RuCIA platform predicts ion channel and GPCR selectivity to develop therapeutics for dry eye disease (FDA Phase 2), chronic pain, psoriasis and rare neurological disease. One targeting principle across many indications, 70% faster development, in service of patients' quality of life.",
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
@@ -153,7 +153,7 @@ const translations = {
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "We develop membrane-targeted therapeutics using electrophysiology-based ion channel activity measurement. Through patch clamp and high-throughput electrophysiology validation, we discover selective modulators of ion channels such as TRPV1, verifying efficacy and safety of non-opioid pain and dry eye (sensory disease) treatments with real data.",
+      "We develop membrane-targeted therapeutics using electrophysiology-based ion channel activity measurement. Through patch clamp and high-throughput electrophysiology validation, we discover selective modulators of ion channels such as TRPV1, verifying efficacy and safety of sensory, pain and inflammatory disease treatments with real data.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Patch Clamp HT Validation",
     "rucia.metric.selectivity": "Membrane Target",
@@ -205,14 +205,14 @@ const translations = {
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
     "pipeline.page.description":
-      "Ion channel-targeted non-opioid therapeutic pipeline. Candidates discovered through our RuCIA AI platform are advancing into global clinical trials.",
+      "Membrane-target therapeutic pipeline. Candidates discovered through our RuCIA AI platform are advancing into global clinical trials.",
 
     // News
     "news.tag": "Press & Media",
     "news.title1": "News",
     "news.title2": "Center",
     "news.description":
-      "Latest RudaCure news and press releases on dry eye and non-opioid pain therapeutics, clinical trials, and partnerships.",
+      "Latest RudaCure news and press releases on our membrane-target pipeline, clinical trials, and partnerships.",
     "news.back": "Back to List",
 
     // Contact
@@ -230,7 +230,7 @@ const translations = {
 
     // Footer
     "footer.description":
-      "AI-driven membrane-protein drug discovery platform developing therapeutics across pain, sensory and inflammatory disease to restore quality of life.",
+      "An AI drug discovery company targeting membrane proteins, developing therapeutics across sensory, pain and inflammatory disease to restore quality of life.",
   },
 
   zh: {
@@ -247,14 +247,14 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "基于RuCIA平台的AI分子设计预测膜蛋白（离子通道·GPCR）选择性，开发干眼症（FDA 2期）、非阿片类慢性疼痛、银屑病及罕见神经疾病治疗药物。以同一靶点原理覆盖多个适应症，开发周期缩短70%，靶点选择性达100%，致力于恢复患者的生活质量。",
+      "RudaCure是靶向膜蛋白的AI新药研发企业。RuCIA平台预测离子通道与GPCR选择性，开发干眼症（FDA 2期）、慢性疼痛、银屑病及罕见神经疾病治疗药物。以同一靶点原理覆盖多个适应症，开发周期缩短70%，致力于恢复患者的生活质量。",
     "hero.cta.pipeline": "探索管线",
     "hero.cta.science": "核心技术",
     "rucia.tag": "核心技术",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "基于电生理学的离子通道活性测量技术开发细胞膜靶向药物。通过膜片钳和高通量电生理学验证，发现TRPV1等离子通道的选择性调节剂，以实际数据验证非阿片类镇痛药和干眼症等感觉疾病治疗药物的疗效与安全性。",
+      "基于电生理学的离子通道活性测量技术开发细胞膜靶向药物。通过膜片钳和高通量电生理学验证，发现TRPV1等离子通道的选择性调节剂，以实际数据验证感觉、疼痛及炎症疾病治疗药物的疗效与安全性。",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "膜片钳高通量验证",
     "rucia.metric.selectivity": "Membrane Target",
@@ -296,7 +296,7 @@ const translations = {
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
     "pipeline.page.description":
-      "离子通道靶向非阿片类治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验。",
+      "膜蛋白靶向治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验。",
     "news.tag": "新闻媒体",
     "news.title1": "News",
     "news.title2": "Center",
@@ -330,14 +330,14 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "RuCIAプラットフォームのAI分子設計により膜タンパク質（イオンチャネル・GPCR）選択性を予測し、ドライアイ（FDA Phase 2）、非オピオイド性慢性疼痛、乾癣、希少神経疾患の治療薬を開発しています。単一の標的原理を複数の適応症へ展開し、開発期間を70%短縮、ターゲット選択性100%で患者さんの生活の質の回復を目指します。",
+      "RudaCureは膜タンパク質を標的とするAI創薬企業です。RuCIAプラットフォームでイオンチャネル・GPCRの選択性を予測し、ドライアイ（FDA Phase 2）、慢性疼痛、乾癬、希少神経疾患の治療薬を開発しています。単一の標的原理を複数の適応症へ展開し、開発期間を70%短縮しながら、患者さんの生活の質の回復を目指します。",
     "hero.cta.pipeline": "パイプライン",
     "hero.cta.science": "コア技術",
     "rucia.tag": "コアテクノロジー",
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "電気生理学ベースのイオンチャネル活性測定技術で細胞膜ターゲット薬物を開発しています。パッチクランプとハイスループット電気生理学検証を通じてTRPV1等のイオンチャネル選択的モジュレーターを発掘し、非オピオイド系鎮痛薬・ドライアイなど感覚疾患治療薬の有効性と安全性を実データで検証します。",
+      "電気生理学ベースのイオンチャネル活性測定技術で細胞膜ターゲット薬物を開発しています。パッチクランプとハイスループット電気生理学検証を通じてTRPV1等のイオンチャネル選択的モジュレーターを発掘し、感覚・疼痛・炎症性疾患の治療薬の有効性と安全性を実データで検証します。",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "パッチクランプHT検証",
     "rucia.metric.selectivity": "Membrane Target",
@@ -380,7 +380,7 @@ const translations = {
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
     "pipeline.page.description":
-      "イオンチャネル標的非オピオイド治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
+      "膜タンパク質標的の治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
     "news.tag": "プレス＆メディア",
     "news.title1": "News",
     "news.title2": "Center",
@@ -416,7 +416,7 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "Nuestra plataforma RuCIA predice la selectividad de proteínas de membrana (canales iónicos, GPCR) para desarrollar tratamientos del ojo seco (Fase 2 FDA), el dolor crónico no opioide, la psoriasis y enfermedades neurológicas raras. Un mismo principio de diana aplicado a múltiples indicaciones: 70% menos tiempo de desarrollo y 100% de selectividad, al servicio de la calidad de vida del paciente.",
+      "RudaCure es una empresa de descubrimiento de fármacos con IA dirigida a proteínas de membrana. La plataforma RuCIA predice la selectividad de canales iónicos y GPCR para desarrollar tratamientos del ojo seco (Fase 2 FDA), el dolor crónico, la psoriasis y enfermedades neurológicas raras. Un mismo principio de diana aplicado a múltiples indicaciones, con un 70% menos de tiempo de desarrollo, al servicio de la calidad de vida del paciente.",
     "hero.cta.pipeline": "Ver Pipeline",
     "hero.cta.science": "Nuestra Ciencia",
     "rucia.tag": "Tecnología Central",
@@ -490,7 +490,7 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "Notre plateforme RuCIA prédit la sélectivité des protéines membranaires (canaux ioniques, RCPG) pour développer des traitements de l'œil sec (Phase 2 FDA), de la douleur chronique non opioïde, du psoriasis et de maladies neurologiques rares. Un même principe de ciblage appliqué à plusieurs indications : 70 % de temps de développement en moins et une sélectivité de 100 %, au service de la qualité de vie des patients.",
+      "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires. La plateforme RuCIA prédit la sélectivité des canaux ioniques et des RCPG pour développer des traitements de l'œil sec (Phase 2 FDA), de la douleur chronique, du psoriasis et de maladies neurologiques rares. Un même principe de ciblage appliqué à plusieurs indications, avec 70 % de temps de développement en moins, au service de la qualité de vie des patients.",
     "hero.cta.pipeline": "Voir le Pipeline",
     "hero.cta.science": "Notre Science",
     "rucia.tag": "Technologie Clé",
@@ -528,7 +528,7 @@ const translations = {
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
     "pipeline.page.description":
-      "Pipeline thérapeutique non opioïde ciblant les canaux ioniques. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
+      "Pipeline thérapeutique ciblant les protéines membranaires. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
     "news.tag": "Presse et Médias",
     "news.title1": "News",
     "news.title2": "Center",
@@ -564,7 +564,7 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "تتنبأ منصة RuCIA بانتقائية البروتينات الغشائية (القنوات الأيونية ومستقبلات GPCR) لتطوير علاجات لجفاف العين (المرحلة الثانية لدى إدارة الغذاء والدواء الأمريكية)، والألم المزمن غير الأفيوني، والصدفية، والأمراض العصبية النادرة. مبدأ استهداف واحد عبر مؤشرات متعددة: تقليص مدة التطوير بنسبة 70% مع انتقائية 100% تجاه الهدف، خدمةً لجودة حياة المرضى.",
+      "RudaCure شركة لاكتشاف الأدوية بالذكاء الاصطناعي تستهدف البروتينات الغشائية. تتنبأ منصة RuCIA بانتقائية القنوات الأيونية ومستقبلات GPCR لتطوير علاجات لجفاف العين (المرحلة الثانية لدى إدارة الغذاء والدواء الأمريكية)، والألم المزمن، والصدفية، والأمراض العصبية النادرة. مبدأ استهداف واحد عبر مؤشرات متعددة، مع تقليص مدة التطوير بنسبة 70%، خدمةً لجودة حياة المرضى.",
     "hero.cta.pipeline": "استكشف خط التطوير",
     "hero.cta.science": "علومنا",
     "rucia.tag": "التقنية الأساسية",
@@ -614,7 +614,7 @@ const translations = {
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
     "pipeline.page.description":
-      "خط تطوير علاجي غير أفيوني موجّه إلى القنوات الأيونية. المرشحات المكتشفة عبر منصة RuCIA للذكاء الاصطناعي في طريقها إلى التجارب السريرية العالمية.",
+      "خط تطوير علاجي موجّه إلى البروتينات الغشائية. المرشحات المكتشفة عبر منصة RuCIA للذكاء الاصطناعي في طريقها إلى التجارب السريرية العالمية.",
     "news.tag": "الصحافة والإعلام",
     "news.title1": "News",
     "news.title2": "Center",

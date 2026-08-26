@@ -17,24 +17,24 @@ const notoArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "RudaCure | TRPV1 Drug Discovery",
+  title: "RudaCure | Membrane-Target Drug Discovery",
   description:
-    "RudaCure is a biopharmaceutical company developing selective TRPV1 antagonists for pain and dry eye disease — without drug-induced hyperthermia.",
+    "RudaCure is an AI drug discovery company targeting membrane proteins — ion channels and GPCRs — across dry eye disease, chronic pain, psoriasis and rare neurological disease.",
   metadataBase: new URL("https://rudacure.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://rudacure.com",
     siteName: "RudaCure",
-    title: "RudaCure | TRPV1 Drug Discovery",
+    title: "RudaCure | Membrane-Target Drug Discovery",
     description:
-      "Developing selective TRPV1 antagonists for pain and dry eye disease without the hyperthermia side effect that failed earlier drug candidates.",
+      "Targeting membrane proteins — ion channels and GPCRs — to develop therapeutics for dry eye disease, chronic pain, psoriasis and rare neurological disease.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RudaCure | TRPV1 Drug Discovery",
+    title: "RudaCure | Membrane-Target Drug Discovery",
     description:
-      "Developing selective TRPV1 antagonists for pain and dry eye disease without hyperthermia.",
+      "Membrane-protein targeted drug discovery across dry eye, chronic pain, psoriasis and rare neurological disease.",
   },
   robots: {
     index: true,
@@ -52,7 +52,7 @@ const organizationSchema = {
   name: "RudaCure",
   url: "https://rudacure.com",
   description:
-    "RudaCure is a biopharmaceutical company developing selective TRPV1 antagonists for chronic pain and dry eye disease (DED), addressing a validated target that previously failed due to drug-induced hyperthermia.",
+    "RudaCure is a biopharmaceutical company targeting membrane proteins — ion channels such as TRPV1/TRPV4 and GPCRs — with the AI-driven RuCIA platform, developing therapeutics for dry eye disease, chronic pain, psoriasis and rare neurological disease.",
   foundingDate: "2024",
   sameAs: [],
   contactPoint: {
@@ -61,8 +61,9 @@ const organizationSchema = {
     email: "science@rudacure.com",
   },
   knowsAbout: [
-    "TRPV1 antagonists",
-    "Pain drug discovery",
+    "Membrane protein drug discovery",
+    "Ion channel modulators",
+    "GPCR drug discovery",
     "Dry eye disease",
     "Molecular dynamics simulation",
     "Structure-based drug design",

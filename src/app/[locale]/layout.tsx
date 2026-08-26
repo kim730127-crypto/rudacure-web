@@ -11,46 +11,46 @@ const LOCALE_META: Record<
   { title: string; description: string; ogLocale: string }
 > = {
   ko: {
-    title: "루다큐어 | 비마약성 통증·안구건조증 AI 신약개발",
+    title: "루다큐어 | 막단백질 표적 AI 신약개발",
     description:
-      "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업 루다큐어. RuCIA 플랫폼으로 비마약성 진통제, 안구건조증 치료제(FDA 2상), 만성통증 신약을 개발합니다.",
+      "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업 루다큐어. RuCIA 플랫폼으로 안구건조증(FDA 2상), 만성통증, 건선, 희귀 신경질환 치료제를 개발합니다.",
     ogLocale: "ko_KR",
   },
   en: {
-    title: "RudaCure | AI Drug Discovery for Non-Opioid Pain & Dry Eye",
+    title: "RudaCure | Membrane-Target AI Drug Discovery",
     description:
-      "RudaCure: AI-driven drug discovery targeting ion channels (TRPV1) and GPCRs for non-opioid pain and dry eye therapeutics. RuCIA platform; FDA Phase 2.",
+      "RudaCure is an AI drug discovery company targeting membrane proteins — ion channels and GPCRs. The RuCIA platform advances therapeutics for dry eye disease (FDA Phase 2), chronic pain, psoriasis and rare neurological disease.",
     ogLocale: "en_US",
   },
   zh: {
-    title: "RudaCure | 非阿片类镇痛·干眼症 AI 新药研发",
+    title: "RudaCure | 膜蛋白靶向 AI 新药研发",
     description:
-      "靶向膜蛋白（离子通道·GPCR）的AI新药研发企业RudaCure。通过RuCIA平台开发非阿片类镇痛药、干眼症治疗药（FDA 2期临床）和慢性疼痛新药。",
+      "靶向膜蛋白（离子通道·GPCR）的AI新药研发企业RudaCure。通过RuCIA平台开发干眼症（FDA 2期临床）、慢性疼痛、银屑病及罕见神经疾病治疗药物。",
     ogLocale: "zh_CN",
   },
   ja: {
-    title: "RudaCure | 非オピオイド鎮痛・ドライアイ AI創薬",
+    title: "RudaCure | 膜タンパク質標的 AI創薬",
     description:
-      "膜タンパク質（イオンチャネル・GPCR）を標的とするAI創薬企業RudaCure。RuCIAプラットフォームで非オピオイド鎮痛薬、ドライアイ治療薬（FDA Phase 2）、慢性疼痛の新薬を開発します。",
+      "膜タンパク質（イオンチャネル・GPCR）を標的とするAI創薬企業RudaCure。RuCIAプラットフォームでドライアイ（FDA Phase 2）、慢性疼痛、乾癬、希少神経疾患の治療薬を開発します。",
     ogLocale: "ja_JP",
   },
   es: {
-    title: "RudaCure | IA para Fármacos del Dolor No Opioide y Ojo Seco",
+    title: "RudaCure | IA para Fármacos Dirigidos a Proteínas de Membrana",
     description:
-      "RudaCure es una empresa de descubrimiento de fármacos con IA que se dirige a proteínas de membrana — canales iónicos (TRPV1/TRPA1) y GPCR — para desarrollar terapias no opioides para el dolor, el ojo seco y el dolor crónico. Plataforma RuCIA; Fase 2 FDA.",
+      "RudaCure es una empresa de descubrimiento de fármacos con IA dirigida a proteínas de membrana — canales iónicos y GPCR. La plataforma RuCIA desarrolla tratamientos para el ojo seco (Fase 2 FDA), el dolor crónico, la psoriasis y enfermedades neurológicas raras.",
     ogLocale: "es_ES",
   },
   fr: {
-    title: "RudaCure | IA pour Médicaments Douleur Non Opioïde et Œil Sec",
+    title: "RudaCure | IA pour Médicaments Ciblant les Protéines Membranaires",
     description:
-      "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires — canaux ioniques (TRPV1/TRPA1) et RCPG — pour développer des thérapies non opioïdes contre la douleur, l'œil sec et la douleur chronique. Plateforme RuCIA ; Phase 2 FDA.",
+      "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires — canaux ioniques et RCPG. La plateforme RuCIA développe des traitements de l'œil sec (Phase 2 FDA), de la douleur chronique, du psoriasis et de maladies neurologiques rares.",
     ogLocale: "fr_FR",
   },
   ar: {
     title:
-      "RudaCure | اكتشاف أدوية بالذكاء الاصطناعي لألم غير أفيوني وجفاف العين",
+      "RudaCure | اكتشاف أدوية بالذكاء الاصطناعي يستهدف البروتينات الغشائية",
     description:
-      "RudaCure شركة لاكتشاف الأدوية بالذكاء الاصطناعي تستهدف البروتينات الغشائية — القنوات الأيونية (TRPV1/TRPA1) ومستقبلات GPCR — لتطوير علاجات غير أفيونية للألم وجفاف العين والألم المزمن. منصة RuCIA؛ المرحلة الثانية لدى FDA.",
+      "RudaCure شركة لاكتشاف الأدوية بالذكاء الاصطناعي تستهدف البروتينات الغشائية — القنوات الأيونية ومستقبلات GPCR. تطوّر منصة RuCIA علاجات لجفاف العين (المرحلة الثانية لدى FDA)، والألم المزمن، والصدفية، والأمراض العصبية النادرة.",
     ogLocale: "ar_SA",
   },
 };
