@@ -686,7 +686,7 @@ export default async function IRPage({
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
             <Image
               src="/images/ir-capital-markets.jpg"
-              alt="Yeouido financial district, Seoul"
+              alt="RudaCure Central Research Institute laboratory"
               fill
               className="object-cover"
             />

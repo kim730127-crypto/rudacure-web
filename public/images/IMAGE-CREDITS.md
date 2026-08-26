@@ -5,19 +5,14 @@ licence. Keep this file current: for an IPO-track company the question "where
 did this picture come from and are we allowed to use it" gets asked during
 diligence, and the answer needs to exist before it is asked.
 
-Two categories are permitted on this site:
+**Every photograph and figure on this site is now RudaCure-owned.** No stock
+imagery of any kind remains. That is the strongest possible answer to the
+diligence question, because it removes the licence question entirely rather
+than documenting a licence.
 
-1. **RudaCure-owned** — figures produced in-house (RuCIA molecular dynamics,
-   internal photography). Preferred wherever a scientific image is needed.
-2. **Unsplash License** — verified at <https://unsplash.com/license>:
-   > Unsplash grants you an irrevocable, nonexclusive, worldwide copyright
-   > licence to download, copy, modify, distribute, perform, and use images
-   > from Unsplash for free, including for commercial purposes, without
-   > permission from or attributing the photographer or Unsplash.
-
-   Attribution is not required. The only prohibitions are reselling images
-   without significant modification, and compiling them into a competing
-   stock-image service. Neither applies here.
+Source of record for photography: the corporate NAS at
+`00_RudaCure 전사공유/02_회사소개자료/05_사진`. Original files are retained there;
+only cropped and downscaled web derivatives are committed to this repository.
 
 **Not permitted:** AI-generated imagery depicting events that did not happen,
 company milestones not yet achieved, or data not actually measured. See the
@@ -36,20 +31,36 @@ company milestones not yet achieved, or data not actually measured. See the
 | `sab/*.jpg` | Scientific Advisory Board portraits | Supplied by each advisor. Confirm written consent is on file before publication. |
 | `partners/*` | Partner and vendor marks | Used to identify each organisation. Nominative use; confirm any partner-specific brand guidelines. |
 
-## Unsplash License
+## RudaCure photography
 
-| File | Used on | Unsplash photo ID |
-|---|---|---|
-| `science/lab-bench.jpg` | Science — CRO / laboratory capability | `photo-1602052577122-f73b9710adba` |
-| `science/assay-bench.jpg` | Science — assay / electrophysiology capability | `photo-1582560475093-ba66accbc424` |
-| `science/scientist.jpg` | Science — page header | `photo-1614935151651-0bea6508db6b` |
-| `ir-capital-markets.jpg` | IR — page header | `photo-1554310603-d39d43033735` |
+Shot in-house. Committed files are centre-cropped to 3:2 or 4:3 and downscaled;
+none is upscaled, so the two drawn from 1280 px originals ship at their native
+size. Paths below are relative to `02_회사소개자료/05_사진/`.
 
-Source URL pattern: `https://unsplash.com/photos/<id>`
-Delivery URL pattern: `https://images.unsplash.com/<id>?w=2400&q=80&fm=jpg`
+| File | Used on | Shipped | NAS original |
+|---|---|---|---|
+| `science/lab-bench.jpg` | Science — CRO capability card | 2400×1600 | `연구소 및 사무실 사진/20201103 실험장비 사진/KakaoTalk_20201203_165726341.jpg` (3024×4032) |
+| `science/scientist.jpg` | Science — page header | 2400×1800 | `연구소 및 사무실 사진/20201103 실험장비 사진/KakaoTalk_20201203_165726341_17.jpg` (4032×3024) |
+| `science/assay-bench.jpg` | Science — assay / electrophysiology card | 1280×853 | `연구소 및 사무실 사진/2021 연구소, 본사 사진/분자세포실험실.jpg` (1280×960) |
+| `ir-capital-markets.jpg` | IR — page header | 2400×1600 | `연구소 및 사무실 사진/2022 서울사무실 인테리어/interior/in (13).jpg` (4527×3015) |
 
-All four were downloaded at 2400 px on the long edge so they stay sharp on 2x
-displays; the previous copies were 800 px and visibly soft.
+`science/lab-bench.jpg` and `science/scientist.jpg` show a ZEISS LUMERA
+ophthalmic surgical microscope in use on a rodent cornea. This is the actual
+procedure behind the CRO claim — ocular disease animal models and bespoke
+efficacy evaluation — so the picture and the caption describe the same thing.
+
+`science/assay-bench.jpg` is the 분자세포실험실 at the Central Research Institute.
+It does not depict a patch-clamp rig, because no photograph of one exists on the
+NAS; see "Open questions".
+
+`ir-capital-markets.jpg` comes from the 2022 Seoul office interior shoot, the
+only professionally lit photography on the NAS. The rest of that set (53 frames
+at 4527×3015) is the obvious source for any further interior imagery.
+
+Resolution note: `연구소, 본사 사진/` and `05_사진/연구소, 본사 사진/` hold 1280 px
+re-exports. The full-resolution equivalents live under
+`연구소 및 사무실 사진/`. Check dimensions before pulling from the NAS — the two
+folders are near-duplicates and the smaller one is easy to grab by mistake.
 
 ---
 
@@ -66,16 +77,27 @@ displays; the previous copies were 800 px and visibly soft.
 | `science/{cro-lab,electrophysiology,hero-platform}.jpg` | Superseded by 2400 px versions above. |
 | `science/slide[1-4].png` | 11 MB of unreferenced slide exports. |
 
-## Still to resolve
+| `science/{lab-bench,assay-bench,scientist}.jpg`, `ir-capital-markets.jpg` (Unsplash) | Replaced by RudaCure's own photography, above. The Unsplash versions were generic benches, a stranger in a lab coat, and the Yeouido skyline — accurate as mood, but they depicted no RudaCure capability and invited the question of why a drug discovery company was illustrating itself with stock. |
+
+## Open questions
 
 - `membrane_target_moa_v2.png` (824 KB) is retained but no longer referenced.
   It is an AI illustration with baked-in English labels; if the RCI002
   mechanism needs a figure, commission a properly drawn one rather than
   restoring this.
-- Unsplash has no genuine patch-clamp, electrophysiology-rig, cryo-EM or
-  ion-channel photography. Searches for those terms return unrelated hardware
-  or paid iStock placements. The lab photographs above are therefore generic
-  laboratory scenes, accurate as *context* but not depictions of RudaCure's own
-  instruments. **Photographing the actual Songdo and Seoul labs would replace
-  all of them with something no competitor can use.** That is the highest-value
-  remaining image action.
+- **The electrophysiology card has no matching photograph.** Its caption claims
+  "패치클램프 기반 고처리량 전기생리학 검증", but the NAS holds no picture of a
+  patch-clamp rig; the only patch-clamp records found are outsourced study
+  reports (`RCIP-24-004 티앤알바이오팹`, and the RCI002 patch-clamp efficacy
+  reports). The card currently carries a general bench photograph, which claims
+  nothing it cannot support. If the rig exists in Songdo, photograph it. If the
+  work is contracted out, the caption is the thing to revise, not the picture.
+- The bench and office photographs date from 2021 and were taken on a phone.
+  They are honest but not art-directed. A half-day shoot at Songdo would lift
+  the whole site; the ophthalmic microscope frames are the standard to match.
+- `05_사진/시제품 사진 (RCI001)` holds photographs of the actual RCI001 unit-dose
+  and glass-vial prototypes. They are not committed here because no page
+  currently has a slot for them, but they are the obvious illustration for the
+  RCI001 pipeline entry. Note the labels are legible and read `RCI001/HL262`
+  with lot numbers, which publicly links the asset to the Hanlim codename;
+  decide that before publishing them.

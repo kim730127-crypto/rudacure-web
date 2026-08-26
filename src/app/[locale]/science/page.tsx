@@ -643,7 +643,7 @@ export default async function SciencePage({
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/science/scientist.jpg"
-                alt="RuCIA Drug Discovery Platform"
+                alt="RudaCure researcher examining a cornea under an ophthalmic surgical microscope at the Central Research Institute"
                 fill
                 className="object-cover"
               />
