@@ -5,7 +5,11 @@ import { useEffect, useRef, useState } from "react";
 // 상시채용: 충원 완료 시 false 로 바꾸면 팝업이 사라집니다.
 // ponytail: 단일 스위치라 충원 시 이 한 줄만 끄면 됨. 향후 여러 공고를 동시에
 // 띄우거나 마감일 자동 종료가 필요해지면 배열/CMS 로 승격.
-const ACTIVE = true;
+//
+// 2026-08-27 내림. 공고 본문은 그대로 두었으니 다시 모집할 때 이 줄만 true 로
+// 되돌리면 된다. 지워야 할 이유가 생기면 이 파일과 page.tsx 의 <RecruitPopup /> 호출
+// 한 줄을 함께 지우면 끝난다.
+const ACTIVE = false;
 
 const DISMISS_KEY = "recruit-bd-2026-dismissed";
 const APPLY_EMAIL = "sh.kim@rudacure.com";
