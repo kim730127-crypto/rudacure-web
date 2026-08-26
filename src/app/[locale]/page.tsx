@@ -605,18 +605,24 @@ export default async function HomePage({
           </ScrollReveal>
 
           <ScrollReveal animation="scale-in" delay={160}>
+            {/* RudaCure's own molecular-dynamics output, not an illustration.
+                The previous figure was an AI-generated diagram with baked-in
+                English labels and rendering artefacts — the least credible
+                asset on a page whose argument is computational rigour. A real
+                simulation frame carries the same message and survives
+                technical scrutiny from a partner or an underwriter. */}
             <figure className="card overflow-hidden">
-              <div className="relative aspect-[4/3]">
+              <div className="relative aspect-[4/3] bg-white">
                 <Image
-                  src="/images/membrane_target_moa_v2.png"
-                  alt="RCI002 dual-target peptide mechanism of action — TRPV1 and MOR membrane targets"
+                  src="/images/science/membrane-md.jpg"
+                  alt="Molecular dynamics simulation of a membrane protein embedded in an explicit lipid bilayer, produced on the RuCIA platform"
                   fill
                   sizes="(min-width: 1024px) 520px, 100vw"
                   className="object-contain"
                 />
               </div>
               <figcaption className="type-caption border-t border-[var(--rc-hairline)] px-5 py-3.5">
-                RCI002 — TRPV1 / MOR dual-target mechanism
+                RuCIA — membrane protein in an explicit lipid bilayer (MD)
               </figcaption>
             </figure>
           </ScrollReveal>

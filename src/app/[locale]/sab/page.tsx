@@ -422,7 +422,7 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
       {/* Header */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{h.tag}</p>
+          <p className="section-label mb-4">{h.tag}</p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
             {h.title1}{" "}
             <em className="font-playfair italic font-semibold text-gradient-emerald">{h.title2}</em>

@@ -1357,7 +1357,7 @@ export default async function PublicationsPage({
         {/* Hero */}
         <section className="py-20 px-6 bg-white">
           <div className="max-w-5xl mx-auto">
-            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            <p className="section-label mb-4">
               {c.tag}
             </p>
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">

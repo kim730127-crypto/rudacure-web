@@ -750,7 +750,7 @@ export default async function CROPage({
       {/* Hero */}
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
         <div className="max-w-5xl mx-auto">
-          <p className="text-cyan-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.tag}
           </p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
@@ -781,7 +781,7 @@ export default async function CROPage({
       {/* About */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.intro.tag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-6 text-gray-900">
@@ -817,7 +817,7 @@ export default async function CROPage({
       {/* 3 Core Services */}
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-cyan-50/20">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.servicesTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
@@ -858,7 +858,7 @@ export default async function CROPage({
       {/* Service 01 — Pain Models */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.painTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
@@ -892,7 +892,7 @@ export default async function CROPage({
       {/* Service 02 — In Vivo / In Vitro */}
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.invivoTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
@@ -944,7 +944,7 @@ export default async function CROPage({
       {/* Disease Models */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.modelsTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
@@ -980,7 +980,7 @@ export default async function CROPage({
       {/* Service 03 — FLIPR Penta */}
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-cyan-50/30">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.fliprTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
@@ -1019,7 +1019,7 @@ export default async function CROPage({
       {/* Track Record */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.trackTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
@@ -1055,7 +1055,7 @@ export default async function CROPage({
       {/* Global Partnership */}
       <section className="py-20 px-6 bg-gradient-to-br from-teal-50/30 via-white to-cyan-50/30">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.partnerTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-12 text-gray-900">
@@ -1079,7 +1079,7 @@ export default async function CROPage({
       {/* CTA */}
       <section className="py-20 px-6 text-center bg-white">
         <div className="max-w-2xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.ctaTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-6 text-gray-900">

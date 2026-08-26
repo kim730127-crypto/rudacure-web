@@ -670,7 +670,7 @@ export default async function IRPage({
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            <p className="section-label mb-4">
               {label(locale, TEXT_INVESTORS)}
             </p>
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
@@ -685,8 +685,8 @@ export default async function IRPage({
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/unnamed.jpg"
-              alt="KOSDAQ IPO Listing Celebration"
+              src="/images/ir-capital-markets.jpg"
+              alt="Yeouido financial district, Seoul"
               fill
               className="object-cover"
             />
@@ -713,7 +713,7 @@ export default async function IRPage({
       {/* 2026 Roadmap */}
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {label(locale, TEXT_STRATEGIC_ROADMAP)}
           </p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">
@@ -743,7 +743,7 @@ export default async function IRPage({
       {/* Investment Case */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {label(locale, TEXT_WHY_INVEST)}
           </p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">
@@ -771,7 +771,7 @@ export default async function IRPage({
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            <p className="section-label mb-4">
               {label(locale, TEXT_COMPANY_SNAPSHOT)}
             </p>
             <h2 className="text-3xl font-light mb-8 text-gray-900">
@@ -800,7 +800,7 @@ export default async function IRPage({
             </div>
           </div>
           <div>
-            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            <p className="section-label mb-4">
               {label(locale, TEXT_STRATEGIC_PARTNERS)}
             </p>
             <h2 className="text-3xl font-light mb-8 text-gray-900">

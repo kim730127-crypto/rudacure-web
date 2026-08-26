@@ -19,25 +19,25 @@ const CAPABILITIES: Record<
       title: "이온채널 전문성",
       description:
         "TRPV1, TRPA1, TRPV4 등 통증/감각 신호를 조절하는 이온채널에 특화. AI가 채널-리간드 상호작용을 예측하여 선택적 후보물질을 발굴합니다.",
-      image: "/images/science/ion-channel.jpg",
+      image: "/images/science/membrane-md.jpg",
     },
     {
       title: "AI 분자 시뮬레이션",
       description:
         "분자 수준 시뮬레이션으로 오프타겟 효과를 사전 제거. 1세대 TRPV1 차단제의 고체온증 부작용을 원천 해결했습니다.",
-      image: "/images/science/ai-simulation.jpg",
+      image: "/images/science/md-ligand.jpg",
     },
     {
       title: "전기생리학 검증",
       description:
         "패치클램프 기반 고처리량 전기생리학 검증. AI 예측 결과를 실제 이온채널 활성 데이터로 확인합니다.",
-      image: "/images/science/electrophysiology.jpg",
+      image: "/images/science/assay-bench.jpg",
     },
     {
       title: "CRO 서비스",
       description:
         "전기생리학 전문 CRO 서비스 제공. 안구/감각 질환 특화 동물모델과 맞춤형 약효평가를 수행합니다.",
-      image: "/images/science/cro-lab.jpg",
+      image: "/images/science/lab-bench.jpg",
     },
   ],
   en: [
@@ -45,25 +45,25 @@ const CAPABILITIES: Record<
       title: "Ion Channel Mastery",
       description:
         "Specialized in ion channels governing pain and sensory signals including TRPV1, TRPA1, and TRPV4. AI predicts channel-ligand interactions to discover selective drug candidates.",
-      image: "/images/science/ion-channel.jpg",
+      image: "/images/science/membrane-md.jpg",
     },
     {
       title: "AI Molecular Simulation",
       description:
         "Molecular-level simulation eliminates off-target effects preemptively. Fully resolved the hyperthermia side effect of first-generation TRPV1 antagonists.",
-      image: "/images/science/ai-simulation.jpg",
+      image: "/images/science/md-ligand.jpg",
     },
     {
       title: "Electrophysiology Validation",
       description:
         "High-throughput electrophysiology validation using patch clamp technology. Confirms AI predictions against actual ion channel activity data.",
-      image: "/images/science/electrophysiology.jpg",
+      image: "/images/science/assay-bench.jpg",
     },
     {
       title: "CRO Services",
       description:
         "Specialized electrophysiology CRO services. Customized efficacy evaluation with animal models for ocular and sensory diseases.",
-      image: "/images/science/cro-lab.jpg",
+      image: "/images/science/lab-bench.jpg",
     },
   ],
   zh: [
@@ -71,25 +71,25 @@ const CAPABILITIES: Record<
       title: "离子通道专业能力",
       description:
         "专注于调控疼痛与感觉信号的离子通道，包括TRPV1、TRPA1和TRPV4。AI预测通道-配体相互作用，发现高选择性候选药物。",
-      image: "/images/science/ion-channel.jpg",
+      image: "/images/science/membrane-md.jpg",
     },
     {
       title: "AI分子模拟",
       description:
         "分子层面模拟提前消除脱靶效应。彻底解决了第一代TRPV1拮抗剂的高热副作用。",
-      image: "/images/science/ai-simulation.jpg",
+      image: "/images/science/md-ligand.jpg",
     },
     {
       title: "电生理学验证",
       description:
         "基于膜片钳的高通量电生理学验证。以实际离子通道活性数据确认AI预测结果。",
-      image: "/images/science/electrophysiology.jpg",
+      image: "/images/science/assay-bench.jpg",
     },
     {
       title: "CRO服务",
       description:
         "专业电生理学CRO服务。提供眼科及感觉疾病专用动物模型与定制化药效评估。",
-      image: "/images/science/cro-lab.jpg",
+      image: "/images/science/lab-bench.jpg",
     },
   ],
   ja: [
@@ -97,25 +97,25 @@ const CAPABILITIES: Record<
       title: "イオンチャネル専門性",
       description:
         "TRPV1、TRPA1、TRPV4など痛覚・感覚シグナルを制御するイオンチャネルに特化。AIがチャネル-リガンド相互作用を予測し、選択的候補物質を発掘します。",
-      image: "/images/science/ion-channel.jpg",
+      image: "/images/science/membrane-md.jpg",
     },
     {
       title: "AI分子シミュレーション",
       description:
         "分子レベルのシミュレーションでオフターゲット効果を事前排除。第一世代TRPV1拮抗薬の高体温症副作用を根本的に解決しました。",
-      image: "/images/science/ai-simulation.jpg",
+      image: "/images/science/md-ligand.jpg",
     },
     {
       title: "電気生理学検証",
       description:
         "パッチクランプベースのハイスループット電気生理学検証。AI予測結果を実際のイオンチャネル活性データで確認します。",
-      image: "/images/science/electrophysiology.jpg",
+      image: "/images/science/assay-bench.jpg",
     },
     {
       title: "CROサービス",
       description:
         "電気生理学専門CROサービスを提供。眼科・感覚疾患に特化した動物モデルとカスタマイズ薬効評価を実施します。",
-      image: "/images/science/cro-lab.jpg",
+      image: "/images/science/lab-bench.jpg",
     },
   ],
   es: [
@@ -123,25 +123,25 @@ const CAPABILITIES: Record<
       title: "Dominio de Canales Iónicos",
       description:
         "Especializados en canales iónicos que regulan señales de dolor y sensoriales, incluyendo TRPV1, TRPA1 y TRPV4. La IA predice interacciones canal-ligando para descubrir candidatos farmacológicos selectivos.",
-      image: "/images/science/ion-channel.jpg",
+      image: "/images/science/membrane-md.jpg",
     },
     {
       title: "Simulación Molecular con IA",
       description:
         "La simulación a nivel molecular elimina efectos fuera de diana de forma preventiva. Resolvió completamente el efecto secundario de hipertermia de los antagonistas TRPV1 de primera generación.",
-      image: "/images/science/ai-simulation.jpg",
+      image: "/images/science/md-ligand.jpg",
     },
     {
       title: "Validación Electrofisiológica",
       description:
         "Validación electrofisiológica de alto rendimiento mediante tecnología patch clamp. Confirma las predicciones de IA con datos reales de actividad de canales iónicos.",
-      image: "/images/science/electrophysiology.jpg",
+      image: "/images/science/assay-bench.jpg",
     },
     {
       title: "Servicios CRO",
       description:
         "Servicios CRO especializados en electrofisiología. Evaluación de eficacia personalizada con modelos animales para enfermedades oculares y sensoriales.",
-      image: "/images/science/cro-lab.jpg",
+      image: "/images/science/lab-bench.jpg",
     },
   ],
   fr: [
@@ -149,25 +149,25 @@ const CAPABILITIES: Record<
       title: "Expertise en Canaux Ioniques",
       description:
         "Spécialisés dans les canaux ioniques régulant les signaux de douleur et sensoriels, notamment TRPV1, TRPA1 et TRPV4. L'IA prédit les interactions canal-ligand pour découvrir des candidats médicaments sélectifs.",
-      image: "/images/science/ion-channel.jpg",
+      image: "/images/science/membrane-md.jpg",
     },
     {
       title: "Simulation Moléculaire par IA",
       description:
         "La simulation au niveau moléculaire élimine préventivement les effets hors cible. A entièrement résolu l'effet secondaire d'hyperthermie des antagonistes TRPV1 de première génération.",
-      image: "/images/science/ai-simulation.jpg",
+      image: "/images/science/md-ligand.jpg",
     },
     {
       title: "Validation Électrophysiologique",
       description:
         "Validation électrophysiologique à haut débit par technologie patch clamp. Confirme les prédictions de l'IA avec les données réelles d'activité des canaux ioniques.",
-      image: "/images/science/electrophysiology.jpg",
+      image: "/images/science/assay-bench.jpg",
     },
     {
       title: "Services CRO",
       description:
         "Services CRO spécialisés en électrophysiologie. Évaluation d'efficacité personnalisée avec des modèles animaux pour les maladies oculaires et sensorielles.",
-      image: "/images/science/cro-lab.jpg",
+      image: "/images/science/lab-bench.jpg",
     },
   ],
 };
@@ -626,7 +626,7 @@ export default async function SciencePage({
         <section className="py-20 px-6 bg-white">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+              <p className="section-label mb-4">
                 {c.tag}
               </p>
               <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
@@ -642,7 +642,7 @@ export default async function SciencePage({
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/science/hero-platform.jpg"
+                src="/images/science/scientist.jpg"
                 alt="RuCIA Drug Discovery Platform"
                 fill
                 className="object-cover"
@@ -684,7 +684,7 @@ export default async function SciencePage({
             IntersectionObserver lazy-load (needs a client component). */}
         <section className="py-20 px-6 bg-gray-950">
           <div className="max-w-6xl mx-auto">
-            <p className="text-teal-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            <p className="section-label on-dark mb-4">
               {c.mdTag}
             </p>
             <h2 className="text-3xl sm:text-4xl font-light mb-6 text-white">
@@ -741,7 +741,7 @@ export default async function SciencePage({
 
         <section className="py-20 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
-            <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            <p className="section-label mb-4">
               {c.compTag}
             </p>
             <h2 className="text-3xl font-light mb-10 text-gray-900">
@@ -806,7 +806,7 @@ export default async function SciencePage({
             </div>
             <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/Gemini_Generated_Image_2hkt252hkt252hkt.png"
+                src="/images/science/membrane-md.jpg"
                 alt="Ion Channel Research"
                 fill
                 className="object-cover"

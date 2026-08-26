@@ -1649,7 +1649,7 @@ export default async function AboutPage({
       />
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.tag}
           </p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
@@ -1705,7 +1705,7 @@ export default async function AboutPage({
 
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <p className="text-teal-600 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+          <p className="section-label mb-4">
             {c.leaderTag}
           </p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">

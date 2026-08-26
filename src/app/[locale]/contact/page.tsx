@@ -173,7 +173,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
         <div className="max-w-4xl mx-auto">
           {/* 2026 Blue-Green trend */}
-          <p className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">{c.tag}</p>
+          <p className="section-label mb-4">{c.tag}</p>
           <DynamicTitle
             title1={c.title1}
             title2={c.title2}
