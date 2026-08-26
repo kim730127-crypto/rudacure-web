@@ -1,4 +1,705 @@
 @import "tailwindcss";
+@import "./pretendard-subset.css";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RudaCure Design System
+   ---------------------------------------------------------------------------
+   Restraint over decoration. One accent. Hairline separation. Optical type.
+   Every value below is a token — components must not hard-code raw colours,
+   radii, shadows or easings.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand accent ────────────────────────────────────────────────────────
+     A single accent family. Teal is the RudaCure mark colour; `deep` is the
+     only variant permitted on text over light surfaces (AA at 14px). */
+  --rc-accent: #0b7c72;
+  --rc-accent-deep: #0a5f58;
+  --rc-accent-bright: #14b8a6;
+  --rc-accent-tint: rgba(11, 124, 114, 0.08);
+  --rc-accent-line: rgba(11, 124, 114, 0.22);
+
+  /* ── Ink scale (warm-neutral, not pure grey) ────────────────────────────
+     Text uses ink-*, surfaces use surface-*. Never mix the two scales. */
+  --rc-ink-900: #0a0f14;
+  --rc-ink-800: #16202b;
+  --rc-ink-700: #2b3a49;
+  --rc-ink-600: #4a5b6d;
+  --rc-ink-500: #6b7b8c;
+  --rc-ink-400: #8e9cab;
+
+  /* ── Surfaces ──────────────────────────────────────────────────────────── */
+  --rc-surface: #ffffff;
+  --rc-surface-sunken: #f7f8f9;
+  --rc-surface-raised: rgba(255, 255, 255, 0.72);
+  --rc-surface-dark: #080c11;
+  --rc-surface-dark-raised: rgba(255, 255, 255, 0.04);
+
+  /* ── Hairlines. Apple separates with 1px alpha, never a grey fill. ─────── */
+  --rc-hairline: rgba(10, 15, 20, 0.08);
+  --rc-hairline-strong: rgba(10, 15, 20, 0.14);
+  --rc-hairline-dark: rgba(255, 255, 255, 0.09);
+
+  /* ── Elevation. Two-layer: tight contact shadow + wide ambient. ────────── */
+  --rc-shadow-sm: 0 1px 2px rgba(10, 15, 20, 0.04),
+    0 1px 1px rgba(10, 15, 20, 0.03);
+  --rc-shadow-md: 0 2px 4px rgba(10, 15, 20, 0.04),
+    0 8px 24px rgba(10, 15, 20, 0.06);
+  --rc-shadow-lg: 0 4px 8px rgba(10, 15, 20, 0.05),
+    0 20px 48px rgba(10, 15, 20, 0.09);
+
+  /* ── Radii (8pt-derived) ───────────────────────────────────────────────── */
+  --rc-radius-sm: 8px;
+  --rc-radius-md: 12px;
+  --rc-radius-lg: 18px;
+  --rc-radius-xl: 24px;
+
+  /* ── Motion. One easing for everything that moves. ─────────────────────── */
+  --rc-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --rc-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --rc-dur-fast: 200ms;
+  --rc-dur: 400ms;
+  --rc-dur-slow: 700ms;
+
+  /* ── Vertical rhythm. Sections pick from this, never arbitrary py-*. ───── */
+  --rc-section-y: 88px;
+  --rc-section-y-lg: 128px;
+}
+
+@theme inline {
+  --color-accent: var(--rc-accent);
+  --color-accent-deep: var(--rc-accent-deep);
+  --color-ink: var(--rc-ink-800);
+  --font-sans: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+/* ═══ Base ═══════════════════════════════════════════════════════════════ */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  /* Korean must not break mid-word; `keep-all` is the single most important
+     Hangul typography rule and was absent from the previous build. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--rc-surface);
+  color: var(--rc-ink-800);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+::selection {
+  background: var(--rc-accent-tint);
+  color: var(--rc-ink-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--rc-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Latin-only runs (RCI001, TRPV1, $94B, Phase 2) get true tabular figures. */
+.num,
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ═══ Typography scale ═══════════════════════════════════════════════════
+   Display type gets negative tracking; small caps labels get positive.
+   This is the core of the "Apple" read — optical letter-spacing that
+   changes sign across the size range. */
+
+.type-display {
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: var(--rc-ink-900);
+}
+
+.type-h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.032em;
+}
+
+.type-h2,
+.section-heading {
+  font-size: clamp(1.875rem, 3.4vw, 2.875rem);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.028em;
+  color: var(--rc-ink-900);
+}
+
+.type-h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--rc-ink-900);
+}
+
+/* Emphasis inside a heading: weight + colour, NEVER synthetic italic.
+   Pretendard ships no italic face, so `<em>` was being obliqued by the
+   browser — the main reason Korean headings looked amateurish. Scoped to all
+   heading levels, not just the utility classes, because several routes (IR,
+   Science, About) mark up their own headings directly. */
+h1 em,
+h2 em,
+h3 em,
+h4 em,
+.section-heading em,
+.type-h1 em,
+.type-h2 em,
+.type-display em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--rc-accent-deep);
+}
+
+.on-dark em,
+.on-dark h1 em,
+.on-dark h2 em {
+  color: #5eead4;
+}
+
+/* Eyebrow / section label */
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rc-accent-deep);
+}
+
+/* Wide tracking is a Latin small-caps device. Applied to Hangul it separates
+   syllable blocks and reads as broken spacing ("전 략 로 드 맵"), so CJK
+   locales get near-zero tracking on labels and headings instead. */
+:lang(ko) .section-label,
+:lang(ja) .section-label,
+:lang(zh) .section-label {
+  letter-spacing: 0.02em;
+}
+
+:lang(ko) .type-h1,
+:lang(ko) .type-h2,
+:lang(ko) .section-heading,
+:lang(ja) .type-h1,
+:lang(ja) .type-h2,
+:lang(ja) .section-heading,
+:lang(zh) .type-h1,
+:lang(zh) .type-h2,
+:lang(zh) .section-heading {
+  letter-spacing: -0.02em;
+}
+
+.section-label--muted {
+  color: var(--rc-ink-500);
+}
+
+.type-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: -0.008em;
+  color: var(--rc-ink-600);
+}
+
+.type-caption {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--rc-ink-500);
+}
+
+/* Dark-surface overrides. The type-* classes carry an ink colour, which would
+   otherwise beat a Tailwind `text-white` utility (both are single-class
+   specificity, and this sheet is emitted after the utility layer). */
+.on-dark,
+.section-heading.on-dark,
+.type-h2.on-dark,
+.type-h3.on-dark,
+.type-display.on-dark {
+  color: #fff;
+}
+
+.on-dark .type-body,
+.type-body.on-dark {
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.on-dark .type-caption,
+.type-caption.on-dark {
+  color: rgba(226, 232, 240, 0.55);
+}
+
+.section-label.on-dark {
+  color: #5eead4;
+}
+
+/* Measure control — long-form Korean reads badly beyond ~44em. */
+.measure {
+  max-width: 42em;
+}
+.measure-tight {
+  max-width: 34em;
+}
+
+/* ═══ Layout rhythm ══════════════════════════════════════════════════════ */
+
+.section {
+  padding-top: var(--rc-section-y);
+  padding-bottom: var(--rc-section-y);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: var(--rc-section-y-lg);
+    padding-bottom: var(--rc-section-y-lg);
+  }
+}
+
+.section-sunken {
+  background: var(--rc-surface-sunken);
+}
+
+.container-rc {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@media (min-width: 1024px) {
+  .container-rc {
+    padding-inline: 40px;
+  }
+}
+
+/* A hairline rule that fades at both ends — used between sections instead of
+   a hard border, which reads as a table edge. */
+.hairline {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--rc-hairline-strong) 15%,
+    var(--rc-hairline-strong) 85%,
+    transparent
+  );
+}
+
+/* ═══ Materials ══════════════════════════════════════════════════════════
+   Replaces the old `liquid-glass`, which layered a 40px blur + inset
+   highlight + gradient on every card. Apple uses translucency for *chrome*
+   (navigation, overlays) and opaque cards for *content*. */
+
+/* Chrome material: navigation bars, popovers, sheets.
+
+   Do NOT hand-write `-webkit-backdrop-filter` alongside the standard property
+   here. Lightning CSS (Tailwind v4) treats a manually prefixed pair as an
+   authored decision, collapses it against the browserslist targets, and in
+   this project emitted ONLY the `-webkit-` form. Chrome supports the
+   unprefixed property and not the prefixed one, so the navbar blur silently
+   never rendered. Declaring the standard property alone lets the toolchain
+   add whatever prefixes the targets actually need. */
+.material-chrome {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .material-chrome {
+    background: rgba(255, 255, 255, 0.97);
+  }
+}
+
+/* Navbar: transparent over hero, chrome material after scroll. */
+.navbar-top {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--rc-hairline);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .navbar-scrolled {
+    background: rgba(255, 255, 255, 0.97);
+  }
+}
+
+/* Content card: opaque, hairline, no blur. */
+.card {
+  position: relative;
+  background: var(--rc-surface);
+  border: 1px solid var(--rc-hairline);
+  border-radius: var(--rc-radius-lg);
+  box-shadow: var(--rc-shadow-sm);
+  transition:
+    border-color var(--rc-dur) var(--rc-ease),
+    box-shadow var(--rc-dur) var(--rc-ease),
+    transform var(--rc-dur) var(--rc-ease);
+}
+
+.card-interactive:hover {
+  border-color: var(--rc-hairline-strong);
+  box-shadow: var(--rc-shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-interactive:active {
+  transform: translateY(0);
+  transition-duration: var(--rc-dur-fast);
+}
+
+/* Flush list row — for news/publication lists where a card grid is too heavy. */
+.row {
+  border-bottom: 1px solid var(--rc-hairline);
+  transition: background-color var(--rc-dur-fast) var(--rc-ease);
+}
+.row:last-child {
+  border-bottom: 0;
+}
+.row:hover {
+  background: var(--rc-surface-sunken);
+}
+
+/* Dark-surface card, for the CTA band and IR highlights. */
+.card-dark {
+  background: var(--rc-surface-dark-raised);
+  border: 1px solid var(--rc-hairline-dark);
+  border-radius: var(--rc-radius-xl);
+  backdrop-filter: blur(24px);
+}
+
+/* ═══ Controls ═══════════════════════════════════════════════════════════ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding-inline: 26px;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition:
+    background-color var(--rc-dur-fast) var(--rc-ease),
+    color var(--rc-dur-fast) var(--rc-ease),
+    border-color var(--rc-dur-fast) var(--rc-ease),
+    transform var(--rc-dur-fast) var(--rc-ease);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--rc-accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--rc-accent-deep);
+}
+
+.btn-secondary {
+  background: var(--rc-surface-sunken);
+  color: var(--rc-ink-800);
+  border: 1px solid var(--rc-hairline);
+}
+.btn-secondary:hover {
+  background: #eef0f2;
+}
+
+.btn-ghost-light {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #fff;
+  backdrop-filter: blur(12px);
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.btn-sm {
+  height: 38px;
+  padding-inline: 18px;
+  font-size: 0.8125rem;
+}
+
+/* Text link with an arrow that advances on hover. */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--rc-ink-600);
+  transition: color var(--rc-dur-fast) var(--rc-ease);
+}
+.link-arrow:hover {
+  color: var(--rc-accent-deep);
+}
+.link-arrow svg {
+  transition: transform var(--rc-dur) var(--rc-ease);
+}
+.link-arrow:hover svg {
+  transform: translateX(3px);
+}
+
+/* Status / phase pill */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding-inline: 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--rc-hairline);
+  background: var(--rc-surface-sunken);
+  color: var(--rc-ink-600);
+}
+
+.pill-accent {
+  background: var(--rc-accent-tint);
+  border-color: var(--rc-accent-line);
+  color: var(--rc-accent-deep);
+}
+
+/* ═══ Data display ═══════════════════════════════════════════════════════ */
+
+/* Stat: a number that earns its size, with a hairline-separated caption.
+   Replaces the old centre-aligned glass tiles that gave "EP"/"MT" the same
+   visual weight as a real figure. */
+.stat {
+  padding-top: 18px;
+  border-top: 1px solid var(--rc-hairline-strong);
+}
+
+.stat-value {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--rc-ink-900);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  margin-top: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--rc-ink-700);
+}
+
+.stat-sub {
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: var(--rc-ink-500);
+}
+
+.progress-track {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--rc-hairline);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--rc-accent);
+  transform-origin: left;
+  animation: progress-grow 1.1s var(--rc-ease) both;
+}
+
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ═══ Motion ═════════════════════════════════════════════════════════════
+   Scroll reveal: translate + fade only. No scale, no blur — those read as
+   "web template". 24px travel, 700ms, single easing. */
+
+.reveal-up,
+.reveal-left,
+.reveal-right,
+.scale-in {
+  opacity: 0;
+  transition:
+    opacity var(--rc-dur-slow) var(--rc-ease),
+    transform var(--rc-dur-slow) var(--rc-ease);
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  transform: translate3d(0, 24px, 0);
+}
+.reveal-left {
+  transform: translate3d(-24px, 0, 0);
+}
+.reveal-right {
+  transform: translate3d(24px, 0, 0);
+}
+.scale-in {
+  transform: translate3d(0, 16px, 0);
+}
+
+.reveal-up.in-view,
+.reveal-left.in-view,
+.reveal-right.in-view,
+.scale-in.in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Hero entrance */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-hero-blur-in {
+  animation: hero-rise 900ms var(--rc-ease) both;
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(5px);
+  }
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2.6s var(--rc-ease-inout) infinite;
+}
+
+.hero-line-accent {
+  animation: line-draw 1s var(--rc-ease) 0.15s both;
+  transform-origin: left;
+}
+
+@keyframes line-draw {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Legacy aliases so any page not yet migrated still renders as a proper
+   card instead of unstyled text. Remove once all routes use `.card`. */
+.liquid-glass,
+.liquid-glass-teal {
+  position: relative;
+  background: var(--rc-surface);
+  border: 1px solid var(--rc-hairline);
+  border-radius: var(--rc-radius-lg);
+  box-shadow: var(--rc-shadow-sm);
+  transition:
+    border-color var(--rc-dur) var(--rc-ease),
+    box-shadow var(--rc-dur) var(--rc-ease),
+    transform var(--rc-dur) var(--rc-ease);
+}
+
+.liquid-glass:hover,
+.liquid-glass-teal:hover {
+  border-color: var(--rc-hairline-strong);
+  box-shadow: var(--rc-shadow-md);
+  transform: translateY(-2px);
+}
+
+.liquid-glass-dark {
+  background: var(--rc-surface-dark-raised);
+  border: 1px solid var(--rc-hairline-dark);
+  border-radius: var(--rc-radius-xl);
+  backdrop-filter: blur(24px);
+}
+
+.glass {
+  background: transparent;
+}
+
+/* `text-gradient-emerald` / `hero-gradient-text` previously produced a
+   two-tone gradient on headings. Flattened to solid accent — gradient text
+   is the strongest "startup template" signal on a page. */
+.text-gradient-emerald {
+  color: var(--rc-accent-deep);
+}
+
+.hero-gradient-text {
+  color: #fff;
+}
+
+/* Playfair was never loaded; the class only triggered synthetic italic. */
+.font-playfair {
+  font-family: var(--font-sans);
+  font-style: normal;
+}
+
+/* ═══ Accessibility ══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .scale-in {
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* Arabic content uses Noto Sans Arabic (loaded in the root layout). It also
    covers Latin/numeric runs (RuCIA, TRPV1, $94B); system-ui is the fallback. */

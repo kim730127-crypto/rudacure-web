@@ -58,7 +58,10 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
   const t = getTranslations(locale);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    // 8px, not 20px: the bar must acquire its background before any body text
+    // can slide underneath it.
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -71,49 +74,75 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
   const pathWithoutLocale =
     pathname.replace(/^\/(ko|en|zh|ja|es|fr|ar)/, "") || "";
 
+  /* Only the homepage opens on a dark hero. Everywhere else the bar sits on a
+     white page and must carry its chrome material from the first pixel —
+     previously it was fully transparent at rest on every route, so scrolled
+     body text collided with the logo and the menu. */
+  const isHome = pathWithoutLocale === "" || pathWithoutLocale === "/";
+  const overHero = isHome && !scrolled;
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "navbar-scrolled" : "glass"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
+        overHero ? "navbar-top" : "navbar-scrolled"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-[72px] flex items-center justify-between">
-        <Link href={`/${locale}`} className="flex items-center group">
+      <div className="container-rc flex h-[68px] items-center justify-between">
+        <Link href={`/${locale}`} className="group flex items-center">
           <Image
             src="/images/logo_full.png"
             alt="RudaCure"
             width={180}
             height={40}
-            className="transition-opacity duration-300 group-hover:opacity-80"
+            className={`h-8 w-auto transition-all duration-300 group-hover:opacity-80 ${
+              overHero ? "brightness-0 invert" : ""
+            }`}
             priority
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`relative text-sm font-medium transition-colors ${
-                pathname.startsWith(link.href)
-                  ? "text-teal-700"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              {link.label}
-              {pathname.startsWith(link.href) && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-teal-600 rounded-full" />
-              )}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-7 md:flex">
+          {links.map((link) => {
+            const active = pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative text-[0.8125rem] font-medium tracking-[-0.01em] transition-colors ${
+                  overHero
+                    ? active
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                    : active
+                      ? "text-[var(--rc-accent-deep)]"
+                      : "text-[var(--rc-ink-600)] hover:text-[var(--rc-ink-900)]"
+                }`}
+              >
+                {link.label}
+                {active && (
+                  <span
+                    className={`absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full ${
+                      overHero ? "bg-white/80" : "bg-[var(--rc-accent)]"
+                    }`}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Language dropdown */}
         <div className="hidden md:block relative">
           <button
             onClick={() => setLangOpen(!langOpen)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+              overHero
+                ? "text-white/75 hover:bg-white/10 hover:text-white"
+                : "text-[var(--rc-ink-600)] hover:bg-[var(--rc-surface-sunken)] hover:text-[var(--rc-ink-900)]"
+            }`}
           >
             <svg
-              className="w-3.5 h-3.5 text-gray-400"
+              className="h-3.5 w-3.5 opacity-60"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -175,7 +204,13 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
         </div>
 
         <button
-          className="md:hidden text-gray-600 hover:text-gray-900 transition-colors"
+          aria-label="Menu"
+          aria-expanded={mobileOpen}
+          className={`transition-colors md:hidden ${
+            overHero
+              ? "text-white/80 hover:text-white"
+              : "text-[var(--rc-ink-600)] hover:text-[var(--rc-ink-900)]"
+          }`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           <svg
@@ -196,7 +231,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-5 space-y-1 shadow-lg">
+        <div className="material-chrome space-y-1 border-t border-[var(--rc-hairline)] px-6 py-5 shadow-lg md:hidden">
           {links.map((link) => (
             <Link
               key={link.href}

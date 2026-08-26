@@ -17,48 +17,57 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
   ];
 
   return (
-    <footer className="bg-gray-950">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+    /* Same surface as the CTA band above it, so the two dark sections read as
+       one field instead of showing a seam between #0a0f14 and #080c11. The
+       container matches `.container-rc`, which the navbar and every section
+       also use — the footer was previously 160px wider than the page body. */
+    <footer className="border-t border-[var(--rc-hairline-dark)] bg-[#080c11]">
+      <div className="container-rc py-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           {/* Brand */}
           <div className="md:col-span-5">
-            <div className="text-xl font-semibold mb-3 text-gradient-emerald inline-block">
+            <div className="mb-3 inline-block text-lg font-semibold tracking-[-0.02em] text-white">
               RudaCure
             </div>
-            <p className="text-sm text-gray-500 leading-relaxed max-w-md mb-6">
+            <p className="mb-7 max-w-md text-sm leading-relaxed text-slate-400">
               {t("footer.description")}
             </p>
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <div>
-                <p className="text-xs font-semibold text-gray-300 mb-1">
+                <p className="mb-1 text-xs font-semibold text-slate-200">
                   {locale === "ko" ? "본사" : "Headquarters"}
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-slate-400">
                   {locale === "ko"
                     ? "인천광역시 연수구 송도미래로 9, 1동 302호"
                     : "9 Songdo Mirae-ro, Yeonsu-gu, Incheon, Korea"}
                 </p>
               </div>
               <div>
-                <p className="text-xs font-semibold text-gray-300 mb-1">
+                <p className="mb-1 text-xs font-semibold text-slate-200">
                   {locale === "ko" ? "서울사무소" : "Seoul Office"}
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-slate-400">
                   {locale === "ko"
                     ? "서울시 금천구 가산디지털1로 145, 1001호"
                     : "1001, 145 Gasandigital 1-ro, Geumcheon-gu, Seoul, Korea"}
                 </p>
               </div>
-              <p className="text-xs text-gray-400">
+              <p className="num text-xs text-slate-400">
                 Tel: 032-724-9070 | Fax: 032-724-9071
               </p>
-              <p className="text-xs text-gray-400">sh.kim@rudacure.com</p>
+              <a
+                href="mailto:sh.kim@rudacure.com"
+                className="text-xs text-slate-400 transition-colors hover:text-teal-300"
+              >
+                sh.kim@rudacure.com
+              </a>
             </div>
           </div>
 
           {/* Company */}
           <div className="md:col-span-3">
-            <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-5">
+            <h4 className="mb-5 text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-slate-500">
               {locale === "ko" ? "회사" : "Company"}
             </h4>
             <ul className="space-y-3">
@@ -66,7 +75,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-500 hover:text-teal-400 transition-colors"
+                    className="text-sm text-slate-400 transition-colors hover:text-teal-300"
                   >
                     {link.label}
                   </Link>
@@ -77,7 +86,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
 
           {/* Social */}
           <div className="md:col-span-4">
-            <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-5">
+            <h4 className="mb-5 text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-slate-500">
               {locale === "ko" ? "소셜" : "Social"}
             </h4>
             <div className="flex gap-3">
@@ -85,7 +94,8 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
                 href="https://kr.linkedin.com/company/rudacure"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-500 hover:text-teal-400 hover:bg-gray-700 transition-all"
+                aria-label="RudaCure on LinkedIn"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rc-hairline-dark)] bg-white/5 text-slate-400 transition-all hover:border-teal-400/40 hover:bg-white/10 hover:text-teal-300"
               >
                 <svg
                   width="16"
@@ -100,13 +110,13 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
           </div>
         </div>
 
-        <div className="h-px bg-gray-800 mt-12 mb-6" />
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400">
+        <div className="mt-14 mb-6 h-px bg-[var(--rc-hairline-dark)]" />
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} RudaCure Co., Ltd. All rights
             reserved.
           </p>
-          <p className="text-[10px] text-gray-400">
+          <p className="text-xs tracking-[0.02em] text-slate-500">
             Redefining Pain, Restoring Sensation
           </p>
         </div>

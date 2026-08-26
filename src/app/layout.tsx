@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_Arabic } from "next/font/google";
+import { Noto_Sans_Arabic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// NOTE: Inter was previously applied to <body> as the site-wide face. Inter
+// carries no Hangul glyphs, so every Korean run silently fell back to an
+// unstyled system font while the self-hosted Pretendard subset in
+// public/fonts/pretendard was never imported. Pretendard is now the body face
+// (see globals.css --font-sans) and covers Latin, Hangul and CJK punctuation
+// from one variable file.
 // Arabic webfont (Inter has no Arabic glyphs). Exposed as a CSS variable and
 // applied to RTL content via `:lang(ar)` in globals.css.
 const notoArabic = Noto_Sans_Arabic({
@@ -81,7 +86,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} ${notoArabic.variable} bg-white text-gray-900 antialiased`}
+        className={`${notoArabic.variable} bg-white text-gray-900 antialiased`}
       >
         {children}
         <Analytics />

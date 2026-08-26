@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { HeroParticles } from "@/components/hero-particles";
+import { MembraneHero } from "@/components/membrane-hero";
 import { PartnerLogo } from "@/components/partner-logo";
 import { RecruitPopup } from "@/components/recruit-popup";
 import newsKo from "@/data/news.json";
@@ -66,6 +66,13 @@ const PIPELINE = {
     },
   ],
 };
+
+/* Several locale strings bake a directional arrow into the copy
+   ("파이프라인 상세 →", "← عرض الكل"), and the link component renders its own
+   SVG arrow, so every one of these links showed two arrows. Strip the glyph at
+   render time rather than editing seven locale tables. */
+const stripArrow = (s: string) =>
+  s.replace(/[\u2190\u2192\u27a1\u2b05]/g, "").trim();
 
 type Partner = {
   name: string;
@@ -478,92 +485,81 @@ export default async function HomePage({
   const partners = PARTNERS[locale] ?? PARTNERS.en;
   const pipeline = PIPELINE[loc];
 
-  const METRICS = [
+  /* The first two entries are capabilities, not measurements. They were
+     previously rendered in the same large numeral style as the market figure
+     using invented abbreviations ("EP", "MT"), which gave a label the visual
+     authority of data. Capabilities and the one real figure are now typed
+     differently. */
+  const CAPABILITIES = [
     {
-      value: "EP",
-      label: t("rucia.metric.time"),
+      title: t("rucia.metric.time"),
       sub: t("rucia.metric.time.sub"),
     },
     {
-      value: "MT",
-      label: t("rucia.metric.selectivity"),
+      title: t("rucia.metric.selectivity"),
       sub: t("rucia.metric.selectivity.sub"),
     },
-    {
-      value: "$94B",
-      label: t("rucia.metric.market"),
-      sub: t("rucia.metric.market.sub"),
-    },
   ];
+
+  const MARKET_STAT = {
+    value: t("rucia.metric.market"),
+    sub: t("rucia.metric.market.sub"),
+  };
 
   return (
     <>
       {/* 구인 팝업: 한국어 홈에서만, 세션당 1회 (충원 시 recruit-popup.tsx의 ACTIVE=false) */}
       {locale === "ko" && <RecruitPopup />}
 
-      {/* ===== Hero ===== */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Full background image */}
-        <Image
-          src="/images/dry-eye-hero.jpg"
-          alt="Dry eye disease - bloodshot eye close-up"
-          fill
-          className="object-cover hero-bg-zoom"
-          priority
-        />
+      {/* ===== Hero =====
+          Identity, not indication. The previous hero was a full-bleed dry-eye
+          photograph, which represents RCI001 alone; the company is a membrane
+          -protein drug discovery platform. The bilayer/ion-channel canvas below
+          carries that identity and stays valid as the pipeline expands. */}
+      <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-[#080c11]">
+        {/* Depth: one cool wash, one warm accent. No competing hues. */}
+        <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_8%,#122c31_0%,#0b1419_42%,#070a0e_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#060a0d] via-[#060a0d]/60 to-transparent" />
 
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/70 to-gray-900/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-gray-950/30" />
+        <MembraneHero />
 
-        {/* Animated particle background */}
-        <HeroParticles />
-
-        {/* Ambient glow */}
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-teal-400/10 rounded-full blur-3xl hero-glow" />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-red-400/8 rounded-full blur-3xl hero-glow"
-          style={{ animationDelay: "1.5s" }}
-        />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pt-32 pb-24 lg:pt-36">
-          <div className="max-w-2xl">
-            <p className="text-teal-400 text-xs font-semibold tracking-[0.25em] uppercase mb-6 animate-hero-blur-in">
+        <div className="container-rc relative z-10 w-full pt-36 pb-32">
+          <div className="max-w-[46rem]">
+            <p className="section-label on-dark animate-hero-blur-in">
               {t("hero.tagline")}
             </p>
 
-            {/* Decorative line draw */}
-            <div className="h-px w-16 bg-gradient-to-r from-teal-400 to-cyan-400 mb-6 hero-line-accent" />
+            <div className="hero-line-accent mt-6 mb-8 h-px w-14 bg-teal-400/60" />
 
             <h1
-              className="text-4xl sm:text-5xl lg:text-7xl font-light leading-[1.1] mb-8 text-white animate-hero-blur-in"
-              style={{ animationDelay: "0.2s" }}
+              className="type-h1 animate-hero-blur-in text-white"
+              style={{ animationDelay: "0.12s" }}
             >
               {t("hero.title1")}
               <br />
-              <em className="font-playfair italic font-semibold hero-gradient-text">
-                {t("hero.title2")}
-              </em>
+              <span className="text-teal-300">{t("hero.title2")}</span>
             </h1>
+
             <p
-              className="text-base sm:text-lg text-gray-300 max-w-xl leading-relaxed mb-10 animate-hero-blur-in"
-              style={{ animationDelay: "0.4s" }}
+              className="animate-hero-blur-in measure mt-8 text-[1.0625rem] leading-[1.75] text-slate-300/90"
+              style={{ animationDelay: "0.24s" }}
             >
               {t("hero.description")}
             </p>
+
             <div
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-hero-blur-in"
-              style={{ animationDelay: "0.6s" }}
+              className="animate-hero-blur-in mt-11 flex flex-col items-start gap-3 sm:flex-row sm:items-center"
+              style={{ animationDelay: "0.36s" }}
             >
               <Link
                 href={`/${locale}/pipeline`}
-                className="px-7 py-3.5 rounded-lg font-medium text-sm bg-teal-500 text-white hover:bg-teal-400 transition-colors"
+                className="btn btn-primary"
               >
                 {t("hero.cta.pipeline")}
               </Link>
               <Link
                 href={`/${locale}/science`}
-                className="px-7 py-3.5 rounded-lg border border-white/20 text-sm font-medium text-white/80 hover:text-white hover:border-white/40 transition-colors"
+                className="btn btn-ghost-light"
               >
                 {t("hero.cta.science")}
               </Link>
@@ -572,74 +568,79 @@ export default async function HomePage({
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-scroll-hint z-10">
-          <span className="text-xs tracking-[0.2em] uppercase text-white/40">
+        <div className="animate-scroll-hint absolute bottom-9 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
+          <span className="text-[0.6875rem] uppercase tracking-[0.22em] text-white/45">
             Scroll
           </span>
-          <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
+          <div className="h-9 w-px bg-gradient-to-b from-white/35 to-transparent" />
         </div>
       </section>
 
-      {/* ===== RuCIA Platform ===== */}
-      <section className="py-20 lg:py-36 px-6 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      {/* ===== Core technology ===== */}
+      <section className="section section-sunken">
+        <div className="container-rc grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <ScrollReveal animation="reveal-left">
-            <p className="section-label mb-4">{t("rucia.tag")}</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl section-heading mb-6">
+            <p className="section-label">{t("rucia.tag")}</p>
+            <h2 className="section-heading mt-5">
               {t("rucia.title1")} <em>{t("rucia.title2")}</em>
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-10">
-              {t("rucia.description")}
-            </p>
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              {METRICS.map((m) => (
-                <div
-                  key={m.label}
-                  className="liquid-glass p-4 sm:p-5 text-center"
-                >
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold font-[family-name:var(--font-roboto-mono)] text-gradient-emerald">
-                    {m.value}
-                  </div>
-                  <div className="text-xs sm:text-xs text-gray-600 mt-1.5 font-medium">
-                    {m.label}
-                  </div>
-                  <div className="text-xs text-gray-600 mt-0.5">{m.sub}</div>
+            <p className="type-body measure mt-6">{t("rucia.description")}</p>
+
+            <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
+              {CAPABILITIES.map((c) => (
+                <div key={c.title} className="stat">
+                  <dt className="text-[0.9375rem] font-semibold leading-snug tracking-[-0.015em] text-[var(--rc-ink-900)]">
+                    {c.title}
+                  </dt>
+                  <dd className="stat-sub mt-2">{c.sub}</dd>
                 </div>
               ))}
-            </div>
+              <div className="stat">
+                <dt className="stat-value num text-[1.75rem] leading-none">
+                  {MARKET_STAT.value}
+                </dt>
+                <dd className="stat-sub mt-2">{MARKET_STAT.sub}</dd>
+              </div>
+            </dl>
           </ScrollReveal>
-          <ScrollReveal animation="scale-in" delay={200}>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/membrane_target_moa_v2.png"
-                alt="RCI002 Dual Target Peptide Mechanism of Action — TRPV1 & MOR Membrane Target"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent" />
-            </div>
+
+          <ScrollReveal animation="scale-in" delay={160}>
+            <figure className="card overflow-hidden">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src="/images/membrane_target_moa_v2.png"
+                  alt="RCI002 dual-target peptide mechanism of action — TRPV1 and MOR membrane targets"
+                  fill
+                  sizes="(min-width: 1024px) 520px, 100vw"
+                  className="object-contain"
+                />
+              </div>
+              <figcaption className="type-caption border-t border-[var(--rc-hairline)] px-5 py-3.5">
+                RCI002 — TRPV1 / MOR dual-target mechanism
+              </figcaption>
+            </figure>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== Pipeline Grid ===== */}
-      <section className="py-20 lg:py-32 px-6 lg:px-12 bg-gradient-to-b from-white to-gray-50/50">
-        <div className="max-w-6xl mx-auto">
+      {/* ===== Pipeline ===== */}
+      <section className="section">
+        <div className="container-rc">
           <ScrollReveal>
-            <div className="flex items-end justify-between mb-14">
+            <div className="mb-12 flex items-end justify-between gap-8">
               <div>
-                <p className="section-label mb-4">{t("pipeline.tag")}</p>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl section-heading">
+                <p className="section-label">{t("pipeline.tag")}</p>
+                <h2 className="section-heading mt-5">
                   {t("pipeline.title1")} <em>{t("pipeline.title2")}</em>
                 </h2>
               </div>
               <Link
                 href={`/${locale}/pipeline`}
-                className="text-sm text-gray-600 hover:text-teal-600 transition-colors hidden sm:flex items-center gap-2 group"
+                className="link-arrow hidden shrink-0 sm:inline-flex"
               >
-                {t("pipeline.view_news")}
+                {stripArrow(t("pipeline.view_news"))}
                 <svg
-                  className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                  className="h-4 w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -660,59 +661,47 @@ export default async function HomePage({
               <ScrollReveal key={p.id} delay={i * 150}>
                 <Link
                   href={`/${locale}/pipeline`}
-                  className={`block liquid-glass-teal p-6 sm:p-8 group border-s-4 ${
-                    p.color === "teal"
-                      ? "border-s-teal-500"
-                      : "border-s-blue-500"
-                  }`}
+                  className="card card-interactive group block p-7 sm:p-9"
                 >
                   {/* Header */}
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-semibold px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200 font-[family-name:var(--font-roboto-mono)]">
-                      {p.id}
-                    </span>
-                    <span className="text-xs text-gray-600 font-[family-name:var(--font-roboto-mono)]">
-                      {p.status}
-                    </span>
+                  <div className="mb-6 flex items-center justify-between">
+                    <span className="pill pill-accent num">{p.id}</span>
+                    <span className="type-caption num">{p.status}</span>
                   </div>
 
                   {/* Indication */}
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-gray-900 group-hover:text-teal-700 transition-colors">
+                  <h3 className="type-h3 transition-colors group-hover:text-[var(--rc-accent-deep)]">
                     {p.indication}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-6 leading-relaxed line-clamp-2">
+                  <p className="type-body mt-3 line-clamp-2 text-[0.9375rem] leading-[1.7]">
                     {p.description}
                   </p>
 
                   {/* Progress */}
-                  <div className="mb-4">
-                    <div className="flex justify-between text-xs text-gray-600 mb-2">
+                  <div className="mt-8">
+                    <div className="type-caption mb-2.5 flex justify-between">
                       <span>Progress</span>
-                      <span className="font-[family-name:var(--font-roboto-mono)]">
+                      <span className="num font-medium text-[var(--rc-ink-700)]">
                         {p.progress}%
                       </span>
                     </div>
-                    <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="progress-track">
                       <div
-                        className={`h-full rounded-full animate-progress ${
-                          p.color === "teal"
-                            ? "bg-gradient-to-r from-teal-600 to-teal-400"
-                            : "bg-gradient-to-r from-blue-600 to-blue-400"
-                        }`}
+                        className="progress-fill"
                         style={{ width: `${p.progress}%` }}
                       />
                     </div>
                   </div>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between text-xs pt-4 border-t border-gray-100">
-                    <span className="text-gray-600 font-[family-name:var(--font-roboto-mono)]">
+                  <div className="mt-7 flex items-center justify-between border-t border-[var(--rc-hairline)] pt-5">
+                    <span className="type-caption num">
                       Target: {p.target}
                     </span>
-                    <span className="text-gray-600 group-hover:text-teal-600 transition-colors flex items-center gap-1">
+                    <span className="type-caption flex items-center gap-1.5 transition-colors group-hover:text-[var(--rc-accent-deep)]">
                       {p.milestone}
                       <svg
-                        className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform"
+                        className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -733,13 +722,13 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== Partners & Recognition ===== */}
-      <section className="py-20 lg:py-24 px-6 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-blue-50/20">
-        <div className="max-w-6xl mx-auto">
+      {/* ===== Partners ===== */}
+      <section className="section section-sunken">
+        <div className="container-rc">
           <ScrollReveal>
-            <div className="text-center mb-14">
-              <p className="section-label mb-4">{t("home.partners.tag")}</p>
-              <h2 className="text-3xl sm:text-4xl section-heading">
+            <div className="mb-12 text-center">
+              <p className="section-label">{t("home.partners.tag")}</p>
+              <h2 className="section-heading mt-5">
                 {t("home.partners.title1")}
                 <em>{t("home.partners.title2")}</em>
               </h2>
@@ -761,8 +750,8 @@ export default async function HomePage({
               const badgeClass =
                 colorMap[p.color] || "bg-gray-50 text-gray-600";
               return (
-                <ScrollReveal key={p.name} delay={i * 100}>
-                  <div className="liquid-glass px-6 py-5 group cursor-default flex items-center gap-4">
+                <ScrollReveal key={p.name} delay={i * 70}>
+                  <div className="card flex h-full cursor-default items-center gap-4 px-5 py-4.5">
                     {/* Logo or initials fallback */}
                     <PartnerLogo
                       src={p.logo}
@@ -770,13 +759,11 @@ export default async function HomePage({
                       initials={p.initials}
                       badgeClass={badgeClass}
                     />
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-semibold text-gray-800 group-hover:text-teal-700 transition-colors">
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[0.9375rem] font-semibold leading-tight text-[var(--rc-ink-800)]">
                         {p.name}
                       </div>
-                      <div className="text-xs text-gray-500 mt-0.5 leading-snug">
-                        {p.role}
-                      </div>
+                      <div className="type-caption mt-1">{p.role}</div>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -787,24 +774,24 @@ export default async function HomePage({
       </section>
 
       {/* ===== Recent News ===== */}
-      <section className="py-20 lg:py-24 px-6 lg:px-12 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="section">
+        <div className="container-rc">
           <ScrollReveal>
-            <div className="flex items-end justify-between mb-10">
+            <div className="mb-10 flex items-end justify-between gap-8">
               <div>
-                <p className="section-label mb-4">{t("home.news.tag")}</p>
-                <h2 className="text-3xl sm:text-4xl section-heading">
+                <p className="section-label">{t("home.news.tag")}</p>
+                <h2 className="section-heading mt-5">
                   {t("home.news.title1")}
                   <em>{t("home.news.title2")}</em>
                 </h2>
               </div>
               <Link
                 href={`/${locale}/news`}
-                className="text-sm text-gray-600 hover:text-teal-600 transition-colors hidden sm:flex items-center gap-2 group"
+                className="link-arrow hidden shrink-0 sm:inline-flex"
               >
-                {t("home.news.viewAll")}
+                {stripArrow(t("home.news.viewAll"))}
                 <svg
-                  className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                  className="h-4 w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -819,7 +806,9 @@ export default async function HomePage({
               </Link>
             </div>
           </ScrollReveal>
-          <div className="space-y-3">
+          {/* A flush hairline list, not nine floating cards. Lists of
+              same-shaped links read faster without per-item chrome. */}
+          <div className="border-t border-[var(--rc-hairline)]">
             {(
               {
                 ko: newsKo,
@@ -841,26 +830,24 @@ export default async function HomePage({
                   },
                   i: number,
                 ) => (
-                  <ScrollReveal key={article.id} delay={i * 80}>
+                  <ScrollReveal key={article.id} delay={i * 60}>
                     <Link
                       href={`/${locale}/news/${article.id}`}
-                      className="flex items-center gap-4 p-4 liquid-glass group"
+                      className="row group -mx-4 flex items-center gap-5 rounded-lg px-4 py-5"
                     >
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 mb-1">
-                          <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
-                            {article.category}
-                          </span>
-                          <span className="text-xs text-gray-600">
-                            {article.date}
-                          </span>
-                        </div>
-                        <h3 className="text-sm sm:text-[15px] font-medium text-gray-700 group-hover:text-teal-600 transition-colors truncate">
-                          {article.title}
-                        </h3>
-                      </div>
+                      {/* Fixed width so every headline starts on the same
+                          optical column regardless of category length. */}
+                      <span className="pill pill-accent w-[78px] shrink-0 justify-center">
+                        {article.category}
+                      </span>
+                      <h3 className="min-w-0 flex-1 truncate text-[0.9375rem] font-medium text-[var(--rc-ink-800)] transition-colors group-hover:text-[var(--rc-accent-deep)]">
+                        {article.title}
+                      </h3>
+                      <span className="type-caption num hidden shrink-0 sm:block">
+                        {article.date}
+                      </span>
                       <svg
-                        className="w-4 h-4 text-gray-200 group-hover:text-teal-500 transition-colors shrink-0"
+                        className="h-4 w-4 shrink-0 text-[var(--rc-ink-400)] transition-all group-hover:translate-x-0.5 group-hover:text-[var(--rc-accent)]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -881,31 +868,21 @@ export default async function HomePage({
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12 bg-gray-950 text-white relative overflow-hidden">
-        {/* Subtle dot pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, #fff 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
+      <section className="section relative overflow-hidden bg-[#080c11] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_50%_0%,#122c31_0%,transparent_70%)]" />
 
         <ScrollReveal>
-          <div className="max-w-2xl mx-auto text-center relative liquid-glass-dark p-12 sm:p-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-6 text-white">
+          <div className="container-rc relative text-center">
+            <h2 className="section-heading on-dark">
               {t("cta.title1")}{" "}
-              <em className="font-playfair italic font-semibold text-gradient-emerald">
-                {t("cta.title2")}
-              </em>
+              <span className="text-teal-300">{t("cta.title2")}</span>
             </h2>
-            <p className="text-gray-400 mb-10 leading-relaxed">
+            <p className="measure mx-auto mt-5 text-[1.0625rem] leading-[1.75] text-slate-400">
               {t("cta.description")}
             </p>
             <Link
               href={`/${locale}/contact`}
-              className="inline-block px-10 py-4 rounded-lg font-medium text-sm bg-teal-500 text-white hover:bg-teal-400 transition-colors"
+              className="btn btn-primary mt-10"
             >
               {t("cta.button")}
             </Link>
