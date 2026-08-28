@@ -318,10 +318,11 @@ const PATENT_FAMILIES: PatentFamily[] = [
       {
         country: "중국",
         countryEn: "China",
-        number: "2020800866718",
+        number: "ZL 2020800866718",
         filed: "2022.06.14",
-        registered: "-",
-        status: "filed",
+        registered: "2026.08.18",
+        status: "granted",
+        pdf: "CN115279392_certificate.pdf",
       },
       {
         country: "일본",
