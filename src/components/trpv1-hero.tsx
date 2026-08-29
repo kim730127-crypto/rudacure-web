@@ -79,8 +79,8 @@ export function Trpv1Hero() {
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-        camera.position.set(0, 0.45, 8.2);
-        camera.lookAt(0, -0.05, 0);
+        camera.position.set(0, 0.35, 9.4);
+        camera.lookAt(0, -0.15, 0);
 
         // The channel is a specimen sitting to the side of the headline, not a
         // wallpaper behind it. On narrow screens there is no room to sit beside
@@ -101,13 +101,17 @@ export function Trpv1Hero() {
         // The lipid belt has to be legible or the picture stops being about a
         // membrane protein, so POPC is pushed brighter than its atom count
         // would otherwise earn.
+        // The bilayer is the landmark that tells the viewer which way is up,
+        // and it is outnumbered 6:1 by protein atoms, so it is given far more
+        // visual weight than its count would earn. Without that the picture
+        // reads as one undifferentiated cloud and the anatomy is lost.
         const PALETTE = [
-          [0.70, 0.81, 0.85], // protein   — cool bone white
-          [0.09, 0.72, 0.66], // POPC      — the membrane, readable teal
-          [0.42, 1.0, 0.88], // SB-366791 — the bound antagonist
+          [0.66, 0.78, 0.83], // protein   — cool bone white, deliberately quiet
+          [0.09, 0.78, 0.70], // POPC      — the membrane plane
+          [0.55, 1.0, 0.92], // SB-366791 — the bound antagonist
         ];
-        const SIZES = [5.6, 8.2, 11.0];
-        const ALPHA = [0.3, 0.5, 0.95];
+        const SIZES = [5.4, 9.5, 11.0];
+        const ALPHA = [0.26, 0.5, 0.9];
 
         const colors = new Float32Array(cloud.count * 3);
         const sizes = new Float32Array(cloud.count);
@@ -126,7 +130,7 @@ export function Trpv1Hero() {
 
         const geometry = new THREE.BufferGeometry();
         const scaled = new Float32Array(cloud.positions.length);
-        for (let i = 0; i < scaled.length; i += 1) scaled[i] = cloud.positions[i] * 2.5;
+        for (let i = 0; i < scaled.length; i += 1) scaled[i] = cloud.positions[i] * 2.15;
         geometry.setAttribute("position", new THREE.BufferAttribute(scaled, 3));
         geometry.setAttribute("aColor", new THREE.BufferAttribute(colors, 3));
         geometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
@@ -205,9 +209,13 @@ export function Trpv1Hero() {
           // the horizon; it is the measured slab centre (+23.8 A of 55.8 A
           // normalised, times the 2.5 world scale) and must be recomputed if
           // the structure or the scale changes.
-          const MEMBRANE_Y = -1.07;
+          // Lipid slab centre measured at +23.8 A of the 55.8 A normalising
+          // extent; times the 2.15 world scale that is +0.917. Subtracting it
+          // puts the bilayer on the horizon, then it is nudged up so the
+          // cytoplasmic domain has room to hang below it.
+          const MEMBRANE_Y = -0.917;
           points.position.x = wide.matches ? 1.95 : 0;
-          points.position.y = MEMBRANE_Y + (wide.matches ? 0.15 : -0.35);
+          points.position.y = MEMBRANE_Y + (wide.matches ? 0.42 : -0.05);
         };
         resize();
         const ro = new ResizeObserver(resize);

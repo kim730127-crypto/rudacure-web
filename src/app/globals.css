@@ -744,8 +744,8 @@ h4 em,
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(100% 62% at 50% 50%, transparent 42%, rgba(4, 10, 15, 0.55) 100%),
-    linear-gradient(180deg, rgba(4, 10, 15, 0.5) 0%, transparent 22%, transparent 74%, rgba(4, 10, 15, 0.9) 100%);
+    radial-gradient(100% 70% at 50% 50%, transparent 52%, rgba(4, 10, 15, 0.4) 100%),
+    linear-gradient(180deg, rgba(4, 10, 15, 0.5) 0%, transparent 22%, transparent 86%, rgba(4, 10, 15, 0.72) 100%);
 }
 
 .rc-hero-scrim {
