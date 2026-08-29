@@ -101,3 +101,59 @@ folders are near-duplicates and the smaller one is easy to grab by mistake.
   RCI001 pipeline entry. Note the labels are legible and read `RCI001/HL262`
   with lot numbers, which publicly links the asset to the Hanlim codename;
   decide that before publishing them.
+
+---
+
+## Homepage 3D hero — data and code provenance
+
+The hero on `/[locale]` is a WebGL point cloud. Nothing in it is decorative
+noise; every point is an experimentally determined atom position.
+
+### Coordinate data
+
+| | |
+|---|---|
+| Source | RCSB PDB entry **8GFA** — Cryo-EM structure of human TRPV1 in complex with the analgesic drug SB-366791 |
+| DOI | https://doi.org/10.2210/pdb8GFA/pdb |
+| Structure paper | Neuberger, A., Trofimov, Y.A., Yelshanskaya, M.V., Nadezhdin, K.D., Krylov, N.A., Efremov, R.G., Sobolevsky, A.I. — Nature Communications (2023) |
+| Licence | **CC0 1.0 Universal Public Domain Dedication.** The wwPDB usage policy places all PDB archive coordinate files in the public domain. No permission, attribution or fee is required for commercial use; attribution to the depositing authors is given here because it is good practice, not because it is a condition. |
+| Verified | wwPDB usage policy and RCSB policy page, read 2026-08-29 |
+
+What is actually drawn:
+
+| Component | Residue code | Atoms shipped | Role in the image |
+|---|---|---|---|
+| TRPV1 channel, tetramer | chains A–D | 11,000 of 17,248 heavy atoms | the membrane target |
+| POPC phospholipid | `POV` | 1,716 (all) | the lipid bilayer, drawn in teal |
+| SB-366791 | `ZEI` | 80 (all four copies) | the bound antagonist, the bright points |
+
+The build script `scripts/build-trpv1-pointcloud.py` re-orients the structure so
+the membrane normal runs along Y — it derives that axis by principal-component
+analysis of the POPC slab rather than hard-coding it — then subsamples,
+quantises to Int16 and writes `public/data/trpv1.bin` (12,796 points, 88 KB raw,
+75 KB gzipped). Rebuild with:
+
+```
+python3 scripts/build-trpv1-pointcloud.py path/to/8GFA.pdb public/data/trpv1.bin
+```
+
+### Rendering technique
+
+The drifting additive point-field treatment is adapted from **ThreeUI**'s
+"Structure Flow" component (https://threeui.com, https://github.com/MengTo/threeui),
+MIT licence, © 2026 Meng To. Their renderer distributes points at random on a
+sphere; ours substitutes the coordinates above and adds per-atom colour, size
+and depth fade. The ThreeUI npm package is *not* a dependency — the licence
+permits adapting the source directly, which avoids pulling a 52 MB package that
+bundles two additional aliased copies of three.js.
+
+`three` (0.180.0, MIT) is the only new runtime dependency.
+
+### Open questions
+
+- 8GFA is human TRPV1 with **SB-366791**, a GSK tool antagonist, not a RudaCure
+  compound. The image is honest about the target and the mechanism but the
+  ligand is somebody else's molecule. If RCI002 or a RudaCure TRPV1 antagonist
+  has a solved or docked pose that legal is willing to publish, swapping it in
+  would make the hero unambiguously ours. Until then no on-page caption claims
+  the bound molecule is a RudaCure asset.

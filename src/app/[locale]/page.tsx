@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { MembraneHero } from "@/components/membrane-hero";
+import { Trpv1Hero } from "@/components/trpv1-hero";
 import { PartnerLogo } from "@/components/partner-logo";
 import { RecruitPopup } from "@/components/recruit-popup";
 import newsKo from "@/data/news.json";
@@ -521,7 +521,7 @@ export default async function HomePage({
         <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_8%,#122c31_0%,#0b1419_42%,#070a0e_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#060a0d] via-[#060a0d]/60 to-transparent" />
 
-        <MembraneHero />
+        <Trpv1Hero />
 
         <div className="container-rc relative z-10 w-full pt-36 pb-32">
           <div className="max-w-[46rem]">

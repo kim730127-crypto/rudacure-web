@@ -720,3 +720,55 @@ h4 em,
 :lang(ar) {
   font-family: var(--font-arabic), system-ui, sans-serif;
 }
+
+/* ---------------------------------------------------------------------------
+   Hero scene (TRPV1 point cloud)
+   The poster paints before WebGL boots and remains the fallback when WebGL is
+   unavailable, so the hero never renders as a flat void.
+   --------------------------------------------------------------------------- */
+.rc-hero-poster {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      120% 70% at 50% 42%,
+      rgba(20, 184, 166, 0.14) 0%,
+      rgba(11, 124, 114, 0.06) 38%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, #050a0e 0%, #06121a 48%, #040a0f 100%);
+}
+
+.rc-hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(100% 62% at 50% 50%, transparent 42%, rgba(4, 10, 15, 0.55) 100%),
+    linear-gradient(180deg, rgba(4, 10, 15, 0.5) 0%, transparent 22%, transparent 74%, rgba(4, 10, 15, 0.9) 100%);
+}
+
+.rc-hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(4, 10, 15, 0.94) 0%,
+    rgba(4, 10, 15, 0.86) 26%,
+    rgba(4, 10, 15, 0.5) 46%,
+    transparent 66%
+  );
+}
+
+@media (max-width: 899px) {
+  .rc-hero-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 10, 15, 0.9) 0%,
+      rgba(4, 10, 15, 0.72) 38%,
+      rgba(4, 10, 15, 0.35) 62%,
+      transparent 82%
+    );
+  }
+}
