@@ -59,3 +59,7 @@ public/magazines/*.pdf
 
 # Claude Code local tooling
 .claude/
+
+# Python bytecode from scripts/
+__pycache__/
+*.pyc

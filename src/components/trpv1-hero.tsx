@@ -13,7 +13,10 @@
  *
  * The channel is pre-oriented in scripts/build-trpv1-pointcloud.py so that the
  * membrane normal runs along Y, which is why the lipid band reads as a
- * horizontal plane with the channel standing through it.
+ * horizontal plane with the channel standing through it.  The sign of that
+ * axis is resolved anatomically, not by PCA, so the extracellular face is
+ * always up and the cytoplasm — ankyrin repeats, C-terminal beta sheet, TRP
+ * helix — always hangs below the bilayer.
  *
  * Coordinate data: CC0 1.0 Public Domain (wwPDB).  Cite the structure paper —
  * Neuberger et al., and see public/images/IMAGE-CREDITS.md.
@@ -197,8 +200,14 @@ export function Trpv1Hero() {
           camera.aspect = w / h;
           camera.updateProjectionMatrix();
           renderer.setSize(w, h, false);
+          // TRPV1 is cytoplasm-heavy, so the centroid of the atom cloud sits
+          // well below the bilayer. MEMBRANE_Y lifts the lipid slab back onto
+          // the horizon; it is the measured slab centre (+23.8 A of 55.8 A
+          // normalised, times the 2.5 world scale) and must be recomputed if
+          // the structure or the scale changes.
+          const MEMBRANE_Y = -1.07;
           points.position.x = wide.matches ? 1.95 : 0;
-          points.position.y = wide.matches ? 0.05 : -0.55;
+          points.position.y = MEMBRANE_Y + (wide.matches ? 0.15 : -0.35);
         };
         resize();
         const ro = new ResizeObserver(resize);

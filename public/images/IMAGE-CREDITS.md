@@ -129,7 +129,15 @@ What is actually drawn:
 
 The build script `scripts/build-trpv1-pointcloud.py` re-orients the structure so
 the membrane normal runs along Y — it derives that axis by principal-component
-analysis of the POPC slab rather than hard-coding it — then subsamples,
+analysis of the POPC slab rather than hard-coding it. PCA fixes the axis but not
+its sign, so the sign is resolved anatomically: TRPV1 carries the ankyrin
+repeats, the C-terminal beta sheet and the TRP helix on the cytoplasmic face and
+only short loops outside, so the protein centre of mass necessarily sits on the
+intracellular side of the bilayer. The script flips the axis so that side lands
+at -Y. Measured on 8GFA: ankyrin domain (res 111-359) y = -28.9 A, outer pore
+loop (res 600-660) y = +34.0 A — extracellular up, cytoplasm down. The script
+prints the orientation on every run so an inverted build cannot ship silently.
+It then subsamples,
 quantises to Int16 and writes `public/data/trpv1.bin` (12,796 points, 88 KB raw,
 75 KB gzipped). Rebuild with:
 

@@ -81,6 +81,16 @@ order = sorted(range(3), key=lambda i: vals[i])
 normal = [vecs[r][order[0]] for r in range(3)]          # thinnest direction = membrane normal
 inplane1 = [vecs[r][order[2]] for r in range(3)]
 
+# PCA fixes the membrane axis but not its sign, so the channel comes out
+# upside down half the time.  Resolve it anatomically: TRPV1 carries the
+# ankyrin-repeat domain, the C-terminal beta sheet and the TRP helix on the
+# cytoplasmic face, and only short loops on the outside, so the protein's
+# centre of mass always sits on the INTRACELLULAR side of the lipid slab.
+# Flip the axis so that side ends up at -Y, i.e. extracellular is up.
+prot_c = centroid(protein)
+if sum((prot_c[i] - lip_c[i]) * normal[i] for i in range(3)) > 0:
+    normal = [-c for c in normal]
+
 def cross(a, b):
     return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]
 
@@ -88,7 +98,7 @@ def norm(a):
     n = math.sqrt(sum(x * x for x in a))
     return [x / n for x in a]
 
-ey = norm(normal)          # membrane normal -> world Y (channel stands upright)
+ey = norm(normal)          # extracellular -> +Y (screen up), cytoplasm -> -Y
 ex = norm(inplane1)
 ez = norm(cross(ex, ey))
 ex = norm(cross(ey, ez))
@@ -126,3 +136,10 @@ print(f"protein {len(protein)} -> {min(len(protein), TARGET_PROTEIN)}")
 print(f"lipid   {len(lipid)} -> {min(len(lipid), TARGET_LIPID)}")
 print(f"ligand  {len(ligand)} (SB-366791, kept whole)")
 print(f"total   {count} points, {os.path.getsize(OUT)/1024:.1f} KB, extent {scale:.1f} A")
+
+# Report the orientation so a bad flip can never ship silently again.
+ext = [to_local(p)[1] for p in protein]
+cyto_side = sum((centroid(protein)[i] - lip_c[i]) * norm(normal)[i] for i in range(3))
+print(f"orient  protein centre of mass at y={cyto_side:+.1f} A "
+      f"(negative = cytoplasm below the membrane, which is what we want)")
+print(f"        y range {min(ext):+.1f} .. {max(ext):+.1f} A")
