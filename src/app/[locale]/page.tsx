@@ -105,7 +105,7 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "teal",
     },
     {
-      name: "프랑스 동물의약품 회사",
+      name: "다국적 동물의약품 회사",
       role: "동물의약품 공동개발",
       logo: "pictogram:animal",
       initials: "VP",
@@ -170,7 +170,7 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "teal",
     },
     {
-      name: "French Veterinary Pharma",
+      name: "Multinational Veterinary Pharma",
       role: "Veterinary Co-development",
       logo: "pictogram:animal",
       initials: "VP",
@@ -235,7 +235,7 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "teal",
     },
     {
-      name: "French Veterinary Pharma",
+      name: "Multinational Veterinary Pharma",
       role: "动物药品联合开发",
       logo: "pictogram:animal",
       initials: "VP",
@@ -300,7 +300,7 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "teal",
     },
     {
-      name: "French Veterinary Pharma",
+      name: "Multinational Veterinary Pharma",
       role: "動物用医薬品共同開発",
       logo: "pictogram:animal",
       initials: "VP",
@@ -365,7 +365,7 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "teal",
     },
     {
-      name: "French Veterinary Pharma",
+      name: "Multinational Veterinary Pharma",
       role: "Codesarrollo veterinario",
       logo: "pictogram:animal",
       initials: "VP",
@@ -430,7 +430,7 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "teal",
     },
     {
-      name: "French Veterinary Pharma",
+      name: "Multinational Veterinary Pharma",
       role: "Co-développement vétérinaire",
       logo: "pictogram:animal",
       initials: "VP",

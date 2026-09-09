@@ -297,7 +297,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "검증된 라이선싱 실적",
       description:
-        "한림제약 RCI001/RCI001U 국내 라이선싱 계약 완료. 프랑스 동물의약품 회사 라이선싱 계약 완료. 글로벌 파트너십 확대 중.",
+        "한림제약 RCI001/RCI001U 국내 라이선싱 계약 완료. 다국적 동물의약품 회사 라이선싱 계약 완료. 글로벌 파트너십 확대 중.",
       icon: "handshake",
     },
     {
@@ -323,7 +323,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "Proven Licensing Track Record",
       description:
-        "Hanlim Pharma RCI001/RCI001U domestic licensing. French veterinary pharmaceutical licensing completed. Expanding global partnerships.",
+        "Hanlim Pharma RCI001/RCI001U domestic licensing. multinational veterinary pharmaceutical licensing completed. Expanding global partnerships.",
       icon: "handshake",
     },
     {
@@ -349,7 +349,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "经验证的授权许可业绩",
       description:
-        "韩林制药RCI001/RCI001U国内授权许可完成。法国动物药品公司授权许可完成。全球合作伙伴关系持续扩大。",
+        "韩林制药RCI001/RCI001U国内授权许可完成。跨国动物药品公司授权许可完成。全球合作伙伴关系持续扩大。",
       icon: "handshake",
     },
     {
@@ -375,7 +375,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "実績あるライセンシング",
       description:
-        "韓林製薬RCI001/RCI001U国内ライセンシング契約完了。フランス動物薬品会社ライセンシング完了。グローバルパートナーシップ拡大中。",
+        "韓林製薬RCI001/RCI001U国内ライセンシング契約完了。多国籍動物薬品会社ライセンシング完了。グローバルパートナーシップ拡大中。",
       icon: "handshake",
     },
     {
@@ -401,7 +401,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "Trayectoria Comprobada en Licencias",
       description:
-        "Licencia domestica de Hanlim Pharma RCI001/RCI001U. Licencia de farmaceutica veterinaria francesa completada. Expansion de alianzas globales.",
+        "Licencia domestica de Hanlim Pharma RCI001/RCI001U. Licencia de farmaceutica veterinaria multinacional completada. Expansion de alianzas globales.",
       icon: "handshake",
     },
     {
@@ -427,7 +427,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "Bilan Eprouve en Licences",
       description:
-        "Licence domestique Hanlim Pharma RCI001/RCI001U. Licence pharmaceutique veterinaire francaise completee. Expansion des partenariats mondiaux.",
+        "Licence domestique Hanlim Pharma RCI001/RCI001U. Licence pharmaceutique veterinaire multinationale completee. Expansion des partenariats mondiaux.",
       icon: "handshake",
     },
     {
@@ -457,7 +457,7 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     { label: "누적 정부 과제", value: "약 50억원+" },
     {
       label: "주요 라이선싱",
-      value: "한림제약 (RCI001/RCI001U), 프랑스 동물의약품 회사 (RCI001AH)",
+      value: "한림제약 (RCI001/RCI001U), 다국적 동물의약품 회사 (RCI001AH)",
     },
     { label: "IPO 준비", value: "주관사 선정 완료 (2025)" },
     { label: "핵심 자산", value: "RuCIA 플랫폼 + 3개 파이프라인" },
@@ -468,7 +468,7 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     { label: "Cumulative Gov't Grants", value: "~$4M+" },
     {
       label: "Key Licensing",
-      value: "Hanlim Pharma (RCI001/RCI001U), French Vet Pharma (RCI001AH)",
+      value: "Hanlim Pharma (RCI001/RCI001U), Multinational Vet Pharma (RCI001AH)",
     },
     { label: "IPO Preparation", value: "Underwriter Selected (2025)" },
     { label: "Core Assets", value: "RuCIA Platform + 3 Pipelines" },
@@ -479,7 +479,7 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     { label: "累计政府资助", value: "约40亿韩元+" },
     {
       label: "主要授权许可",
-      value: "韩林制药 (RCI001/RCI001U)，法国动物药品公司 (RCI001AH)",
+      value: "韩林制药 (RCI001/RCI001U)，跨国动物药品公司 (RCI001AH)",
     },
     { label: "IPO准备", value: "承销商已选定 (2025)" },
     { label: "核心资产", value: "RuCIA平台 + 3条管线" },
@@ -490,7 +490,7 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     { label: "累計政府助成金", value: "約50億ウォン+" },
     {
       label: "主要ライセンシング",
-      value: "韓林製薬 (RCI001/RCI001U)、フランス動物薬品会社 (RCI001AH)",
+      value: "韓林製薬 (RCI001/RCI001U)、多国籍動物薬品会社 (RCI001AH)",
     },
     { label: "IPO準備", value: "主幹事選定完了 (2025)" },
     { label: "コア資産", value: "RuCIAプラットフォーム + 3パイプライン" },
@@ -502,7 +502,7 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     {
       label: "Licencias Principales",
       value:
-        "Hanlim Pharma (RCI001/RCI001U), Farmaceutica Veterinaria Francesa (RCI001AH)",
+        "Hanlim Pharma (RCI001/RCI001U), Farmaceutica Veterinaria Multinacional (RCI001AH)",
     },
     { label: "Preparacion para IPO", value: "Suscriptor Seleccionado (2025)" },
     { label: "Activos Principales", value: "Plataforma RuCIA + 3 Pipelines" },
@@ -514,7 +514,7 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     {
       label: "Licences Principales",
       value:
-        "Hanlim Pharma (RCI001/RCI001U), Pharma Veterinaire Francaise (RCI001AH)",
+        "Hanlim Pharma (RCI001/RCI001U), Pharma Veterinaire Multinationale (RCI001AH)",
     },
     { label: "Preparation IPO", value: "Souscripteur Selectionne (2025)" },
     { label: "Actifs Principaux", value: "Plateforme RuCIA + 3 Pipelines" },
@@ -524,7 +524,7 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
 
 const PARTNERS = [
   { name: "Hanlim Pharmaceuticals", type: "Licensing" },
-  { name: "French Veterinary Pharma", type: "Animal Health" },
+  { name: "Multinational Veterinary Pharma", type: "Animal Health" },
   { name: "DT&CRO", type: "Research CRO" },
   { name: "WuXi AppTec", type: "CDMO" },
   { name: "Hanmi Fine Chemical", type: "CDMO" },

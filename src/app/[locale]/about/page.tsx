@@ -33,7 +33,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "02월", text: "포스텍 권도훈 교수 TRPV1 구조분석 세미나" },
         {
           month: "03월",
-          text: "RCI001 임상 2상 자문회의 (안과 전문의 13인). Bio-Europe Spring 참석 및 프랑스 동물의약품 회사 미팅",
+          text: "RCI001 임상 2상 자문회의 (안과 전문의 13인). Bio-Europe Spring 참석 및 다국적 동물의약품 회사 미팅",
         },
         { month: "04월", text: "ESG 경영 실천 — 안양천 플로깅 & 헌혈 캠페인" },
         {
@@ -75,7 +75,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "01월", text: "2024 시무식 개최" },
         {
           month: "03월",
-          text: "RCI001 국내 임상 1상 승인. 프랑스 동물의약품 회사 방문 (동물용 RCI001AH 공동연구)",
+          text: "RCI001 국내 임상 1상 승인. 다국적 동물의약품 회사 방문 (동물용 RCI001AH 공동연구)",
         },
         { month: "04월", text: "IBK창공 유럽 액셀러레이팅 프로그램 선정" },
         {
@@ -267,7 +267,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         },
         {
           month: "Mar",
-          text: "RCI001 Phase 2 advisory meeting (13 ophthalmologists). Bio-Europe Spring & French Veterinary Pharma meeting",
+          text: "RCI001 Phase 2 advisory meeting (13 ophthalmologists). Bio-Europe Spring & Multinational Veterinary Pharma meeting",
         },
         {
           month: "Apr",
@@ -312,7 +312,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "Jan", text: "2024 New Year ceremony" },
         {
           month: "Mar",
-          text: "RCI001 domestic Phase 1 clinical trial approval. Visit to French Veterinary Pharma (RCI001AH co-development)",
+          text: "RCI001 domestic Phase 1 clinical trial approval. Visit to Multinational Veterinary Pharma (RCI001AH co-development)",
         },
         { month: "Apr", text: "IBK Innovation Hub Europe accelerator program" },
         {
@@ -509,7 +509,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "2月", text: "POSTECH权道勋教授TRPV1结构分析研讨会" },
         {
           month: "3月",
-          text: "RCI001临床2期咨询会议（13位眼科专家）。Bio-Europe Spring及法国兽药公司会议",
+          text: "RCI001临床2期咨询会议（13位眼科专家）。Bio-Europe Spring及跨国兽药公司会议",
         },
         { month: "4月", text: "ESG活动——安养川拾荒慢跑及献血活动" },
         {
@@ -548,7 +548,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "1月", text: "2024年开年典礼" },
         {
           month: "3月",
-          text: "RCI001国内临床1期获批。访问法国兽药公司（RCI001AH联合开发）",
+          text: "RCI001国内临床1期获批。访问跨国兽药公司（RCI001AH联合开发）",
         },
         { month: "4月", text: "IBK创新中心欧洲加速器项目入选" },
         {
@@ -705,7 +705,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "2月", text: "POSTECH権道勲教授TRPV1構造解析セミナー" },
         {
           month: "3月",
-          text: "RCI001臨床2相諮問会議（眼科専門医13名）。Bio-Europe Springおよびフランス動物医薬品企業ミーティング",
+          text: "RCI001臨床2相諮問会議（眼科専門医13名）。Bio-Europe Springおよび多国籍動物医薬品企業ミーティング",
         },
         { month: "4月", text: "ESG活動——安養川プロギング＆献血キャンペーン" },
         {
@@ -744,7 +744,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "1月", text: "2024年年頭式典" },
         {
           month: "3月",
-          text: "RCI001国内臨床1相承認。フランス動物医薬品企業訪問（RCI001AH共同開発）",
+          text: "RCI001国内臨床1相承認。多国籍動物医薬品企業訪問（RCI001AH共同開発）",
         },
         {
           month: "4月",
@@ -935,7 +935,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         },
         {
           month: "Mar",
-          text: "Reunión consultiva de RCI001 Phase 2 (13 oftalmólogos). Bio-Europe Spring y reunión con farmacéutica veterinaria francesa",
+          text: "Reunión consultiva de RCI001 Phase 2 (13 oftalmólogos). Bio-Europe Spring y reunión con farmacéutica veterinaria multinacional",
         },
         {
           month: "Abr",
@@ -980,7 +980,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "Ene", text: "Ceremonia de año nuevo 2024" },
         {
           month: "Mar",
-          text: "Aprobación de ensayo clínico nacional Phase 1 de RCI001. Visita a farmacéutica veterinaria francesa (co-desarrollo de RCI001AH)",
+          text: "Aprobación de ensayo clínico nacional Phase 1 de RCI001. Visita a farmacéutica veterinaria multinacional (co-desarrollo de RCI001AH)",
         },
         {
           month: "Abr",
@@ -1195,7 +1195,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         },
         {
           month: "Mar",
-          text: "Réunion consultative RCI001 Phase 2 (13 ophtalmologistes). Bio-Europe Spring et réunion avec laboratoire vétérinaire français",
+          text: "Réunion consultative RCI001 Phase 2 (13 ophtalmologistes). Bio-Europe Spring et réunion avec laboratoire vétérinaire multinational",
         },
         {
           month: "Avr",
@@ -1240,7 +1240,7 @@ const TIMELINE: Record<string, TimelineItem[]> = {
         { month: "Jan", text: "Cérémonie du Nouvel An 2024" },
         {
           month: "Mar",
-          text: "Approbation de l'essai clinique national Phase 1 de RCI001. Visite au laboratoire vétérinaire français (co-développement RCI001AH)",
+          text: "Approbation de l'essai clinique national Phase 1 de RCI001. Visite au laboratoire vétérinaire multinational (co-développement RCI001AH)",
         },
         {
           month: "Avr",
