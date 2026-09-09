@@ -1,5 +1,6 @@
 import { ProgressBar } from "@/components/progress-bar";
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 export async function generateMetadata({
   params,
@@ -1167,6 +1168,7 @@ export default async function PipelinePage({
 
   return (
     <>
+      <BreadcrumbJsonLd locale={loc} navKey="nav.pipeline" path="/pipeline" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

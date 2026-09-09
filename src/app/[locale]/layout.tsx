@@ -1,8 +1,27 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { Noto_Sans_Arabic } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { getDir, isValidLocale, LOCALES, type Locale } from "@/lib/i18n";
+import { organizationSchema, webSiteSchema } from "@/lib/schema";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import "../globals.css";
+
+// This is the application's root layout. It deliberately lives under the
+// `[locale]` segment rather than at `src/app/layout.tsx`, because a root layout
+// at `src/app` cannot read route params and therefore had to hardcode
+// `<html lang="en">` — which every Korean, Japanese, Chinese, Spanish, French
+// and Arabic page was then served with. Every reachable route is locale-
+// prefixed by middleware, so this segment is the true root.
+
+// Arabic webfont (the Latin/Hangul face, Pretendard, is self-hosted and loaded
+// from globals.css). Exposed as a CSS variable and applied to RTL content via
+// `:lang(ar)`.
+const notoArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+});
 
 const SITE_URL = "https://www.rudacure.com";
 
@@ -77,10 +96,29 @@ export async function generateMetadata({
   languages["x-default"] = `${SITE_URL}/en`;
 
   return {
+    // The production domain is www.rudacure.com; the apex 307-redirects to it.
+    // metadataBase resolves every relative og:image, so it must be the www host
+    // or every social scraper is handed a redirecting URL.
+    metadataBase: new URL(SITE_URL),
     // `absolute` prevents the root "%s | RudaCure" template from doubling the
     // brand (titles already contain "RudaCure").
     title: { absolute: meta.title },
     description: meta.description,
+    applicationName: "RudaCure",
+    authors: [{ name: "RudaCure Inc.", url: SITE_URL }],
+    creator: "RudaCure Inc.",
+    publisher: "RudaCure Inc.",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
     alternates: {
       canonical: url,
       languages,
@@ -124,16 +162,35 @@ export default async function LocaleLayout({
   if (!isValidLocale(locale)) redirect("/ko");
 
   return (
-    // `display: contents` keeps this wrapper out of the layout box tree (body
-    // stays the flex container) while giving screen readers the correct
-    // per-locale language via nearest-ancestor `lang`. The root <html> carries
-    // a default `lang` so root-level routes (e.g. not-found) remain valid.
-    // `dir` inherits through the DOM (not the box tree), so RTL propagates to
-    // descendants even though this element generates no box.
-    <div lang={locale} dir={getDir(locale)} className="contents">
-      <Navbar locale={locale as Locale} />
-      <main className="flex-1">{children}</main>
-      <Footer locale={locale as Locale} />
-    </div>
+    <html lang={locale} dir={getDir(locale)}>
+      <head>
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="llms.txt"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(webSiteSchema),
+          }}
+        />
+      </head>
+      <body
+        className={`${notoArabic.variable} bg-white text-gray-900 antialiased`}
+      >
+        <Navbar locale={locale as Locale} />
+        <main className="flex-1">{children}</main>
+        <Footer locale={locale as Locale} />
+        <Analytics />
+      </body>
+    </html>
   );
 }

@@ -8,6 +8,7 @@ import articlesFr from "@/data/news_fr.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { NewsYearFilter } from "@/components/news-year-filter";
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 export async function generateMetadata({
   params,
@@ -137,6 +138,7 @@ export default async function NewsPage({
 
   return (
     <div className="pt-24">
+      <BreadcrumbJsonLd locale={locale} navKey="nav.news" path="/news" />
       {/* Header */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
 type IRLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
@@ -666,6 +667,7 @@ export default async function IRPage({
 
   return (
     <div className="pt-24">
+      <BreadcrumbJsonLd locale={loc} navKey="nav.ir" path="/ir" />
       {/* Header */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

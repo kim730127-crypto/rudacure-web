@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 type ScienceLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
 
@@ -567,6 +568,7 @@ export default async function SciencePage({
 
   return (
     <>
+      <BreadcrumbJsonLd locale={loc} navKey="nav.science" path="/science" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -2,6 +2,7 @@ import { type Locale, toDataLocale } from "@/lib/i18n";
 import { localizedAlternates } from "@/lib/seo";
 import ContactForm from "./contact-form-v2";
 import DynamicTitle from "./dynamic-title";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 interface ContactContent {
   tag: string;
@@ -169,6 +170,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <div className="pt-24">
+      <BreadcrumbJsonLd locale={loc} navKey="nav.contact" path="/contact" />
       {/* 2026 Trend: Elevated Neutral Background */}
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
         <div className="max-w-4xl mx-auto">

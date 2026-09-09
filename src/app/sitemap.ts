@@ -20,8 +20,21 @@ const ROUTES: {
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
 ];
 
+// The newest news item is the site's real "content changed" marker. Stamping
+// every URL with `new Date()` told crawlers that all 1,351 URLs changed on
+// every deploy, including deploys that only touched CSS — which is exactly the
+// signal that gets a sitemap's lastmod ignored.
+function latestNewsDate(): Date {
+  const newest = newsDataKo.reduce<string>(
+    (max, article) => (article.date > max ? article.date : max),
+    "1970-01-01",
+  );
+  const parsed = new Date(newest);
+  return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = latestNewsDate();
   const staticRoutes = ROUTES.flatMap((route) =>
     LOCALES.map((locale) => {
       const url = `${SITE_URL}/${locale}${route.path}`;
@@ -41,8 +54,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const newsRoutes = newsDataKo.flatMap((article) =>
-    LOCALES.map((locale) => {
+  const newsRoutes = newsDataKo.flatMap((article) => {
+    const articleDate = new Date(article.date);
+    const articleModified = Number.isNaN(articleDate.getTime())
+      ? lastModified
+      : articleDate;
+
+    return LOCALES.map((locale) => {
       const path = `/news/${article.id}`;
       const url = `${SITE_URL}/${locale}${path}`;
       const languages: Record<string, string> = {};
@@ -53,13 +71,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url,
-        lastModified,
-        changeFrequency: "monthly" as const,
+        lastModified: articleModified,
+        changeFrequency: "yearly" as const,
         priority: 0.65,
         alternates: { languages },
       };
-    }),
-  );
+    });
+  });
 
   return [...staticRoutes, ...newsRoutes];
 }

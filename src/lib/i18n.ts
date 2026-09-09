@@ -34,13 +34,13 @@ const translations = {
     "nav.contact": "Contact",
 
     // Hero
-    "hero.tagline": "2026 Strategic Vision",
-    "hero.title1": "Membrane Targets.",
-    "hero.title2": "Quality of Life.",
+    "hero.tagline": "2026 전략 비전",
+    "hero.title1": "막단백질 표적 신약개발",
+    "hero.title2": "삶의 질을 되찾다",
     "hero.description":
       "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업입니다. RuCIA 플랫폼으로 채널·수용체 선택성을 예측해 안구건조증(FDA 2상), 만성통증, 건선, 희귀 신경질환 치료제를 개발합니다. 하나의 표적 원리를 여러 질환에 적용해 기존 신약개발 대비 개발 기간을 70% 단축하고, 환자의 삶의 질을 회복합니다.",
-    "hero.cta.pipeline": "Explore Pipeline",
-    "hero.cta.science": "Our Science",
+    "hero.cta.pipeline": "파이프라인 보기",
+    "hero.cta.science": "핵심 기술 보기",
 
     // Core Technology section
     "rucia.tag": "Core Technology",
@@ -244,8 +244,8 @@ const translations = {
     "nav.about": "关于我们",
     "nav.contact": "联系我们",
     "hero.tagline": "2026 战略愿景",
-    "hero.title1": "Membrane Targets.",
-    "hero.title2": "Quality of Life.",
+    "hero.title1": "膜蛋白靶向新药研发",
+    "hero.title2": "重塑生活质量",
     "hero.description":
       "RudaCure是靶向膜蛋白的AI新药研发企业。RuCIA平台预测离子通道与GPCR选择性，开发干眼症（FDA 2期）、慢性疼痛、银屑病及罕见神经疾病治疗药物。以同一靶点原理覆盖多个适应症，开发周期缩短70%，致力于恢复患者的生活质量。",
     "hero.cta.pipeline": "探索管线",
@@ -327,8 +327,8 @@ const translations = {
     "nav.about": "会社概要",
     "nav.contact": "お問い合わせ",
     "hero.tagline": "2026 戦略ビジョン",
-    "hero.title1": "Membrane Targets.",
-    "hero.title2": "Quality of Life.",
+    "hero.title1": "膜タンパク質標的の創薬",
+    "hero.title2": "生活の質を取り戻す",
     "hero.description":
       "RudaCureは膜タンパク質を標的とするAI創薬企業です。RuCIAプラットフォームでイオンチャネル・GPCRの選択性を予測し、ドライアイ（FDA Phase 2）、慢性疼痛、乾癬、希少神経疾患の治療薬を開発しています。単一の標的原理を複数の適応症へ展開し、開発期間を70%短縮しながら、患者さんの生活の質の回復を目指します。",
     "hero.cta.pipeline": "パイプライン",
@@ -413,8 +413,8 @@ const translations = {
     "nav.about": "Nosotros",
     "nav.contact": "Contacto",
     "hero.tagline": "Visión Estratégica 2026",
-    "hero.title1": "Membrane Targets.",
-    "hero.title2": "Quality of Life.",
+    "hero.title1": "Proteínas de Membrana.",
+    "hero.title2": "Calidad de Vida.",
     "hero.description":
       "RudaCure es una empresa de descubrimiento de fármacos con IA dirigida a proteínas de membrana. La plataforma RuCIA predice la selectividad de canales iónicos y GPCR para desarrollar tratamientos del ojo seco (Fase 2 FDA), el dolor crónico, la psoriasis y enfermedades neurológicas raras. Un mismo principio de diana aplicado a múltiples indicaciones, con un 70% menos de tiempo de desarrollo, al servicio de la calidad de vida del paciente.",
     "hero.cta.pipeline": "Ver Pipeline",
@@ -487,8 +487,8 @@ const translations = {
     "nav.about": "À propos",
     "nav.contact": "Contact",
     "hero.tagline": "Vision Stratégique 2026",
-    "hero.title1": "Membrane Targets.",
-    "hero.title2": "Quality of Life.",
+    "hero.title1": "Protéines Membranaires.",
+    "hero.title2": "Qualité de Vie.",
     "hero.description":
       "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires. La plateforme RuCIA prédit la sélectivité des canaux ioniques et des RCPG pour développer des traitements de l'œil sec (Phase 2 FDA), de la douleur chronique, du psoriasis et de maladies neurologiques rares. Un même principe de ciblage appliqué à plusieurs indications, avec 70 % de temps de développement en moins, au service de la qualité de vie des patients.",
     "hero.cta.pipeline": "Voir le Pipeline",
@@ -561,8 +561,8 @@ const translations = {
     "nav.about": "من نحن",
     "nav.contact": "اتصل بنا",
     "hero.tagline": "الرؤية الاستراتيجية 2026",
-    "hero.title1": "Membrane Targets.",
-    "hero.title2": "Quality of Life.",
+    "hero.title1": "استهداف البروتينات الغشائية",
+    "hero.title2": "جودة الحياة",
     "hero.description":
       "RudaCure شركة لاكتشاف الأدوية بالذكاء الاصطناعي تستهدف البروتينات الغشائية. تتنبأ منصة RuCIA بانتقائية القنوات الأيونية ومستقبلات GPCR لتطوير علاجات لجفاف العين (المرحلة الثانية لدى إدارة الغذاء والدواء الأمريكية)، والألم المزمن، والصدفية، والأمراض العصبية النادرة. مبدأ استهداف واحد عبر مؤشرات متعددة، مع تقليص مدة التطوير بنسبة 70%، خدمةً لجودة حياة المرضى.",
     "hero.cta.pipeline": "استكشف خط التطوير",

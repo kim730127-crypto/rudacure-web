@@ -1,5 +1,6 @@
 import { type Locale, toDataLocale } from "@/lib/i18n";
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 type TimelineItem = {
   year: string;
@@ -1643,6 +1644,7 @@ export default async function AboutPage({
 
   return (
     <div className="pt-24">
+      <BreadcrumbJsonLd locale={loc} navKey="nav.about" path="/about" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
