@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
@@ -635,7 +635,7 @@ export async function generateMetadata({
   return {
     title: TEXT_META_TITLE[locale],
     description,
-    alternates: localizedAlternates(loc, "/ir"),
+    alternates: localizedAlternates(loc, "/ir", TRANSLATED_LOCALES),
     openGraph: {
       title: TEXT_META_TITLE[locale],
       description,

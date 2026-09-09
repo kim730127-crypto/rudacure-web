@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { type Locale } from "@/lib/i18n";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, CRO_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 const SITE_URL = "https://www.rudacure.com";
@@ -36,7 +36,7 @@ export async function generateMetadata({
     // template doubling, regardless of parent-layout title behavior).
     title: { absolute: m.title },
     description: m.description,
-    alternates: localizedAlternates(locale, "/cro"),
+    alternates: localizedAlternates(locale, "/cro", CRO_LOCALES),
     openGraph: {
       title: m.title,
       description: m.description,

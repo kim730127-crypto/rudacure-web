@@ -7,7 +7,7 @@ import newsDataJa from "@/data/news_ja.json";
 import newsDataEs from "@/data/news_es.json";
 import newsDataFr from "@/data/news_fr.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
 
 const NEWS_MAP: Record<string, typeof newsDataKo> = {
@@ -64,7 +64,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: localizedAlternates(locale, `/news/${id}`),
+    alternates: localizedAlternates(locale, `/news/${id}`, TRANSLATED_LOCALES),
     openGraph: {
       title: article.title,
       description,
