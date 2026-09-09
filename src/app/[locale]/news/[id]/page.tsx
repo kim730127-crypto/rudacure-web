@@ -8,6 +8,7 @@ import newsDataEs from "@/data/news_es.json";
 import newsDataFr from "@/data/news_fr.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { localizedAlternates } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/schema";
 
 const NEWS_MAP: Record<string, typeof newsDataKo> = {
   ko: newsDataKo,
@@ -115,10 +116,14 @@ export default async function NewsArticlePage({
     },
     publisher: {
       "@type": "Organization",
-      name: "RudaCure Co., Ltd.",
+      "@id": `${SITE_URL}/#organization`,
+      name: "RudaCure",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        // `/logo.png` does not exist in public/ and resolved to a redirect,
+        // which invalidated publisher.logo on every article. The real file is
+        // public/images/logo_full.png.
+        url: `${SITE_URL}/images/logo_full.png`,
       },
     },
     mainEntityOfPage: {
@@ -129,6 +134,17 @@ export default async function NewsArticlePage({
 
   return (
     <div className="pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema(locale, [
+              { name: t("nav.news"), path: "/news" },
+              { name: article.title, path: `/news/${id}` },
+            ]),
+          ),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}

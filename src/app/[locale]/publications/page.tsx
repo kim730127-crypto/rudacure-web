@@ -1,5 +1,6 @@
 /* ── Locale helper: default to "en" for unsupported locales ── */
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 type SupportedLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
 const SUPPORTED: readonly SupportedLocale[] = [
@@ -1350,6 +1351,7 @@ export default async function PublicationsPage({
 
   return (
     <>
+      <BreadcrumbJsonLd locale={rawLocale} navKey="nav.publications" path="/publications" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

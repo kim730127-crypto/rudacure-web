@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 /* ── Local locale helper ── */
 type SABLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
 const SAB_SUPPORTED: ReadonlySet<string> = new Set(["ko", "en", "zh", "ja", "es", "fr"]);
@@ -419,6 +420,7 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
 
   return (
     <div className="pt-24">
+      <BreadcrumbJsonLd locale={loc} navKey="nav.sab" path="/sab" />
       {/* Header */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">

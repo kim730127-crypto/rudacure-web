@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { type Locale } from "@/lib/i18n";
 import { localizedAlternates } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 const SITE_URL = "https://www.rudacure.com";
 
@@ -742,6 +743,7 @@ export default async function CROPage({
 
   return (
     <div className="pt-24">
+      <BreadcrumbJsonLd locale={loc} navKey="nav.cro" path="/cro" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
