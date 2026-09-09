@@ -25,6 +25,19 @@ const notoArabic = Noto_Sans_Arabic({
 
 const SITE_URL = "https://www.rudacure.com";
 
+// Search Console ownership token for https://www.rudacure.com/.
+//
+// The property is verified by DNS TXT on rudacure.com. This meta tag is a
+// second, independent method, because single-method verification is exactly how
+// the property silently lapsed once already: it had been verified through
+// Google Analytics (G-FRSQESNS6H), and removing GA in the layout refactor
+// (d391d1d) took the verification with it. Nobody noticed until the property
+// stopped reporting.
+//
+// Do not delete this even though DNS also works. Two methods means neither one
+// being removed takes the property down.
+const GOOGLE_SITE_VERIFICATION = "1b4XIWnmwkjWaNO9LyTxrIA2UScNwJD3st5zpFBMtwQ";
+
 const LOCALE_META: Record<
   Locale,
   { title: string; description: string; ogLocale: string }
@@ -108,6 +121,9 @@ export async function generateMetadata({
     authors: [{ name: "RudaCure Inc.", url: SITE_URL }],
     creator: "RudaCure Inc.",
     publisher: "RudaCure Inc.",
+    verification: {
+      google: GOOGLE_SITE_VERIFICATION,
+    },
     robots: {
       index: true,
       follow: true,
