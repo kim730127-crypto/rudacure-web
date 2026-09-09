@@ -7,7 +7,7 @@ import articlesEs from "@/data/news_es.json";
 import articlesFr from "@/data/news_fr.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { NewsYearFilter } from "@/components/news-year-filter";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 export async function generateMetadata({
@@ -20,7 +20,7 @@ export async function generateMetadata({
   return {
     title: `${t("news.title1")} ${t("news.title2")} | RudaCure`,
     description: t("news.description"),
-    alternates: localizedAlternates(locale, "/news"),
+    alternates: localizedAlternates(locale, "/news", TRANSLATED_LOCALES),
   };
 }
 

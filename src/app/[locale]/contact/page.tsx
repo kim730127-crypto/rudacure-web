@@ -1,5 +1,5 @@
 import { type Locale, toDataLocale } from "@/lib/i18n";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import ContactForm from "./contact-form-v2";
 import DynamicTitle from "./dynamic-title";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
@@ -156,7 +156,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   return {
     title: META_TITLE[locale] ?? META_TITLE.en,
-    alternates: localizedAlternates(locale, "/contact"),
+    alternates: localizedAlternates(locale, "/contact", TRANSLATED_LOCALES),
   };
 }
 

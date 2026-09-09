@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 type ScienceLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
@@ -538,7 +538,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: localizedAlternates(locale, "/science"),
+    alternates: localizedAlternates(locale, "/science", TRANSLATED_LOCALES),
     openGraph: {
       title,
       description,

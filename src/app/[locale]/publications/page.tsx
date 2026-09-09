@@ -1,5 +1,5 @@
 /* ── Locale helper: default to "en" for unsupported locales ── */
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 type SupportedLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
@@ -1220,7 +1220,7 @@ export async function generateMetadata({
   return {
     title: c.metaTitle,
     description: c.description,
-    alternates: localizedAlternates(rawLocale, "/publications"),
+    alternates: localizedAlternates(rawLocale, "/publications", TRANSLATED_LOCALES),
   };
 }
 

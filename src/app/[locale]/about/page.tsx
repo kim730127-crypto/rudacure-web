@@ -1,5 +1,5 @@
 import { type Locale, toDataLocale } from "@/lib/i18n";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 type TimelineItem = {
@@ -1578,7 +1578,7 @@ export async function generateMetadata({
   return {
     title: META_TITLES[locale] ?? META_TITLES.en,
     description: CONTENT[key].description,
-    alternates: localizedAlternates(locale, "/about"),
+    alternates: localizedAlternates(locale, "/about", TRANSLATED_LOCALES),
   };
 }
 

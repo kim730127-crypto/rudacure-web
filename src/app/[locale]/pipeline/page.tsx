@@ -1,5 +1,5 @@
 import { ProgressBar } from "@/components/progress-bar";
-import { localizedAlternates } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 export async function generateMetadata({
@@ -50,7 +50,7 @@ export async function generateMetadata({
     // `absolute` so the SERP <title> is exactly this string (no template doubling).
     title: { absolute: title },
     description,
-    alternates: localizedAlternates(locale, "/pipeline"),
+    alternates: localizedAlternates(locale, "/pipeline", TRANSLATED_LOCALES),
     openGraph: {
       title,
       description,
