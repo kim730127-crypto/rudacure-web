@@ -1,3 +1,15 @@
+"""DEPRECATED - do not run.
+
+This script translated by substituting individual words from TERM_MAP inside an
+English base string. Applied to article bodies it produced mixed-language text
+such as "The 保健福利部 and the 中小企业部 announced ...", which is what shipped to
+the zh / ja / es / fr locales until 2026-09.
+
+Use scripts/translate-news.py instead: it translates whole passages with an LLM
+from the Korean source in src/data/news.json, keeps HTML and drug codes intact,
+and is resumable through a checkpoint file.
+"""
+
 """Translate Korean news titles to English using simple rule-based + keyword mapping.
 
 Produces news_en.json with English titles for the EN locale news listing.
