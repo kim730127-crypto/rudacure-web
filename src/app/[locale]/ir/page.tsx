@@ -104,7 +104,7 @@ const HIGHLIGHTS: Record<
     },
     {
       value: "70%",
-      label: "Reduction du Temps de Developpement",
+      label: "Réduction du Temps de Développement",
       sub: "Plateforme RuCIA AI",
     },
     {
@@ -209,7 +209,7 @@ const ROADMAP: Record<
     },
     {
       quarter: "Q2 2026",
-      title: "RCI001 Entree en Phase 2 en Coree",
+      title: "RCI001 Entrée en Phase 2 en Corée",
       status: "upcoming",
     },
     { quarter: "Q3 2026", title: "RCI002 Designation ODD", status: "upcoming" },
@@ -401,7 +401,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "Trayectoria Comprobada en Licencias",
       description:
-        "Licencia domestica de Hanlim Pharma RCI001/RCI001U. Licencia de farmaceutica veterinaria multinacional completada. Expansion de alianzas globales.",
+        "Licencia doméstica de Hanlim Pharma RCI001/RCI001U. Licencia de farmacéutica veterinaria multinacional completada. Expansión de alianzas globales.",
       icon: "handshake",
     },
     {
@@ -427,7 +427,7 @@ const INVESTMENT_CASE: Record<
     {
       title: "Bilan Eprouve en Licences",
       description:
-        "Licence domestique Hanlim Pharma RCI001/RCI001U. Licence pharmaceutique veterinaire multinationale completee. Expansion des partenariats mondiaux.",
+        "Licence domestique Hanlim Pharma RCI001/RCI001U. Licence pharmaceutique vétérinaire multinationale complétée. Expansion des partenariats mondiaux.",
       icon: "handshake",
     },
     {
@@ -502,23 +502,23 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     {
       label: "Licencias Principales",
       value:
-        "Hanlim Pharma (RCI001/RCI001U), Farmaceutica Veterinaria Multinacional (RCI001AH)",
+        "Hanlim Pharma (RCI001/RCI001U), Farmacéutica Veterinaria Multinacional (RCI001AH)",
     },
-    { label: "Preparacion para IPO", value: "Suscriptor Seleccionado (2025)" },
+    { label: "Preparación para IPO", value: "Suscriptor Seleccionado (2025)" },
     { label: "Activos Principales", value: "Plataforma RuCIA + 3 Pipelines" },
-    { label: "Portafolio de Patentes", value: "Corea / Japon / EE.UU." },
+    { label: "Portafolio de Patentes", value: "Corea / Japón / EE.UU." },
   ],
   fr: [
     { label: "Fondee", value: "2018" },
-    { label: "Subventions Gouvernementales Cumulees", value: "~4M$+" },
+    { label: "Subventions Gouvernementales Cumulées", value: "~4M$+" },
     {
       label: "Licences Principales",
       value:
-        "Hanlim Pharma (RCI001/RCI001U), Pharma Veterinaire Multinationale (RCI001AH)",
+        "Hanlim Pharma (RCI001/RCI001U), Pharma Vétérinaire Multinationale (RCI001AH)",
     },
-    { label: "Preparation IPO", value: "Souscripteur Selectionne (2025)" },
+    { label: "Préparation IPO", value: "Souscripteur Sélectionné (2025)" },
     { label: "Actifs Principaux", value: "Plateforme RuCIA + 3 Pipelines" },
-    { label: "Portefeuille de Brevets", value: "Coree / Japon / USA" },
+    { label: "Portefeuille de Brevets", value: "Corée / Japon / USA" },
   ],
 };
 

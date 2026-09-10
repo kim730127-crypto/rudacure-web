@@ -63,3 +63,4 @@ public/magazines/*.pdf
 # Python bytecode from scripts/
 __pycache__/
 *.pyc
+.news-translation-cache.json
