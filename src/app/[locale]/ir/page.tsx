@@ -33,7 +33,7 @@ const HIGHLIGHTS: Record<
     { value: "$94B", label: "글로벌 만성통증 시장", sub: "2030년 전망" },
     { value: "Phase 2", label: "RCI001 FDA 임상", sub: "안구건조증 (진행 중)" },
     { value: "70%", label: "개발 기간 단축", sub: "RuCIA AI 플랫폼" },
-    { value: "3", label: "핵심 파이프라인", sub: "RCI001 / RCI002 / RCI0165" },
+    { value: "4", label: "핵심 파이프라인", sub: "RCI001 / RCI001AH / RCI002 / RCI003" },
   ],
   en: [
     {
@@ -51,13 +51,13 @@ const HIGHLIGHTS: Record<
       label: "Development Time Reduction",
       sub: "RuCIA AI Platform",
     },
-    { value: "3", label: "Core Pipelines", sub: "RCI001 / RCI002 / RCI0165" },
+    { value: "4", label: "Core Pipelines", sub: "RCI001 / RCI001AH / RCI002 / RCI003" },
   ],
   zh: [
     { value: "$94B", label: "全球慢性疼痛市场", sub: "2030年预测" },
     { value: "Phase 2", label: "RCI001 FDA临床试验", sub: "干眼症（进行中）" },
     { value: "70%", label: "开发周期缩短", sub: "RuCIA AI平台" },
-    { value: "3", label: "核心管线", sub: "RCI001 / RCI002 / RCI0165" },
+    { value: "4", label: "核心管线", sub: "RCI001 / RCI001AH / RCI002 / RCI003" },
   ],
   ja: [
     { value: "$94B", label: "世界の慢性疼痛市場", sub: "2030年予測" },
@@ -67,7 +67,7 @@ const HIGHLIGHTS: Record<
       sub: "ドライアイ（進行中）",
     },
     { value: "70%", label: "開発期間短縮", sub: "RuCIA AIプラットフォーム" },
-    { value: "3", label: "コアパイプライン", sub: "RCI001 / RCI002 / RCI0165" },
+    { value: "4", label: "コアパイプライン", sub: "RCI001 / RCI001AH / RCI002 / RCI003" },
   ],
   es: [
     {
@@ -86,9 +86,9 @@ const HIGHLIGHTS: Record<
       sub: "Plataforma RuCIA AI",
     },
     {
-      value: "3",
+      value: "4",
       label: "Pipelines Principales",
-      sub: "RCI001 / RCI002 / RCI0165",
+      sub: "RCI001 / RCI001AH / RCI002 / RCI003",
     },
   ],
   fr: [
@@ -108,9 +108,9 @@ const HIGHLIGHTS: Record<
       sub: "Plateforme RuCIA AI",
     },
     {
-      value: "3",
+      value: "4",
       label: "Pipelines Principaux",
-      sub: "RCI001 / RCI002 / RCI0165",
+      sub: "RCI001 / RCI001AH / RCI002 / RCI003",
     },
   ],
 };

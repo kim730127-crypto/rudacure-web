@@ -27,6 +27,18 @@ const PIPELINE = {
         "TRPV1 하부 시그널 조절을 통한 Rac1 타깃 항염증/항산화 기전. 빠른 눈물 분비 촉진과 각막 손상 회복으로 기존 스테로이드 한계를 극복.",
     },
     {
+      id: "RCI001AH",
+      name: "RCI001AH",
+      indication: "Veterinary Dry Eye",
+      target: "TRPV1-Rac1 하부 신호 조절제",
+      status: "PoC 완료 / 동물용 임상 준비",
+      progress: 45,
+      color: "emerald" as const,
+      milestone: "2030년 시장 진입 목표",
+      description:
+        "RCI001과 동일한 TRPV1-Rac1/NLRP3 하부 신호 조절 기전. 반려동물(개·고양이) 건성각결막염을 표적하며 다국적 동물의약품 회사와 공동개발 중.",
+    },
+    {
       id: "RCI002",
       name: "RCI002",
       indication: "Non-Opioid Pain",
@@ -50,18 +62,6 @@ const PIPELINE = {
       description:
         "AI 신약 플랫폼 기반 건선 표적 단백질 선택적 조절. TRPV1 이온채널 연구 노하우를 피부질환에 적용, 서강대·인제대 컨소시엄 공동연구.",
     },
-    {
-      id: "RC0125",
-      name: "RC0125 AAV",
-      indication: "Rare Neurological (CMT2C)",
-      target: "TRPV4 Intracellular (AAV)",
-      status: "약물 최적화",
-      progress: 25,
-      color: "teal" as const,
-      milestone: "OA 모델 진통 효능 확인",
-      description:
-        "AAV 벡터 기반 TRPV4 세포 내 표적 유전자치료제. 희귀질환 CMT2C를 우선 개발한 뒤 골격이형성증 등 연관 질환으로 적응증 확대 예정.",
-    },
   ],
   en: [
     {
@@ -75,6 +75,18 @@ const PIPELINE = {
       milestone: "Phase 2 IND Q2 2026",
       description:
         "Anti-inflammatory/antioxidant mechanism targeting Rac1 via TRPV1 downstream signal modulation. Overcomes steroid limitations with rapid tear secretion and corneal wound healing.",
+    },
+    {
+      id: "RCI001AH",
+      name: "RCI001AH",
+      indication: "Veterinary Dry Eye",
+      target: "TRPV1-Rac1 Downstream Modulator",
+      status: "PoC Complete / Preparing Trials",
+      progress: 45,
+      color: "emerald" as const,
+      milestone: "Targeting 2030 market entry",
+      description:
+        "Same TRPV1-Rac1/NLRP3 downstream mechanism as RCI001. Targets keratoconjunctivitis sicca in companion animals, in co-development with a multinational veterinary pharma.",
     },
     {
       id: "RCI002",
@@ -99,18 +111,6 @@ const PIPELINE = {
       milestone: "Collabo R&D Phase 2 2026",
       description:
         "AI platform-based selective modulation of psoriasis target proteins, applying TRPV1 ion channel expertise to skin disease. Sogang and Inje University consortium.",
-    },
-    {
-      id: "RC0125",
-      name: "RC0125 AAV",
-      indication: "Rare Neurological (CMT2C)",
-      target: "TRPV4 Intracellular (AAV)",
-      status: "Drug Optimization",
-      progress: 25,
-      color: "teal" as const,
-      milestone: "Analgesic efficacy in OA models",
-      description:
-        "AAV vector gene therapy targeting intracellular TRPV4. Orphan indication CMT2C first, with planned expansion to skeletal dysplasia and related disorders.",
     },
   ],
 };
