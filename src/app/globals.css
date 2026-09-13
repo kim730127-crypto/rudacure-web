@@ -383,6 +383,38 @@ h4 em,
   transition-duration: var(--rc-dur-fast);
 }
 
+/* Partner wall: one neutral slot shaped for a wordmark, not a square shaped
+   for an icon. Third-party marks are desaturated at rest so nine external
+   palettes read as a single wall, and restored on hover. */
+.partner-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 96px;
+  height: 38px;
+  /* No tile background or border. Several source marks are JPEGs with white
+     already baked in, so any tinted slot renders a visible white rectangle
+     around them, and a bordered tile inside a bordered card reads as a box in
+     a box. The mark sits directly on the card instead. */
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition:
+    filter var(--rc-dur) var(--rc-ease),
+    opacity var(--rc-dur) var(--rc-ease);
+}
+
+.partner-card:hover .partner-mark {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-mark {
+    transition: none;
+  }
+}
+
 /* Flush list row — for news/publication lists where a card grid is too heavy. */
 .row {
   border-bottom: 1px solid var(--rc-hairline);

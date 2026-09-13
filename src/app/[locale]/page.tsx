@@ -38,6 +38,30 @@ const PIPELINE = {
       description:
         "TRPV1과 MOR을 동시 조절하는 MOR biased 듀얼 타깃 비마약성 진통제. 이상발열 Zero, 중독/내성 위험 없이 장기 지속 통증 완화.",
     },
+    {
+      id: "RCI003",
+      name: "RCI003",
+      indication: "Psoriasis",
+      target: "건선 표적 단백질 선택적 조절제",
+      status: "후보물질 발굴",
+      progress: 15,
+      color: "violet" as const,
+      milestone: "Collabo R&D 2단계 2026",
+      description:
+        "AI 신약 플랫폼 기반 건선 표적 단백질 선택적 조절. TRPV1 이온채널 연구 노하우를 피부질환에 적용, 서강대·인제대 컨소시엄 공동연구.",
+    },
+    {
+      id: "RC0125",
+      name: "RC0125 AAV",
+      indication: "Rare Neurological (CMT2C)",
+      target: "TRPV4 Intracellular (AAV)",
+      status: "약물 최적화",
+      progress: 25,
+      color: "teal" as const,
+      milestone: "OA 모델 진통 효능 확인",
+      description:
+        "AAV 벡터 기반 TRPV4 세포 내 표적 유전자치료제. 희귀질환 CMT2C를 우선 개발한 뒤 골격이형성증 등 연관 질환으로 적응증 확대 예정.",
+    },
   ],
   en: [
     {
@@ -63,6 +87,30 @@ const PIPELINE = {
       milestone: "Tox Study 3Q 2026",
       description:
         "MOR biased dual-target non-opioid analgesic simultaneously modulating TRPV1 and MOR. Zero hyperthermia, long-lasting pain relief without addiction or tolerance risk.",
+    },
+    {
+      id: "RCI003",
+      name: "RCI003",
+      indication: "Psoriasis",
+      target: "Psoriasis Target Modulator",
+      status: "Discovery",
+      progress: 15,
+      color: "violet" as const,
+      milestone: "Collabo R&D Phase 2 2026",
+      description:
+        "AI platform-based selective modulation of psoriasis target proteins, applying TRPV1 ion channel expertise to skin disease. Sogang and Inje University consortium.",
+    },
+    {
+      id: "RC0125",
+      name: "RC0125 AAV",
+      indication: "Rare Neurological (CMT2C)",
+      target: "TRPV4 Intracellular (AAV)",
+      status: "Drug Optimization",
+      progress: 25,
+      color: "teal" as const,
+      milestone: "Analgesic efficacy in OA models",
+      description:
+        "AAV vector gene therapy targeting intracellular TRPV4. Orphan indication CMT2C first, with planned expansion to skeletal dysplasia and related disorders.",
     },
   ],
 };
@@ -740,41 +788,29 @@ export default async function HomePage({
               </h2>
             </div>
           </ScrollReveal>
+          {/* Nine partners previously carried nine pastel badge colours, which
+              made the one section built entirely from third-party marks the
+              loudest block on an otherwise restrained page. The colour field
+              survives in the data but is no longer read; a single neutral slot
+              and a desaturated mark do the work. */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {partners.map((p, i) => {
-              const colorMap: Record<string, string> = {
-                blue: "bg-blue-50 text-blue-600",
-                red: "bg-red-50 text-red-600",
-                teal: "bg-teal-50 text-teal-600",
-                indigo: "bg-indigo-50 text-indigo-600",
-                emerald: "bg-emerald-50 text-emerald-600",
-                violet: "bg-violet-50 text-violet-600",
-                orange: "bg-orange-50 text-orange-600",
-                cyan: "bg-cyan-50 text-cyan-600",
-                rose: "bg-rose-50 text-rose-600",
-              };
-              const badgeClass =
-                colorMap[p.color] || "bg-gray-50 text-gray-600";
-              return (
-                <ScrollReveal key={p.name} delay={i * 70}>
-                  <div className="card flex h-full cursor-default items-center gap-4 px-5 py-4.5">
-                    {/* Logo or initials fallback */}
-                    <PartnerLogo
-                      src={p.logo}
-                      alt={p.name}
-                      initials={p.initials}
-                      badgeClass={badgeClass}
-                    />
-                    <div className="min-w-0 flex-1">
-                      <div className="text-[0.9375rem] font-semibold leading-tight text-[var(--rc-ink-800)]">
-                        {p.name}
-                      </div>
-                      <div className="type-caption mt-1">{p.role}</div>
+            {partners.map((p, i) => (
+              <ScrollReveal key={p.name} delay={i * 70}>
+                <div className="card partner-card flex h-full cursor-default items-center gap-4 px-5 py-4">
+                  <PartnerLogo
+                    src={p.logo}
+                    alt={p.name}
+                    initials={p.initials}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[0.9375rem] font-semibold leading-tight text-[var(--rc-ink-800)]">
+                      {p.name}
                     </div>
+                    <div className="type-caption mt-1">{p.role}</div>
                   </div>
-                </ScrollReveal>
-              );
-            })}
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>

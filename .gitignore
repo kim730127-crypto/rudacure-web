@@ -64,3 +64,4 @@ public/magazines/*.pdf
 __pycache__/
 *.pyc
 .news-translation-cache.json
+.next-preview/

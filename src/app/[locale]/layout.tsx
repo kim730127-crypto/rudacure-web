@@ -149,9 +149,15 @@ export async function generateMetadata({
         (l) => LOCALE_META[l].ogLocale,
       ),
       type: "website",
+      /* One share card served all seven locales, and it carried no wordmark
+         and no text at all — a cyan render on an empty cream field, with the
+         left 60% of the canvas evidently reserved for copy that was never
+         set. A link shared into LinkedIn or KakaoTalk therefore showed an
+         unbranded blob. These cards are typeset per locale from the same hero
+         strings the page renders, so the image and the headline agree. */
       images: [
         {
-          url: "/og-image.jpg",
+          url: `/og-image-${locale}.jpg`,
           width: 1200,
           height: 630,
           alt: meta.title,
@@ -162,7 +168,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: ["/og-image.jpg"],
+      images: [`/og-image-${locale}.jpg`],
     },
   };
 }

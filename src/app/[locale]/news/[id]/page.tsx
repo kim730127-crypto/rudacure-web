@@ -74,14 +74,19 @@ export async function generateMetadata({
       authors: ["RudaCure Co., Ltd."],
       section: article.category,
       images: [
-        { url: "/og-image.jpg", width: 1200, height: 630, alt: article.title },
+        {
+          url: `/og-image-${locale}.jpg`,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
       ],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description,
-      images: ["/og-image.jpg"],
+      images: [`/og-image-${locale}.jpg`],
     },
   };
 }
@@ -108,7 +113,7 @@ export default async function NewsArticlePage({
     articleSection: article.category,
     inLanguage: locale,
     url: `${SITE_URL}/${locale}/news/${id}`,
-    image: `${SITE_URL}/og-image.jpg`,
+    image: `${SITE_URL}/og-image-${locale}.jpg`,
     author: {
       "@type": "Organization",
       name: "RudaCure Co., Ltd.",
