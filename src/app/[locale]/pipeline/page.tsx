@@ -15,34 +15,34 @@ export async function generateMetadata({
     en: {
       title: "Pipeline: Dry Eye (FDA Phase 2) & Non-Opioid Pain | RudaCure",
       description:
-        "RudaCure's ion channel & gene-therapy pipeline: RCI001 dry eye (FDA Phase 2, NCT07068958), RCI002 non-opioid pain, RC0125 TRPV4 gene therapy for CMT2C.",
+        "RudaCure's membrane protein & gene-therapy pipeline: RCI001 dry eye (FDA Phase 2, NCT07068958), RCI002 non-opioid pain, RC0125 TRPV4 gene therapy for CMT2C.",
     },
     ko: {
       title: "파이프라인: 안구건조증(FDA 2상)·비마약성 진통제 | RudaCure",
       description:
-        "루다큐어의 이온채널·유전자치료 파이프라인: RCI001 안구건조증(FDA 2상, NCT07068958), RCI002 비마약성 진통제, RC0125 TRPV4 유전자치료제(CMT2C).",
+        "루다큐어의 막단백질·유전자치료 파이프라인: RCI001 안구건조증(FDA 2상, NCT07068958), RCI002 비마약성 진통제, RC0125 TRPV4 유전자치료제(CMT2C).",
     },
     zh: {
       title: "研发管线：干眼症（FDA 2期）与非阿片类镇痛 | RudaCure",
       description:
-        "RudaCure离子通道与基因疗法管线：RCI001干眼症（FDA 2期，NCT07068958）、RCI002非阿片类镇痛、RC0125靶向TRPV4的CMT2C基因疗法。",
+        "RudaCure膜蛋白与基因疗法管线：RCI001干眼症（FDA 2期，NCT07068958）、RCI002非阿片类镇痛、RC0125靶向TRPV4的CMT2C基因疗法。",
     },
     ja: {
       title:
         "パイプライン：ドライアイ（FDA第2相）・非オピオイド鎮痛 | RudaCure",
       description:
-        "RudaCureのイオンチャネル・遺伝子治療パイプライン：RCI001ドライアイ（FDA第2相、NCT07068958）、RCI002非オピオイド鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
+        "RudaCureの膜タンパク質・遺伝子治療パイプライン：RCI001ドライアイ（FDA第2相、NCT07068958）、RCI002非オピオイド鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
     },
     es: {
       title: "Pipeline: Ojo Seco (Fase 2 FDA) y Dolor No Opioide | RudaCure",
       description:
-        "Pipeline de canales iónicos y terapia génica de RudaCure: RCI001 ojo seco (Fase 2 FDA, NCT07068958), RCI002 dolor no opioide, RC0125 terapia génica TRPV4 para CMT2C.",
+        "Pipeline de proteínas de membrana y terapia génica de RudaCure: RCI001 ojo seco (Fase 2 FDA, NCT07068958), RCI002 dolor no opioide, RC0125 terapia génica TRPV4 para CMT2C.",
     },
     fr: {
       title:
         "Pipeline : Œil Sec (Phase 2 FDA) et Douleur Non Opioïde | RudaCure",
       description:
-        "Pipeline canaux ioniques et thérapie génique de RudaCure : RCI001 œil sec (Phase 2 FDA, NCT07068958), RCI002 douleur non opioïde, RC0125 thérapie génique TRPV4 pour la CMT2C.",
+        "Pipeline protéines membranaires et thérapie génique de RudaCure : RCI001 œil sec (Phase 2 FDA, NCT07068958), RCI002 douleur non opioïde, RC0125 thérapie génique TRPV4 pour la CMT2C.",
     },
   };
   const m = META[locale] ?? META.en;
@@ -77,42 +77,42 @@ const HEADER: Record<
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "이온채널 표적 비마약성 치료제 파이프라인. RuCIA 플랫폼으로 발굴한 후보물질들이 글로벌 임상으로 진입하고 있습니다.",
+      "막단백질 표적 비마약성 치료제 파이프라인. RuCIA 플랫폼으로 발굴한 후보물질들이 글로벌 임상으로 진입하고 있습니다.",
   },
   en: {
     tag: "Drug Development",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "Ion channel-targeted non-opioid therapeutic pipeline. Candidates discovered through our RuCIA platform are advancing into global clinical trials.",
+      "Membrane protein-targeted non-opioid therapeutic pipeline. Candidates discovered through our RuCIA platform are advancing into global clinical trials.",
   },
   zh: {
     tag: "药物开发",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "离子通道靶向非阿片类治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验阶段。",
+      "膜蛋白靶向非阿片类治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验阶段。",
   },
   ja: {
     tag: "医薬品開発",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "イオンチャネル標的非オピオイド治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
+      "膜タンパク質標的非オピオイド治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
   },
   es: {
     tag: "Desarrollo de Fármacos",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "Pipeline terapéutico no opioide dirigido a canales iónicos. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
+      "Pipeline terapéutico no opioide dirigido a proteínas de membrana. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
   },
   fr: {
     tag: "Développement de Médicaments",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "Pipeline thérapeutique non opioïde ciblant les canaux ioniques. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
+      "Pipeline thérapeutique non opioïde ciblant les protéines membranaires. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
   },
 };
 

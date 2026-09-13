@@ -1006,7 +1006,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
       "루다큐어의 핵심 기술과 연구 성과를 보호하는 특허 포트폴리오 및 주요 학술 논문입니다.",
     patentsTitle: "특허 포트폴리오",
     patentsDescription:
-      "이온채널 신약개발 핵심 기술에 대한 글로벌 지식재산권을 확보하고 있습니다.",
+      "막단백질 신약개발 핵심 기술에 대한 글로벌 지식재산권을 확보하고 있습니다.",
     papersTitle: "주요 연구 논문",
     papersDescription:
       "국내외 SCI급 저널에 게재된 루다큐어의 핵심 연구 성과입니다.",
@@ -1039,7 +1039,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
       "Our patent portfolio and key academic publications protecting and advancing RudaCure's core technology and research achievements.",
     patentsTitle: "Patent Portfolio",
     patentsDescription:
-      "Securing global intellectual property rights for core ion channel drug discovery technologies.",
+      "Securing global intellectual property rights for core membrane protein drug discovery technologies.",
     papersTitle: "Key Research Papers",
     papersDescription:
       "RudaCure's key research achievements published in domestic and international SCI-indexed journals.",
@@ -1071,7 +1071,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     description:
       "保护和推进RudaCure核心技术与研究成果的专利组合及重要学术论文。",
     patentsTitle: "专利组合",
-    patentsDescription: "为离子通道新药开发核心技术获取全球知识产权。",
+    patentsDescription: "为膜蛋白新药开发核心技术获取全球知识产权。",
     papersTitle: "重要研究论文",
     papersDescription: "RudaCure发表在国内外SCI级期刊上的核心研究成果。",
     trademarksTitle: "商标注册",
@@ -1103,7 +1103,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
       "RudaCureのコア技術と研究成果を保護する特許ポートフォリオおよび主要な学術論文です。",
     patentsTitle: "特許ポートフォリオ",
     patentsDescription:
-      "イオンチャネル新薬開発のコア技術に関するグローバルな知的財産権を確保しています。",
+      "膜タンパク質新薬開発のコア技術に関するグローバルな知的財産権を確保しています。",
     papersTitle: "主要研究論文",
     papersDescription:
       "国内外のSCI級ジャーナルに掲載されたRudaCureの主要な研究成果です。",
@@ -1136,7 +1136,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
       "Nuestro portafolio de patentes y publicaciones académicas clave que protegen y avanzan la tecnología central y los logros de investigación de RudaCure.",
     patentsTitle: "Portafolio de Patentes",
     patentsDescription:
-      "Asegurando derechos de propiedad intelectual globales para las tecnologías centrales de descubrimiento de fármacos de canales iónicos.",
+      "Asegurando derechos de propiedad intelectual globales para las tecnologías centrales de descubrimiento de fármacos de proteínas de membrana.",
     papersTitle: "Publicaciones de Investigación Clave",
     papersDescription:
       "Logros de investigación clave de RudaCure publicados en revistas indexadas SCI nacionales e internacionales.",
@@ -1169,7 +1169,7 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
       "Notre portefeuille de brevets et nos publications académiques clés protégeant et faisant avancer la technologie centrale et les réalisations de recherche de RudaCure.",
     patentsTitle: "Portefeuille de Brevets",
     patentsDescription:
-      "Sécurisation des droits de propriété intellectuelle mondiaux pour les technologies de découverte de médicaments ciblant les canaux ioniques.",
+      "Sécurisation des droits de propriété intellectuelle mondiaux pour les technologies de découverte de médicaments ciblant les protéines membranaires.",
     papersTitle: "Publications de Recherche Clés",
     papersDescription:
       "Réalisations de recherche clés de RudaCure publiées dans des revues indexées SCI nationales et internationales.",

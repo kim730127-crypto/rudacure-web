@@ -18,7 +18,7 @@ const CAPABILITIES: Record<
 > = {
   ko: [
     {
-      title: "이온채널 전문성",
+      title: "막단백질 전문성",
       description:
         "TRPV1, TRPA1, TRPV4 등 통증/감각 신호를 조절하는 이온채널에 특화. AI가 채널-리간드 상호작용을 예측하여 선택적 후보물질을 발굴합니다.",
       image: "/images/science/membrane-md.jpg",
@@ -44,7 +44,7 @@ const CAPABILITIES: Record<
   ],
   en: [
     {
-      title: "Ion Channel Mastery",
+      title: "Membrane Protein Mastery",
       description:
         "Specialized in ion channels governing pain and sensory signals including TRPV1, TRPA1, and TRPV4. AI predicts channel-ligand interactions to discover selective drug candidates.",
       image: "/images/science/membrane-md.jpg",
@@ -70,7 +70,7 @@ const CAPABILITIES: Record<
   ],
   zh: [
     {
-      title: "离子通道专业能力",
+      title: "膜蛋白专业能力",
       description:
         "专注于调控疼痛与感觉信号的离子通道，包括TRPV1、TRPA1和TRPV4。AI预测通道-配体相互作用，发现高选择性候选药物。",
       image: "/images/science/membrane-md.jpg",
@@ -96,7 +96,7 @@ const CAPABILITIES: Record<
   ],
   ja: [
     {
-      title: "イオンチャネル専門性",
+      title: "膜タンパク質専門性",
       description:
         "TRPV1、TRPA1、TRPV4など痛覚・感覚シグナルを制御するイオンチャネルに特化。AIがチャネル-リガンド相互作用を予測し、選択的候補物質を発掘します。",
       image: "/images/science/membrane-md.jpg",
@@ -122,7 +122,7 @@ const CAPABILITIES: Record<
   ],
   es: [
     {
-      title: "Dominio de Canales Iónicos",
+      title: "Dominio de Proteínas de Membrana",
       description:
         "Especializados en canales iónicos que regulan señales de dolor y sensoriales, incluyendo TRPV1, TRPA1 y TRPV4. La IA predice interacciones canal-ligando para descubrir candidatos farmacológicos selectivos.",
       image: "/images/science/membrane-md.jpg",
@@ -148,7 +148,7 @@ const CAPABILITIES: Record<
   ],
   fr: [
     {
-      title: "Expertise en Canaux Ioniques",
+      title: "Expertise en Protéines Membranaires",
       description:
         "Spécialisés dans les canaux ioniques régulant les signaux de douleur et sensoriels, notamment TRPV1, TRPA1 et TRPV4. L'IA prédit les interactions canal-ligand pour découvrir des candidats médicaments sélectifs.",
       image: "/images/science/membrane-md.jpg",
@@ -600,9 +600,9 @@ export default async function SciencePage({
               },
               {
                 "@type": "ResearchProject",
-                name: "RudaCure Ion Channel Drug Discovery Program",
+                name: "RudaCure Membrane Protein Drug Discovery Program",
                 description:
-                  "AI-powered ion channel drug discovery program targeting TRPV1, TRPA1, and Nav channels for pain, dry eye disease, and dermatology. Uses RuCIA platform combining molecular simulation with high-throughput electrophysiology. Ion channels account for ~60% of approved drug targets but remain technically difficult to screen without specialized platforms.",
+                  "AI-powered membrane protein drug discovery program targeting TRPV1, TRPA1, and Nav channels for pain, dry eye disease, and dermatology. Uses RuCIA platform combining molecular simulation with high-throughput electrophysiology. Ion channels account for ~60% of approved drug targets but remain technically difficult to screen without specialized platforms.",
                 url: "https://www.rudacure.com/science",
                 foundingOrganization: {
                   "@type": "Organization",
@@ -810,7 +810,7 @@ export default async function SciencePage({
             <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/science/membrane-md.jpg"
-                alt="Ion Channel Research"
+                alt="Membrane Protein Research"
                 fill
                 className="object-cover"
               />

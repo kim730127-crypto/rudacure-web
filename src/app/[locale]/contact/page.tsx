@@ -35,7 +35,7 @@ type ContentMap = Record<string, ContactContent>;
 const C: ContentMap = {
   ko: {
     tag: "문의하기", title1: "함께", title2: "꿈꾸기",
-    description: "인간의 기본 존엄성인 통증 없는 삶을 지키기 위해, 첨단 이온채널 기술로 인류의 미래를 만드는 회사입니다. 이 철학과 비전을 함께할 파트너, 투자사, CRO 협력기관을 찾고 있습니다.",
+    description: "인간의 기본 존엄성인 통증 없는 삶을 지키기 위해, 첨단 막단백질 기술로 인류의 미래를 만드는 회사입니다. 이 철학과 비전을 함께할 파트너, 투자사, CRO 협력기관을 찾고 있습니다.",
     titleByType: {
       default: ["함께", "꿈꾸기"],
       "파트너십 / 라이선싱": ["함께", "만드는 혁신"],
@@ -53,7 +53,7 @@ const C: ContentMap = {
   },
   en: {
     tag: "Get in Touch", title1: "Shape", title2: "Tomorrow",
-    description: "Grounded in the philosophy that freedom from pain is fundamental to human dignity, we harness cutting-edge ion channel technology to restore the quality of life and shape the future of humanity. We seek partners who share this vision.",
+    description: "Grounded in the philosophy that freedom from pain is fundamental to human dignity, we harness cutting-edge membrane protein technology to restore the quality of life and shape the future of humanity. We seek partners who share this vision.",
     titleByType: {
       default: ["Shape", "Tomorrow"],
       "Partnership / Licensing": ["Build", "Together"],
@@ -71,7 +71,7 @@ const C: ContentMap = {
   },
   zh: {
     tag: "联系我们", title1: "塑造", title2: "未来",
-    description: "基于无痛是人类基本尊严的哲学，我们运用尖端离子通道技术来恢复生活质量，塑造人类的未来。我们寻找志同道合的合作伙伴、投资者和CRO机构。",
+    description: "基于无痛是人类基本尊严的哲学，我们运用尖端膜蛋白技术来恢复生活质量，塑造人类的未来。我们寻找志同道合的合作伙伴、投资者和CRO机构。",
     titleByType: {
       default: ["塑造", "未来"],
       "合作 / 许可": ["携手", "创新"],
@@ -89,7 +89,7 @@ const C: ContentMap = {
   },
   ja: {
     tag: "お問い合わせ", title1: "未来を", title2: "つくる",
-    description: "痛みのない生活は人間の基本的な尊厳である、という哲学に基づき、先端的なイオンチャネル技術で生活の質を取り戻し、人類の未来を創造します。このビジョンを共有するパートナーを募集しています。",
+    description: "痛みのない生活は人間の基本的な尊厳である、という哲学に基づき、先端的な膜タンパク質技術で生活の質を取り戻し、人類の未来を創造します。このビジョンを共有するパートナーを募集しています。",
     titleByType: {
       default: ["未来を", "つくる"],
       "パートナーシップ / ライセンシング": ["一緒に", "創造する"],
@@ -107,7 +107,7 @@ const C: ContentMap = {
   },
   es: {
     tag: "Contáctenos", title1: "Moldear", title2: "el Futuro",
-    description: "Basados en la filosofía de que una vida libre del dolor es fundamental para la dignidad humana, utilizamos tecnología de canales iónicos de vanguardia para restaurar la calidad de vida y moldear el futuro de la humanidad. Buscamos socios que compartan esta visión.",
+    description: "Basados en la filosofía de que una vida libre del dolor es fundamental para la dignidad humana, utilizamos tecnología de proteínas de membrana de vanguardia para restaurar la calidad de vida y moldear el futuro de la humanidad. Buscamos socios que compartan esta visión.",
     titleByType: {
       default: ["Moldear", "el Futuro"],
       "Alianza / Licencia": ["Construir", "Juntos"],
@@ -125,7 +125,7 @@ const C: ContentMap = {
   },
   fr: {
     tag: "Nous contacter", title1: "Façonner", title2: "l'Avenir",
-    description: "Fondés sur la philosophie que la vie sans douleur est fondamentale à la dignité humaine, nous exploitons la technologie des canaux ioniques de pointe pour restaurer la qualité de vie et façonner l'avenir de l'humanité. Nous recherchons des partenaires qui partagent cette vision.",
+    description: "Fondés sur la philosophie que la vie sans douleur est fondamentale à la dignité humaine, nous exploitons la technologie des protéines membranaires de pointe pour restaurer la qualité de vie et façonner l'avenir de l'humanité. Nous recherchons des partenaires qui partagent cette vision.",
     titleByType: {
       default: ["Façonner", "l'Avenir"],
       "Partenariat / Licence": ["Construire", "Ensemble"],

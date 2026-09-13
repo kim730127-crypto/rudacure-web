@@ -19,7 +19,7 @@ const META: Record<CROLocale, { title: string; description: string }> = {
       "이온채널 약리학에 특화된 비임상 CRO. TRPV1, TRPA1, Nav 채널 표적 만성통증·안구건조증 후보물질의 효능 평가. 19+ 위탁과제 수행 실적, FLIPR Penta HTS, 13+ 동물모델 운용.",
   },
   en: {
-    title: "Ion Channel CRO — Pain, Dry Eye & Electrophysiology | RudaCure",
+    title: "Membrane Protein CRO — Pain, Dry Eye & Electrophysiology | RudaCure",
     description:
       "Ion channel–specialized preclinical CRO: TRPV1/TRPA1/Nav screening via FLIPR Penta and patch-clamp electrophysiology, 13+ chronic pain and dry-eye models, 19+ completed contracts.",
   },
@@ -120,7 +120,7 @@ type Content = {
 const CONTENT: Record<CROLocale, Content> = {
   ko: {
     tag: "CRO 서비스",
-    title1: "Ion Channel",
+    title1: "Membrane Protein",
     title2: "Preclinical CRO",
     description:
       "TRPV1·TRPA1·Nav 이온채널을 중심으로 만성통증·안구건조증 후보물질의 비임상 효능을 평가하는 전문 CRO입니다. 전기생리학 기반 세포 실험부터 복잡한 동물 행동 평가까지, 약물 개발의 비임상 단계 전 과정을 체계적으로 지원합니다.",
@@ -414,7 +414,7 @@ const CONTENT: Record<CROLocale, Content> = {
   },
   en: {
     tag: "CRO Services",
-    title1: "Ion Channel",
+    title1: "Membrane Protein",
     title2: "Preclinical CRO",
     description:
       "Specialized preclinical CRO evaluating chronic pain and dry eye disease candidates targeting TRPV1, TRPA1, and Nav ion channels. From electrophysiology-based cell assays to complex animal behavior studies, we cover the full preclinical drug development pipeline.",
