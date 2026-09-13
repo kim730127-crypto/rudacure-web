@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ogCard } from "@/lib/og";
 import { type Locale } from "@/lib/i18n";
 import { localizedAlternates, CRO_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
@@ -42,7 +43,7 @@ export async function generateMetadata({
       description: m.description,
       images: [
         {
-          url: "/og-image-pipeline.jpg",
+          url: ogCard("cro", locale),
           width: 1200,
           height: 630,
           alt: m.title,
@@ -53,7 +54,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: m.title,
       description: m.description,
-      images: ["/og-image-pipeline.jpg"],
+      images: [ogCard("cro", locale)],
     },
   };
 }

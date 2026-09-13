@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ogCard } from "@/lib/og";
 import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
@@ -641,7 +642,7 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: "/og-image-ir.jpg",
+          url: ogCard("ir", locale),
           width: 1200,
           height: 630,
           alt: TEXT_META_TITLE[locale],
@@ -652,7 +653,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: TEXT_META_TITLE[locale],
       description,
-      images: ["/og-image-ir.jpg"],
+      images: [ogCard("ir", locale)],
     },
   };
 }
