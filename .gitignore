@@ -65,3 +65,4 @@ __pycache__/
 *.pyc
 .news-translation-cache.json
 .next-preview/
+.next-clean/

@@ -92,7 +92,11 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
           <Image
             src="/images/logo_full.png"
             alt="RudaCure"
-            width={180}
+            /* The lockup lost its strapline, so the intrinsic ratio moved from
+               2.40:1 to 3.24:1. These props only feed the aspect-ratio box —
+               h-8 w-auto still drives the rendered size — but a stale pair
+               reserves the wrong width and shifts the header on first paint. */
+            width={130}
             height={40}
             className={`h-8 w-auto transition-all duration-300 group-hover:opacity-80 ${
               overHero ? "brightness-0 invert" : ""
