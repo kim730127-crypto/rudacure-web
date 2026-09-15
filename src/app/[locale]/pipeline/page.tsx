@@ -34,13 +34,13 @@ export async function generateMetadata({
         "RudaCureの膜タンパク質・遺伝子治療パイプライン：RCI001ドライアイ（FDA第2相、NCT07068958）、RCI002関節腔内局所鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
     },
     es: {
-      title: "Pipeline: Ojo Seco (Fase 2 FDA) y Dolor No Opioide | RudaCure",
+      title: "Pipeline: Ojo Seco (Fase 2 FDA) y Dolor Crónico | RudaCure",
       description:
         "Pipeline de proteínas de membrana y terapia génica de RudaCure: RCI001 ojo seco (Fase 2 FDA, NCT07068958), RCI002 dolor crónico intraarticular, RC0125 terapia génica TRPV4 para CMT2C.",
     },
     fr: {
       title:
-        "Pipeline : Œil Sec (Phase 2 FDA) et Douleur Non Opioïde | RudaCure",
+        "Pipeline : Œil Sec (Phase 2 FDA) et Douleur Chronique | RudaCure",
       description:
         "Pipeline protéines membranaires et thérapie génique de RudaCure : RCI001 œil sec (Phase 2 FDA, NCT07068958), RCI002 douleur chronique intra-articulaire, RC0125 thérapie génique TRPV4 pour la CMT2C.",
     },
@@ -1078,7 +1078,7 @@ export default async function PipelinePage({
                   "Chronic pain analgesic administered by intra-articular injection. High-potency mu-opioid receptor (MOR) agonist; analgesia is fully naloxone-reversible. Indications: CRPS, osteoarthritis, diabetic neuropathy, CIPN, fibromyalgia. FDA Orphan Drug Designation (ODD) submitted for CRPS. Global IND Q2 2026.",
                 mechanismOfAction:
                   "Intra-articular MOR agonist — local analgesia with minimized systemic exposure",
-                drugClass: "Non-opioid analgesic",
+                drugClass: "Opioid analgesic (mu-opioid receptor agonist), intra-articular",
                 clinicalPhase: "Pre-clinical",
                 manufacturer: {
                   "@type": "Organization",
