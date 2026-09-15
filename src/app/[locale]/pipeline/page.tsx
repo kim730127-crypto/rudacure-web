@@ -13,36 +13,36 @@ export async function generateMetadata({
   // to the Korean string; now each locale is localized (fallback = English).
   const META: Record<string, { title: string; description: string }> = {
     en: {
-      title: "Pipeline: Dry Eye (FDA Phase 2) & Non-Opioid Pain | RudaCure",
+      title: "Pipeline: Dry Eye (FDA Phase 2) & Chronic Pain | RudaCure",
       description:
-        "RudaCure's membrane protein & gene-therapy pipeline: RCI001 dry eye (FDA Phase 2, NCT07068958), RCI002 non-opioid pain, RC0125 TRPV4 gene therapy for CMT2C.",
+        "RudaCure's membrane protein & gene-therapy pipeline: RCI001 dry eye (FDA Phase 2, NCT07068958), RCI002 intra-articular pain therapy, RC0125 TRPV4 gene therapy for CMT2C.",
     },
     ko: {
-      title: "파이프라인: 안구건조증(FDA 2상)·비마약성 진통제 | RudaCure",
+      title: "파이프라인: 안구건조증(FDA 2상)·만성통증 치료제 | RudaCure",
       description:
-        "루다큐어의 막단백질·유전자치료 파이프라인: RCI001 안구건조증(FDA 2상, NCT07068958), RCI002 비마약성 진통제, RC0125 TRPV4 유전자치료제(CMT2C).",
+        "루다큐어의 막단백질·유전자치료 파이프라인: RCI001 안구건조증(FDA 2상, NCT07068958), RCI002 관절강 국소 투여 진통제, RC0125 TRPV4 유전자치료제(CMT2C).",
     },
     zh: {
-      title: "研发管线：干眼症（FDA 2期）与非阿片类镇痛 | RudaCure",
+      title: "研发管线：干眼症（FDA 2期）与慢性疼痛 | RudaCure",
       description:
-        "RudaCure膜蛋白与基因疗法管线：RCI001干眼症（FDA 2期，NCT07068958）、RCI002非阿片类镇痛、RC0125靶向TRPV4的CMT2C基因疗法。",
+        "RudaCure膜蛋白与基因疗法管线：RCI001干眼症（FDA 2期，NCT07068958）、RCI002关节腔局部镇痛、RC0125靶向TRPV4的CMT2C基因疗法。",
     },
     ja: {
       title:
-        "パイプライン：ドライアイ（FDA第2相）・非オピオイド鎮痛 | RudaCure",
+        "パイプライン：ドライアイ（FDA第2相）・慢性疼痛 | RudaCure",
       description:
-        "RudaCureの膜タンパク質・遺伝子治療パイプライン：RCI001ドライアイ（FDA第2相、NCT07068958）、RCI002非オピオイド鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
+        "RudaCureの膜タンパク質・遺伝子治療パイプライン：RCI001ドライアイ（FDA第2相、NCT07068958）、RCI002関節腔内局所鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
     },
     es: {
       title: "Pipeline: Ojo Seco (Fase 2 FDA) y Dolor No Opioide | RudaCure",
       description:
-        "Pipeline de proteínas de membrana y terapia génica de RudaCure: RCI001 ojo seco (Fase 2 FDA, NCT07068958), RCI002 dolor no opioide, RC0125 terapia génica TRPV4 para CMT2C.",
+        "Pipeline de proteínas de membrana y terapia génica de RudaCure: RCI001 ojo seco (Fase 2 FDA, NCT07068958), RCI002 dolor crónico intraarticular, RC0125 terapia génica TRPV4 para CMT2C.",
     },
     fr: {
       title:
         "Pipeline : Œil Sec (Phase 2 FDA) et Douleur Non Opioïde | RudaCure",
       description:
-        "Pipeline protéines membranaires et thérapie génique de RudaCure : RCI001 œil sec (Phase 2 FDA, NCT07068958), RCI002 douleur non opioïde, RC0125 thérapie génique TRPV4 pour la CMT2C.",
+        "Pipeline protéines membranaires et thérapie génique de RudaCure : RCI001 œil sec (Phase 2 FDA, NCT07068958), RCI002 douleur chronique intra-articulaire, RC0125 thérapie génique TRPV4 pour la CMT2C.",
     },
   };
   const m = META[locale] ?? META.en;
@@ -77,42 +77,42 @@ const HEADER: Record<
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "막단백질 표적 비마약성 치료제 파이프라인. RuCIA 플랫폼으로 발굴한 후보물질들이 글로벌 임상으로 진입하고 있습니다.",
+      "막단백질 표적 치료제 파이프라인. RuCIA 플랫폼으로 발굴한 후보물질들이 글로벌 임상으로 진입하고 있습니다.",
   },
   en: {
     tag: "Drug Development",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "Membrane protein-targeted non-opioid therapeutic pipeline. Candidates discovered through our RuCIA platform are advancing into global clinical trials.",
+      "Membrane protein-targeted therapeutic pipeline. Candidates discovered through our RuCIA platform are advancing into global clinical trials.",
   },
   zh: {
     tag: "药物开发",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "膜蛋白靶向非阿片类治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验阶段。",
+      "膜蛋白靶向治疗管线。通过RuCIA AI平台发现的候选药物正进入全球临床试验阶段。",
   },
   ja: {
     tag: "医薬品開発",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "膜タンパク質標的非オピオイド治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
+      "膜タンパク質標的治療パイプライン。RuCIA AIプラットフォームで発見された候補物質がグローバル臨床試験に進んでいます。",
   },
   es: {
     tag: "Desarrollo de Fármacos",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "Pipeline terapéutico no opioide dirigido a proteínas de membrana. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
+      "Pipeline terapéutico dirigido a proteínas de membrana. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
   },
   fr: {
     tag: "Développement de Médicaments",
     title1: "Therapeutic",
     title2: "Pipeline",
     description:
-      "Pipeline thérapeutique non opioïde ciblant les protéines membranaires. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
+      "Pipeline thérapeutique ciblant les protéines membranaires. Les candidats découverts via notre plateforme RuCIA progressent vers les essais cliniques mondiaux.",
   },
 };
 
@@ -188,10 +188,10 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RCI002",
-      indication: "비마약성 만성통증 치료제",
-      target: "TRPV1-MOR Biased Dual Target",
+      indication: "만성통증 치료제 (관절강 국소 투여)",
+      target: "MOR (Mu-Opioid Receptor) 작용제 · 관절강 국소 투여",
       mechanism:
-        "TRPV1과 MOR을 동시 조절하는 MOR biased 듀얼 타깃 비마약성 진통제 — CRPS 희귀질환 ODD 제출 완료",
+        "관절강에 국소 투여하는 고역가 MOR 작용제. 전신 노출을 최소화하는 국소 진통 전략 — CRPS 희귀질환 ODD 제출 완료",
       status: "비임상 / IND 준비 (CRPS ODD 제출 완료)",
       progress: 40,
       color: "blue",
@@ -206,10 +206,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       ],
       details: [
         "적응증: CRPS(복합부위통증증후군), 골관절염, 당뇨병성 신경병증, CIPN, 섬유근통",
-        "MOR biased agonism으로 중독/내성 위험 최소화",
+        "관절강 국소 투여로 전신 노출 최소화",
         "단회 투여: 골관절염 모델에서 2주 이상 통증 감소",
-        "이상발열 부작용 없음 (1세대 TRPV1 문제 해결)",
-        "기존 치료제 대비 650배 낮은 농도에서 효과",
+        "설치류·마모셋 시험에서 체온 상승 관찰되지 않음",
         "CRPS FDA Orphan Drug Designation(ODD) 제출 완료",
       ],
       detailsLabel: "주요 특징",
@@ -325,10 +324,10 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RCI002",
-      indication: "Non-Opioid Chronic Pain",
-      target: "TRPV1-MOR Biased Dual Target",
+      indication: "Chronic Pain (Intra-articular)",
+      target: "MOR Agonist · Intra-articular Delivery",
       mechanism:
-        "MOR biased dual-target non-opioid analgesic simultaneously modulating TRPV1 and MOR — CRPS Orphan Drug Designation submitted",
+        "High-potency MOR agonist for intra-articular delivery — local analgesia with minimized systemic exposure. CRPS Orphan Drug Designation submitted",
       status: "Pre-clinical / IND Prep (CRPS ODD Submitted)",
       progress: 40,
       color: "blue",
@@ -343,10 +342,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       ],
       details: [
         "Indications: CRPS, OA, diabetic neuropathy, CIPN, fibromyalgia",
-        "MOR biased agonism minimizes addiction/tolerance risk",
+        "Intra-articular delivery minimizes systemic exposure",
         "Single dose: 2+ weeks pain reduction in OA model",
-        "No abnormal fever side effect (solved 1st-gen TRPV1 issue)",
-        "Efficacy at 650x lower concentration vs existing treatments",
+        "No body-temperature elevation observed in rodent and marmoset studies",
         "FDA Orphan Drug Designation (ODD) for CRPS submitted",
       ],
       detailsLabel: "Key Details",
@@ -460,10 +458,10 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RCI002",
-      indication: "非阿片类慢性疼痛治疗药",
-      target: "TRPV1-MOR Biased Dual Target",
+      indication: "慢性疼痛治疗药（关节腔局部给药）",
+      target: "MOR(μ阿片受体)激动剂 · 关节腔局部给药",
       mechanism:
-        "同时调节TRPV1和MOR的MOR biased双靶点非阿片类镇痛药 — CRPS孤儿药认定已提交",
+        "关节腔局部给药的高效价MOR激动剂 — 局部镇痛，最大限度降低全身暴露。CRPS孤儿药认定已提交",
       status: "临床前 / IND准备 (CRPS ODD已提交)",
       progress: 40,
       color: "blue",
@@ -478,10 +476,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       ],
       details: [
         "适应症：CRPS、骨关节炎、糖尿病性神经病变、CIPN、纤维肌痛",
-        "MOR biased agonism最大限度降低成瘾/耐受风险",
+        "关节腔局部给药，最大限度降低全身暴露",
         "单次给药：骨关节炎模型中疼痛减轻2周以上",
-        "无异常发热副作用（解决第一代TRPV1问题）",
-        "比现有治疗药低650倍浓度即有效",
+        "啮齿类及狨猴试验中未观察到体温升高",
         "FDA CRPS孤儿药认定(ODD)已提交",
       ],
       detailsLabel: "主要特点",
@@ -594,10 +591,10 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RCI002",
-      indication: "非オピオイド系慢性疼痛治療薬",
-      target: "TRPV1-MOR Biased Dual Target",
+      indication: "慢性疼痛治療薬（関節腔内投与）",
+      target: "MOR(μオピオイド受容体)作動薬 · 関節腔内局所投与",
       mechanism:
-        "TRPV1とMORを同時調節するMOR biasedデュアルターゲット非オピオイド系鎮痛薬 — CRPS希少疾患ODD提出完了",
+        "関節腔内に局所投与する高力価MOR作動薬 — 全身曝露を最小化する局所鎮痛。CRPS希少疾患ODD提出完了",
       status: "前臨床 / IND準備 (CRPS ODD提出完了)",
       progress: 40,
       color: "blue",
@@ -612,10 +609,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       ],
       details: [
         "適応症：CRPS、変形性関節症、糖尿病性神経障害、CIPN、線維筋痛症",
-        "MOR biased agonismで依存症/耐性リスクを最小化",
+        "関節腔内局所投与により全身曝露を最小化",
         "単回投与：変形性関節症モデルで2週間以上の疼痛軽減",
-        "異常発熱副作用なし（第1世代TRPV1の問題を解決）",
-        "既存治療薬の650分の1の濃度で効果",
+        "げっ歯類・マーモセット試験で体温上昇は観察されず",
         "FDA CRPS孤児薬指定(ODD)提出完了",
       ],
       detailsLabel: "主な特徴",
@@ -729,10 +725,10 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RCI002",
-      indication: "Dolor Crónico No Opioide",
-      target: "TRPV1-MOR Biased Dual Target",
+      indication: "Dolor Crónico (Intraarticular)",
+      target: "Agonista MOR · Administración Intraarticular",
       mechanism:
-        "Analgésico no opioide de doble diana MOR biased modulando simultáneamente TRPV1 y MOR — Designación de Medicamento Huérfano para CRPS presentada",
+        "Agonista MOR de alta potencia para administración intraarticular — analgesia local con exposición sistémica minimizada. Designación de Medicamento Huérfano para CRPS presentada",
       status: "Preclínico / Preparación IND (CRPS ODD presentada)",
       progress: 40,
       color: "blue",
@@ -747,10 +743,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       ],
       details: [
         "Indicaciones: CRPS, OA, neuropatía diabética, CIPN, fibromialgia",
-        "Agonismo MOR biased minimiza riesgo de adicción/tolerancia",
+        "La administración intraarticular minimiza la exposición sistémica",
         "Dosis única: reducción del dolor 2+ semanas en modelo OA",
-        "Sin efecto secundario de fiebre anormal (resolvió problema TRPV1 1ª gen)",
-        "Eficacia a concentración 650x menor vs tratamientos existentes",
+        "Sin elevación de temperatura corporal en estudios en roedores y titíes",
         "Designación FDA ODD para CRPS presentada",
       ],
       detailsLabel: "Características Clave",
@@ -864,10 +859,10 @@ const PIPELINE: Record<string, PipelineItem[]> = {
     },
     {
       name: "RCI002",
-      indication: "Douleur Chronique Non Opioïde",
-      target: "TRPV1-MOR Biased Dual Target",
+      indication: "Douleur Chronique (Intra-articulaire)",
+      target: "Agoniste MOR · Administration Intra-articulaire",
       mechanism:
-        "Analgésique non opioïde à double cible MOR biased modulant simultanément TRPV1 et MOR — Désignation de Médicament Orphelin pour le CRPS soumise",
+        "Agoniste MOR de haute puissance pour administration intra-articulaire — analgésie locale avec exposition systémique minimisée. Désignation de Médicament Orphelin pour le CRPS soumise",
       status: "Préclinique / Préparation IND (CRPS ODD soumise)",
       progress: 40,
       color: "blue",
@@ -882,10 +877,9 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       ],
       details: [
         "Indications : CRPS, arthrose, neuropathie diabétique, CIPN, fibromyalgie",
-        "Agonisme MOR biased minimise le risque d'addiction/tolérance",
+        "L'administration intra-articulaire minimise l'exposition systémique",
         "Dose unique : réduction de la douleur 2+ semaines dans le modèle arthrose",
-        "Pas d'effet secondaire de fièvre anormale (problème TRPV1 1ère gén. résolu)",
-        "Efficacité à concentration 650x inférieure vs traitements existants",
+        "Aucune élévation de température corporelle observée chez les rongeurs et ouistitis",
         "Désignation FDA ODD pour CRPS soumise",
       ],
       detailsLabel: "Caractéristiques Clés",
@@ -1081,9 +1075,9 @@ export default async function PipelinePage({
                 "@type": "Drug",
                 name: "RCI002",
                 description:
-                  "Non-opioid chronic pain analgesic. MOR-biased dual TRPV1/MOR modulator. Indications: CRPS, osteoarthritis, diabetic neuropathy, CIPN, fibromyalgia. FDA Orphan Drug Designation (ODD) submitted for CRPS. No hyperthermia side effect. Efficacy at 650x lower concentration vs existing analgesics. Global IND Q2 2026.",
+                  "Chronic pain analgesic administered by intra-articular injection. High-potency mu-opioid receptor (MOR) agonist; analgesia is fully naloxone-reversible. Indications: CRPS, osteoarthritis, diabetic neuropathy, CIPN, fibromyalgia. FDA Orphan Drug Designation (ODD) submitted for CRPS. Global IND Q2 2026.",
                 mechanismOfAction:
-                  "MOR-biased dual TRPV1/MOR modulation — pain relief without opioid side effects",
+                  "Intra-articular MOR agonist — local analgesia with minimized systemic exposure",
                 drugClass: "Non-opioid analgesic",
                 clinicalPhase: "Pre-clinical",
                 manufacturer: {
