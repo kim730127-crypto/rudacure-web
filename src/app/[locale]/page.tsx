@@ -41,14 +41,14 @@ const PIPELINE = {
     {
       id: "RCI002",
       name: "RCI002",
-      indication: "Non-Opioid Pain",
-      target: "TRPV1-MOR Biased Dual",
+      indication: "Chronic Pain",
+      target: "MOR 작용제 · 관절강 국소 투여",
       status: "Pre-clinical / IND",
       progress: 40,
       color: "blue" as const,
       milestone: "Tox Study 3Q 2026",
       description:
-        "TRPV1과 MOR을 동시 조절하는 MOR biased 듀얼 타깃 비마약성 진통제. 이상발열 Zero, 중독/내성 위험 없이 장기 지속 통증 완화.",
+        "관절강에 국소 투여하는 고역가 MOR 작용제. 전신 노출을 최소화하면서 단회 투여로 장기 지속 통증 완화.",
     },
     {
       id: "RCI003",
@@ -91,14 +91,14 @@ const PIPELINE = {
     {
       id: "RCI002",
       name: "RCI002",
-      indication: "Non-Opioid Pain",
-      target: "TRPV1-MOR Biased Dual",
+      indication: "Chronic Pain",
+      target: "MOR Agonist · Intra-articular",
       status: "Pre-clinical / IND",
       progress: 40,
       color: "blue" as const,
       milestone: "Tox Study 3Q 2026",
       description:
-        "MOR biased dual-target non-opioid analgesic simultaneously modulating TRPV1 and MOR. Zero hyperthermia, long-lasting pain relief without addiction or tolerance risk.",
+        "High-potency MOR agonist delivered by intra-articular injection. Long-lasting relief from a single dose with minimized systemic exposure.",
     },
     {
       id: "RCI003",

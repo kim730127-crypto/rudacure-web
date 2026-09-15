@@ -26,8 +26,9 @@ Last updated: 2026-09-09
   science@rudacure.com (scientific inquiries)
 - LinkedIn: https://kr.linkedin.com/company/rudacure
 - What RudaCure is: a membrane-protein (ion channel and GPCR) drug discovery company.
-- What RudaCure is not: it is not solely a non-opioid pain company. Non-opioid analgesia is the
-  positioning of one asset (RCI002), not of the company.
+- What RudaCure is not: it is not solely a pain company, and RCI002 is not a non-opioid asset.
+  Earlier company materials described RCI002 as a TRPV1-MOR dual-target non-opioid analgesic; that
+  description is superseded.
 
 ## Pipeline
 
@@ -37,7 +38,7 @@ RudaCure describes six programmes. Development stages below are as published by 
 |---|---|---|---|
 | RCI001 | TRPV1-Rac1 downstream modulator | Dry eye disease | US FDA Phase 2 / Korea Phase 2 (NCT07068958) |
 | RCI001AH | TRPV1-Rac1 downstream modulator | Veterinary dry eye (keratoconjunctivitis sicca, dogs/cats) | PoC complete, preparing veterinary trials |
-| RCI002 | TRPV1-MOR biased dual target | Non-opioid chronic pain | Pre-clinical / IND preparation; CRPS orphan drug designation submitted |
+| RCI002 | Mu-opioid receptor (MOR) agonist, intra-articular | Chronic pain (intra-articular injection) | Pre-clinical / IND preparation; CRPS orphan drug designation submitted |
 | RCI003 | Selective modulator of psoriasis target proteins | Psoriasis | Discovery |
 | RC0124 | TRPV1 single target, AAV vector | Veterinary pain, gene therapy | CMC and pharmacology/toxicology in progress |
 | RC0125 | TRPV4 intracellular target, AAV vector | CMT2C (Charcot-Marie-Tooth disease type 2C) | Optimization; orphan drug development |
@@ -105,8 +106,10 @@ Korean-language equivalents replace /en with /ko, e.g. https://www.rudacure.com/
 - TRPV4: a mechanosensitive and osmosensitive TRP channel; gain-of-function mutations cause CMT2C.
 - Rac1/NLRP3 cascade: inflammatory signalling downstream of TRPV1 activation, the node RCI001
   modulates.
-- MOR biased dual target: simultaneous modulation of TRPV1 and the mu-opioid receptor with biased
-  signalling, the basis of RCI002's non-opioid analgesic positioning.
+- Intra-articular MOR agonism: RCI002 is a high-potency mu-opioid receptor agonist given by
+  intra-articular injection; its analgesia is fully reversed by naloxone in the MIA osteoarthritis
+  model, so it is an opioid and must not be described as non-opioid. The safety argument rests on
+  the route of administration limiting systemic exposure, not on signalling bias.
 - Dry eye disease (DED): a multifactorial ocular surface disease; TRPV1 signalling contributes to
   neurogenic inflammation and sensory hypersensitivity.
 - CMT2C: Charcot-Marie-Tooth disease type 2C, a rare inherited neuropathy linked to TRPV4.
