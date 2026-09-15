@@ -423,7 +423,7 @@ const translations = {
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "Desarrollamos fármacos dirigidos a la membrana celular utilizando tecnología de medición de actividad de canales iónicos basada en electrofisiología. A través de patch clamp y validación electrofisiológica de alto rendimiento, descubrimos moduladores selectivos de canales iónicos como TRPV1, verificando la eficacia y seguridad de tratamientos para el dolor no opioide y el ojo seco con datos reales.",
+      "Desarrollamos fármacos dirigidos a la membrana celular utilizando tecnología de medición de actividad de canales iónicos basada en electrofisiología. A través de patch clamp y validación electrofisiológica de alto rendimiento, descubrimos moduladores selectivos de canales iónicos como TRPV1, verificando la eficacia y seguridad de tratamientos para enfermedades sensoriales, dolor e inflamacion con datos reales.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Validación HT Patch Clamp",
     "rucia.metric.selectivity": "Membrane Target",
@@ -454,7 +454,7 @@ const translations = {
     "pipeline.page.title1": "Therapeutic",
     "pipeline.page.title2": "Pipeline",
     "pipeline.page.description":
-      "Pipeline terapéutico no opioide dirigido a canales iónicos. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
+      "Pipeline terapéutico dirigido a proteínas de membrana. Los candidatos descubiertos a través de nuestra plataforma RuCIA están avanzando hacia ensayos clínicos globales.",
     "news.tag": "Prensa y Medios",
     "news.title1": "News",
     "news.title2": "Center",

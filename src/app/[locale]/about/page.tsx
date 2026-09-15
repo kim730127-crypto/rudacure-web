@@ -1625,7 +1625,7 @@ export default async function AboutPage({
             "Ion channel pharmacology",
             "TRPV1",
             "Pain research",
-            "Non-opioid analgesics",
+            "Analgesic pharmacology",
             "Drug discovery",
           ],
           worksFor: { "@id": `${SITE_URL}/#organization` },

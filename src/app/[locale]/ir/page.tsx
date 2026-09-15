@@ -314,9 +314,9 @@ const INVESTMENT_CASE: Record<
       icon: "ai",
     },
     {
-      title: "Non-Opioid 시장 선점",
+      title: "국소 진통 전략의 차별성",
       description:
-        "FDA/EMA가 비중독성 대안을 우선시하는 규제 환경에서 TRPV1 플랫폼의 전략적 우위.",
+        "FDA·EMA가 전신 오피오이드 의존을 줄이는 대안을 우선시하는 환경에서, 관절강 국소 투여로 전신 노출을 낮추는 접근.",
       icon: "target",
     },
   ],
@@ -340,9 +340,9 @@ const INVESTMENT_CASE: Record<
       icon: "ai",
     },
     {
-      title: "Non-Opioid Market Leadership",
+      title: "Differentiated Local Analgesia Strategy",
       description:
-        "Strategic advantage in a regulatory environment where FDA/EMA prioritize non-addictive alternatives.",
+        "Intra-articular delivery lowers systemic exposure in a regulatory environment where FDA/EMA prioritize reducing reliance on systemic opioids.",
       icon: "target",
     },
   ],
@@ -366,9 +366,9 @@ const INVESTMENT_CASE: Record<
       icon: "ai",
     },
     {
-      title: "非阿片类市场先发优势",
+      title: "局部镇痛策略的差异化",
       description:
-        "在FDA/EMA优先考虑非成瘾替代方案的监管环境中，TRPV1平台具有战略优势。",
+        "在FDA/EMA优先考虑减少全身阿片类依赖的监管环境中，采用关节腔局部给药降低全身暴露。",
       icon: "target",
     },
   ],
@@ -392,9 +392,9 @@ const INVESTMENT_CASE: Record<
       icon: "ai",
     },
     {
-      title: "Non-Opioid市場のリーダーシップ",
+      title: "局所鎮痛戦略の差別化",
       description:
-        "FDA/EMAが非依存性代替薬を優先する規制環境におけるTRPV1プラットフォームの戦略的優位性。",
+        "FDA/EMAが全身オピオイド依存の低減を優先する規制環境において、関節腔内投与により全身曝露を抑えるアプローチ。",
       icon: "target",
     },
   ],
@@ -418,9 +418,9 @@ const INVESTMENT_CASE: Record<
       icon: "ai",
     },
     {
-      title: "Liderazgo en el Mercado No Opioide",
+      title: "Estrategia Diferenciada de Analgesia Local",
       description:
-        "Ventaja estrategica en un entorno regulatorio donde la FDA/EMA priorizan alternativas no adictivas.",
+        "La administracion intraarticular reduce la exposicion sistemica en un entorno regulatorio donde la FDA/EMA priorizan reducir la dependencia de opioides sistemicos.",
       icon: "target",
     },
   ],
@@ -444,9 +444,9 @@ const INVESTMENT_CASE: Record<
       icon: "ai",
     },
     {
-      title: "Leadership sur le Marche Non Opioide",
+      title: "Strategie Differenciee d'Analgesie Locale",
       description:
-        "Avantage strategique dans un environnement reglementaire ou la FDA/EMA privilegient les alternatives non addictives.",
+        "L'administration intra-articulaire reduit l'exposition systemique dans un environnement reglementaire ou la FDA/EMA privilegient la reduction de la dependance aux opioides systemiques.",
       icon: "target",
     },
   ],
