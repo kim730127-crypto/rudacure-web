@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { ogCard } from "@/lib/og";
 import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import { IrContactLink } from "@/components/tracked-link";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
 type IRLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
@@ -837,18 +837,23 @@ export default async function IRPage({
           </blockquote>
           <p className="text-gray-600 mb-8">{label(locale, TEXT_CTA_DESC)}</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <a
+            <IrContactLink
               href="mailto:js.shin@rudacure.com"
+              channel="email"
+              locale={loc}
+              external
               className="btn-primary px-8 py-3 rounded-full font-semibold text-sm"
             >
               js.shin@rudacure.com
-            </a>
-            <Link
-              href={`/${locale}/contact`}
+            </IrContactLink>
+            <IrContactLink
+              href={`/${loc}/contact`}
+              channel="form"
+              locale={loc}
               className="btn-outline px-8 py-3 rounded-full border text-sm font-medium"
             >
               {label(locale, TEXT_CONTACT_US)}
-            </Link>
+            </IrContactLink>
           </div>
         </div>
       </section>

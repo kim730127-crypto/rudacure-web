@@ -74,6 +74,51 @@ const BO_TABLE_MAP: Record<string, string> = {
   m07_01: "/news", // 공지사항
 };
 
+/**
+ * English vanity paths that visitors type or that external sites guess.
+ *
+ * These never existed on any rudacure.com generation. They turn up because
+ * hyphenated forms are the house style on most pharma sites, so a reader who
+ * has our About page in mind types /about-us. The 2026-08/09 traffic review
+ * counted them landing on the catch-all alongside the real legacy paths.
+ *
+ * Each mapping is a literal synonym of an existing route. Nothing here is a
+ * guess about vanished content, which is the line the legacy maps above also
+ * hold.
+ */
+const VANITY_MAP: Record<string, string> = {
+  "/about-us": "/about",
+  "/aboutus": "/about",
+  "/company": "/about",
+  "/contact-us": "/contact",
+  "/contactus": "/contact",
+  "/our-pipeline": "/pipeline",
+  "/pipelines": "/pipeline",
+  "/investors": "/ir",
+  "/investor-relations": "/ir",
+  "/press": "/news",
+  "/newsroom": "/news",
+  "/patents": "/publications",
+  "/research": "/science",
+};
+
+/**
+ * The QUV builder emitted a `/page/` prefix on some menu items, which is how
+ * /en/page/pipeline reached the catch-all. Only routes that exist today are
+ * listed; an unknown slug stays a 404 rather than being sent somewhere plausible.
+ */
+const PAGE_PREFIX_ROUTES = [
+  "about",
+  "pipeline",
+  "science",
+  "cro",
+  "ir",
+  "news",
+  "publications",
+  "sab",
+  "contact",
+] as const;
+
 type Rule = {
   source: string;
   destination: string;
@@ -118,6 +163,28 @@ function buildRedirects(): Rule[] {
       ]),
     );
   }
+
+  for (const [from, to] of Object.entries(VANITY_MAP)) {
+    rules.push(rule(from, `/${DEFAULT_LOCALE}${to}`));
+    rules.push(rule(`/:locale(${LOCALE_GROUP})${from}`, `/:locale${to}`));
+  }
+
+  for (const slug of PAGE_PREFIX_ROUTES) {
+    rules.push(rule(`/page/${slug}`, `/${DEFAULT_LOCALE}/${slug}`));
+    rules.push(
+      rule(`/:locale(${LOCALE_GROUP})/page/${slug}`, `/:locale/${slug}`),
+    );
+  }
+
+  // A duplicated locale segment (/zh/zh, /en/en) comes from links built by
+  // concatenating a locale onto an already-localised URL. Collapse it instead of
+  // letting the second segment fall through to the catch-all.
+  rules.push(
+    rule(
+      `/:locale(${LOCALE_GROUP})/:dup(${LOCALE_GROUP})`,
+      "/:locale",
+    ),
+  );
 
   return rules;
 }

@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, FormEvent, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { track } from "@vercel/analytics";
+import { trackContactFormStart } from "@/lib/analytics-events";
 import { submitContactForm } from "./actions";
 
 interface ContactFormProps {
@@ -37,6 +39,15 @@ interface FormData {
 type FormStep = "type" | "contact" | "message";
 
 export default function ContactForm({ c, inputCls }: ContactFormProps) {
+  // Locale comes from the URL rather than a new prop: the form is rendered from
+  // a server page that already sits under /[locale], and threading one more
+  // prop through every call site buys nothing.
+  const pathname = usePathname();
+  const routeLocale = (pathname ?? "").split("/").filter(Boolean)[0] || "ko";
+  // `contact_form_start` fires once per mount, on the first keystroke. Paired
+  // with `contact_submit` it gives the abandon rate, which is the number that
+  // says whether the form itself is the obstacle.
+  const startReported = useRef(false);
   const [formState, setFormState] = useState<FormState>({
     loading: false,
     success: false,
@@ -86,6 +97,10 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
     >,
   ) => {
     const { name, value } = e.target;
+    if (!startReported.current) {
+      startReported.current = true;
+      trackContactFormStart(routeLocale);
+    }
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Emit custom event when inquiry type changes
@@ -168,7 +183,10 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
       const result = await submitContactForm(formData);
 
       if (result.success) {
-        track("contact_submit", { type: formData.type || "unspecified" });
+        track("contact_submit", {
+          type: formData.type || "unspecified",
+          locale: routeLocale,
+        });
         setFormState({
           loading: false,
           success: true,

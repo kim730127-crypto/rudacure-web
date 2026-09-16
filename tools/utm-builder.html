@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RudaCure UTM 링크 생성기</title>
+<style>
+  :root { --navy:#1F3864; --line:#dfe3ea; --muted:#5b6472; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 20px 80px; background:#f6f8fb;
+         font-family:"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif; color:#222; }
+  .wrap { max-width:860px; margin:0 auto; }
+  h1 { font-size:22px; color:var(--navy); margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:13px; margin:0 0 28px; line-height:1.7; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:24px; margin-bottom:18px; }
+  .row { display:grid; grid-template-columns:150px 1fr; gap:14px; align-items:center; margin-bottom:14px; }
+  label { font-size:13px; font-weight:600; color:#333; }
+  .hint { font-size:12px; color:var(--muted); grid-column:2; margin-top:-8px; }
+  select, input { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:6px;
+                  font-size:14px; font-family:inherit; background:#fff; }
+  input[readonly] { background:#f2f5fa; }
+  .out { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; line-height:1.6;
+         word-break:break-all; background:#f2f5fa; border:1px solid var(--line); border-radius:6px;
+         padding:14px; min-height:64px; }
+  button { background:var(--navy); color:#fff; border:0; border-radius:6px; padding:10px 18px;
+           font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+  button.ghost { background:#fff; color:var(--navy); border:1px solid var(--navy); }
+  .actions { display:flex; gap:10px; margin-top:14px; align-items:center; }
+  .ok { color:#1e7a46; font-size:13px; }
+  .err { color:#b03a2e; font-size:13px; }
+  h2 { font-size:15px; color:var(--navy); margin:0 0 14px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { border:1px solid var(--line); padding:7px 9px; text-align:left; }
+  th { background:var(--navy); color:#fff; font-weight:600; }
+  code { background:#eef1f6; padding:1px 5px; border-radius:3px; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>RudaCure UTM 링크 생성기</h1>
+  <p class="sub">
+    행사·메일·QR로 나가는 링크는 여기서 만든다. 손으로 조립하면 대소문자나 오타 하나로
+    캠페인 행이 갈라져 집계가 안 된다. 규칙 전문은 <code>docs/analytics-conventions.md</code> 3장.
+  </p>
+
+  <div class="card">
+    <h2>링크 만들기</h2>
+
+    <div class="row">
+      <label for="locale">언어</label>
+      <select id="locale">
+        <option value="ko">한국어 (ko)</option>
+        <option value="en" selected>English (en)</option>
+        <option value="ja">日本語 (ja)</option>
+        <option value="zh">中文 (zh)</option>
+        <option value="es">Español (es)</option>
+        <option value="fr">Français (fr)</option>
+        <option value="ar">العربية (ar)</option>
+      </select>
+    </div>
+    <p class="hint">일본 상대에게는 ja를 준다. 일문 페이지는 IR까지 전부 번역돼 있다.</p>
+
+    <div class="row">
+      <label for="path">착륙 지점</label>
+      <select id="path">
+        <option value="/pipeline" selected>파이프라인 - 파트너링 미팅 상대</option>
+        <option value="/ir">IR - 투자자</option>
+        <option value="">홈</option>
+        <option value="/science">Science</option>
+        <option value="/cro">CRO 서비스</option>
+        <option value="/publications">논문 및 특허</option>
+        <option value="/about">회사소개</option>
+        <option value="/news">뉴스</option>
+        <option value="/contact">문의</option>
+      </select>
+    </div>
+    <p class="hint">회사 소개부터 시작하지 않는다. 상대가 확인하려는 화면으로 바로 보낸다.</p>
+
+    <div class="row">
+      <label for="source">utm_source</label>
+      <select id="source">
+        <option value="bio">bio - BIO 컨벤션</option>
+        <option value="biojapan">biojapan - BioJapan 비즈매치</option>
+        <option value="luma">luma - Luma 행사 페이지</option>
+        <option value="kddf">kddf</option>
+        <option value="saramin">saramin - 채용</option>
+        <option value="email">email - 메일 발송</option>
+        <option value="qr">qr - 명함·부스 QR</option>
+        <option value="linkedin">linkedin</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="medium">utm_medium</label>
+      <select id="medium">
+        <option value="partnering">partnering - 1:1 파트너링</option>
+        <option value="booth">booth - 부스 현장</option>
+        <option value="qr">qr - QR 코드</option>
+        <option value="email">email - 메일</option>
+        <option value="social">social</option>
+        <option value="listing">listing - 디렉터리 등재</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="camp">utm_campaign</label>
+      <input id="camp" type="text" placeholder="biojapan-202610" value="">
+    </div>
+    <p class="hint">형식은 <code>행사약칭-YYYYMM</code>. 회차 단위로 하나씩 쓴다.</p>
+
+    <div class="row">
+      <label for="content">utm_content</label>
+      <input id="content" type="text" placeholder="namecard / deck-p12 / booth-panel / followup-1 (선택)">
+    </div>
+
+    <div class="row">
+      <label>결과</label>
+      <div class="out" id="out">—</div>
+    </div>
+
+    <div class="actions">
+      <button id="copy">링크 복사</button>
+      <button class="ghost" id="reset">초기화</button>
+      <span id="msg"></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>회차 정리용 기록표</h2>
+    <p class="sub" style="margin-bottom:14px">
+      행사가 끝나면 종료 후 2주까지를 한 회차로 보고 아래 항목을 채운다.
+      방문자 수만으로는 성과를 말할 수 없으므로 행동 이벤트를 함께 적는다.
+    </p>
+    <table>
+      <tr><th>항목</th><th>확인 위치</th></tr>
+      <tr><td>utm_campaign 값</td><td>이 생성기에서 쓴 값 그대로</td></tr>
+      <tr><td>방문자 / 페이지뷰</td><td>Vercel Analytics → UTM Parameters 탭</td></tr>
+      <tr><td>pipeline_cta_click</td><td>Vercel Analytics → Events</td></tr>
+      <tr><td>ir_contact_click</td><td>Vercel Analytics → Events</td></tr>
+      <tr><td>contact_submit</td><td>Vercel Analytics → Events</td></tr>
+      <tr><td>봇 제외 적용 여부</td><td>docs/analytics-conventions.md 1장 B1-B3</td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+  var BASE = "https://www.rudacure.com";
+  var $ = function (id) { return document.getElementById(id); };
+  var FIELDS = ["locale", "path", "source", "medium", "camp", "content"];
+
+  function clean(v) {
+    return String(v || "").trim().toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9._-]/g, "");
+  }
+
+  function build() {
+    var camp = clean($("camp").value);
+    var content = clean($("content").value);
+    var url = BASE + "/" + $("locale").value + $("path").value;
+    var q = [
+      "utm_source=" + clean($("source").value),
+      "utm_medium=" + clean($("medium").value)
+    ];
+    if (camp) q.push("utm_campaign=" + camp);
+    if (content) q.push("utm_content=" + content);
+
+    var full = url + "?" + q.join("&");
+    var out = $("out");
+    var msg = $("msg");
+    if (!camp) {
+      out.textContent = full;
+      msg.className = "err";
+      msg.textContent = "utm_campaign을 채워야 회차별 집계가 된다.";
+    } else {
+      out.textContent = full;
+      msg.textContent = "";
+    }
+    return full;
+  }
+
+  FIELDS.forEach(function (f) {
+    $(f).addEventListener("input", build);
+    $(f).addEventListener("change", build);
+  });
+
+  $("copy").addEventListener("click", function () {
+    var full = build();
+    navigator.clipboard.writeText(full).then(function () {
+      var m = $("msg"); m.className = "ok"; m.textContent = "복사했다.";
+      setTimeout(function () { m.textContent = ""; }, 2000);
+    });
+  });
+
+  $("reset").addEventListener("click", function () {
+    $("camp").value = ""; $("content").value = ""; build();
+  });
+
+  build();
+</script>
+</body>
+</html>

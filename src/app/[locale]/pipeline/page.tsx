@@ -2,6 +2,57 @@ import { ProgressBar } from "@/components/progress-bar";
 import { ogCard } from "@/lib/og";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import { PipelineCtaLink } from "@/components/tracked-link";
+
+/**
+ * Closing call to action.
+ *
+ * The pipeline page carried no internal link of any kind, which made it the
+ * most-read dead end on the site: 304 visitors over 2026-08/09 with nowhere to
+ * go next. Japanese readers showed the pattern most sharply - they reach
+ * /ja/pipeline but almost never /ja/ir, even though the IR page is fully
+ * translated. These two links are the route between them, and the click is
+ * tracked so the rate can be read rather than guessed.
+ */
+const CTA_HEADING: Record<string, string> = {
+  ko: "파이프라인 관련 문의",
+  en: "Talk to us about the pipeline",
+  zh: "关于管线的咨询",
+  ja: "パイプラインに関するお問い合わせ",
+  es: "Hablemos sobre el pipeline",
+  fr: "Échanger sur notre pipeline",
+  ar: "للاستفسار عن خط التطوير",
+};
+
+const CTA_BODY: Record<string, string> = {
+  ko: "개발 단계별 자료와 투자 정보를 준비해 두었습니다. 파트너십과 라이센싱 문의도 같은 창구로 받습니다.",
+  en: "Stage-by-stage material and investor information are ready. Partnership and licensing enquiries come through the same channel.",
+  zh: "各开发阶段资料与投资信息均已备妥。合作与授权咨询亦由同一窗口受理。",
+  ja: "開発段階ごとの資料と投資情報をご用意しています。パートナーシップおよびライセンシングのお問い合わせも同じ窓口で承ります。",
+  es: "Disponemos de material por fase de desarrollo e información para inversores. Las consultas de colaboración y licencias se atienden por el mismo canal.",
+  fr: "Les documents par phase de développement et les informations investisseurs sont disponibles. Les demandes de partenariat et de licence passent par le même canal.",
+  ar: "تتوفّر مستندات كل مرحلة تطوير ومعلومات المستثمرين. وتُستقبل طلبات الشراكة والترخيص عبر القناة نفسها.",
+};
+
+const CTA_IR: Record<string, string> = {
+  ko: "투자 정보 보기",
+  en: "Investor Relations",
+  zh: "查看投资信息",
+  ja: "投資情報を見る",
+  es: "Información para inversores",
+  fr: "Informations investisseurs",
+  ar: "معلومات المستثمرين",
+};
+
+const CTA_CONTACT: Record<string, string> = {
+  ko: "문의하기",
+  en: "Contact us",
+  zh: "联系我们",
+  ja: "お問い合わせ",
+  es: "Contactar",
+  fr: "Nous contacter",
+  ar: "تواصل معنا",
+};
 
 export async function generateMetadata({
   params,
@@ -1290,6 +1341,36 @@ export default async function PipelinePage({
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Where to go next */}
+        <section className="px-6 pb-32">
+          <div className="max-w-5xl mx-auto liquid-glass p-10 text-center">
+            <h2 className="text-2xl sm:text-3xl font-light mb-4 text-gray-900">
+              {CTA_HEADING[locale] || CTA_HEADING.en}
+            </h2>
+            <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+              {CTA_BODY[locale] || CTA_BODY.en}
+            </p>
+            <div className="flex items-center justify-center gap-4 flex-wrap">
+              <PipelineCtaLink
+                href={`/${loc}/ir`}
+                target="ir"
+                locale={loc}
+                className="btn-primary px-8 py-3 rounded-full font-semibold text-sm"
+              >
+                {CTA_IR[locale] || CTA_IR.en}
+              </PipelineCtaLink>
+              <PipelineCtaLink
+                href={`/${loc}/contact`}
+                target="contact"
+                locale={loc}
+                className="btn-outline px-8 py-3 rounded-full border text-sm font-medium"
+              >
+                {CTA_CONTACT[locale] || CTA_CONTACT.en}
+              </PipelineCtaLink>
+            </div>
           </div>
         </section>
       </div>

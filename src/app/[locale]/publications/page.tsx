@@ -1,6 +1,7 @@
 /* ── Locale helper: default to "en" for unsupported locales ── */
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import { DownloadLink } from "@/components/tracked-link";
 
 type SupportedLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
 const SUPPORTED: readonly SupportedLocale[] = [
@@ -1209,6 +1210,7 @@ const familyCountLabel = (count: number, locale: SupportedLocale): string => {
   return labels[locale](count);
 };
 
+
 export async function generateMetadata({
   params,
 }: {
@@ -1499,10 +1501,11 @@ export default async function PublicationsPage({
                                   </>
                                 )}
                                 {fl.pdf && (
-                                  <a
+                                  <DownloadLink
                                     href={`/patents/${fl.pdf}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    kind="patent"
+                                    id={fl.number}
+                                    locale={locale}
                                     title={`${countryName(fl)} ${c.certificateLabel}`}
                                     className="inline-flex items-center gap-0.5 text-teal-600 hover:text-teal-800 transition-colors"
                                   >
@@ -1523,7 +1526,7 @@ export default async function PublicationsPage({
                                     <span className="text-[11px] font-medium">
                                       PDF
                                     </span>
-                                  </a>
+                                  </DownloadLink>
                                 )}
                               </div>
                             );
@@ -1692,8 +1695,11 @@ export default async function PublicationsPage({
                                 )}
 
                                 {paper.pdf && (
-                                  <a
+                                  <DownloadLink
                                     href={`/papers/${paper.pdf}`}
+                                    kind="paper"
+                                    id={paper.pdf.slice(0, 48)}
+                                    locale={locale}
                                     download
                                     className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors"
                                   >
@@ -1711,7 +1717,7 @@ export default async function PublicationsPage({
                                       />
                                     </svg>
                                     PDF
-                                  </a>
+                                  </DownloadLink>
                                 )}
                               </div>
                             </div>
