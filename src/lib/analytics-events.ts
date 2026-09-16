@@ -46,6 +46,38 @@ export function trackContactFormStart(locale: string) {
 }
 
 /**
+ * Fires `fn` once the Vercel Analytics stub exists.
+ *
+ * Click handlers never need this - by the time a visitor clicks, the stub is
+ * long since installed. Mount-time events do. On a 404 the effect runs in the
+ * same commit as the `<Analytics/>` component, and `track()` reaches
+ * `window.va?.()` before that global is assigned, so the call is dropped with
+ * no error. Observed on production 2026-09-16: `pipeline_cta_click` arrived,
+ * `not_found` did not, while the page itself rendered correctly.
+ *
+ * Polls for up to ~3s, then gives up. A dropped 404 event is not worth holding
+ * a timer open on a page the visitor is about to leave.
+ */
+function whenAnalyticsReady(fn: () => void) {
+  if (typeof window === "undefined") return;
+  const w = window as unknown as { va?: unknown };
+  if (typeof w.va === "function") {
+    fn();
+    return;
+  }
+  let tries = 0;
+  const id = setInterval(() => {
+    tries += 1;
+    if (typeof w.va === "function") {
+      clearInterval(id);
+      fn();
+    } else if (tries >= 20) {
+      clearInterval(id);
+    }
+  }, 150);
+}
+
+/**
  * A request landed on the catch-all 404.
  *
  * `path` is normalised before it is sent: the locale segment is dropped and any
@@ -54,7 +86,8 @@ export function trackContactFormStart(locale: string) {
  * being usable.
  */
 export function trackNotFound(pathname: string, locale: string) {
-  track("not_found", { path: normaliseNotFoundPath(pathname), locale });
+  const path = normaliseNotFoundPath(pathname);
+  whenAnalyticsReady(() => track("not_found", { path, locale }));
 }
 
 const LOCALE_SEGMENT = /^(ko|en|zh|ja|es|fr|ar)$/;
