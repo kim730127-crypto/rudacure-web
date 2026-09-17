@@ -2,8 +2,8 @@ import Image from "next/image";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 /* ── Local locale helper ── */
-type SABLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
-const SAB_SUPPORTED: ReadonlySet<string> = new Set(["ko", "en", "zh", "ja", "es", "fr"]);
+type SABLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr" | "ar";
+const SAB_SUPPORTED: ReadonlySet<string> = new Set(["ko", "en", "zh", "ja", "es", "fr", "ar"]);
 function toSABLocale(locale: string): SABLocale {
   return SAB_SUPPORTED.has(locale) ? (locale as SABLocale) : "en";
 }
@@ -101,6 +101,19 @@ const HEADER: Record<SABLocale, {
       "Conseil en conception d'essais cliniques et stratégie réglementaire",
       "Connexion aux réseaux académiques mondiaux",
       "Conseil en découverte de nouvelles indications et expansion technologique",
+    ],
+  },
+  ar: {
+    tag: "لجنة الاستشارات العلمية",
+    title1: "الاستشارات العلمية",
+    title2: "اللجنة",
+    description: "تتألف لجنة الاستشارات العلمية (SAB) في RudaCure من نخبة من الخبراء العالميين في علم الأدوية للقنوات الأيونية، وأبحاث الألم، وعلم العيون، واكتشاف الأدوية المدعوم بالذكاء الاصطناعي، لتقديم إرشادات استراتيجية لخط أنابيبنا الأساسي.",
+    roleTitle: "دور لجنة الاستشارات العلمية",
+    roleItems: [
+      "التحقق العلمي والإرشاد الاستراتيجي لبرامج خط الأنابيب",
+      "الإرشاد في تصميم التجارب السريرية والاستراتيجية التنظيمية",
+      "ربط الشبكة الأكاديمية العالمية",
+      "الإرشاد في اكتشاف مؤشرات جديدة وتوسيع التكنولوجيا",
     ],
   },
 };
@@ -397,6 +410,55 @@ const ADVISORS: Record<SABLocale, AdvisorItem[]> = {
       affiliation: "Bascom Palmer Eye Institute, Université de Miami",
       expertise: ["Immunologie oculaire", "Maladie cornéenne", "Sécheresse oculaire"],
       description: "Professeur d'Ophtalmologie et Directeur de la Recherche Cornéenne au Bascom Palmer Eye Institute. A dirigé les lignes directrices consensuelles mondiales TFOS DEWS III sur la sécheresse oculaire. Formé à Harvard Medical School, chercheur NIH/CDC. The Ophthalmologist Power List 2026.",
+      image: "/images/sab/victor-perez.jpg",
+    },
+  ],
+  ar: [
+    {
+      name: "Dr. Yong-ho Kim",
+      title: "رئيس لجنة الاستشارات العلمية / الرئيس التنفيذي",
+      affiliation: "أستاذ، كلية الطب في جامعة Gachon",
+      expertise: ["علم الأدوية للقنوات الأيونية", "أبحاث الألم", "TRPV1"],
+      description: "أكثر من 15 عامًا من البحث الطبي الأساسي في الألم واضطرابات الحس. مؤسس منصة تطوير الأدوية القائمة على تعديل قناة TRPV1 الأيونية.",
+      image: "/images/sab/yongho-kim.jpg",
+    },
+    {
+      name: "Dr. Jiyoon Shin",
+      title: "مدير البحث",
+      affiliation: "معهد روداكور المركزي للأبحاث",
+      expertise: ["اكتشاف الأدوية بالذكاء الاصطناعي", "المحاكاة الجزيئية", "تصميم الأدوية الحاسوبي"],
+      description: "خبير في كفاءة تطوير الأدوية بالذكاء الاصطناعي. يقود تطوير التكنولوجيا الأساسية لمنصة RuCIA مع التصميم الجزيئي القائم على البنية.",
+    },
+    {
+      name: "Prof. Donghyun Kim",
+      title: "نائب الرئيس التنفيذي / مستشار سريري",
+      affiliation: "مستشفى أنام التابع لجامعة كوريا، قسم طب العيون",
+      expertise: ["طب العيون", "مرض جفاف العين", "اضطرابات القرنية"],
+      description: "أثبت السلامة طويلة الأمد لـ RCI001 وفعاليته في متلازمة شوغرن. حاصل على جائزة KOES الأكاديمية وجائزة تايجون لأفضل ورقة في طب العيون.",
+      image: "/images/sab/donghyun-kim.jpg",
+    },
+    {
+      name: "Prof. Dohun Kwon",
+      title: "مستشار خارجي",
+      affiliation: "POSTECH (جامعة بوهانغ للعلوم والتكنولوجيا)",
+      expertise: ["تحليل بنية TRPV1", "بيولوجيا بنية البروتين", "Cryo-EM"],
+      description: "خبير في تحليل بنية قناة الأيونات TRPV1. يجري أبحاثًا مشتركة مع RudaCure حول علاقات البنية والنشاط لـ TRPV1.",
+      image: "/images/sab/dohun-kwon.jpg",
+    },
+    {
+      name: "Dr. Anat Galor, MD, MSPH",
+      title: "مستشار خارجي",
+      affiliation: "معهد باسكوم بالمر للعيون، جامعة ميامي",
+      expertise: ["مرض جفاف العين", "ألم العيون", "أمراض سطح العين"],
+      description: "أستاذ طب العيون في معهد باسكوم بالمر للعيون. سلطة عالمية معترف بها في مرض جفاف العين والألم العصبي في العين. باحث رئيسي في منح متعددة من NIH، أكثر من 355 منشورًا (مؤشر هيتش 51). مُدرج في قائمة The Ophthalmologist Power List.",
+      image: "/images/sab/anat-galor.jpg",
+    },
+    {
+      name: "Dr. Victor L. Perez, MD",
+      title: "مستشار خارجي",
+      affiliation: "معهد باسكوم بالمر للعيون، جامعة ميامي",
+      expertise: ["مناعة العيون", "أمراض القرنية", "مرض جفاف العين"],
+      description: "أستاذ طب العيون ومدير أبحاث القرنية في معهد باسكوم بالمر للعيون. قاد إرشادات الإجماع العالمية TFOS DEWS III لمرض جفاف العين. متدرب في مدرسة هارفارد الطبية، باحث مقيم في NIH/CDC. قائمة The Ophthalmologist Power List 2026.",
       image: "/images/sab/victor-perez.jpg",
     },
   ],

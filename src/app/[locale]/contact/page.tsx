@@ -141,6 +141,24 @@ const C: ContentMap = {
     name: "Nom", email: "E-mail", company: "Entreprise", type: "Type de demande", message: "Message", submit: "Envoyer",
     typeOptions: ["Sélectionner…", "Partenariat / Licence", "Investissement / IR", "Services CRO", "Autre"],
   },
+  ar: {
+    tag: "تواصل معنا", title1: "صُنع", title2: "المستقبل",
+    description: "منطلقون من فلسفة أن التحرر من الألم أساس الكرامة الإنسانية، نستثمر في تقنية بروتينات الغشاء المتقدمة لاستعادة جودة الحياة وصياغة مستقبل البشرية. نبحث عن شركاء يتشاركون هذه الرؤية.",
+    titleByType: {
+      default: ["صُنع", "المستقبل"],
+      "الشراكة / الترخيص": ["بناء", "معًا"],
+      "الاستثمار / علاقات المستثمرين": ["استثمر", "في الأمل"],
+      "خدمات CRO": ["عالج", "حياة"],
+      "أخرى": ["صُنع", "المستقبل"],
+    },
+    hq: "المقر الرئيسي", seoul: "مكتب سيول", phone: "الهاتف والفاكس",
+    hqAddr: "9 سونغدو ميري-رو، يونسو-غو، إنشون، مبنى 1، #302، جمهورية كوريا",
+    seoulAddr: "145 غاسان ديجيتال 1-رو، غومشيون-غو، سيول، #1001، جمهورية كوريا",
+    inquiries: "الاستفسارات", business: "الأعمال", ir: "العلاقات مع المستثمرين / الاستثمار", cro: "خدمات CRO",
+    formTitle: "إرسال رسالة",
+    name: "Name", email: "البريد الإلكتروني", company: "الشركة", type: "Inquiry Type", message: "الرسالة", submit: "إرسال الرسالة",
+    typeOptions: ["اختر...", "الشراكة / الترخيص", "الاستثمار / علاقات المستثمرين", "خدمات CRO", "أخرى"],
+  },
 };
 
 const META_TITLE: Record<string, string> = {
@@ -150,6 +168,7 @@ const META_TITLE: Record<string, string> = {
   ja: "お問い合わせ | RudaCure",
   es: "Contacto | RudaCure",
   fr: "Contact | RudaCure",
+  ar: "اتصل بنا | روداكير",
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

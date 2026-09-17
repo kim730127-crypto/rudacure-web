@@ -6,6 +6,7 @@ import newsDataZh from "@/data/news_zh.json";
 import newsDataJa from "@/data/news_ja.json";
 import newsDataEs from "@/data/news_es.json";
 import newsDataFr from "@/data/news_fr.json";
+import newsDataAr from "@/data/news_ar.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -17,6 +18,7 @@ const NEWS_MAP: Record<string, typeof newsDataKo> = {
   ja: newsDataJa as typeof newsDataKo,
   es: newsDataEs as typeof newsDataKo,
   fr: newsDataFr as typeof newsDataKo,
+  ar: newsDataAr as typeof newsDataKo,
 };
 
 function getNewsData(locale: string) {
