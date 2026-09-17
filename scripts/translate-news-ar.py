@@ -74,6 +74,7 @@ FALLBACK_TITLE = (
 )
 
 HANGUL = re.compile(r"[\uac00-\ud7a3]")
+ARABIC = re.compile(r"[\u0600-\u06ff]")
 TAG = re.compile(r"<[a-zA-Z/][^>]*>")
 
 
@@ -226,7 +227,7 @@ def cmd_verify():
         sys.exit(1)
     ar = json.loads(OUT.read_text(encoding="utf-8"))
     ko = {i["id"]: i for i in source_items()}
-    bad_hangul, bad_tags, missing = [], [], []
+    bad_hangul, bad_tags, missing, wrong_lang = [], [], [], []
     for it in ar:
         k = ko.get(it["id"])
         if not k:
@@ -238,11 +239,19 @@ def cmd_verify():
             bad_tags.append((it["id"], want, got))
         if not it.get("title"):
             missing.append(it["id"])
+        # 한글도 없고 태그 수도 맞는데 영어로 번역된 기사가 있었다(55번). 원문에
+        # 한국어 산문이 있었다면 번역본에는 아랍 문자가 있어야 한다.
+        src_body = k.get("content", "")
+        if HANGUL.search(src_body) and not ARABIC.search(it.get("content", "")):
+            wrong_lang.append(it["id"])
+        if HANGUL.search(k.get("title", "")) and not ARABIC.search(it.get("title", "")):
+            wrong_lang.append(it["id"])
     print(f"기사 {len(ar)}건")
     print(f"  한글 잔존       {len(bad_hangul)}건 {bad_hangul[:12]}")
     print(f"  태그 수 불일치  {len(bad_tags)}건 {bad_tags[:8]}")
     print(f"  제목 없음       {len(missing)}건")
-    if bad_hangul or missing:
+    print(f"  아랍어 아님     {len(sorted(set(wrong_lang)))}건 {sorted(set(wrong_lang))[:12]}")
+    if bad_hangul or missing or wrong_lang:
         sys.exit(1)
 
 
