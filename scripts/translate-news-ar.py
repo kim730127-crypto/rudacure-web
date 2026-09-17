@@ -60,6 +60,19 @@ SYSTEM_TITLE = (
     "Do not add or remove any fact."
 )
 
+# 긴 시스템 프롬프트에서 모델이 빈 응답(done_reason=stop, eval_count 낮음)을 내는
+# 경우가 있다. 2026-09-17 기준 t:110 이 재현 가능했고, 같은 입력을 짧은 지시문으로
+# 보내면 정상 번역이 나왔다. 규칙을 줄인 폴백 프롬프트를 2차 시도에 쓴다.
+FALLBACK_BODY = (
+    "Translate the Korean text into Modern Standard Arabic. "
+    "Preserve every HTML tag and URL exactly. Keep drug codes and company names in Latin script. "
+    "Output only the translation."
+)
+FALLBACK_TITLE = (
+    "Translate the Korean news headline into Modern Standard Arabic. "
+    "Output only the headline, one line."
+)
+
 HANGUL = re.compile(r"[\uac00-\ud7a3]")
 TAG = re.compile(r"<[a-zA-Z/][^>]*>")
 
@@ -114,17 +127,22 @@ def cmd_run():
     t0 = time.time()
     for n, (kind, nid, src, system) in enumerate(jobs, 1):
         key = f"{kind}:{nid}"
-        for attempt in (1, 2, 3):
+        fallback = FALLBACK_TITLE if kind == "t" else FALLBACK_BODY
+        for attempt in (1, 2, 3, 4):
             try:
-                out = call_model(system, src)
+                # 1차는 규칙이 촘촘한 프롬프트, 2차부터는 짧은 폴백을 쓴다.
+                out = call_model(system if attempt == 1 else fallback, src)
                 floor = 4 if kind == "t" else 20
                 if not out or len(out) < floor:
                     raise ValueError(f"short output ({len(out)} chars)")
                 # 태그가 사라졌다면 번역이 아니라 요약이 돌아온 것이다.
                 if kind == "c":
                     want, got = len(TAG.findall(src)), len(TAG.findall(out))
-                    if want and got < want * 0.8:
-                        raise ValueError(f"tag loss {got}/{want}")
+                    # 0.8 배까지 허용했더니 태그를 2-4개 흘린 기사가 4건 통과했다.
+                    # 태그 하나가 사라지면 문단이나 이미지가 하나 사라진다는 뜻이라
+                    # 정확히 일치할 때만 받는다.
+                    if want != got:
+                        raise ValueError(f"tag count {got} != {want}")
                 ckpt[key] = out
                 break
             except Exception as e:  # noqa: BLE001
@@ -159,6 +177,35 @@ def cmd_merge():
         out.append(rec)
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{OUT.name}: {len(out)} articles, titles {t_n}, bodies {c_n}")
+
+
+def cmd_repair():
+    """검수에 걸린 항목을 체크포인트에서 지워 다음 --run 이 다시 번역하게 한다.
+
+    대상은 두 가지다. 한글이 남아 있는 기사(번역이 아예 안 됐거나 원문이 그대로
+    복사된 경우)와, HTML 태그 수가 원문과 다른 기사(문단이나 이미지가 사라진 경우).
+    """
+    if not OUT.exists():
+        print("news_ar.json 없음 - --merge 를 먼저 실행한다.")
+        sys.exit(1)
+    ckpt = load_ckpt()
+    ko = {i["id"]: i for i in source_items()}
+    ar = json.loads(OUT.read_text(encoding="utf-8"))
+    dropped = []
+    for it in ar:
+        k = ko.get(it["id"])
+        if not k:
+            continue
+        if HANGUL.search(it.get("title", "")):
+            dropped.append(f"t:{it['id']}")
+        if HANGUL.search(it.get("content", "")):
+            dropped.append(f"c:{it['id']}")
+        elif len(TAG.findall(k.get("content", ""))) != len(TAG.findall(it.get("content", ""))):
+            dropped.append(f"c:{it['id']}")
+    removed = [d for d in dict.fromkeys(dropped) if ckpt.pop(d, None) is not None]
+    save_ckpt(ckpt)
+    print(f"체크포인트에서 {len(removed)}건 제거: {removed[:20]}")
+    print("이제 --run 을 실행하면 해당 항목만 다시 번역한다.")
 
 
 def cmd_status():
@@ -205,6 +252,7 @@ if __name__ == "__main__":
     ap.add_argument("--merge", action="store_true")
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--verify", action="store_true")
+    ap.add_argument("--repair", action="store_true")
     a = ap.parse_args()
     if a.run:
         cmd_run()
@@ -214,6 +262,8 @@ if __name__ == "__main__":
         cmd_status()
     elif a.verify:
         cmd_verify()
+    elif a.repair:
+        cmd_repair()
     else:
         ap.print_help()
         sys.exit(1)
