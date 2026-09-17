@@ -3,14 +3,14 @@ import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 import { DownloadLink } from "@/components/tracked-link";
 
-type SupportedLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
+type SupportedLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr" | "ar";
 const SUPPORTED: readonly SupportedLocale[] = [
   "ko",
   "en",
   "zh",
   "ja",
   "es",
-  "fr",
+  "fr", "ar",
 ];
 function safeLocale(loc: string): SupportedLocale {
   return SUPPORTED.includes(loc as SupportedLocale)
@@ -28,6 +28,7 @@ type PatentFamily = {
   ja: { title: string };
   es: { title: string };
   fr: { title: string };
+  ar: { title: string };
   filings: {
     country: string;
     countryEn: string;
@@ -67,6 +68,10 @@ const PATENT_FAMILIES: PatentFamily[] = [
     fr: {
       title:
         "Composition pharmaceutique contenant de la 8-oxo-2'-deoxyguanosine pour le traitement des maladies cornéennes",
+    },
+    ar: {
+      title:
+        "مستحضر دوائي يحتوي على 8-أوكسو-2'-ديوكسيغوانوسين لعلاج أمراض القرنية",
     },
     filings: [
       {
@@ -121,6 +126,10 @@ const PATENT_FAMILIES: PatentFamily[] = [
     fr: {
       title:
         "Formulations de collyre en solution aqueuse comprenant de la 8-oxo-2'-deoxyguanosine",
+    },
+    ar: {
+      title:
+        "مستحضرات قطرة عين في محلول مائي تحتوي على 8-أوكسو-2'-ديوكسيغوانوسين",
     },
     filings: [
       {
@@ -246,6 +255,10 @@ const PATENT_FAMILIES: PatentFamily[] = [
       title:
         "Dérivés de 2'-deoxyguanosine ou leurs sels et compositions pharmaceutiques",
     },
+    ar: {
+      title:
+        "مشتقات 2'-ديوكسيغوانوسين أو أملاحها والمستحضرات الدوائية",
+    },
     filings: [
       {
         country: "대한민국",
@@ -283,6 +296,10 @@ const PATENT_FAMILIES: PatentFamily[] = [
     fr: {
       title:
         "Composition pharmaceutique pour le traitement des maladies médiées par TRPV1 (principe actif GDF11)",
+    },
+    ar: {
+      title:
+        "مستحضر دوائي لعلاج الأمراض التي يتوسطها TRPV1 (المادة الفعالة GDF11)",
     },
     filings: [
       {
@@ -346,6 +363,7 @@ const PATENT_FAMILIES: PatentFamily[] = [
     ja: { title: "新規ペプチドおよびその用途" },
     es: { title: "Un péptido novedoso y su uso" },
     fr: { title: "Un nouveau peptide et son utilisation" },
+    ar: { title: "ببتيد جديد واستخدامه" },
     filings: [
       {
         country: "대한민국",
@@ -408,6 +426,7 @@ const PATENT_FAMILIES: PatentFamily[] = [
     ja: { title: "疼痛治療用組成物" },
     es: { title: "Composición para el tratamiento del dolor" },
     fr: { title: "Composition pour le traitement de la douleur" },
+    ar: { title: "مستحضر لعلاج الألم" },
     filings: [
       {
         country: "대한민국",
@@ -437,6 +456,7 @@ const PATENT_FAMILIES: PatentFamily[] = [
     ja: { title: "8-oxo-2'-Deoxyguanosine誘導体" },
     es: { title: "Derivados de 8-oxo-2'-deoxyguanosine" },
     fr: { title: "Dérivés de 8-oxo-2'-deoxyguanosine" },
+    ar: { title: "مشتقات 8-أوكسو-2'-ديوكسيغوانوسين" },
     filings: [
       {
         country: "대한민국",
@@ -468,6 +488,10 @@ const PATENT_FAMILIES: PatentFamily[] = [
     fr: {
       title:
         "Composition pharmaceutique pour la prévention ou le traitement du prurit comprenant un antagoniste de TRPV1",
+    },
+    ar: {
+      title:
+        "مستحضر دوائي للوقاية من الحكة أو علاجها يحتوي على مضاد TRPV1",
     },
     filings: [
       {
@@ -504,6 +528,10 @@ const PATENT_FAMILIES: PatentFamily[] = [
       title:
         "Composition pharmaceutique pour la prévention ou le traitement de la sécheresse oculaire comprenant un antagoniste de TRPV1",
     },
+    ar: {
+      title:
+        "مستحضر دوائي للوقاية من مرض جفاف العين أو علاجه يحتوي على مضاد TRPV1",
+    },
     filings: [
       {
         country: "대한민국",
@@ -528,6 +556,9 @@ const PATENT_FAMILIES: PatentFamily[] = [
     es: { title: "Biochip hipotálamo-hipófisis y su método de fabricación" },
     fr: {
       title: "Biopuce hypothalamus-hypophyse et son procédé de fabrication",
+    },
+    ar: {
+      title: "رقاقة حيوية تحت المهاد-النخامية وطريقة تصنيعها",
     },
     filings: [
       {
@@ -595,6 +626,7 @@ const PAPERS: {
   ja: PaperLocale;
   es: PaperLocale;
   fr: PaperLocale;
+  ar: PaperLocale;
   doi: string;
   pdf: string;
 }[] = [
@@ -646,6 +678,14 @@ const PAPERS: {
       authors:
         "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
       type: "Article Original",
+    },
+    ar: {
+      title:
+        "فعالية RCI001 كمرشح علاجي في نموذج فأر لمتلازمة شوغرن الأولية",
+      journal: "القرنية",
+      authors:
+        "Hyereen Kang, Young-ho Jung, Jayoon Moon, Jin Suk Ryu, Chang Ho Yoon, Yong Ho Kim, Mee Kum Kim, Dong Hyun Kim",
+      type: "Original Article",
     },
     doi: "10.1097/ICO.0000000000003696",
     pdf: "efficacy_of_rci001_as_a_therapeutic_candidate_in_a.685.pdf",
@@ -700,6 +740,14 @@ const PAPERS: {
         "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Article Original",
     },
+    ar: {
+      title:
+        "مقارنة التئام جروح الظهارة القرنية بين RCI001 الموضعي و Solcoseryl و Polydeoxyribonucleotide في نموذج حرق قلوي للعين لدى الفئران",
+      journal: "Korean Journal of Ophthalmology",
+      authors:
+        "Myung-Sun Song, Young Ah Ku, Seunghoon Kim, Myung Hee Chung, Yong Ho Kim, Dong Hyun Kim",
+      type: "Original Article",
+    },
     doi: "10.3341/kjo.2023.0019",
     pdf: "Comparison of Corneal Epithelial Wound Healing between Topical RCI001, Solcoseryl, and Polydeoxyribonucleotide in the Murine Ocular Alkali Burn Model.pdf",
   },
@@ -751,6 +799,14 @@ const PAPERS: {
       authors:
         "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
       type: "Article Original",
+    },
+    ar: {
+      title:
+        "دراسة التأثيرات المضادة للالتهاب لـ RCI001 في علاج أمراض سطح العين: نظرة على آلية العمل",
+      journal: "Frontiers in Immunology",
+      authors:
+        "Seunghoon Kim, Ye Won Jang, Young-ah Ku, Yungyeong Shin, Md Mahbubur Rahman, Myung-Hee Chung, Yong Ho Kim, Dong Hyun Kim",
+      type: "Original Article",
     },
     doi: "10.3389/fimmu.2022.850287",
     pdf: "Investigating the Anti-Inflammatory Effects of RCI001 for Treating Ocular Surface Diseases Insight Into the Mechanism of Action.pdf",
@@ -805,6 +861,14 @@ const PAPERS: {
         "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
       type: "Article Original",
     },
+    ar: {
+      title:
+        "مقارنة التأثيرات العلاجية بين 8-oxo-2'-deoxyguanosine الموضعي والكورتيكوستيرويدات في نموذج حروق القلوي في العين",
+      journal: "Scientific Reports",
+      authors:
+        "Dong Hyun Kim, Sang-Taek Im, Jin Young Yoon, Seunghoon Kim, Mee Kum Kim, Myung-Hee Chung, Chul-Kyu Park",
+      type: "Original Article",
+    },
     doi: "10.1038/s41598-021-86440-7",
     pdf: "Comparison of therapeutic effects between topical 8-oxo-2′-deoxyguanosine and corticosteroid in ocular alkali burn model..pdf",
   },
@@ -857,6 +921,14 @@ const PAPERS: {
       authors:
         "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
       type: "Article Original",
+    },
+    ar: {
+      title:
+        "التوزيع العيني والحرائك الدوائية لـ 8-Oxo-2'-Deoxyguanosine: مرشح علاجي جديد لأمراض سطح العين",
+      journal: "Journal of Ocular Pharmacology and Therapeutics",
+      authors:
+        "Hyewon Chung, Yuseung Ha, Yong Ho Kim, Dong Hyun Kim, Dongseong Shin",
+      type: "Original Article",
     },
     doi: "10.1089/jop.2022.0054",
     pdf: "Ocular Distribution and Pharmacokinetics of 8-Oxo-2′-Deoxyguanosine A Novel Therapeutic Candidate of Ocular Surface Diseases (Publish).pdf",
@@ -911,6 +983,14 @@ const PAPERS: {
         "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
       type: "Article Original",
     },
+    ar: {
+      title:
+        "التأثيرات العلاجية قصيرة المدى للكورتيكوستيرويدات الموضعية على مرض جفاف العين المعند للعلاج: الفائدة السريرية لفحص الميتالوبروتيناز المصفوفي 9 كعلامة للتنبؤ بالاستجابة",
+      journal: "Clinical Ophthalmology",
+      authors:
+        "Kyung Jae Ryu, Seunghoon Kim, Mee Kum Kim, Hae Jung Paik, Dong Hyun Kim",
+      type: "Original Article",
+    },
     doi: "10.2147/OPTH.S300047",
     pdf: "Short-Term Therapeutic Effects of Topical Corticosteroids on Refractory Dry Eye Disease Clinical Usefulness of Matrix Metalloproteinase 9 Testing as a Response Prediction Marker.pdf",
   },
@@ -960,6 +1040,14 @@ const PAPERS: {
       authors:
         "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
       type: "Article Original",
+    },
+    ar: {
+      title:
+        "تحسين دقة حساب قوة العدسة البلورية عبر الإدارة قبل الجراحة لمرض جفاف العين",
+      journal: "BMC Ophthalmology",
+      authors:
+        "Jinsoo Kim, Mee Kum Kim, Yuseung Ha, Hae Jung Paik, Dong Hyun Kim",
+      type: "Original Article",
     },
     doi: "10.1186/s12886-021-02129-5",
     pdf: "Improved accuracy of intraocular lens power calculation by preoperative management of dry eye disease.pdf",
@@ -1195,6 +1283,39 @@ const CONTENT: Record<SupportedLocale, ContentBlock> = {
     certificateLabel: "Télécharger le certificat",
     metaTitle: "Brevets & Publications | RudaCure",
   },
+  ar: {
+    tag: "النشر",
+    title1: "براءات الاختراع و",
+    title2: "الأوراق البحثية",
+    description:
+      "محفظتنا من براءات الاختراع والنشر الأكاديمي الرئيسي لحماية وتطوير التكنولوجيا الأساسية لـ RudaCure وإنجازات البحث.",
+    patentsTitle: "حقوق الملكية الفكرية",
+    patentsDescription:
+      "تأمين حقوق الملكية الفكرية العالمية لتقنيات اكتشاف الأدوية البروتينية الغشائية الأساسية.",
+    papersTitle: "الأوراق البحثية الرئيسية",
+    papersDescription:
+      "إنجازات البحث الرئيسية لـ RudaCure المنشورة في المجلات الفهرسة في SCI محلياً ودولياً.",
+    trademarksTitle: "العلامات التجارية",
+    totalFamilies: "عائلات براءات الاختراع",
+    totalFilings: "إجمالي الطلبات",
+    grantedFilings: "الممنوحة",
+    globalCountries: "الدول",
+    totalPapers: "إجمالي الأوراق",
+    家: "",
+    件: "",
+    국: "",
+    편: "",
+    filed: "Filed",
+    granted: "الممنوحة",
+    pct: "PCT",
+    expired: "منتهية الصلاحية",
+    transferred: "تم النقل",
+    familyUnit: "عائلة",
+    inventorsLabel: "المخترعون",
+    viewJournal: "عرض المجلة",
+    certificateLabel: "تحميل الشهادة",
+    metaTitle: "براءات الاختراع والأوراق | روادكير",
+  },
 };
 
 /* ── Pluralized family count label ── */
@@ -1206,6 +1327,7 @@ const familyCountLabel = (count: number, locale: SupportedLocale): string => {
     ja: (n) => `${n} ファミリー`,
     es: (n) => (n > 1 ? `${n} familias` : `${n} familia`),
     fr: (n) => (n > 1 ? `${n} familles` : `${n} famille`),
+    ar: (n) => (n > 1 ? `${n} familles` : `${n} famille`),
   };
   return labels[locale](count);
 };

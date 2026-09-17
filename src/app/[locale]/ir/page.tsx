@@ -6,14 +6,14 @@ import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 import { IrContactLink } from "@/components/tracked-link";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
-type IRLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
+type IRLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr" | "ar";
 const SUPPORTED: ReadonlySet<string> = new Set([
   "ko",
   "en",
   "zh",
   "ja",
   "es",
-  "fr",
+  "fr", "ar",
 ]);
 function toIRLocale(locale: string): IRLocale {
   return SUPPORTED.has(locale) ? (locale as IRLocale) : "en";
@@ -113,6 +113,24 @@ const HIGHLIGHTS: Record<
       label: "Pipelines Principaux",
       sub: "RCI001 / RCI001AH / RCI002 / RCI003",
     },
+  ],
+  ar: [
+    {
+      value: "$94B",
+      label: "سوق الألم المزمن العالمي",
+      sub: "التوقعات حتى عام 2030",
+    },
+    {
+      value: "Phase 2",
+      label: "التجربة السريرية لـ RCI001 لدى FDA",
+      sub: "مرض جفاف العين (جاري)",
+    },
+    {
+      value: "70%",
+      label: "تقليل وقت التطوير",
+      sub: "منصة RuCIA للذكاء الاصطناعي",
+    },
+    { value: "4", label: "الخطوط الأساسية", sub: "RCI001 / RCI001AH / RCI002 / RCI003" },
   ],
 };
 
@@ -217,6 +235,24 @@ const ROADMAP: Record<
     {
       quarter: "Q4 2026",
       title: "RCI002 Licence Mondiale",
+      status: "upcoming",
+    },
+  ],
+  ar: [
+    {
+      quarter: "Q1 2026",
+      title: "اختيار ممول الطرح العام الأولي وإطلاقه على نطاق واسع",
+      status: "active",
+    },
+    {
+      quarter: "Q2 2026",
+      title: "دخول RCI001 في المرحلة 2 من التجارب السريرية في كوريا",
+      status: "upcoming",
+    },
+    { quarter: "Q3 2026", title: "تصنيف ODD لـ RCI002", status: "upcoming" },
+    {
+      quarter: "Q4 2026",
+      title: "ترخيص RCI002 عالمياً",
       status: "upcoming",
     },
   ],
@@ -450,6 +486,32 @@ const INVESTMENT_CASE: Record<
       icon: "target",
     },
   ],
+  ar: [
+    {
+      title: "سجل ترخيص موثوق",
+      description:
+        "ترخيص محلي من Hanlim Pharma لـ RCI001/RCI001U. إتمام ترخيص أدوية بيطرية متعددة الجنسيات. توسيع الشراكات العالمية.",
+      icon: "handshake",
+    },
+    {
+      title: "مصادر دخل متنوعة",
+      description:
+        "الأدوية البشرية، الأدوية البيطرية، توريد المواد الفعالة (API)، وخدمات CRO لتنويع الإيرادات وتحقيق نمو مستدام.",
+      icon: "chart",
+    },
+    {
+      title: "منصة ذكاء اصطناعي قابلة للتوسع",
+      description:
+        "تُمكّن RuCIA من تحديد المرشحين بسرعة مع خفض كبير للتكاليف ووقت التطوير.",
+      icon: "ai",
+    },
+    {
+      title: "استراتيجية مخدّرة موضعية مميزة",
+      description:
+        "يقلل التسليم داخل المفصل من التعرض الجهازي في بيئة تنظيمية تُعطي FDA/EMA أولوية لتقليل الاعتماد على الأفيونات الجهازية.",
+      icon: "target",
+    },
+  ],
 };
 
 const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
@@ -521,6 +583,17 @@ const FINANCIALS: Record<IRLocale, { label: string; value: string }[]> = {
     { label: "Actifs Principaux", value: "Plateforme RuCIA + 3 Pipelines" },
     { label: "Portefeuille de Brevets", value: "Corée / Japon / USA" },
   ],
+  ar: [
+    { label: "تأسيس", value: "2018" },
+    { label: "المساعدات الحكومية التراكمية", value: "~$4M+" },
+    {
+      label: "ترخيص رئيسي",
+      value: "Hanlim Pharma (RCI001/RCI001U), Multinational Vet Pharma (RCI001AH)",
+    },
+    { label: "التحضير للطرح العام الأولي", value: "Underwriter Selected (2025)" },
+    { label: "الأصول الأساسية", value: "RuCIA Platform + 3 Pipelines" },
+    { label: "حقوق الملكية الفكرية", value: "Korea / Japan / US" },
+  ],
 };
 
 const PARTNERS = [
@@ -541,6 +614,7 @@ const TEXT_INVESTORS: Record<IRLocale, string> = {
   ja: "投資家情報",
   es: "Inversionistas",
   fr: "Investisseurs",
+  ar: "المستثمرون",
 };
 
 const TEXT_HEADER_DESC: Record<IRLocale, string> = {
@@ -550,6 +624,7 @@ const TEXT_HEADER_DESC: Record<IRLocale, string> = {
   ja: "RudaCureは膜タンパク質（イオンチャネル・GPCR）を標的とするAI創薬企業です。単一の標的原理をドライアイ・慢性疼痛・乾癬・希少神経疾患へ展開したパイプラインとスケーラブルなAIプラットフォームでIPOを準備しています。",
   es: "RudaCure es una empresa de descubrimiento de farmacos con IA dirigida a proteinas de membrana: canales ionicos y GPCR. Nos preparamos para la IPO con un mismo principio de diana aplicado al ojo seco, el dolor cronico, la psoriasis y enfermedades neurologicas raras, sobre una plataforma de IA escalable.",
   fr: "RudaCure est une societe de decouverte de medicaments par IA ciblant les proteines membranaires : canaux ioniques et RCPG. Nous preparons notre IPO avec un meme principe de ciblage applique a l'oeil sec, la douleur chronique, le psoriasis et des maladies neurologiques rares, sur une plateforme IA evolutive.",
+  ar: "RudaCure هي شركة اكتشاف أدوية بالذكاء الاصطناعي تستهدف البروتينات الغشائية — قنوات الأيونات وGPCRs. نحن نعد للطرح العام الأولي مع تطبيق مبدأ استهداف واحد عبر جفاف العين والألم المزمن والصدفية والأمراض العصبية النادرة، على منصة ذكاء اصطناعي قابلة للتوسع.",
 };
 
 const TEXT_STRATEGIC_ROADMAP: Record<IRLocale, string> = {
@@ -559,6 +634,7 @@ const TEXT_STRATEGIC_ROADMAP: Record<IRLocale, string> = {
   ja: "戦略ロードマップ",
   es: "Hoja de Ruta Estrategica",
   fr: "Feuille de Route Strategique",
+  ar: "خارطة الطريق الاستراتيجية",
 };
 
 const TEXT_WHY_INVEST: Record<IRLocale, string> = {
@@ -568,6 +644,7 @@ const TEXT_WHY_INVEST: Record<IRLocale, string> = {
   ja: "投資ポイント",
   es: "Por Que Invertir",
   fr: "Pourquoi Investir",
+  ar: "لماذا تستثمر",
 };
 
 const TEXT_COMPANY_SNAPSHOT: Record<IRLocale, string> = {
@@ -577,6 +654,7 @@ const TEXT_COMPANY_SNAPSHOT: Record<IRLocale, string> = {
   ja: "会社概要",
   es: "Perfil de la Empresa",
   fr: "Apercu de l'Entreprise",
+  ar: "لمحة عن الشركة",
 };
 
 const TEXT_STRATEGIC_PARTNERS: Record<IRLocale, string> = {
@@ -586,6 +664,7 @@ const TEXT_STRATEGIC_PARTNERS: Record<IRLocale, string> = {
   ja: "戦略的パートナー",
   es: "Socios Estrategicos",
   fr: "Partenaires Strategiques",
+  ar: "الشركاء الاستراتيجيون",
 };
 
 const TEXT_PARTNERS: Record<IRLocale, string> = {
@@ -595,6 +674,7 @@ const TEXT_PARTNERS: Record<IRLocale, string> = {
   ja: "パートナーシップ",
   es: "Socios",
   fr: "Partenaires",
+  ar: "الشركاء",
 };
 
 const TEXT_CTA_DESC: Record<IRLocale, string> = {
@@ -604,6 +684,7 @@ const TEXT_CTA_DESC: Record<IRLocale, string> = {
   ja: "投資に関するお問い合わせ、パートナーシップのご提案、IR資料のご請求は下記までご連絡ください。",
   es: "Para consultas de inversionistas, propuestas de alianzas o materiales de IR, contactenos.",
   fr: "Pour les demandes d'investisseurs, les propositions de partenariat ou les documents IR, veuillez nous contacter.",
+  ar: "لاستفسارات المستثمرين، أو مقترحات الشراكة، أو مواد العلاقات مع المستثمرين، يرجى التواصل معنا.",
 };
 
 const TEXT_CONTACT_US: Record<IRLocale, string> = {
@@ -613,6 +694,7 @@ const TEXT_CONTACT_US: Record<IRLocale, string> = {
   ja: "お問い合わせ",
   es: "Contactenos",
   fr: "Nous Contacter",
+  ar: "اتصل بنا",
 };
 
 const TEXT_META_TITLE: Record<IRLocale, string> = {
@@ -622,6 +704,7 @@ const TEXT_META_TITLE: Record<IRLocale, string> = {
   ja: "投資家情報 | RudaCure",
   es: "Relaciones con Inversionistas | RudaCure",
   fr: "Relations Investisseurs | RudaCure",
+  ar: "العلاقات مع المستثمرين | روداكير",
 };
 
 export async function generateMetadata({

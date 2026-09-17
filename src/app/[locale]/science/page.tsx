@@ -3,10 +3,10 @@ import { ogCard } from "@/lib/og";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
-type ScienceLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr";
+type ScienceLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr" | "ar";
 
 function toScienceLocale(locale: string): ScienceLocale {
-  const supported: ScienceLocale[] = ["ko", "en", "zh", "ja", "es", "fr"];
+  const supported: ScienceLocale[] = ["ko", "en", "zh", "ja", "es", "fr", "ar"];
   return supported.includes(locale as ScienceLocale)
     ? (locale as ScienceLocale)
     : "en";
@@ -172,6 +172,32 @@ const CAPABILITIES: Record<
       image: "/images/science/lab-bench.jpg",
     },
   ],
+  ar: [
+    {
+      title: "إتقان بروتينات الغشاء",
+      description:
+        "متخصص في قنوات الأيونات التي تتحكم في إشارات الألم والحس، بما في ذلك TRPV1 وTRPA1 وTRPV4. تتنبأ الذكاء الاصطناعي بالتفاعلات بين القناة والليغاند لاكتشاف مرشحات دوائية انتقائية.",
+      image: "/images/science/membrane-md.jpg",
+    },
+    {
+      title: "محاكاة جزيئية بالذكاء الاصطناعي",
+      description:
+        "المحاكاة على المستوى الجزيئي تمنع الآثار الجانبية غير المستهدفة مسبقاً. تم حلّ أثر فرط الحرارة الجانبي لمضادات TRPV1 من الجيل الأول بالكامل.",
+      image: "/images/science/md-ligand.jpg",
+    },
+    {
+      title: "التحقق عبر الفيزيولوجيا الكهربائية",
+      description:
+        "تحقق عالية الإنتاجية عبر الفيزيولوجيا الكهربائية باستخدام تقنية المقطع المقفل. يؤكد تنبؤات الذكاء الاصطناعي مقابل بيانات نشاط قنوات الأيونات الفعلية.",
+      image: "/images/science/assay-bench.jpg",
+    },
+    {
+      title: "خدمات CRO",
+      description:
+        "خدمات CRO متخصصة في الفيزيولوجيا الكهربائية. تقييم مخصص للفعالية باستخدام نماذج حيوانية لأمراض العين والحس.",
+      image: "/images/science/lab-bench.jpg",
+    },
+  ],
 };
 
 const ADVANTAGES: Record<
@@ -321,6 +347,32 @@ const ADVANTAGES: Record<
       label: "Efficacité des Coûts",
       before: "Moyenne $2.6B",
       after: "Significativement réduit",
+      reduction: "",
+    },
+  ],
+  ar: [
+    {
+      label: "زمن التطوير",
+      before: "10-15 سنة",
+      after: "3-5 سنوات",
+      reduction: "70%",
+    },
+    {
+      label: "انتقائية المرشح",
+      before: "تجربة وخطأ",
+      after: "100% متنبأ بالذكاء الاصطناعي",
+      reduction: "",
+    },
+    {
+      label: "الآثار الجانبية (فرط الحرارة)",
+      before: "غير محسوم",
+      after: "محلولة بالكامل",
+      reduction: "",
+    },
+    {
+      label: "كفاءة التكلفة",
+      before: "متوسط 2.6 مليار دولار",
+      after: "انخفض بشكل كبير",
       reduction: "",
     },
   ],
@@ -516,6 +568,34 @@ const CONTENT: Record<
       "Simulation d'interaction cible–ligand",
     ],
   },
+  ar: {
+    tag: "منصة التكنولوجيا",
+    title: ["الـ", "RuCIA", "منصة"],
+    description:
+      "RuCIA — التقييم المبتكر لقنوات الأيونات في روداكير: المحرك الأساسي الذي يدمج التنبؤ الجزيئي المدعوم بالذكاء الاصطناعي مع التحقق الفسيولوجي الكهربائي عالي الإنتاجية.",
+    compTag: "الميزة التنافسية",
+    compTitle: ["RuCIA مقابل", "اكتشاف", "الأدوية التقليدي"],
+    thMetric: "مقياس",
+    thTraditional: "اكتشاف",
+    thRucia: "RuCIA",
+    thGap: "الفجوة",
+    beyondTitle: ["ما وراء ", "الإشارة"],
+    beyondP1:
+      "قنوات الأيونات هي منظمات رئيسية للألم، وإحساس الحرارة، والتوازن الداخلي لسطح العين. يعدّل RuCIA بدقة مصدر هذه الإشارات، معالجًا الأسباب بدلاً من الأعراض.",
+    beyondP2:
+      "في عصر ما بعد الأفيونات، حيث تُعطي FDA/EMA الأولوية للبدائل غير المُسبِّبة للإدمان، يُعدّ منصّة TRPV1 الخاصة بـ RudaCure هدفًا استراتيجيًا للشراكات مع شركات الأدوية العالمية.",
+    mdTag: "ديناميكا الجزيئات",
+    mdTitle: ["ديناميكا الجزيئات ", "في العمل"],
+    mdDesc:
+      "يحاكي RuCIA بروتينات الغشاء بدقة ذرية داخل بيئة دهنية واقعية، كاشفًا عن استقرار ديناميكا التكوينات للارتباط بين الهدف والليغاند. هنا يتم التحقق من تنبؤات الذكاء الاصطناعي عبر ديناميكا مبنية على الفيزياء.",
+    mdFeatureCaption:
+      "محاكاة مركّب قناة الأيونات TRPV4–RhoA داخل ثنائي طبقة دهنية ذرية حقيقية (غشاء POPC): الأخضر هو الغشاء الدهني، السطح الأزرق/البنفسجي هو القناة العابرة للغشاء (رباعي TRPV4)، والوردي هو الشريك المرتبط داخل الخلية (RhoA). يدرس RuCIA بروتينات الغشاء في بيئة غشائية حقيقية — مع شركائها داخل الخلية، وليس في الماء وحده.",
+    mdCaptions: [
+      "ديناميكا ارتباط قنوات TRP–الليغاند في غشاء دهني",
+      "تغيرات التكوين في بيئة غشائية",
+      "محاكاة تفاعل الهدف–الليغاند",
+    ],
+  },
 };
 
 const META_TITLES: Record<ScienceLocale, string> = {
@@ -525,6 +605,7 @@ const META_TITLES: Record<ScienceLocale, string> = {
   ja: "技術プラットフォーム | RudaCure",
   es: "Ciencia | RudaCure",
   fr: "Science | RudaCure",
+  ar: "العلم | RudaCure",
 };
 
 export async function generateMetadata({

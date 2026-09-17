@@ -5,6 +5,7 @@ import articlesZh from "@/data/news_zh.json";
 import articlesJa from "@/data/news_ja.json";
 import articlesEs from "@/data/news_es.json";
 import articlesFr from "@/data/news_fr.json";
+import articlesAr from "@/data/news_ar.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { NewsYearFilter } from "@/components/news-year-filter";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
@@ -132,6 +133,7 @@ export default async function NewsPage({
     ja: articlesJa as typeof articlesKo,
     es: articlesEs as typeof articlesKo,
     fr: articlesFr as typeof articlesKo,
+    ar: articlesAr as typeof articlesKo,
   };
   const articles = articlesMap[locale] ?? articlesEn;
   const mc = MAGAZINE_CONTENT[locale] ?? MAGAZINE_CONTENT.en;
