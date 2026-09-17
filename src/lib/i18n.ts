@@ -497,7 +497,7 @@ const translations = {
     "rucia.title1": "Membrane Target",
     "rucia.title2": "Drug Discovery",
     "rucia.description":
-      "Nous développons des médicaments ciblant la membrane cellulaire grâce à la technologie de mesure d'activité des canaux ioniques basée sur l'électrophysiologie. Par le patch clamp et la validation électrophysiologique à haut débit, nous découvrons des modulateurs sélectifs des canaux ioniques tels que TRPV1, vérifiant l'efficacité et la sécurité des traitements de la douleur non opioïde et de l'œil sec avec des données réelles.",
+      "Nous développons des médicaments ciblant la membrane cellulaire grâce à la technologie de mesure d'activité des canaux ioniques basée sur l'électrophysiologie. Par le patch clamp et la validation électrophysiologique à haut débit, nous découvrons des modulateurs sélectifs des canaux ioniques tels que TRPV1, vérifiant l'efficacité et la sécurité des traitements des maladies sensorielles, douloureuses et inflammatoires avec des données réelles.",
     "rucia.metric.time": "Electrophysiology",
     "rucia.metric.time.sub": "Validation HT Patch Clamp",
     "rucia.metric.selectivity": "Membrane Target",
