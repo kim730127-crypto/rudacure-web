@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Noto_Sans_Arabic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { getDir, isValidLocale, LOCALES, type Locale } from "@/lib/i18n";
@@ -181,7 +181,15 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!isValidLocale(locale)) redirect("/ko");
+  // 로케일이 아닌 첫 세그먼트는 404 로 닫는다.
+  //
+  // 직전까지는 `redirect("/ko")` 였다. 그러면 삭제된 주소가 307 로 홈을 가리키고,
+  // Google 은 이걸 soft 404 로 읽는다. 색인 보고서에 「리디렉션이 포함된 페이지」로
+  // 잡히기만 하고 정작 색인에서는 내려가지 않았다. 여기까지 닿는 주소는 대개 구
+  // gnuboard 사이트의 `.php` · `.pdf` 경로다. 확장자가 붙어 middleware 의 정적파일
+  // 분기를 통과하기 때문이다. 그 대부분은 이제 middleware 가 410 으로 막지만, 예상하지
+  // 못한 형태가 흘러들어올 때는 홈으로 돌리기보다 없다고 답하는 편이 맞다.
+  if (!isValidLocale(locale)) notFound();
 
   return (
     <html lang={locale} dir={getDir(locale)}>

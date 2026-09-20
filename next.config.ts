@@ -68,8 +68,18 @@ const HID_MAP: Record<string, string> = {
   m06_01: "/contact", // 오시는 길
 };
 
-/** gnuboard list pages served as /bbs/board.php?bo_table=<id>. */
+/**
+ * gnuboard list pages served as /bbs/board.php?bo_table=<id>.
+ *
+ * 목록과 기사 항목이 같은 질의어를 쓴다. `wr_id` 는 버린다 - 구 기사 번호와 새 뉴스
+ * 아이디는 대상이 달라서, 개별 기사로 보내면 다른 내용을 보여준다. 목록이 정답이다.
+ * 여기 없는 보드와 `download.php` · `login.php` 등은 middleware 가 410 으로 닫는다.
+ */
 const BO_TABLE_MAP: Record<string, string> = {
+  m04_01: "/news", // 홍보센터 > 뉴스
+  m04_02: "/news", // 홍보센터 > 매거진
+  m04_03: "/publications", // 홍보센터 > 특허/인증
+  m04_04: "/news", // 홍보센터 > 행사일정
   m06_02: "/contact", // 고객문의
   m07_01: "/news", // 공지사항
 };
