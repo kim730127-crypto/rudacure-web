@@ -1,6 +1,5 @@
 'use server'
 
-import { Resend } from 'resend'
 import { z } from 'zod'
 import { headers } from 'next/headers'
 
@@ -78,20 +77,112 @@ const contactFormSchema = z.object({
 })
 
 // ============================================================================
-// Initialize Resend
+// 메일 발송 - Microsoft Graph
 // ============================================================================
 
 /**
- * 2026-09-22. 종전에는 키가 없으면 모듈 최상단에서 throw 했다. 이 파일은 'use server'
- * 모듈이라 그 예외가 빌드가 아니라 **제출 순간**에 터지고, 방문자는 원인을 알 수 없는
- * 오류만 본다. Vercel 프로젝트에 환경변수가 하나도 등록돼 있지 않은 상태였으므로 실제
- * 문의는 전부 이 경로로 빠졌을 것으로 본다.
+ * 2026-09-22. 발송 경로를 Resend 에서 Microsoft Graph 로 옮겼다.
  *
- * 그래서 키 확인을 제출 시점으로 늦추고, 없을 때는 서버 로그에 원인을 남기고 방문자에게는
- * 담당자 메일 주소를 안내한다. 키를 넣으면 종전 동작 그대로다.
+ * 바꿘 이유. 종전 코드는 `RESEND_API_KEY` 가 없으면 모듈 최상단에서 throw 했는데,
+ * 'use server' 모듈이라 그 예외는 빌드가 아니라 방문자가 보내기를 누르는 순간에 터졌다.
+ * 그리고 Vercel 프로젝트에는 환경변수가 하나도 없었다. Resend 계정 자체가 없었으므로
+ * 사이트가 살아 있는 동안 문의는 전부 여기서 사라졌다고 봐야 한다.
+ *
+ * 회사는 이미 Microsoft 365 를 쓴다(MX 가 outlook, SPF 가 `-all`). 외부 발송 서비스를
+ * 붙이려면 DKIM 레코드를 따로 심고 SPF 를 손대야 하지만, Graph 로 보내면 메일이
+ * 테넌트 안에서 나가므로 DNS 를 건드릴 이유가 없다. 보낸 편지함에도 그대로 남는다.
+ *
+ * 인증은 Entra 앱 `rudacure-web-contact-mailer` 의 client credentials 방식이고,
+ * Graph 권한은 Mail.Send 하나다.
  */
-const RESEND_API_KEY = process.env.RESEND_API_KEY
-const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
+const MS_TENANT_ID = process.env.MS_TENANT_ID
+const MS_CLIENT_ID = process.env.MS_CLIENT_ID
+const MS_CLIENT_SECRET = process.env.MS_CLIENT_SECRET
+const CONTACT_FROM_ADDRESS =
+  process.env.CONTACT_FROM_ADDRESS || 'sh.kim@rudacure.com'
+
+const mailerConfigured = Boolean(
+  MS_TENANT_ID && MS_CLIENT_ID && MS_CLIENT_SECRET,
+)
+
+/** 토큰은 한 시간짜리라 매번 받지 않고 만료 60초 전까지 재사용한다. */
+let cachedToken: { value: string; expiresAt: number } | null = null
+
+const getGraphToken = async (): Promise<string | null> => {
+  const now = Date.now()
+  if (cachedToken && cachedToken.expiresAt > now + 60_000) {
+    return cachedToken.value
+  }
+
+  const response = await fetch(
+    `https://login.microsoftonline.com/${MS_TENANT_ID}/oauth2/v2.0/token`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_id: MS_CLIENT_ID as string,
+        client_secret: MS_CLIENT_SECRET as string,
+        scope: 'https://graph.microsoft.com/.default',
+        grant_type: 'client_credentials',
+      }),
+    },
+  )
+
+  if (!response.ok) {
+    // 본문에 secret 이 들어갈 수 있으므로 상태코드만 남긴다.
+    console.error('Graph token request failed', { status: response.status })
+    return null
+  }
+
+  const token = (await response.json()) as {
+    access_token?: string
+    expires_in?: number
+  }
+  if (!token.access_token) return null
+
+  cachedToken = {
+    value: token.access_token,
+    expiresAt: now + (token.expires_in ?? 3600) * 1000,
+  }
+  return cachedToken.value
+}
+
+interface SendOutcome {
+  ok: boolean
+  status?: number
+}
+
+const sendViaGraph = async (args: {
+  to: string
+  replyTo: string
+  subject: string
+  html: string
+}): Promise<SendOutcome> => {
+  const token = await getGraphToken()
+  if (!token) return { ok: false }
+
+  const response = await fetch(
+    `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(CONTACT_FROM_ADDRESS)}/sendMail`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: {
+          subject: args.subject,
+          body: { contentType: 'HTML', content: args.html },
+          toRecipients: [{ emailAddress: { address: args.to } }],
+          replyTo: [{ emailAddress: { address: args.replyTo } }],
+        },
+        saveToSentItems: true,
+      }),
+    },
+  )
+
+  return { ok: response.status === 202, status: response.status }
+}
 
 // ============================================================================
 // Rate Limiting (Simple In-Memory)
@@ -286,8 +377,8 @@ export async function submitContactForm(formData: unknown): Promise<SubmitResult
     const subject = `New Inquiry - ${safeType} from ${safeName}`
 
     // ========== 발송 설정 확인 ==========
-    if (!resend) {
-      console.error('RESEND_API_KEY missing - contact form cannot send', { ip })
+    if (!mailerConfigured) {
+      console.error('Graph mailer env missing - contact form cannot send', { ip })
       return {
         success: false,
         message:
@@ -298,19 +389,18 @@ export async function submitContactForm(formData: unknown): Promise<SubmitResult
     }
 
     // ========== SEND EMAIL ==========
-    const response = await resend.emails.send({
-      from: 'contact@rudacure.com',
+    const outcome = await sendViaGraph({
       to: recipientEmail,
       replyTo: data.email,
       subject,
       html: generateEmailHtml(data),
     })
 
-    if (response.error) {
+    if (!outcome.ok) {
       // ========== SECURITY: Controlled Error Logging ==========
       console.error('Email send error', {
-        code: response.error.name,
-        // Do NOT log: message, full error object (may contain API key)
+        status: outcome.status,
+        // 응답 본문과 예외 객체는 남기지 않는다.
         ip,
       })
 
