@@ -199,9 +199,36 @@ function buildRedirects(): Rule[] {
   return rules;
 }
 
+/**
+ * 보안 헤더. 2026-09-22 기준 응답에는 Cloudflare 가 붙이는 HSTS 말고는 아무것도 없었다.
+ *
+ * CSP 는 넣지 않았다. 홈페이지 three.js hero, TMap 지도 iframe, Google Analytics 가 모두
+ * 인라인·외부 스크립트를 쓰기 때문에 지금 바로 걸면 화면이 깨진다. CSP 를 넣으려면
+ * Report-Only 로 한 주 관측한 뒤 확정하는 별도 작업이 필요하다.
+ *
+ * X-Frame-Options 대신 frame-ancestors 를 쓰는 방향이 최신이지만, 그것도 CSP 이므로
+ * 여기서는 전통 헤더로 클릭재킹만 먼저 막는다.
+ */
+const SECURITY_HEADERS = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
+];
+
 const nextConfig: NextConfig = {
   async redirects() {
     return buildRedirects();
+  },
+  async headers() {
+    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
 };
 

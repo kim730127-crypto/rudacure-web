@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Noto_Sans_Arabic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getDir, isValidLocale, LOCALES, type Locale } from "@/lib/i18n";
 import { organizationSchema, webSiteSchema } from "@/lib/schema";
 import { Navbar } from "@/components/navbar";
@@ -220,6 +221,7 @@ export default async function LocaleLayout({
         <main className="flex-1">{children}</main>
         <Footer locale={locale as Locale} />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

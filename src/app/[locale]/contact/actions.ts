@@ -81,11 +81,17 @@ const contactFormSchema = z.object({
 // Initialize Resend
 // ============================================================================
 
+/**
+ * 2026-09-22. 종전에는 키가 없으면 모듈 최상단에서 throw 했다. 이 파일은 'use server'
+ * 모듈이라 그 예외가 빌드가 아니라 **제출 순간**에 터지고, 방문자는 원인을 알 수 없는
+ * 오류만 본다. Vercel 프로젝트에 환경변수가 하나도 등록돼 있지 않은 상태였으므로 실제
+ * 문의는 전부 이 경로로 빠졌을 것으로 본다.
+ *
+ * 그래서 키 확인을 제출 시점으로 늦추고, 없을 때는 서버 로그에 원인을 남기고 방문자에게는
+ * 담당자 메일 주소를 안내한다. 키를 넣으면 종전 동작 그대로다.
+ */
 const RESEND_API_KEY = process.env.RESEND_API_KEY
-if (!RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY environment variable is required for email service')
-}
-const resend = new Resend(RESEND_API_KEY)
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
 
 // ============================================================================
 // Rate Limiting (Simple In-Memory)
@@ -278,6 +284,18 @@ export async function submitContactForm(formData: unknown): Promise<SubmitResult
     const safeType = sanitizeHeaderValue(data.type)
     const safeName = sanitizeHeaderValue(data.name)
     const subject = `New Inquiry - ${safeType} from ${safeName}`
+
+    // ========== 발송 설정 확인 ==========
+    if (!resend) {
+      console.error('RESEND_API_KEY missing - contact form cannot send', { ip })
+      return {
+        success: false,
+        message:
+          'Mail delivery is temporarily unavailable. Please email us directly at ' +
+          recipientEmail +
+          '.',
+      }
+    }
 
     // ========== SEND EMAIL ==========
     const response = await resend.emails.send({
