@@ -10,6 +10,7 @@ import newsDataAr from "@/data/news_ar.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
+import { categoryOgImage } from "@/lib/news-category";
 
 const NEWS_MAP: Record<string, typeof newsDataKo> = {
   ko: newsDataKo,
@@ -62,6 +63,7 @@ export async function generateMetadata({
   const title = `${article.title} | RudaCure`;
   const description = stripHtml(article.content);
   const url = `${SITE_URL}/${locale}/news/${id}`;
+  const ogImage = categoryOgImage(article.category, locale);
 
   return {
     title,
@@ -77,7 +79,7 @@ export async function generateMetadata({
       section: article.category,
       images: [
         {
-          url: `/og-image-${locale}.jpg`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: article.title,
@@ -88,7 +90,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: article.title,
       description,
-      images: [`/og-image-${locale}.jpg`],
+      images: [ogImage],
     },
   };
 }
@@ -115,7 +117,7 @@ export default async function NewsArticlePage({
     articleSection: article.category,
     inLanguage: locale,
     url: `${SITE_URL}/${locale}/news/${id}`,
-    image: `${SITE_URL}/og-image-${locale}.jpg`,
+    image: `${SITE_URL}${categoryOgImage(article.category, locale)}`,
     author: {
       "@type": "Organization",
       name: "RudaCure Co., Ltd.",

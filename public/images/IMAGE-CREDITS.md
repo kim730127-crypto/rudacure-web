@@ -16,7 +16,9 @@ only cropped and downscaled web derivatives are committed to this repository.
 
 **Not permitted:** AI-generated imagery depicting events that did not happen,
 company milestones not yet achieved, or data not actually measured. See the
-"Removed" section for why.
+"Removed" section for why. The News Center category key visuals are generated
+and are the one exception, because they depict nothing at all; the reasoning is
+set out under "Category key visuals" below.
 
 ---
 
@@ -30,6 +32,37 @@ company milestones not yet achieved, or data not actually measured. See the
 | `logo*.png`, `favicon` | Corporate marks | RudaCure. |
 | `sab/*.jpg` | Scientific Advisory Board portraits | Supplied by each advisor. Confirm written consent is on file before publication. |
 | `partners/*` | Partner and vendor marks | Used to identify each organisation. Nominative use; confirm any partner-specific brand guidelines. |
+
+## Category key visuals — News Center
+
+| File | Used on | Shipped |
+|---|---|---|
+| `news/categories/{company,award,clinical,science,partnership,patent,ir,industry,csr}.jpg` | News Center list thumbnails | 1280×720 |
+| `../og/news-{same nine}.jpg` | Open Graph / Twitter card for every article in that category, all seven locales | 1200×630 |
+
+Generated with Google Gemini image generation, 2026-09-22, to a written style
+lock held constant across the set; one visual was anchored and the rest carry it
+as a colour-and-treatment reference. Prompts and the working method are kept in
+the operator's `visual-asset-pipeline` notes.
+
+**These are graphic devices for a category, not pictures of a story.** Each one
+is strictly non-representational — no laboratory, no equipment, no people, no
+buildings, no molecules, no charts, no maps, and no text of any kind. Nothing in
+them can be read as a claim about an event, a capability or a measurement, which
+is what the prohibition at the top of this file is protecting against. The
+accent colour of each visual matches that category's existing badge colour, so
+the image carries no information the badge does not already carry.
+
+**One visual per category, shared by every article in it.** A per-article image
+would read as a photograph of that article's subject, which is the failure the
+"Removed" table below records twice. `src/lib/news-category.ts` enforces this by
+mapping category strings rather than article IDs, and falls back to the
+locale-wide card for any category string it does not know.
+
+Why these were generated rather than photographed: a list row needs an image
+that says nothing, and no photograph is neutral. The alternative considered and
+rejected was licensed stock, for the reason already recorded below — a drug
+discovery company illustrating itself with stock invites the question of why.
 
 ## RudaCure photography
 

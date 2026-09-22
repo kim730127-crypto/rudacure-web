@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { categoryThumbnail } from "@/lib/news-category";
 
 type Article = {
   id: number;
@@ -79,12 +81,26 @@ export function NewsYearFilter({
 
       {/* Article list */}
       <div className="space-y-3">
-        {filtered.map((article) => (
+        {filtered.map((article) => {
+          const thumb = categoryThumbnail(article.category);
+          return (
           <Link
             key={article.id}
             href={`/${locale}/news/${article.id}`}
             className="liquid-glass p-5 flex items-center gap-4 group transition-all block"
           >
+            {thumb && (
+              <div className="hidden sm:block relative w-[152px] aspect-video rounded-lg overflow-hidden shrink-0 bg-slate-900">
+                <Image
+                  src={thumb}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="152px"
+                  className="object-cover"
+                />
+              </div>
+            )}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 mb-1.5">
                 <span
@@ -115,7 +131,8 @@ export function NewsYearFilter({
               />
             </svg>
           </Link>
-        ))}
+          );
+        })}
 
         {filtered.length === 0 && (
           <p className="text-center text-gray-400 py-12">No articles found.</p>
