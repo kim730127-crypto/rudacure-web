@@ -30,6 +30,7 @@ company milestones not yet achieved, or data not actually measured. See the
 | `logo*.png`, `favicon` | Corporate marks | RudaCure. |
 | `sab/*.jpg` | Scientific Advisory Board portraits | Supplied by each advisor. Confirm written consent is on file before publication. |
 | `partners/*` | Partner and vendor marks | Used to identify each organisation. Nominative use; confirm any partner-specific brand guidelines. |
+| `news/rci001-phase2-keyvisual.jpg` | Abstract key visual for News 192 | Created in-house with Python/Pillow on 2026-09-23. No people, equipment, scientific data, logos or third-party assets; 1280×720. |
 
 ## RudaCure photography
 
