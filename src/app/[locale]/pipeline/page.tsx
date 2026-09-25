@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ProgressBar } from "@/components/progress-bar";
 import { ogCard } from "@/lib/og";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
@@ -14,6 +15,16 @@ import { PipelineCtaLink } from "@/components/tracked-link";
  * translated. These two links are the route between them, and the click is
  * tracked so the rate can be read rather than guessed.
  */
+const APPROVAL_NEWS: Record<string, string> = {
+  ko: "국내 임상 2상 승인 소식 보기",
+  en: "Read the Korean Phase 2 approval news",
+  zh: "查看韩国2期临床试验获批消息",
+  ja: "韓国第2相承認のニュースを見る",
+  es: "Leer la noticia de la aprobación en Corea",
+  fr: "Lire l’annonce de l’autorisation en Corée",
+  ar: "اقرأ خبر الموافقة في كوريا",
+};
+
 const CTA_HEADING: Record<string, string> = {
   ko: "파이프라인 관련 문의",
   en: "Talk to us about the pipeline",
@@ -64,41 +75,41 @@ export async function generateMetadata({
   // to the Korean string; now each locale is localized (fallback = English).
   const META: Record<string, { title: string; description: string }> = {
     en: {
-      title: "Pipeline: Dry Eye (FDA Phase 2) & Chronic Pain | RudaCure",
+      title: "Pipeline: RCI001 Korea Phase 2 IND Approved | RudaCure",
       description:
-        "RudaCure's membrane protein & gene-therapy pipeline: RCI001 dry eye (FDA Phase 2, NCT07068958), RCI002 intra-articular pain therapy, RC0125 TRPV4 gene therapy for CMT2C.",
+        "RudaCure's membrane protein & gene-therapy pipeline: RCI001 dry eye (US FDA Phase 2 IND; Korean Phase 2 IND approved Sep 22, 2026), RCI002 intra-articular pain therapy, RC0125 TRPV4 gene therapy for CMT2C.",
     },
     ko: {
-      title: "파이프라인: 안구건조증(FDA 2상)·만성통증 치료제 | RudaCure",
+      title: "파이프라인: RCI001 국내 임상 2상 IND 승인 | RudaCure",
       description:
-        "루다큐어의 막단백질·유전자치료 파이프라인: RCI001 안구건조증(FDA 2상, NCT07068958), RCI002 관절강 국소 투여 진통제, RC0125 TRPV4 유전자치료제(CMT2C).",
+        "루다큐어의 막단백질·유전자치료 파이프라인: RCI001 안구건조증(미국 FDA 2상 IND·국내 2상 IND 2026.09.22 승인), RCI002 관절강 국소 투여 진통제, RC0125 TRPV4 유전자치료제(CMT2C).",
     },
     zh: {
-      title: "研发管线：干眼症（FDA 2期）与慢性疼痛 | RudaCure",
+      title: "研发管线：RCI001韩国2期临床试验计划获批 | RudaCure",
       description:
-        "RudaCure膜蛋白与基因疗法管线：RCI001干眼症（FDA 2期，NCT07068958）、RCI002关节腔局部镇痛、RC0125靶向TRPV4的CMT2C基因疗法。",
+        "RudaCure膜蛋白与基因疗法管线：RCI001干眼症（美国FDA及韩国2期临床试验计划获批，韩国2026.09.22）、RCI002关节腔局部镇痛、RC0125靶向TRPV4的CMT2C基因疗法。",
     },
     ja: {
       title:
-        "パイプライン：ドライアイ（FDA第2相）・慢性疼痛 | RudaCure",
+        "パイプライン：RCI001韓国第2相臨床試験計画承認 | RudaCure",
       description:
-        "RudaCureの膜タンパク質・遺伝子治療パイプライン：RCI001ドライアイ（FDA第2相、NCT07068958）、RCI002関節腔内局所鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
+        "RudaCureの膜タンパク質・遺伝子治療パイプライン：RCI001ドライアイ（米FDA第2相IND・韓国第2相計画承認、2026.09.22）、RCI002関節腔内局所鎮痛、RC0125 TRPV4標的CMT2C遺伝子治療。",
     },
     es: {
-      title: "Pipeline: Ojo Seco (Fase 2 FDA) y Dolor Crónico | RudaCure",
+      title: "Pipeline: Aprobado el ensayo de fase 2 de RCI001 en Corea | RudaCure",
       description:
-        "Pipeline de proteínas de membrana y terapia génica de RudaCure: RCI001 ojo seco (Fase 2 FDA, NCT07068958), RCI002 dolor crónico intraarticular, RC0125 terapia génica TRPV4 para CMT2C.",
+        "Pipeline de proteínas de membrana y terapia génica de RudaCure: RCI001 ojo seco (IND de fase 2 en EE. UU. y Corea; autorización coreana el 22.09.2026), RCI002 dolor crónico intraarticular, RC0125 terapia génica TRPV4 para CMT2C.",
     },
     fr: {
       title:
-        "Pipeline : Œil Sec (Phase 2 FDA) et Douleur Chronique | RudaCure",
+        "Pipeline : Essai de phase 2 de RCI001 autorisé en Corée | RudaCure",
       description:
-        "Pipeline protéines membranaires et thérapie génique de RudaCure : RCI001 œil sec (Phase 2 FDA, NCT07068958), RCI002 douleur chronique intra-articulaire, RC0125 thérapie génique TRPV4 pour la CMT2C.",
+        "Pipeline protéines membranaires et thérapie génique de RudaCure : RCI001 œil sec (essais de phase 2 autorisés aux États-Unis et en Corée, le 22.09.2026 en Corée), RCI002 douleur chronique intra-articulaire, RC0125 thérapie génique TRPV4 pour la CMT2C.",
     },
     ar: {
-      title: "خط الإنتاج: جفاف العين (المرحلة 2 من FDA) والألم المزمن | RudaCure",
+      title: "خط التطوير: الموافقة على خطة المرحلة الثانية من RCI001 في كوريا | RudaCure",
       description:
-        "خط إنتاج البروتينات الغشائية والعلاج الجيني لدى RudaCure: RCI001 لجفاف العين (المرحلة 2 من FDA، NCT07068958)، RCI002 لعلاج الألم المفصلي، RC0125 علاج جيني لـ TRPV4 لمتلازمة CMT2C.",
+        "خط إنتاج البروتينات الغشائية والعلاج الجيني لدى RudaCure: RCI001 لجفاف العين (الموافقة على خطتي المرحلة الثانية في أمريكا وكوريا، وكوريا في 2026.09.22)، RCI002 لعلاج الألم المفصلي، RC0125 علاج جيني لـ TRPV4 لمتلازمة CMT2C.",
     },
   };
   const m = META[locale] ?? META.en;
@@ -201,19 +212,18 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 하부 신호 조절제",
       mechanism:
         "TRPV1 채널을 직접 차단하는 기존 antagonist와 달리, RCI001은 TRPV1 하부의 Rac1/NLRP3 염증 캐스케이드를 조절하여 눈물막 항상성과 각막 상피 치유를 회복합니다. 온도감각 차단 없이 염증의 근본 원인을 해결하는 차별화된 작용기전.",
-      status: "US FDA Phase 2 / 국내 임상 2상",
+      status: "국내 임상 2상 IND 승인",
       progress: 62,
       color: "emerald",
       milestones: [
         "US FDA Phase 2 IND 승인 (2025.08)",
         "NCT07068958 등록 완료",
-        "국내 임상 2상 진행 예정 (2026 상반기)",
+        "국내 임상 2상 시험계획(IND) 승인 (2026.09.22)",
         "국내 한림제약과 공동연구 (RCI001/RCI001U)",
-        "중간 분석 2026 Q1",
       ],
       details: [
         "차별화된 작용기전: 직접 TRPV1 antagonist가 아닌 하부 신호 조절제",
-        "글로벌 개발: US FDA Phase 2 + 국내 임상 2상 (2026)",
+        "미국 FDA 임상 2상 IND 승인(2025.08), 국내 임상 2상 IND 승인(2026.09.22)",
         "0.25% 점안액 제형 — 비스테로이드성, 우수한 내약성",
         "쇼그렌 증후군 모델: 1주 내 눈물 분비량 증가 확인",
         "4주 이내 치료 효과 발현 (스테로이드 대안 대비 8-12주 단축)",
@@ -337,19 +347,18 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 Downstream Modulator",
       mechanism:
         "Unlike direct TRPV1 channel antagonists, RCI001 modulates the TRPV1 downstream Rac1/NLRP3 inflammatory cascade — restoring tear film homeostasis and corneal epithelial healing without blocking thermosensation. Differentiated MoA addresses root inflammatory cause, not just symptoms.",
-      status: "US FDA Phase 2 / Korea Phase 2",
+      status: "Korea Phase 2 IND approved",
       progress: 62,
       color: "emerald",
       milestones: [
         "FDA Phase 2 IND Approved (2025.08)",
         "NCT07068958 Registered",
-        "Korea Phase 2 Planned (H1 2026)",
+        "Korean Phase 2 clinical trial plan approved (Sep 22, 2026)",
         "Domestic Co-research with Hanlim Pharma (RCI001/RCI001U)",
-        "Interim Analysis Q1 2026",
       ],
       details: [
         "Differentiated MoA: downstream signal modulator (not a direct TRPV1 antagonist)",
-        "Global development: US FDA Phase 2 + Korea Phase 2 (2026)",
+        "US FDA Phase 2 IND approved (Aug 2025); Korean Phase 2 trial plan approved (Sep 22, 2026)",
         "0.25% topical ophthalmic solution — non-steroidal, well-tolerated",
         "Sjögren's syndrome model: tear secretion increase within 1 week",
         "Therapeutic onset within 4 weeks (vs 8-12 weeks for steroid alternatives)",
@@ -473,15 +482,14 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 Target",
       mechanism:
         "通过TRPV1下游信号调节抑制Rac1/NLRP3炎症 — 促进泪液分泌和角膜愈合",
-      status: "US FDA 2期 / 韩国2期",
+      status: "韩国2期临床试验计划获批",
       progress: 62,
       color: "emerald",
       milestones: [
         "FDA 2期 IND获批 (2025.08)",
         "NCT07068958注册完成",
-        "韩国2期计划 (2026上半年)",
+        "韩国2期临床试验计划获批 (2026.09.22)",
         "与韩林制药国内共同研究 (RCI001/RCI001U)",
-        "中期分析 2026 Q1",
       ],
       details: [
         "0.25%滴眼液制剂",
@@ -606,15 +614,14 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 Target",
       mechanism:
         "TRPV1下流シグナル調節によるRac1/NLRP3炎症抑制 — 涙液分泌促進および角膜治癒",
-      status: "US FDA Phase 2 / 韓国2相",
+      status: "韓国第2相臨床試験計画承認",
       progress: 62,
       color: "emerald",
       milestones: [
         "FDA Phase 2 IND承認 (2025.08)",
         "NCT07068958登録完了",
-        "韓国2相計画 (2026上半期)",
+        "韓国第2相臨床試験計画承認 (2026.09.22)",
         "Hanlim Pharmaとの国内共同研究 (RCI001/RCI001U)",
-        "中間解析 2026 Q1",
       ],
       details: [
         "0.25%点眼液製剤",
@@ -740,15 +747,14 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 Target",
       mechanism:
         "Modulación de señal downstream de TRPV1 inhibiendo inflamación Rac1/NLRP3 — promueve secreción lagrimal y curación corneal",
-      status: "US FDA Fase 2 / Corea Fase 2",
+      status: "Fase 2 aprobada en Corea",
       progress: 62,
       color: "emerald",
       milestones: [
         "FDA Fase 2 IND Aprobado (2025.08)",
         "NCT07068958 Registrado",
-        "Corea Fase 2 Planificado (H1 2026)",
+        "Plan del ensayo de fase 2 en Corea aprobado (22.09.2026)",
         "Investigación conjunta nacional con Hanlim Pharma (RCI001/RCI001U)",
-        "Análisis Intermedio Q1 2026",
       ],
       details: [
         "Formulación de solución oftálmica 0.25%",
@@ -874,15 +880,14 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "TRPV1-Rac1 Target",
       mechanism:
         "Modulation du signal en aval de TRPV1 inhibant l'inflammation Rac1/NLRP3 — favorise la sécrétion lacrymale et la cicatrisation cornéenne",
-      status: "US FDA Phase 2 / Corée Phase 2",
+      status: "Phase 2 autorisée en Corée",
       progress: 62,
       color: "emerald",
       milestones: [
         "FDA Phase 2 IND Approuvé (2025.08)",
         "NCT07068958 Enregistré",
-        "Corée Phase 2 Prévu (S1 2026)",
+        "Plan de l’essai de phase 2 en Corée approuvé (22.09.2026)",
         "Recherche conjointe nationale avec Hanlim Pharma (RCI001/RCI001U)",
-        "Analyse Intermédiaire Q1 2026",
       ],
       details: [
         "Solution ophtalmique 0.25%",
@@ -1008,19 +1013,18 @@ const PIPELINE: Record<string, PipelineItem[]> = {
       target: "معدِّل مسارات TRPV1-Rac1",
       mechanism:
         "على عكس مثبطات قناة TRPV1 المباشرة، يعدّل RCI001 سلسلة الالتهاب Rac1/NLRP3 أسفل TRPV1 — مما يعيد التوازن لملف الدموع ويحفز شفاء الظهارة القرنية دون حجب الإحساس بالحرارة. آلية عمل مميزة تعالج السبب الالتهابي الجذري، وليس الأعراض فقط.",
-      status: "US FDA Phase 2 / Korea Phase 2",
+      status: "الموافقة على المرحلة الثانية في كوريا",
       progress: 62,
       color: "emerald",
       milestones: [
         "موافقة FDA على طلب المرحلة 2 (2025.08)",
         "مسجل NCT07068958",
-        "مخطط المرحلة 2 في كوريا (النصف الأول من 2026)",
+        "الموافقة على خطة التجربة السريرية للمرحلة الثانية في كوريا (2026.09.22)",
         "بحث مشترك محلي مع Hanlim Pharma (RCI001/RCI001U)",
-        "تحليل مرحلي Q1 2026",
       ],
       details: [
         "آلية عمل مميزة: منظم للإشارة الهابطة (وليس مضادًا مباشرًا لـ TRPV1)",
-        "تطوير عالمي: المرحلة 2 من FDA الأمريكية + المرحلة 2 في كوريا (2026)",
+        "الموافقة على طلب المرحلة الثانية لدى FDA الأمريكية (2025.08)، وخطة التجربة في كوريا (2026.09.22)",
         "محلول قطرة عينية موضعي بتركيز 0.25% — غير ستيرويدي، متسامح جيدًا",
         "نموذج متلازمة شوغرن: زيادة إفراز الدموع خلال أسبوع واحد",
         "بداية التأثير العلاجي خلال 4 أسابيع (مقابل 8-12 أسبوعًا للبدائل الستيرويدية)",
@@ -1253,7 +1257,7 @@ export default async function PipelinePage({
                 "@type": "Drug",
                 name: "RCI001",
                 description:
-                  "Non-steroidal topical ophthalmic solution for dry eye disease. TRPV1 downstream modulator. FDA Phase 2 (NCT07068958). Korea Phase 2 planned 2026. Domestic co-research with Hanlim Pharma (KRW 15B). Patent granted: Korea, Japan, USA.",
+                  "Non-steroidal topical ophthalmic solution for dry eye disease. TRPV1 downstream modulator. US FDA Phase 2 IND approved (Aug 2025; NCT07068958). Korean Phase 2 clinical trial plan approved Sep 22, 2026; enrollment preparations underway. Domestic co-research with Hanlim Pharma (KRW 15B). Patent granted: Korea, Japan, USA.",
                 mechanismOfAction: "TRPV1-Rac1/NLRP3 pathway modulation",
                 administrationRoute: "Topical ophthalmic",
                 drugClass: "TRPV1 downstream modulator",
@@ -1493,6 +1497,14 @@ export default async function PipelinePage({
                           {m}
                         </div>
                       ))}
+                      {p.name === "RCI001" && (
+                        <Link
+                          href={`/${loc}/news/192`}
+                          className="inline-block text-sm font-medium text-teal-700 underline underline-offset-4 hover:text-teal-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                        >
+                          {APPROVAL_NEWS[locale] || APPROVAL_NEWS.en}
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
