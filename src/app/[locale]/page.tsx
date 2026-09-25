@@ -20,7 +20,6 @@ const PIPELINE = {
       indication: "Dry Eye Disease",
       target: "TRPV1-Rac1",
       status: "US FDA Phase 2",
-      progress: 75,
       color: "teal" as const,
       milestone: "Phase 2 IND Q2 2026",
       description:
@@ -32,7 +31,6 @@ const PIPELINE = {
       indication: "Veterinary Dry Eye",
       target: "TRPV1-Rac1 하부 신호 조절제",
       status: "PoC 완료 / 동물용 임상 준비",
-      progress: 45,
       color: "emerald" as const,
       milestone: "2030년 시장 진입 목표",
       description:
@@ -44,7 +42,6 @@ const PIPELINE = {
       indication: "Chronic Pain",
       target: "MOR 작용제 · 관절강 국소 투여",
       status: "Pre-clinical / IND",
-      progress: 40,
       color: "blue" as const,
       milestone: "Tox Study 3Q 2026",
       description:
@@ -56,7 +53,6 @@ const PIPELINE = {
       indication: "Psoriasis",
       target: "건선 표적 단백질 선택적 조절제",
       status: "후보물질 발굴",
-      progress: 15,
       color: "violet" as const,
       milestone: "Collabo R&D 2단계 2026",
       description:
@@ -70,7 +66,6 @@ const PIPELINE = {
       indication: "Dry Eye Disease",
       target: "TRPV1-Rac1",
       status: "US FDA Phase 2",
-      progress: 75,
       color: "teal" as const,
       milestone: "Phase 2 IND Q2 2026",
       description:
@@ -82,7 +77,6 @@ const PIPELINE = {
       indication: "Veterinary Dry Eye",
       target: "TRPV1-Rac1 Downstream Modulator",
       status: "PoC Complete / Preparing Trials",
-      progress: 45,
       color: "emerald" as const,
       milestone: "Targeting 2030 market entry",
       description:
@@ -94,7 +88,6 @@ const PIPELINE = {
       indication: "Chronic Pain",
       target: "MOR Agonist · Intra-articular",
       status: "Pre-clinical / IND",
-      progress: 40,
       color: "blue" as const,
       milestone: "Tox Study 3Q 2026",
       description:
@@ -106,7 +99,6 @@ const PIPELINE = {
       indication: "Psoriasis",
       target: "Psoriasis Target Modulator",
       status: "Discovery",
-      progress: 15,
       color: "violet" as const,
       milestone: "Collabo R&D Phase 2 2026",
       description:
@@ -710,64 +702,25 @@ export default async function HomePage({
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="border-t border-[var(--rc-hairline-strong)]">
             {pipeline.map((p, i) => (
-              <ScrollReveal key={p.id} delay={i * 150}>
+              <ScrollReveal key={p.id} delay={i * 70}>
                 <Link
                   href={`/${locale}/pipeline`}
-                  className="card card-interactive group block p-7 sm:p-9"
+                  className="group grid gap-5 border-b border-[var(--rc-hairline)] py-8 transition-colors hover:bg-[var(--rc-surface-sunken)] focus-visible:bg-[var(--rc-surface-sunken)] sm:gap-7 sm:px-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,0.85fr)] lg:items-start lg:gap-10"
                 >
-                  {/* Header */}
-                  <div className="mb-6 flex items-center justify-between">
-                    <span className="pill pill-accent num">{p.id}</span>
-                    <span className="type-caption num">{p.status}</span>
+                  <div className="min-w-0">
+                    <span className="num text-xs font-semibold tracking-[0.12em] text-[var(--rc-accent-deep)]">{p.id}</span>
+                    <h3 className="type-h3 mt-2 transition-colors group-hover:text-[var(--rc-accent-deep)]">{p.indication}</h3>
+                    <p className="type-caption mt-3 break-words">{p.target}</p>
                   </div>
-
-                  {/* Indication */}
-                  <h3 className="type-h3 transition-colors group-hover:text-[var(--rc-accent-deep)]">
-                    {p.indication}
-                  </h3>
-                  <p className="type-body mt-3 line-clamp-2 text-[0.9375rem] leading-[1.7]">
-                    {p.description}
-                  </p>
-
-                  {/* Progress */}
-                  <div className="mt-8">
-                    <div className="type-caption mb-2.5 flex justify-between">
-                      <span>Progress</span>
-                      <span className="num font-medium text-[var(--rc-ink-700)]">
-                        {p.progress}%
-                      </span>
-                    </div>
-                    <div className="progress-track">
-                      <div
-                        className="progress-fill"
-                        style={{ width: `${p.progress}%` }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Footer */}
-                  <div className="mt-7 flex items-center justify-between border-t border-[var(--rc-hairline)] pt-5">
-                    <span className="type-caption num">
-                      Target: {p.target}
-                    </span>
-                    <span className="type-caption flex items-center gap-1.5 transition-colors group-hover:text-[var(--rc-accent-deep)]">
-                      {p.milestone}
-                      <svg
-                        className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </span>
+                  <p className="type-body max-w-[55ch] text-[0.9375rem] leading-[1.7]">{p.description}</p>
+                  <div className="flex min-w-0 flex-col gap-3 lg:items-end lg:text-right">
+                    <span className="text-sm font-semibold text-[var(--rc-ink-800)]">{p.status}</span>
+                    <span className="type-caption break-words">{p.milestone}</span>
+                    <svg aria-hidden="true" className="mt-1 h-4 w-4 text-[var(--rc-accent-deep)] transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                   </div>
                 </Link>
               </ScrollReveal>
