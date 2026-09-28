@@ -183,8 +183,8 @@ const PARTNERS: Record<string, Partner[]> = {
     },
     {
       name: "케이메디허브",
-      role: "비임상 평가",
-      logo: "",
+      role: "RCI002 주사제형 생산",
+      logo: "/images/partners/kmedihub.png",
       initials: "KMH",
       color: "slate",
     },
@@ -241,8 +241,8 @@ const PARTNERS: Record<string, Partner[]> = {
     },
     {
       name: "K-MEDI hub",
-      role: "Non-clinical Evaluation",
-      logo: "",
+      role: "RCI002 Injectable Manufacturing",
+      logo: "/images/partners/kmedihub.png",
       initials: "KMH",
       color: "slate",
     },
@@ -299,8 +299,8 @@ const PARTNERS: Record<string, Partner[]> = {
     },
     {
       name: "K-MEDI hub",
-      role: "非临床评价",
-      logo: "",
+      role: "RCI002 注射剂生产",
+      logo: "/images/partners/kmedihub.png",
       initials: "KMH",
       color: "slate",
     },
@@ -357,8 +357,8 @@ const PARTNERS: Record<string, Partner[]> = {
     },
     {
       name: "K-MEDI hub",
-      role: "非臨床評価",
-      logo: "",
+      role: "RCI002 注射剤製造",
+      logo: "/images/partners/kmedihub.png",
       initials: "KMH",
       color: "slate",
     },
@@ -415,8 +415,8 @@ const PARTNERS: Record<string, Partner[]> = {
     },
     {
       name: "K-MEDI hub",
-      role: "Evaluación no clínica",
-      logo: "",
+      role: "Fabricación del inyectable RCI002",
+      logo: "/images/partners/kmedihub.png",
       initials: "KMH",
       color: "slate",
     },
@@ -473,33 +473,42 @@ const PARTNERS: Record<string, Partner[]> = {
     },
     {
       name: "K-MEDI hub",
-      role: "Évaluation non clinique",
-      logo: "",
+      role: "Fabrication de la forme injectable RCI002",
+      logo: "/images/partners/kmedihub.png",
       initials: "KMH",
       color: "slate",
     },
   ],
 };
 
-/* RCI001 국내 임상 2상(RDC001_102) 실시기관. 출처: 임상개발실 시험기관 선정 기록
-   (선정 방문 2026.06.04-07.15). 병원 로고는 사용 허락 범위가 기관마다 달라 쓰지
-   않고 monogram으로 둔다. PI 이름은 공개 페이지에 올리지 않는다. */
-const CLINICAL_SITES: Record<"ko" | "en", { name: string; initials: string }[]> = {
+/* RCI001 국내 임상 2상 실시기관. 식약처 의약품안전나라 임상시험정보(의뢰자
+   루다큐어, 승인일 2026-09-22)의 실시기관 6곳과 대조했다. 로고는 각 병원
+   공식 홈페이지 헤더 이미지다. PI 이름은 공개 페이지에 올리지 않는다. */
+type Site = { name: string; initials: string; logo: string; w: number; h: number };
+const SITE_LOGOS = {
+  kbsmc: { logo: "/images/partners/kbsmc.png", w: 344, h: 50 },
+  yish: { logo: "/images/partners/yish.png", w: 588, h: 80 },
+  snubh: { logo: "/images/partners/snubh.png", w: 288, h: 27 },
+  kugh: { logo: "/images/partners/kugh.svg", w: 307, h: 138 },
+  cnuh: { logo: "/images/partners/cnuh.jpg", w: 198, h: 42 },
+  schmc: { logo: "/images/partners/schmc.png", w: 220, h: 36 },
+};
+const CLINICAL_SITES: Record<"ko" | "en", Site[]> = {
   ko: [
-    { name: "강북삼성병원", initials: "KBSMC" },
-    { name: "용인세브란스병원", initials: "YISH" },
-    { name: "분당서울대학교병원", initials: "SNUBH" },
-    { name: "고려대학교 구로병원", initials: "KUGH" },
-    { name: "전남대학교병원", initials: "CNUH" },
-    { name: "순천향대학교 서울병원", initials: "SCHMC" },
+    { name: "강북삼성병원", initials: "KBSMC", ...SITE_LOGOS.kbsmc },
+    { name: "용인세브란스병원", initials: "YISH", ...SITE_LOGOS.yish },
+    { name: "분당서울대학교병원", initials: "SNUBH", ...SITE_LOGOS.snubh },
+    { name: "고려대학교 구로병원", initials: "KUGH", ...SITE_LOGOS.kugh },
+    { name: "전남대학교병원", initials: "CNUH", ...SITE_LOGOS.cnuh },
+    { name: "순천향대학교 서울병원", initials: "SCHMC", ...SITE_LOGOS.schmc },
   ],
   en: [
-    { name: "Kangbuk Samsung Hospital", initials: "KBSMC" },
-    { name: "Yongin Severance Hospital", initials: "YISH" },
-    { name: "Seoul National University Bundang Hospital", initials: "SNUBH" },
-    { name: "Korea University Guro Hospital", initials: "KUGH" },
-    { name: "Chonnam National University Hospital", initials: "CNUH" },
-    { name: "Soonchunhyang University Seoul Hospital", initials: "SCHMC" },
+    { name: "Kangbuk Samsung Hospital", initials: "KBSMC", ...SITE_LOGOS.kbsmc },
+    { name: "Yongin Severance Hospital", initials: "YISH", ...SITE_LOGOS.yish },
+    { name: "Seoul National University Bundang Hospital", initials: "SNUBH", ...SITE_LOGOS.snubh },
+    { name: "Korea University Guro Hospital", initials: "KUGH", ...SITE_LOGOS.kugh },
+    { name: "Chonnam National University Hospital", initials: "CNUH", ...SITE_LOGOS.cnuh },
+    { name: "Soonchunhyang University Seoul Hospital", initials: "SCHMC", ...SITE_LOGOS.schmc },
   ],
 };
 
@@ -954,19 +963,26 @@ export default async function HomePage({
             </h3>
             <div className="lab-cells grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {sites.map((c, i) => (
-                <div key={c.name} className="lab-cell">
+                <div key={c.name} className="lab-cell lab-site-cell">
                   <span className="lab-label lab-muted">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="mt-6 flex items-center gap-4">
-                    <span className="lab-monogram">{c.initials}</span>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-[0.9375rem] font-semibold leading-tight text-[var(--lab-ink)]">
-                        {c.name}
-                      </div>
-                      <div className="type-caption mt-1">{L.sitesRole}</div>
-                    </div>
+                  {/* Hospital marks are long wordmarks (up to 10:1), so they
+                      get a full-width slot above the name instead of the
+                      96px partner slot, where they would be unreadable. */}
+                  <div className="lab-site-logo mt-5">
+                    <Image
+                      src={c.logo}
+                      alt={c.name}
+                      width={c.w}
+                      height={c.h}
+                      unoptimized
+                    />
                   </div>
+                  <div className="mt-5 text-[0.9375rem] font-semibold leading-tight text-[var(--lab-ink)]">
+                    {c.name}
+                  </div>
+                  <div className="type-caption mt-1">{L.sitesRole}</div>
                 </div>
               ))}
             </div>
