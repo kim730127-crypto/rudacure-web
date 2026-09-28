@@ -1101,21 +1101,29 @@ h4 em,
 .lab-cell:hover {
   background: var(--lab-paper);
 }
-/* Monogram slot for organisations shown without a logo (clinical sites,
-   partners whose mark is not licensed for this page). Same footprint as
-   .partner-mark so rows align. */
-.lab-monogram {
+/* Clinical-site marks: full-width slot, same desaturate-at-rest treatment
+   as the partner wall, colour restored on hover. */
+.lab-site-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 96px;
-  height: 38px;
-  border: 1px solid var(--lab-line);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--rc-ink-500);
+  height: 44px;
+  mix-blend-mode: multiply;
+  filter: grayscale(1);
+  opacity: 0.78;
+  transition:
+    filter 300ms var(--rc-ease),
+    opacity 300ms var(--rc-ease);
+}
+.lab-site-logo img {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 44px;
+  object-fit: contain;
+}
+.lab-site-cell:hover .lab-site-logo {
+  filter: grayscale(0);
+  opacity: 1;
 }
 /* JPEG marks carry baked-in white; multiply lets them sit on paper. The blend
    goes on the filtered wrapper, not the <img>, because the grayscale filter
@@ -1133,7 +1141,8 @@ h4 em,
   .lab-btn,
   .lab-link,
   .lab-row,
-  .lab-cell {
+  .lab-cell,
+  .lab-site-logo {
     transition: none;
   }
 }
