@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Trpv1Hero } from "@/components/trpv1-hero";
@@ -167,20 +168,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "한미정밀화학",
-      role: "RCI001/RCI002 GMP 생산",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "동아ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -193,6 +180,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "케이메디허브",
+      role: "RCI002 주사제형 생산",
+      logo: "/images/partners/kmedihub.png",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   en: [
@@ -232,20 +226,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "RCI001/RCI002 GMP Production",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -258,6 +238,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "RCI002 Injectable Manufacturing",
+      logo: "/images/partners/kmedihub.png",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   zh: [
@@ -297,20 +284,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "RCI001/RCI002 GMP生产",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -323,6 +296,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "RCI002 注射剂生产",
+      logo: "/images/partners/kmedihub.png",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   ja: [
@@ -362,20 +342,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "RCI001/RCI002 GMP製造",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -388,6 +354,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "RCI002 注射剤製造",
+      logo: "/images/partners/kmedihub.png",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   es: [
@@ -427,20 +400,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "Producción GMP de RCI001/RCI002",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -453,6 +412,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "Fabricación del inyectable RCI002",
+      logo: "/images/partners/kmedihub.png",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   fr: [
@@ -492,20 +458,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "Production GMP RCI001/RCI002",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -519,8 +471,167 @@ const PARTNERS: Record<string, Partner[]> = {
       initials: "DT",
       color: "rose",
     },
+    {
+      name: "K-MEDI hub",
+      role: "Fabrication de la forme injectable RCI002",
+      logo: "/images/partners/kmedihub.png",
+      initials: "KMH",
+      color: "slate",
+    },
   ],
 };
+
+/* RCI001 국내 임상 2상 실시기관. 식약처 의약품안전나라 임상시험정보(의뢰자
+   루다큐어, 승인일 2026-09-22)의 실시기관 6곳과 대조했다. 로고는 각 병원
+   공식 홈페이지 헤더 이미지다. PI 이름은 공개 페이지에 올리지 않는다. */
+type Site = { name: string; initials: string; logo: string; w: number; h: number };
+const SITE_LOGOS = {
+  kbsmc: { logo: "/images/partners/kbsmc.png", w: 344, h: 50 },
+  yish: { logo: "/images/partners/yish.png", w: 588, h: 80 },
+  snubh: { logo: "/images/partners/snubh.png", w: 288, h: 27 },
+  kugh: { logo: "/images/partners/kugh.svg", w: 307, h: 138 },
+  cnuh: { logo: "/images/partners/cnuh.jpg", w: 198, h: 42 },
+  schmc: { logo: "/images/partners/schmc.png", w: 220, h: 36 },
+};
+const CLINICAL_SITES: Record<"ko" | "en", Site[]> = {
+  ko: [
+    { name: "강북삼성병원", initials: "KBSMC", ...SITE_LOGOS.kbsmc },
+    { name: "용인세브란스병원", initials: "YISH", ...SITE_LOGOS.yish },
+    { name: "분당서울대학교병원", initials: "SNUBH", ...SITE_LOGOS.snubh },
+    { name: "고려대학교 구로병원", initials: "KUGH", ...SITE_LOGOS.kugh },
+    { name: "전남대학교병원", initials: "CNUH", ...SITE_LOGOS.cnuh },
+    { name: "순천향대학교 서울병원", initials: "SCHMC", ...SITE_LOGOS.schmc },
+  ],
+  en: [
+    { name: "Kangbuk Samsung Hospital", initials: "KBSMC", ...SITE_LOGOS.kbsmc },
+    { name: "Yongin Severance Hospital", initials: "YISH", ...SITE_LOGOS.yish },
+    { name: "Seoul National University Bundang Hospital", initials: "SNUBH", ...SITE_LOGOS.snubh },
+    { name: "Korea University Guro Hospital", initials: "KUGH", ...SITE_LOGOS.kugh },
+    { name: "Chonnam National University Hospital", initials: "CNUH", ...SITE_LOGOS.cnuh },
+    { name: "Soonchunhyang University Seoul Hospital", initials: "SCHMC", ...SITE_LOGOS.schmc },
+  ],
+};
+
+/* ─── Design pilot "Lab Index" (2026-09) ───────────────────────────────────
+   Structure borrowed from two CC0 prompt specs in the Superdesign library
+   (superdesigndev/superdesign-prompts, LICENSE-DATA = CC0 1.0):
+     - swiss-grid-agency-layout  : index meta row over a 2px accent rule,
+       strict 12-column grid, mono micro-labels, numbered index lists,
+       hairline-gap card grid.
+     - laboratory-skincare       : paper/ink palette, 1px hairline grid,
+       no shadows or rounded corners, annotation label on the figure.
+   Adapted to the RudaCure tokens: the brand teal replaces cobalt as the one
+   accent, Pretendard stays the only face (no new font licences), and Hangul
+   gets its own tracking/leading instead of the Latin -0.04em / 0.84 values.
+   Every number on this page comes from the data arrays above or from an
+   existing i18n string. Nothing new is claimed. */
+
+/* Micro-labels that did not exist before. ko and en only; the other locales
+   fall back to English, which is also how the pipeline data behaves. */
+const LAB_LABELS = {
+  ko: {
+    assets: "파이프라인 에셋",
+    lead: "RCI001 임상 단계",
+    leadValue: "Phase 2",
+    partners: "협력 기관",
+    areas: "치료 영역 (안과·통증·피부)",
+    sitesTag: "Clinical Sites",
+    sitesTitle: "RCI001 국내 임상 2상 실시기관",
+    sitesRole: "RCI001 국내 임상 2상",
+    colAsset: "Asset",
+    colIndication: "Indication",
+    colTarget: "Target / Modality",
+    colStage: "Stage",
+    colMilestone: "Milestone",
+    figure: "RuCIA 분자동역학 시뮬레이션",
+  },
+  en: {
+    assets: "Pipeline assets",
+    lead: "RCI001 clinical stage",
+    leadValue: "Phase 2",
+    partners: "Partner organisations",
+    areas: "Therapeutic areas (eye, pain, skin)",
+    sitesTag: "Clinical Sites",
+    sitesTitle: "RCI001 Korea Phase 2 investigational sites",
+    sitesRole: "RCI001 Korea Phase 2",
+    colAsset: "Asset",
+    colIndication: "Indication",
+    colTarget: "Target / Modality",
+    colStage: "Stage",
+    colMilestone: "Milestone",
+    figure: "RuCIA molecular dynamics",
+  },
+};
+
+/* Disciplines for the marquee. Each term is already claimed elsewhere on the
+   site (Science, Pipeline, CRO pages); none is new. */
+const DISCIPLINES = [
+  "Membrane Protein",
+  "Ion Channel",
+  "GPCR",
+  "TRPV1",
+  "Molecular Dynamics",
+  "Electrophysiology",
+  "Ophthalmology",
+  "Pain",
+  "Dermatology",
+  "Veterinary",
+];
+
+function ArrowOut({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={`rtl:-scale-x-100 ${className}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      aria-hidden="true"
+    >
+      <path strokeLinecap="square" d="M7 17L17 7M9 7h8v8" />
+    </svg>
+  );
+}
+
+function SectionHead({
+  no,
+  total,
+  tag,
+  title,
+  link,
+}: {
+  no: number;
+  total: number;
+  tag: string;
+  title: ReactNode;
+  link?: { href: string; label: string };
+}) {
+  return (
+    <div className="lab-sechead">
+      <div className="lab-grid items-end pb-3">
+        <span className="lab-label col-span-6 md:col-span-3">
+          No. {String(no).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </span>
+        <span className="lab-label lab-label-i18n lab-muted col-span-6 text-end md:col-span-9">
+          {tag}
+        </span>
+      </div>
+      <div className="lab-rule-accent" />
+      <div className="lab-grid items-end pt-8 pb-10 md:pt-10 md:pb-12">
+        <h2 className="lab-h2 col-span-12 md:col-span-9">{title}</h2>
+        {link && (
+          <Link
+            href={link.href}
+            className="lab-link col-span-12 mt-5 md:col-span-3 md:mt-0 md:justify-self-end"
+          >
+            {link.label}
+            <ArrowOut className="h-4 w-4" />
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default async function HomePage({
   params,
@@ -532,243 +643,266 @@ export default async function HomePage({
   const loc = toDataLocale(locale as Locale);
   const partners = PARTNERS[locale] ?? PARTNERS.en;
   const pipeline = PIPELINE[loc];
-
-  /* The first two entries are capabilities, not measurements. They were
-     previously rendered in the same large numeral style as the market figure
-     using invented abbreviations ("EP", "MT"), which gave a label the visual
-     authority of data. Capabilities and the one real figure are now typed
-     differently. */
-  const CAPABILITIES = [
+  const L = LAB_LABELS[loc];
+  const sites = CLINICAL_SITES[loc];
+  const news = (
     {
-      title: t("rucia.metric.time"),
-      sub: t("rucia.metric.time.sub"),
-    },
+      ko: newsKo,
+      en: newsEn,
+      zh: newsZh,
+      ja: newsJa,
+      es: newsEs,
+      fr: newsFr,
+    }[locale] ?? newsEn
+  ).slice(0, 5) as {
+    id: number;
+    title: string;
+    date: string;
+    category: string;
+  }[];
+
+  const CAPABILITIES = [
+    { title: t("rucia.metric.time"), sub: t("rucia.metric.time.sub") },
     {
       title: t("rucia.metric.selectivity"),
       sub: t("rucia.metric.selectivity.sub"),
     },
   ];
-
   const MARKET_STAT = {
     value: t("rucia.metric.market"),
     sub: t("rucia.metric.market.sub"),
   };
 
+  /* Hero stat block: counts are derived from the arrays on this page and
+     the stage from the RCI001 record. The $94B chronic-pain market figure is
+     deliberately kept out of the hero: the company is positioned as a
+     membrane-protein platform, not a pain company, and the first number a
+     visitor reads should not pull it back. It stays in section 02. The
+     three areas are ophthalmology (RCI001, RCI001AH), pain (RCI002) and
+     dermatology (RCI003). */
+  const HERO_STATS = [
+    { value: String(pipeline.length), label: L.assets },
+    { value: L.leadValue, label: L.lead },
+    { value: "3", label: L.areas },
+    { value: String(partners.length + sites.length), label: L.partners },
+  ];
+
+  const TOTAL = 5;
+
   return (
-    <>
-      {/* 구인 팝업: 한국어 홈에서만, 세션당 1회 (충원 시 recruit-popup.tsx의 ACTIVE=false) */}
+    <div className="lab">
       {locale === "ko" && <RecruitPopup />}
 
-      {/* ===== Hero =====
-          Identity, not indication. The previous hero was a full-bleed dry-eye
-          photograph, which represents RCI001 alone; the company is a membrane
-          -protein drug discovery platform. The bilayer/ion-channel canvas below
-          carries that identity and stays valid as the pipeline expands. */}
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-[#080c11]">
-        {/* Depth: one cool wash, one warm accent. No competing hues. */}
+      {/* ===== Hero ===== The TRPV1 point cloud stays: it is the one visual
+          asset built from real coordinates. What changes is the type system
+          laid over it. */}
+      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-[#080c11] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_8%,#122c31_0%,#0b1419_42%,#070a0e_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#060a0d] via-[#060a0d]/60 to-transparent" />
-
         <Trpv1Hero />
 
-        <div className="container-rc relative z-10 w-full pt-36 pb-32">
-          <div className="max-w-[46rem]">
-            <p className="section-label on-dark animate-hero-blur-in">
+        <div className="lab-container relative z-10 w-full pt-36 pb-16 md:pb-20">
+          <div className="lab-grid items-end pb-3 animate-hero-blur-in">
+            <span className="lab-label col-span-6 text-white/80 md:col-span-3">
+              No. 01 / {String(TOTAL).padStart(2, "0")}
+            </span>
+            <span className="lab-label lab-label-i18n col-span-6 text-end text-white/55 md:col-span-9">
               {t("hero.tagline")}
-            </p>
-
-            <div className="hero-line-accent mt-6 mb-8 h-px w-14 bg-teal-400/60" />
-
-            <h1
-              className="type-h1 brand-line animate-hero-blur-in text-white"
-              style={{ animationDelay: "0.12s" }}
-            >
-              {t("hero.title1")}
-              <br />
-              <span className="text-teal-300">{t("hero.title2")}</span>
-            </h1>
-
-            <p
-              className="animate-hero-blur-in measure mt-8 text-[1.0625rem] leading-[1.75] text-slate-300/90"
-              style={{ animationDelay: "0.24s" }}
-            >
-              {t("hero.description")}
-            </p>
-
-            <div
-              className="animate-hero-blur-in mt-11 flex flex-col items-start gap-3 sm:flex-row sm:items-center"
-              style={{ animationDelay: "0.36s" }}
-            >
-              <Link
-                href={`/${locale}/pipeline`}
-                className="btn btn-primary"
-              >
-                {t("hero.cta.pipeline")}
-              </Link>
-              <Link
-                href={`/${locale}/science`}
-                className="btn btn-ghost-light"
-              >
-                {t("hero.cta.science")}
-              </Link>
-            </div>
+            </span>
           </div>
-        </div>
+          <div className="lab-rule-accent lab-rule-draw" />
+          <div className="lab-grid pt-3">
+            <span className="lab-label col-span-12 text-white/50 md:col-span-8">
+              {pipeline.map((p) => p.id).join(" · ")}
+            </span>
+          </div>
 
-        {/* Scroll indicator */}
-        <div className="animate-scroll-hint absolute bottom-9 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
-          <span className="text-[0.6875rem] uppercase tracking-[0.22em] text-white/45">
-            Scroll
-          </span>
-          <div className="h-9 w-px bg-gradient-to-b from-white/35 to-transparent" />
-        </div>
-      </section>
+          <h1
+            className="lab-display animate-hero-blur-in mt-10 max-w-[15ch] md:mt-14"
+            style={{ animationDelay: "0.12s" }}
+          >
+            {t("hero.title1")}
+            <br />
+            <span className="text-teal-300">{t("hero.title2")}</span>
+          </h1>
 
-      {/* ===== Core technology ===== */}
-      <section className="section section-sunken">
-        <div className="container-rc grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
-          <ScrollReveal animation="reveal-left">
-            <p className="section-label">{t("rucia.tag")}</p>
-            <h2 className="section-heading mt-5">
-              {t("rucia.title1")} <em>{t("rucia.title2")}</em>
-            </h2>
-            <p className="type-body measure mt-6">{t("rucia.description")}</p>
-
-            <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
-              {CAPABILITIES.map((c) => (
-                <div key={c.title} className="stat">
-                  <dt className="text-[0.9375rem] font-semibold leading-snug tracking-[-0.015em] text-[var(--rc-ink-900)]">
-                    {c.title}
+          <div
+            className="lab-grid animate-hero-blur-in mt-10 gap-y-10 md:mt-14"
+            style={{ animationDelay: "0.24s" }}
+          >
+            <div className="col-span-12 md:col-span-6">
+              <p className="measure text-[1.0625rem] leading-[1.75] text-slate-300/90">
+                {t("hero.description")}
+              </p>
+              <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                <Link href={`/${locale}/pipeline`} className="lab-btn lab-btn-accent">
+                  {t("hero.cta.pipeline")}
+                  <ArrowOut className="h-4 w-4" />
+                </Link>
+                <Link href={`/${locale}/science`} className="lab-btn lab-btn-ghost">
+                  {t("hero.cta.science")}
+                </Link>
+              </div>
+            </div>
+            <dl className="col-span-12 grid grid-cols-2 border-t border-white/15 md:col-span-5 md:col-start-8 md:self-end">
+              {HERO_STATS.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`border-b border-white/15 py-5 ${i % 2 === 0 ? "pe-4 border-e" : "ps-5"}`}
+                >
+                  <dt className="num text-[2rem] font-semibold leading-none tracking-[-0.03em] text-white md:text-[2.5rem]">
+                    {s.value}
                   </dt>
-                  <dd className="stat-sub mt-2">{c.sub}</dd>
+                  <dd className="lab-label lab-label-i18n mt-3 text-white/55 normal-case tracking-[0.02em]">
+                    {s.label}
+                  </dd>
                 </div>
               ))}
-              <div className="stat">
-                <dt className="stat-value num text-[1.75rem] leading-none">
-                  {MARKET_STAT.value}
-                </dt>
-                <dd className="stat-sub mt-2">{MARKET_STAT.sub}</dd>
-              </div>
             </dl>
-          </ScrollReveal>
-
-          <ScrollReveal animation="scale-in" delay={160}>
-            {/* RudaCure's own molecular-dynamics output, not an illustration.
-                The previous figure was an AI-generated diagram with baked-in
-                English labels and rendering artefacts — the least credible
-                asset on a page whose argument is computational rigour. A real
-                simulation frame carries the same message and survives
-                technical scrutiny from a partner or an underwriter. */}
-            <figure className="card overflow-hidden">
-              <div className="relative aspect-[4/3] bg-white">
-                <Image
-                  src="/images/science/membrane-md.jpg"
-                  alt="Molecular dynamics simulation of a membrane protein embedded in an explicit lipid bilayer, produced on the RuCIA platform"
-                  fill
-                  sizes="(min-width: 1024px) 520px, 100vw"
-                  className="object-contain"
-                />
-              </div>
-              <figcaption className="type-caption border-t border-[var(--rc-hairline)] px-5 py-3.5">
-                RuCIA — membrane protein in an explicit lipid bilayer (MD)
-              </figcaption>
-            </figure>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* ===== Pipeline ===== */}
-      <section className="section">
-        <div className="container-rc">
-          <ScrollReveal>
-            <div className="mb-12 flex items-end justify-between gap-8">
-              <div>
-                <p className="section-label">{t("pipeline.tag")}</p>
-                <h2 className="section-heading mt-5">
-                  {t("pipeline.title1")} <em>{t("pipeline.title2")}</em>
-                </h2>
-              </div>
-              <Link
-                href={`/${locale}/pipeline`}
-                className="link-arrow hidden shrink-0 sm:inline-flex"
-              >
-                {stripArrow(t("pipeline.view_news"))}
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+      {/* ===== Discipline strip ===== */}
+      <div className="lab-marquee" aria-hidden="true">
+        <div className="lab-marquee-track">
+          {[0, 1].map((g) => (
+            <div key={g} className="flex shrink-0 items-center gap-10 py-3.5 pe-10">
+              {DISCIPLINES.map((d, i) => (
+                <span
+                  key={d}
+                  className={`lab-label ${i % 2 ? "text-[var(--rc-accent)]" : ""}`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
+                  {d}
+                </span>
+              ))}
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ===== 02 Core technology ===== */}
+      <section className="lab-section">
+        <div className="lab-container">
+          <ScrollReveal>
+            <SectionHead
+              no={2}
+              total={TOTAL}
+              tag={t("rucia.tag")}
+              title={
+                <>
+                  {t("rucia.title1")} <em>{t("rucia.title2")}</em>
+                </>
+              }
+              link={{ href: `/${locale}/science`, label: t("hero.cta.science") }}
+            />
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="lab-grid gap-y-12">
+            <ScrollReveal className="col-span-12 md:col-span-5">
+              <p className="type-body measure">{t("rucia.description")}</p>
+              <dl className="mt-10 border-t border-[var(--lab-ink)]">
+                {CAPABILITIES.map((c) => (
+                  <div key={c.title} className="lab-spec-row">
+                    <dt className="text-[0.9375rem] font-semibold text-[var(--lab-ink)]">
+                      {c.title}
+                    </dt>
+                    <dd className="type-caption text-end">{c.sub}</dd>
+                  </div>
+                ))}
+                <div className="lab-spec-row">
+                  <dt className="num text-[1.5rem] font-semibold leading-none tracking-[-0.02em] text-[var(--rc-accent-deep)]">
+                    {MARKET_STAT.value}
+                  </dt>
+                  <dd className="type-caption text-end">{MARKET_STAT.sub}</dd>
+                </div>
+              </dl>
+            </ScrollReveal>
+
+            <ScrollReveal className="col-span-12 md:col-span-6 md:col-start-7" delay={120}>
+              <figure className="lab-figure">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src="/images/science/membrane-md.jpg"
+                    alt="Molecular dynamics simulation of a membrane protein embedded in an explicit lipid bilayer, produced on the RuCIA platform"
+                    fill
+                    sizes="(min-width: 1024px) 560px, 100vw"
+                    className="object-contain mix-blend-multiply"
+                  />
+                  <div className="lab-annot">
+                    <span>SYSTEM: MEMBRANE PROTEIN</span>
+                    <span>ENV: EXPLICIT LIPID BILAYER</span>
+                  </div>
+                </div>
+                <figcaption className="lab-label lab-label-i18n lab-muted flex justify-between border-t border-[var(--lab-line)] px-4 py-3 normal-case tracking-[0.02em]">
+                  <span>Fig. 01</span>
+                  <span>{L.figure}</span>
+                </figcaption>
+              </figure>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 03 Pipeline index ===== */}
+      <section className="lab-section lab-section-paper">
+        <div className="lab-container">
+          <ScrollReveal>
+            <SectionHead
+              no={3}
+              total={TOTAL}
+              tag={t("pipeline.tag")}
+              title={
+                <>
+                  {t("pipeline.title1")} <em>{t("pipeline.title2")}</em>
+                </>
+              }
+              link={{
+                href: `/${locale}/pipeline`,
+                label: stripArrow(t("pipeline.view_news")),
+              }}
+            />
+          </ScrollReveal>
+
+          <div className="border-t border-[var(--lab-ink)]">
+            <div className="lab-grid lab-label lab-muted hidden border-b border-[var(--lab-line)] py-3 md:grid">
+              <span className="col-span-1">№</span>
+              <span className="col-span-2">{L.colAsset}</span>
+              <span className="col-span-3">{L.colIndication}</span>
+              <span className="col-span-3">{L.colStage}</span>
+              <span className="col-span-2">{L.colMilestone}</span>
+              <span className="col-span-1 text-end">↗</span>
+            </div>
             {pipeline.map((p, i) => (
-              <ScrollReveal key={p.id} delay={i * 150}>
-                <Link
-                  href={`/${locale}/pipeline`}
-                  className="card card-interactive group block p-7 sm:p-9"
-                >
-                  {/* Header */}
-                  <div className="mb-6 flex items-center justify-between">
-                    <span className="pill pill-accent num">{p.id}</span>
-                    <span className="type-caption num">{p.status}</span>
-                  </div>
-
-                  {/* Indication */}
-                  <h3 className="type-h3 transition-colors group-hover:text-[var(--rc-accent-deep)]">
-                    {p.indication}
-                  </h3>
-                  <p className="type-body mt-3 line-clamp-2 text-[0.9375rem] leading-[1.7]">
-                    {p.description}
-                  </p>
-
-                  {/* Progress */}
-                  <div className="mt-8">
-                    <div className="type-caption mb-2.5 flex justify-between">
-                      <span>Progress</span>
-                      <span className="num font-medium text-[var(--rc-ink-700)]">
-                        {p.progress}%
-                      </span>
-                    </div>
-                    <div className="progress-track">
-                      <div
-                        className="progress-fill"
-                        style={{ width: `${p.progress}%` }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Footer */}
-                  <div className="mt-7 flex items-center justify-between border-t border-[var(--rc-hairline)] pt-5">
-                    <span className="type-caption num">
-                      Target: {p.target}
+              <ScrollReveal key={p.id} delay={i * 80}>
+                <Link href={`/${locale}/pipeline`} className="lab-row lab-grid group items-start py-7">
+                  <span className="lab-label col-span-2 pt-1.5 text-[var(--rc-accent)] md:col-span-1">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="num col-span-10 text-[1.625rem] font-semibold leading-none tracking-[-0.02em] text-[var(--lab-ink)] transition-colors duration-200 group-hover:text-[var(--rc-accent-deep)] md:col-span-2 md:text-[1.75rem]">
+                    {p.id}
+                  </span>
+                  <span className="col-span-12 mt-3 md:col-span-3 md:mt-0">
+                    <span className="block text-[1.0625rem] font-semibold text-[var(--lab-ink)]">
+                      {p.indication}
                     </span>
-                    <span className="type-caption flex items-center gap-1.5 transition-colors group-hover:text-[var(--rc-accent-deep)]">
-                      {p.milestone}
-                      <svg
-                        className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
+                    <span className="lab-label lab-label-i18n lab-muted mt-2 block normal-case tracking-[0.02em]">
+                      {p.target}
                     </span>
-                  </div>
+                  </span>
+                  <span className="col-span-12 mt-4 md:col-span-3 md:mt-0">
+                    <span className="block text-[0.875rem] text-[var(--rc-ink-700)]">
+                      {p.status}
+                    </span>
+                    <span className="lab-track mt-3 block" aria-hidden="true">
+                      <span className="lab-track-fill" style={{ width: `${p.progress}%` }} />
+                    </span>
+                  </span>
+                  <span className="lab-label lab-label-i18n col-span-10 mt-4 normal-case tracking-[0.02em] text-[var(--rc-ink-600)] md:col-span-2 md:mt-0">
+                    {p.milestone}
+                  </span>
+                  <span className="col-span-2 mt-4 flex justify-end md:col-span-1 md:mt-0">
+                    <ArrowOut className="lab-row-arrow h-6 w-6 text-[var(--rc-accent)]" />
+                  </span>
                 </Link>
               </ScrollReveal>
             ))}
@@ -776,161 +910,151 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== Partners ===== */}
-      <section className="section section-sunken">
-        <div className="container-rc">
+      {/* ===== 04 Partners: hairline-gap grid ===== */}
+      <section className="lab-section">
+        <div className="lab-container">
           <ScrollReveal>
-            <div className="mb-12 text-center">
-              <p className="section-label">{t("home.partners.tag")}</p>
-              <h2 className="section-heading mt-5">
-                {t("home.partners.title1")}
-                <em>{t("home.partners.title2")}</em>
-              </h2>
-            </div>
+            <SectionHead
+              no={4}
+              total={TOTAL}
+              tag={t("home.partners.tag")}
+              title={
+                <>
+                  {t("home.partners.title1")}
+                  <em>{t("home.partners.title2")}</em>
+                </>
+              }
+            />
           </ScrollReveal>
-          {/* Nine partners previously carried nine pastel badge colours, which
-              made the one section built entirely from third-party marks the
-              loudest block on an otherwise restrained page. The colour field
-              survives in the data but is no longer read; a single neutral slot
-              and a desaturated mark do the work. */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* 8 partners -> 4 columns, 6 clinical sites -> 3 columns: both
+              fill their rows exactly, so the hairline-gap grid never shows
+              an empty grey cell. */}
+          <div className="lab-cells grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {partners.map((p, i) => (
-              <ScrollReveal key={p.name} delay={i * 70}>
-                <div className="card partner-card flex h-full cursor-default items-center gap-4 px-5 py-4">
-                  <PartnerLogo
-                    src={p.logo}
-                    alt={p.name}
-                    initials={p.initials}
-                  />
+              <div key={p.name} className="partner-card lab-cell">
+                <span className="lab-label lab-muted">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="mt-6 flex items-center gap-4">
+                  <PartnerLogo src={p.logo} alt={p.name} initials={p.initials} />
                   <div className="min-w-0 flex-1">
-                    <div className="text-[0.9375rem] font-semibold leading-tight text-[var(--rc-ink-800)]">
+                    <div className="text-[0.9375rem] font-semibold leading-tight text-[var(--lab-ink)]">
                       {p.name}
                     </div>
                     <div className="type-caption mt-1">{p.role}</div>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 md:mt-20">
+            <div className="lab-grid items-end pb-3">
+              <span className="lab-label col-span-6 text-[var(--rc-accent)] md:col-span-3">
+                {L.sitesTag}
+              </span>
+              <span className="lab-label lab-label-i18n lab-muted col-span-6 text-end md:col-span-9">
+                {sites.length} sites
+              </span>
+            </div>
+            <div className="border-t border-[var(--lab-ink)]" />
+            <h3 className="pt-6 pb-8 text-[1.375rem] font-semibold tracking-[-0.02em] text-[var(--lab-ink)]">
+              {L.sitesTitle}
+            </h3>
+            <div className="lab-cells grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {sites.map((c, i) => (
+                <div key={c.name} className="lab-cell lab-site-cell">
+                  <span className="lab-label lab-muted">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {/* Hospital marks are long wordmarks (up to 10:1), so they
+                      get a full-width slot above the name instead of the
+                      96px partner slot, where they would be unreadable. */}
+                  <div className="lab-site-logo mt-5">
+                    <Image
+                      src={c.logo}
+                      alt={c.name}
+                      width={c.w}
+                      height={c.h}
+                      unoptimized
+                    />
+                  </div>
+                  <div className="mt-5 text-[0.9375rem] font-semibold leading-tight text-[var(--lab-ink)]">
+                    {c.name}
+                  </div>
+                  <div className="type-caption mt-1">{L.sitesRole}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 05 News index ===== */}
+      <section className="lab-section lab-section-paper">
+        <div className="lab-container">
+          <ScrollReveal>
+            <SectionHead
+              no={5}
+              total={TOTAL}
+              tag={t("home.news.tag")}
+              title={
+                <>
+                  {t("home.news.title1")}
+                  <em>{t("home.news.title2")}</em>
+                </>
+              }
+              link={{
+                href: `/${locale}/news`,
+                label: stripArrow(t("home.news.viewAll")),
+              }}
+            />
+          </ScrollReveal>
+          <div className="border-t border-[var(--lab-ink)]">
+            {news.map((a, i) => (
+              <ScrollReveal key={a.id} delay={i * 50}>
+                <Link href={`/${locale}/news/${a.id}`} className="lab-row lab-grid group items-center py-5">
+                  <span className="lab-label num col-span-6 text-[var(--rc-ink-600)] md:col-span-2">
+                    {a.date}
+                  </span>
+                  <span className="lab-label col-span-6 text-end text-[var(--rc-accent)] md:col-span-2 md:text-start">
+                    {a.category}
+                  </span>
+                  <h3 className="col-span-11 mt-2 min-w-0 text-[1rem] font-medium leading-snug text-[var(--lab-ink)] transition-colors duration-200 group-hover:text-[var(--rc-accent-deep)] md:col-span-7 md:mt-0 md:truncate">
+                    {a.title}
+                  </h3>
+                  <span className="col-span-1 flex justify-end">
+                    <ArrowOut className="lab-row-arrow h-5 w-5 text-[var(--rc-accent)]" />
+                  </span>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== Recent News ===== */}
-      <section className="section">
-        <div className="container-rc">
-          <ScrollReveal>
-            <div className="mb-10 flex items-end justify-between gap-8">
-              <div>
-                <p className="section-label">{t("home.news.tag")}</p>
-                <h2 className="section-heading mt-5">
-                  {t("home.news.title1")}
-                  <em>{t("home.news.title2")}</em>
-                </h2>
-              </div>
-              <Link
-                href={`/${locale}/news`}
-                className="link-arrow hidden shrink-0 sm:inline-flex"
-              >
-                {stripArrow(t("home.news.viewAll"))}
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
+      {/* ===== Contact line ===== */}
+      <section className="lab-section">
+        <div className="lab-container">
+          <div className="lab-rule-accent" />
+          <div className="lab-grid items-end gap-y-8 pt-10 md:pt-14">
+            <h2 className="lab-contact col-span-12 md:col-span-9">
+              {t("cta.title1")}{" "}
+              <span className="text-[var(--rc-accent)]">{t("cta.title2")}</span>
+              <span className="text-[var(--rc-accent)]">.</span>
+            </h2>
+            <div className="col-span-12 md:col-span-3 md:justify-self-end">
+              <Link href={`/${locale}/contact`} className="lab-btn lab-btn-ink">
+                {t("cta.button")}
+                <ArrowOut className="h-4 w-4" />
               </Link>
             </div>
-          </ScrollReveal>
-          {/* A flush hairline list, not nine floating cards. Lists of
-              same-shaped links read faster without per-item chrome. */}
-          <div className="border-t border-[var(--rc-hairline)]">
-            {(
-              {
-                ko: newsKo,
-                en: newsEn,
-                zh: newsZh,
-                ja: newsJa,
-                es: newsEs,
-                fr: newsFr,
-              }[locale] ?? newsEn
-            )
-              .slice(0, 5)
-              .map(
-                (
-                  article: {
-                    id: number;
-                    title: string;
-                    date: string;
-                    category: string;
-                  },
-                  i: number,
-                ) => (
-                  <ScrollReveal key={article.id} delay={i * 60}>
-                    <Link
-                      href={`/${locale}/news/${article.id}`}
-                      className="row group -mx-4 flex items-center gap-5 rounded-lg px-4 py-5"
-                    >
-                      {/* Fixed width so every headline starts on the same
-                          optical column regardless of category length. */}
-                      <span className="pill pill-accent w-[78px] shrink-0 justify-center">
-                        {article.category}
-                      </span>
-                      <h3 className="min-w-0 flex-1 truncate text-[0.9375rem] font-medium text-[var(--rc-ink-800)] transition-colors group-hover:text-[var(--rc-accent-deep)]">
-                        {article.title}
-                      </h3>
-                      <span className="type-caption num hidden shrink-0 sm:block">
-                        {article.date}
-                      </span>
-                      <svg
-                        className="h-4 w-4 shrink-0 text-[var(--rc-ink-400)] transition-all group-hover:translate-x-0.5 group-hover:text-[var(--rc-accent)]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </Link>
-                  </ScrollReveal>
-                ),
-              )}
+            <p className="type-body measure col-span-12 md:col-span-7">
+              {t("cta.description")}
+            </p>
           </div>
         </div>
       </section>
-
-      {/* ===== CTA ===== */}
-      <section className="section relative overflow-hidden bg-[#080c11] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_50%_0%,#122c31_0%,transparent_70%)]" />
-
-        <ScrollReveal>
-          <div className="container-rc relative text-center">
-            <h2 className="section-heading on-dark">
-              {t("cta.title1")}{" "}
-              <span className="text-teal-300">{t("cta.title2")}</span>
-            </h2>
-            <p className="measure mx-auto mt-5 text-[1.0625rem] leading-[1.75] text-slate-400">
-              {t("cta.description")}
-            </p>
-            <Link
-              href={`/${locale}/contact`}
-              className="btn btn-primary mt-10"
-            >
-              {t("cta.button")}
-            </Link>
-          </div>
-        </ScrollReveal>
-      </section>
-    </>
+    </div>
   );
 }
