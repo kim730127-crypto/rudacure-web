@@ -36,7 +36,9 @@ export function PartnerLogo({
   /* A partner the page deliberately does not name has no mark to show. The
      previous placeholder was a cartoon dog with white eyes, which is the one
      element on this page that could not survive a diligence screenshot. */
-  const isAnonymous = src.startsWith("pictogram:");
+  /* An empty src means "no licensed mark for this page" (e.g. a public
+     agency whose logo terms have not been checked): show the monogram. */
+  const isAnonymous = !src || src.startsWith("pictogram:");
   const showMonogram = isAnonymous || failed;
 
   return (
