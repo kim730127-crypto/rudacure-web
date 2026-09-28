@@ -1101,6 +1101,22 @@ h4 em,
 .lab-cell:hover {
   background: var(--lab-paper);
 }
+/* Monogram slot for organisations shown without a logo (clinical sites,
+   partners whose mark is not licensed for this page). Same footprint as
+   .partner-mark so rows align. */
+.lab-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 96px;
+  height: 38px;
+  border: 1px solid var(--lab-line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--rc-ink-500);
+}
 /* JPEG marks carry baked-in white; multiply lets them sit on paper. The blend
    goes on the filtered wrapper, not the <img>, because the grayscale filter
    isolates its children. */
