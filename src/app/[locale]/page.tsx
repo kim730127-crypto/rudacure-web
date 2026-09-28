@@ -168,20 +168,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "한미정밀화학",
-      role: "RCI001/RCI002 GMP 생산",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "동아ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -194,6 +180,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "케이메디허브",
+      role: "비임상 평가",
+      logo: "",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   en: [
@@ -233,20 +226,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "RCI001/RCI002 GMP Production",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -259,6 +238,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "Non-clinical Evaluation",
+      logo: "",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   zh: [
@@ -298,20 +284,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "RCI001/RCI002 GMP生产",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -324,6 +296,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "非临床评价",
+      logo: "",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   ja: [
@@ -363,20 +342,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "RCI001/RCI002 GMP製造",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -389,6 +354,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "非臨床評価",
+      logo: "",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   es: [
@@ -428,20 +400,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "Producción GMP de RCI001/RCI002",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -454,6 +412,13 @@ const PARTNERS: Record<string, Partner[]> = {
       logo: "/images/partners/dtcro.png",
       initials: "DT",
       color: "rose",
+    },
+    {
+      name: "K-MEDI hub",
+      role: "Evaluación no clínica",
+      logo: "",
+      initials: "KMH",
+      color: "slate",
     },
   ],
   fr: [
@@ -493,20 +458,6 @@ const PARTNERS: Record<string, Partner[]> = {
       color: "emerald",
     },
     {
-      name: "Hanmi Fine Chemical",
-      role: "Production GMP RCI001/RCI002",
-      logo: "/images/partners/hanmi.gif",
-      initials: "HM",
-      color: "violet",
-    },
-    {
-      name: "Dong-A ST",
-      role: "CDMO",
-      logo: "/images/partners/dongast.png",
-      initials: "DA",
-      color: "orange",
-    },
-    {
       name: "Pharmaron",
       role: "CDMO",
       logo: "/images/partners/pharmaron.svg",
@@ -520,6 +471,35 @@ const PARTNERS: Record<string, Partner[]> = {
       initials: "DT",
       color: "rose",
     },
+    {
+      name: "K-MEDI hub",
+      role: "Évaluation non clinique",
+      logo: "",
+      initials: "KMH",
+      color: "slate",
+    },
+  ],
+};
+
+/* RCI001 국내 임상 2상(RDC001_102) 실시기관. 출처: 임상개발실 시험기관 선정 기록
+   (선정 방문 2026.06.04-07.15). 병원 로고는 사용 허락 범위가 기관마다 달라 쓰지
+   않고 monogram으로 둔다. PI 이름은 공개 페이지에 올리지 않는다. */
+const CLINICAL_SITES: Record<"ko" | "en", { name: string; initials: string }[]> = {
+  ko: [
+    { name: "강북삼성병원", initials: "KBSMC" },
+    { name: "용인세브란스병원", initials: "YISH" },
+    { name: "분당서울대학교병원", initials: "SNUBH" },
+    { name: "고려대학교 구로병원", initials: "KUGH" },
+    { name: "전남대학교병원", initials: "CNUH" },
+    { name: "순천향대학교 서울병원", initials: "SCHMC" },
+  ],
+  en: [
+    { name: "Kangbuk Samsung Hospital", initials: "KBSMC" },
+    { name: "Yongin Severance Hospital", initials: "YISH" },
+    { name: "Seoul National University Bundang Hospital", initials: "SNUBH" },
+    { name: "Korea University Guro Hospital", initials: "KUGH" },
+    { name: "Chonnam National University Hospital", initials: "CNUH" },
+    { name: "Soonchunhyang University Seoul Hospital", initials: "SCHMC" },
   ],
 };
 
@@ -546,6 +526,9 @@ const LAB_LABELS = {
     leadValue: "Phase 2",
     partners: "협력 기관",
     areas: "치료 영역 (안과·통증·피부)",
+    sitesTag: "Clinical Sites",
+    sitesTitle: "RCI001 국내 임상 2상 실시기관",
+    sitesRole: "RCI001 국내 임상 2상",
     colAsset: "Asset",
     colIndication: "Indication",
     colTarget: "Target / Modality",
@@ -559,6 +542,9 @@ const LAB_LABELS = {
     leadValue: "Phase 2",
     partners: "Partner organisations",
     areas: "Therapeutic areas (eye, pain, skin)",
+    sitesTag: "Clinical Sites",
+    sitesTitle: "RCI001 Korea Phase 2 investigational sites",
+    sitesRole: "RCI001 Korea Phase 2",
     colAsset: "Asset",
     colIndication: "Indication",
     colTarget: "Target / Modality",
@@ -649,6 +635,7 @@ export default async function HomePage({
   const partners = PARTNERS[locale] ?? PARTNERS.en;
   const pipeline = PIPELINE[loc];
   const L = LAB_LABELS[loc];
+  const sites = CLINICAL_SITES[loc];
   const news = (
     {
       ko: newsKo,
@@ -688,7 +675,7 @@ export default async function HomePage({
     { value: String(pipeline.length), label: L.assets },
     { value: L.leadValue, label: L.lead },
     { value: "3", label: L.areas },
-    { value: String(partners.length), label: L.partners },
+    { value: String(partners.length + sites.length), label: L.partners },
   ];
 
   const TOTAL = 5;
@@ -930,7 +917,10 @@ export default async function HomePage({
               }
             />
           </ScrollReveal>
-          <div className="lab-cells grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {/* 8 partners -> 4 columns, 6 clinical sites -> 3 columns: both
+              fill their rows exactly, so the hairline-gap grid never shows
+              an empty grey cell. */}
+          <div className="lab-cells grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {partners.map((p, i) => (
               <div key={p.name} className="partner-card lab-cell">
                 <span className="lab-label lab-muted">
@@ -947,6 +937,39 @@ export default async function HomePage({
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-16 md:mt-20">
+            <div className="lab-grid items-end pb-3">
+              <span className="lab-label col-span-6 text-[var(--rc-accent)] md:col-span-3">
+                {L.sitesTag}
+              </span>
+              <span className="lab-label lab-label-i18n lab-muted col-span-6 text-end md:col-span-9">
+                {sites.length} sites
+              </span>
+            </div>
+            <div className="border-t border-[var(--lab-ink)]" />
+            <h3 className="pt-6 pb-8 text-[1.375rem] font-semibold tracking-[-0.02em] text-[var(--lab-ink)]">
+              {L.sitesTitle}
+            </h3>
+            <div className="lab-cells grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {sites.map((c, i) => (
+                <div key={c.name} className="lab-cell">
+                  <span className="lab-label lab-muted">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="mt-6 flex items-center gap-4">
+                    <span className="lab-monogram">{c.initials}</span>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[0.9375rem] font-semibold leading-tight text-[var(--lab-ink)]">
+                        {c.name}
+                      </div>
+                      <div className="type-caption mt-1">{L.sitesRole}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
