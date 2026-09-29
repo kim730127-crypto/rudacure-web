@@ -87,7 +87,7 @@ export function NewsYearFilter({
           <Link
             key={article.id}
             href={`/${locale}/news/${article.id}`}
-            className="liquid-glass p-5 flex items-center gap-4 group transition-all block"
+            className="liquid-glass p-5 flex items-center gap-4 group block"
           >
             {thumb && (
               <div className="hidden sm:block relative w-[152px] aspect-video rounded-lg overflow-hidden shrink-0 bg-slate-900">

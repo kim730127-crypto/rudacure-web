@@ -180,7 +180,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 // 2026 Trending: Elevated Neutrals + Blue-Green accents
-const inputCls = "w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/30 dark:focus:ring-cyan-400/30 focus:outline-none transition-all duration-200";
+const inputCls = "w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/30 dark:focus:ring-cyan-400/30 focus:outline-none transition-[border-color,box-shadow] duration-200";
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;

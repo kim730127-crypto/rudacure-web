@@ -121,7 +121,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
         role="alert"
         aria-live="polite"
         aria-atomic="true"
-        className={`rounded-lg p-4 text-sm transition-all ${
+        className={`rounded-lg p-4 text-sm transition-colors ${
           formState.success
             ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
             : formState.error
@@ -240,7 +240,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
       <button
         type="submit"
         disabled={formState.loading}
-        className={`btn-primary w-full py-3 rounded-lg font-semibold text-sm transition-all focus:ring-2 focus:ring-teal-500 ${
+        className={`btn-primary w-full py-3 rounded-lg font-semibold text-sm transition-[background-color,box-shadow,opacity] focus:ring-2 focus:ring-teal-500 ${
           formState.loading
             ? 'opacity-50 cursor-not-allowed'
             : 'hover:shadow-lg active:scale-95'

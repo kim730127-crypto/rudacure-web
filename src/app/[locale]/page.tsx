@@ -842,7 +842,7 @@ export default async function HomePage({
                         {article.date}
                       </span>
                       <svg
-                        className="h-4 w-4 shrink-0 text-[var(--rc-ink-400)] transition-all group-hover:translate-x-0.5 group-hover:text-[var(--rc-accent)]"
+                        className="h-4 w-4 shrink-0 text-[var(--rc-ink-400)] transition-[transform,color] group-hover:translate-x-0.5 group-hover:text-[var(--rc-accent)]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

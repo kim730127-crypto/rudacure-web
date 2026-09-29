@@ -267,7 +267,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
           y: formState.success || formState.error ? 0 : -10,
         }}
         transition={{ duration: 0.3 }}
-        className={`rounded-lg p-4 text-sm transition-all ${
+        className={`rounded-lg p-4 text-sm transition-colors ${
           formState.success
             ? "bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200"
             : formState.error
@@ -348,7 +348,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
               type="button"
               onClick={handleNext}
               disabled={!formData.type || formState.loading}
-              className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-all hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-[box-shadow,opacity] hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Next
             </motion.button>
@@ -524,7 +524,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 type="button"
                 onClick={handleBack}
                 disabled={formState.loading}
-                className="flex-1 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 py-3 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all disabled:opacity-50"
+                className="flex-1 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 py-3 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
               >
                 Back
               </button>
@@ -534,7 +534,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 disabled={
                   !formData.name || !formData.email || formState.loading
                 }
-                className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-all hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-[box-shadow,opacity] hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Next
               </button>
@@ -623,7 +623,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 type="button"
                 onClick={handleBack}
                 disabled={formState.loading}
-                className="flex-1 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 py-3 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all disabled:opacity-50"
+                className="flex-1 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 py-3 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
               >
                 Back
               </button>
@@ -632,7 +632,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 whileTap={{ scale: formState.loading ? 1 : 0.98 }}
                 type="submit"
                 disabled={formState.loading}
-                className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-all hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-[box-shadow,opacity] hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {formState.loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -662,7 +662,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
         {["type", "contact", "message"].map((s, i) => (
           <motion.div
             key={s}
-            className={`h-1 flex-1 rounded-full transition-all ${
+            className={`h-1 flex-1 rounded-full transition-colors ${
               step === s
                 ? "bg-cyan-500 dark:bg-cyan-400"
                 : ["type", "contact", "message"].indexOf(step) > i
