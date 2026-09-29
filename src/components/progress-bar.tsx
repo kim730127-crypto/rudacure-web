@@ -28,23 +28,24 @@ export function ProgressBar({ progress, className = "", children, delay = 0 }: P
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
-  }, [progress, delay]);
-
+    // The observer watches an unclipped wrapper: Chrome applies an element's own
+  // clip-path when computing intersection, so a fully clipped target would
+  // never report as visible and the bar would never reveal.
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        // Reveal by clipping a full-width element instead of animating `width`,
-        // so the animation does not trigger layout on every frame and the
-        // inner label keeps its natural shape.
-        width: "100%",
-        clipPath: `inset(0 ${100 - width}% 0 0 round 9999px)`,
-        transition: "clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
-      }}
-    >
-      {children}
+    <div ref={ref} className="h-full w-full">
+      <div
+        className={className}
+        style={{
+          // Reveal by clipping a full-width element instead of animating
+          // `width`, so no layout runs per frame and the inner label keeps its
+          // natural shape.
+          width: "100%",
+          clipPath: `inset(0 ${100 - width}% 0 0 round 9999px)`,
+          transition: "clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 }
