@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { StageRail } from "@/components/stage-rail";
 import { Trpv1Hero } from "@/components/trpv1-hero";
 import { PartnerLogo } from "@/components/partner-logo";
 import { RecruitPopup } from "@/components/recruit-popup";
@@ -700,7 +701,7 @@ export default async function HomePage({
         <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_8%,#122c31_0%,#0b1419_42%,#070a0e_100%)]" />
         <Trpv1Hero />
 
-        <div className="lab-container relative z-10 w-full pt-36 pb-16 md:pb-20">
+        <div className="lab-container hero-exit relative z-10 w-full pt-36 pb-16 md:pb-20">
           <div className="lab-grid items-end pb-3 animate-hero-blur-in">
             <span className="lab-label col-span-6 text-white/80 md:col-span-3">
               No. 01 / {String(TOTAL).padStart(2, "0")}
@@ -893,9 +894,7 @@ export default async function HomePage({
                     <span className="block text-[0.875rem] text-[var(--rc-ink-700)]">
                       {p.status}
                     </span>
-                    <span className="lab-track mt-3 block" aria-hidden="true">
-                      <span className="lab-track-fill" style={{ width: `${p.progress}%` }} />
-                    </span>
+                    <StageRail asset={p.id} showLabels={false} className="mt-3" />
                   </span>
                   <span className="lab-label lab-label-i18n col-span-10 mt-4 normal-case tracking-[0.02em] text-[var(--rc-ink-600)] md:col-span-2 md:mt-0">
                     {p.milestone}

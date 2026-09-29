@@ -98,7 +98,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                reserves the wrong width and shifts the header on first paint. */
             width={130}
             height={40}
-            className={`h-8 w-auto transition-all duration-300 group-hover:opacity-80 ${
+            className={`h-8 w-auto transition-[opacity,filter] duration-300 group-hover:opacity-80 ${
               overHero ? "brightness-0 invert" : ""
             }`}
             priority

@@ -95,7 +95,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="RudaCure on LinkedIn"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rc-hairline-dark)] bg-white/5 text-slate-400 transition-all hover:border-teal-400/40 hover:bg-white/10 hover:text-teal-300"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rc-hairline-dark)] bg-white/5 text-slate-400 transition-colors hover:border-teal-400/40 hover:bg-white/10 hover:text-teal-300"
               >
                 <svg
                   width="16"
