@@ -28,7 +28,10 @@ export function ProgressBar({ progress, className = "", children, delay = 0 }: P
     );
 
     observer.observe(el);
-    // The observer watches an unclipped wrapper: Chrome applies an element's own
+    return () => observer.disconnect();
+  }, [progress, delay]);
+
+  // The observer watches an unclipped wrapper: Chrome applies an element's own
   // clip-path when computing intersection, so a fully clipped target would
   // never report as visible and the bar would never reveal.
   return (
