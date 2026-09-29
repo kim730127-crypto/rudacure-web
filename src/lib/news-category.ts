@@ -31,12 +31,6 @@ function slugFor(category: string): string | null {
   return CATEGORY_SLUGS[category] ?? null;
 }
 
-/** 1280x720 list thumbnail, or null for an unmapped category. */
-export function categoryThumbnail(category: string): string | null {
-  const slug = slugFor(category);
-  return slug ? `/images/news/categories/${slug}.jpg` : null;
-}
-
 /**
  * 1200x630 share card. Falls back to the locale-wide card when the category is
  * unmapped, so a new category string never ships a broken Open Graph image.

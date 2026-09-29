@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { StageRail } from "@/components/stage-rail";
 import { Trpv1Hero } from "@/components/trpv1-hero";
 import { PartnerLogo } from "@/components/partner-logo";
 import { RecruitPopup } from "@/components/recruit-popup";
@@ -11,19 +12,6 @@ import newsZh from "@/data/news_zh.json";
 import newsJa from "@/data/news_ja.json";
 import newsEs from "@/data/news_es.json";
 import newsFr from "@/data/news_fr.json";
-
-/* Development stage per asset, language independent. Index into STAGES.
-   Derived from each asset's public status line, not from a percentage:
-   RCI001 "US FDA Phase 2", RCI001AH "PoC complete / animal trial prep",
-   RCI002 "Pre-clinical / IND", RCI003 "candidate discovery".
-   RCI001AH is placed at Preclinical; confirm with the programme owner. */
-const STAGES = ["Disc", "Pre", "P1", "P2", "P3", "NDA"] as const;
-const STAGE_BY_ID: Record<string, number> = {
-  RCI001: 3,
-  RCI001AH: 1,
-  RCI002: 1,
-  RCI003: 0,
-};
 
 const PIPELINE = {
   ko: [
@@ -729,28 +717,7 @@ export default async function HomePage({
                   </div>
                   <p className="type-body max-w-[55ch] text-[0.9375rem] leading-[1.7]">{p.description}</p>
                   <div className="flex min-w-0 flex-col gap-3 lg:items-end lg:text-right">
-                    {STAGE_BY_ID[p.id] !== undefined && (
-                      <div className="w-full max-w-[15rem]" aria-hidden="true">
-                        <div className="stage-track">
-                          {STAGES.map((label, si) => (
-                            <span
-                              key={label}
-                              className="stage-seg"
-                              data-on={si <= STAGE_BY_ID[p.id] ? "" : undefined}
-                              data-now={si === STAGE_BY_ID[p.id] ? "" : undefined}
-                              style={{ "--i": si } as React.CSSProperties}
-                            />
-                          ))}
-                        </div>
-                        <div className="stage-labels hidden sm:flex">
-                          {STAGES.map((label, si) => (
-                            <span key={label} data-now={si === STAGE_BY_ID[p.id] ? "" : undefined}>
-                              {label}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    <StageRail asset={p.id} />
                     <span className="text-sm font-semibold text-[var(--rc-ink-800)]">{p.status}</span>
                     <span className="type-caption break-words">{p.milestone}</span>
                     <svg aria-hidden="true" className="mt-1 h-4 w-4 text-[var(--rc-accent-deep)] transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -4,6 +4,7 @@ import { type Locale } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 import { IrContactLink } from "@/components/tracked-link";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
 type IRLocale = "ko" | "en" | "zh" | "ja" | "es" | "fr" | "ar";
@@ -784,14 +785,16 @@ export default async function IRPage({
       {/* Key Highlights */}
       <section className="px-6 pb-20 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-          {HIGHLIGHTS[locale].map((h) => (
-            <div key={h.label} className="liquid-glass p-5 text-center">
+          {HIGHLIGHTS[locale].map((h, i) => (
+            <ScrollReveal key={h.label} delay={i * 70} className="h-full">
+            <div className="liquid-glass h-full p-5 text-center">
               <div className="text-3xl font-bold text-gradient-emerald mb-1">
                 {h.value}
               </div>
               <div className="text-sm text-gray-600">{h.label}</div>
               <div className="text-xs text-gray-600 mt-0.5">{h.sub}</div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -799,17 +802,19 @@ export default async function IRPage({
       {/* 2026 Roadmap */}
       <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
         <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
           <p className="section-label mb-4">
             {label(locale, TEXT_STRATEGIC_ROADMAP)}
           </p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">
             2026 <em className="italic font-semibold">Milestones</em>
           </h2>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {ROADMAP[locale].map((item) => (
+            {ROADMAP[locale].map((item, i) => (
+              <ScrollReveal key={item.quarter} delay={i * 80} className="h-full">
               <div
-                key={item.quarter}
-                className={`liquid-glass p-5 ${item.status === "active" ? "border-teal-400" : ""}`}
+                className={`liquid-glass h-full p-5 ${item.status === "active" ? "border-teal-400" : ""}`}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <div
@@ -821,6 +826,7 @@ export default async function IRPage({
                   {item.title}
                 </p>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -829,15 +835,18 @@ export default async function IRPage({
       {/* Investment Case */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
           <p className="section-label mb-4">
             {label(locale, TEXT_WHY_INVEST)}
           </p>
           <h2 className="text-3xl font-light mb-10 text-gray-900">
             The Investment <em className="italic font-semibold">Case</em>
           </h2>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {INVESTMENT_CASE[locale].map((item) => (
-              <div key={item.title} className="liquid-glass p-6">
+            {INVESTMENT_CASE[locale].map((item, i) => (
+              <ScrollReveal key={item.title} delay={(i % 2) * 90} className="h-full">
+              <div className="liquid-glass h-full p-6">
                 <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600 mb-4">
                   {ICONS[item.icon]}
                 </div>
@@ -848,6 +857,7 @@ export default async function IRPage({
                   {item.description}
                 </p>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -893,9 +903,9 @@ export default async function IRPage({
               {label(locale, TEXT_PARTNERS)}
             </h2>
             <div className="space-y-3">
-              {PARTNERS.map((p) => (
+              {PARTNERS.map((p, i) => (
+                <ScrollReveal key={p.name} delay={i * 60}>
                 <div
-                  key={p.name}
                   className="liquid-glass p-4 flex items-center justify-between"
                 >
                   <span className="text-sm text-gray-700 font-medium">
@@ -905,6 +915,7 @@ export default async function IRPage({
                     {p.type}
                   </span>
                 </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { ProgressBar } from "@/components/progress-bar";
+import { StageRail } from "@/components/stage-rail";
 import { ogCard } from "@/lib/og";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
@@ -1429,22 +1430,9 @@ export default async function PipelinePage({
                       {p.mechanism}
                     </p>
 
-                    {/* Progress */}
+                    {/* Development stage (discrete stage, not a percentage) */}
                     <div className="mb-6">
-                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                        <ProgressBar
-                          progress={p.progress}
-                          className={`h-full rounded-full ${
-                            p.color === "emerald"
-                              ? "bg-emerald-500"
-                              : p.color === "blue"
-                                ? "bg-blue-500"
-                                : p.color === "violet"
-                                  ? "bg-violet-500"
-                                  : "bg-indigo-500"
-                          }`}
-                        />
-                      </div>
+                      <StageRail asset={p.name} />
                     </div>
 
                     {/* Details */}
