@@ -701,11 +701,159 @@ h4 em,
   font-style: normal;
 }
 
+/* ═══ Clinical-stage rail ════════════════════════════════════════════════
+   Six discrete development stages. Segments fill left to right once the
+   parent .reveal-* wrapper gets .in-view, and the current stage gets a short
+   two-pulse ring. Purpose: state indication, so a visitor reads "how far along"
+   before reading any text. No percentages: the rail shows a stage, not a
+   measurement. */
+
+.stage-track {
+  display: flex;
+  gap: 4px;
+}
+
+.stage-seg {
+  position: relative;
+  flex: 1 1 0;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--rc-hairline-strong);
+}
+
+.stage-seg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--rc-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms var(--rc-ease);
+  transition-delay: calc(var(--i, 0) * 90ms + 240ms);
+}
+
+[dir="rtl"] .stage-seg::after {
+  transform-origin: right;
+}
+
+.in-view .stage-seg[data-on]::after {
+  transform: scaleX(1);
+}
+
+.stage-seg[data-now]::before {
+  content: "";
+  position: absolute;
+  inset-inline-end: 0;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  margin-inline-end: -1px;
+  border-radius: 50%;
+  background: var(--rc-accent-bright);
+  box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.5);
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.in-view .stage-seg[data-now]::before {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 240ms var(--rc-ease),
+    transform 240ms var(--rc-ease);
+  transition-delay: calc(var(--i, 0) * 90ms + 480ms);
+  animation: stage-pulse 1.4s var(--rc-ease) 2;
+  animation-delay: calc(var(--i, 0) * 90ms + 720ms);
+}
+
+@keyframes stage-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(20, 184, 166, 0);
+  }
+}
+
+.stage-labels {
+  margin-top: 6px;
+  gap: 4px;
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rc-ink-400);
+}
+
+.stage-labels span {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.stage-labels span[data-now] {
+  color: var(--rc-accent-deep);
+  font-weight: 700;
+}
+
+/* ═══ Scroll-driven motion ═══════════════════════════════════════════════
+   Both effects run on the compositor timeline (no JS scroll handler) and are
+   progressive enhancement: browsers without animation-timeline just skip them. */
+
+.scroll-progress {
+  display: none;
+}
+
+@keyframes scroll-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hero-exit {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -40px, 0);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 2px;
+    z-index: 60;
+    pointer-events: none;
+    background: var(--rc-accent-bright);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: scroll-progress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  [dir="rtl"] .scroll-progress {
+    transform-origin: right;
+  }
+
+  .hero-exit {
+    animation: hero-exit linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0px 60vh;
+  }
+}
+
 /* ═══ Accessibility ══════════════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .scroll-progress,
+  .hero-exit,
+  .stage-seg[data-now]::before {
+    animation: none !important;
   }
   *,
   *::before,
