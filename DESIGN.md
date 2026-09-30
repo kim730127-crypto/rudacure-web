@@ -43,7 +43,7 @@
 
 **어두운 면 위에서는 ink 토큰을 쓰지 않는다.** ink 는 흰 바탕용이다. 푸터, 홈 히어로, 과학 페이지 MD 섹션처럼 `bg-surface-dark` 위에서는 On Dark 세 단계와 Accent on Dark 만 쓰고, 제목에는 `on-dark` 클래스를 붙여 `em` 강조가 밝은 청록으로 바뀌게 한다.
 
-**분류 색은 두지 않는다.** 자산, 특허 상태, 뉴스 카테고리, 논문 유형을 색으로 나누지 않는다. 한 무리에서 강조할 자리 하나만 Accent Tint pill(등록 특허, Clinical 카테고리, 원저, 선도 자산군, 선택된 탭)로 두고, 나머지는 무채색 pill(`bg-surface-sunken text-ink-700 border-hairline-strong`)이다. 구분은 라벨 글자가 한다.
+**분류 색은 두지 않는다.** 자산, 특허 상태, 뉴스 카테고리, 논문 유형을 색으로 나누지 않는다. 한 무리에서 강조할 자리 하나만 Accent Tint pill(등록 특허, Clinical 카테고리, 원저, 선도 자산군, 선택된 탭)로 두고, 나머지는 무채색 pill(`bg-surface-sunken text-ink-700 border-hairline-strong`)이다. 구분은 라벨 글자가 한다. 이 방식은 2026-09-30 미리보기 검토에서 사용자가 그대로 두기로 했다.
 
 ## Tokens - Typography
 
@@ -120,6 +120,8 @@ Surface Sunken 배경, Hairline 테두리, 8px, 좌우 16px 상하 10px, 글자 
 
 ### Stage Rail
 `.stage-track` / `.stage-seg`. Disc, Pre, P1, P2, P3, NDA 여섯 칸. 근거 문서가 있는 단계만 채운다. 백분율 진행 막대로 바꾸지 않는다.
+
+`/pipeline` 상단의 자산별 진행 막대(`ProgressBar`, 폭은 `progress` 값)는 사용자 결정(2026-09-30)으로 현행대로 유지한다. 색만 토큰을 따르고 폭과 값은 건드리지 않는다. 다시 문제로 올리지 않는다.
 
 ### Email / Link
 이메일 주소와 URL 은 반드시 `<a>` 로 건다(`mailto:`). Accent Deep, 500, hover 시 밑줄.
