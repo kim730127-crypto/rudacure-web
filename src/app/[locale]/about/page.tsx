@@ -1930,7 +1930,7 @@ export default async function AboutPage({
             {c.tag}
           </p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
-            {c.title1} <em className="italic font-semibold">{c.title2}</em>
+            {c.title1} <em>{c.title2}</em>
           </h1>
           <p className="text-lg text-ink-600 max-w-2xl leading-relaxed">
             {c.description}
@@ -1986,7 +1986,7 @@ export default async function AboutPage({
             {c.leaderTag}
           </p>
           <h2 className="text-3xl font-light mb-10 text-ink-900">
-            Our <em className="italic font-semibold">{c.leaderTitle}</em>
+            Our <em>{c.leaderTitle}</em>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {leaders.map((person) => (

@@ -149,7 +149,7 @@ export default async function NewsPage({
           </p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
             {t("news.title1")}{" "}
-            <em className="font-playfair italic font-semibold">
+            <em>
               {t("news.title2")}
             </em>
           </h1>
@@ -178,7 +178,7 @@ export default async function NewsPage({
             </svg>
             <h2 className="text-2xl font-light text-ink-900">
               {mc.sectionTitle}
-              <em className="font-playfair italic font-semibold">
+              <em>
                 {mc.sectionTitleEm}
               </em>
             </h2>

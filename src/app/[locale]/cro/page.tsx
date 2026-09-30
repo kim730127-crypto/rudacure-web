@@ -758,7 +758,7 @@ export default async function CROPage({
           </p>
           <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
             {c.title1}{" "}
-            <em className="font-playfair italic font-semibold text-gradient-emerald">
+            <em>
               {c.title2}
             </em>
           </h1>
@@ -769,7 +769,7 @@ export default async function CROPage({
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {c.stats.map((s) => (
               <div key={s.label} className="liquid-glass p-5 text-center">
-                <div className="text-3xl font-bold text-gradient-emerald mb-1">
+                <div className="text-3xl font-bold text-accent-deep mb-1">
                   {s.value}
                 </div>
                 <div className="text-xs text-ink-600 leading-snug">
@@ -788,7 +788,7 @@ export default async function CROPage({
             {c.intro.tag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-6 text-ink-900">
-            <em className="italic font-semibold">{c.intro.heading}</em>
+            <em>{c.intro.heading}</em>
           </h2>
           <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-10">
             {c.intro.body}
@@ -824,7 +824,7 @@ export default async function CROPage({
             {c.servicesTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
-            <em className="italic font-semibold">{c.servicesTitle}</em>
+            <em>{c.servicesTitle}</em>
           </h2>
           <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.servicesSub}
@@ -865,7 +865,7 @@ export default async function CROPage({
             {c.painTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
-            <em className="italic font-semibold">{c.painTitle}</em>
+            <em>{c.painTitle}</em>
           </h2>
           <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.painSub}
@@ -874,7 +874,7 @@ export default async function CROPage({
           <div className="space-y-4">
             {c.painModels.map((p) => (
               <div key={p.num} className="liquid-glass p-6 flex gap-6">
-                <div className="text-3xl font-bold text-gradient-emerald shrink-0 w-12">
+                <div className="text-3xl font-bold text-accent-deep shrink-0 w-12">
                   {p.num}
                 </div>
                 <div className="flex-1">
@@ -899,7 +899,7 @@ export default async function CROPage({
             {c.invivoTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
-            <em className="italic font-semibold">{c.invivoTitle}</em>
+            <em>{c.invivoTitle}</em>
           </h2>
           <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.invivoSub}
@@ -951,7 +951,7 @@ export default async function CROPage({
             {c.modelsTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
-            <em className="italic font-semibold">{c.modelsTitle}</em>
+            <em>{c.modelsTitle}</em>
           </h2>
           <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.modelsSub}
@@ -987,7 +987,7 @@ export default async function CROPage({
             {c.fliprTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
-            <em className="italic font-semibold">{c.fliprTitle}</em>
+            <em>{c.fliprTitle}</em>
           </h2>
           <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.fliprSub}
@@ -1026,7 +1026,7 @@ export default async function CROPage({
             {c.trackTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
-            <em className="italic font-semibold">{c.trackTitle}</em>
+            <em>{c.trackTitle}</em>
           </h2>
           <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.trackSub}
@@ -1062,7 +1062,7 @@ export default async function CROPage({
             {c.partnerTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-12 text-ink-900">
-            <em className="italic font-semibold">{c.partnerTitle}</em>
+            <em>{c.partnerTitle}</em>
           </h2>
 
           <div className="liquid-glass p-8">
@@ -1086,7 +1086,7 @@ export default async function CROPage({
             {c.ctaTag}
           </p>
           <h2 className="text-3xl sm:text-4xl font-light mb-6 text-ink-900">
-            <em className="italic font-semibold">{c.ctaTitle}</em>
+            <em>{c.ctaTitle}</em>
           </h2>
           <p className="text-base text-ink-600 leading-relaxed mb-8">
             {c.ctaBody}

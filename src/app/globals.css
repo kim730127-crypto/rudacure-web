@@ -746,20 +746,6 @@ button.liquid-glass-teal:hover {
 /* `text-gradient-emerald` / `hero-gradient-text` previously produced a
    two-tone gradient on headings. Flattened to solid accent — gradient text
    is the strongest "startup template" signal on a page. */
-.text-gradient-emerald {
-  color: var(--rc-accent-deep);
-}
-
-.hero-gradient-text {
-  color: #fff;
-}
-
-/* Playfair was never loaded; the class only triggered synthetic italic. */
-.font-playfair {
-  font-family: var(--font-sans);
-  font-style: normal;
-}
-
 /* ═══ Clinical-stage rail ════════════════════════════════════════════════
    Six discrete development stages. Segments fill left to right once the
    parent .reveal-* wrapper gets .in-view, and the current stage gets a short

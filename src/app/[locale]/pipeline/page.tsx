@@ -1327,7 +1327,7 @@ export default async function PipelinePage({
             </p>
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6">
               {h.title1}{" "}
-              <em className="font-playfair italic font-semibold text-gradient-emerald">
+              <em>
                 {h.title2}
               </em>
             </h1>

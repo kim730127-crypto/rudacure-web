@@ -715,7 +715,7 @@ export default async function SciencePage({
               </p>
               <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
                 {c.title[0]}
-                <em className="font-playfair italic font-semibold text-gradient-emerald">
+                <em>
                   {c.title[1]}
                 </em>
                 {c.title[2]}
@@ -771,9 +771,9 @@ export default async function SciencePage({
             <p className="section-label on-dark mb-4">
               {c.mdTag}
             </p>
-            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-white">
+            <h2 className="on-dark text-3xl sm:text-4xl font-light mb-6">
               {c.mdTitle[0]}
-              <em className="font-playfair italic font-semibold text-gradient-emerald">
+              <em>
                 {c.mdTitle[1]}
               </em>
             </h2>
@@ -814,7 +814,7 @@ export default async function SciencePage({
                     preload="metadata"
                     aria-label={c.mdCaptions[n - 1]}
                   />
-                  <figcaption className="p-4 text-sm text-ink-400 leading-relaxed">
+                  <figcaption className="p-4 text-sm text-on-dark-subtle leading-relaxed">
                     {c.mdCaptions[n - 1]}
                   </figcaption>
                 </figure>
@@ -830,7 +830,7 @@ export default async function SciencePage({
             </p>
             <h2 className="text-3xl font-light mb-10 text-ink-900">
               {c.compTitle[0]}
-              <em className="font-playfair italic font-semibold">
+              <em>
                 {c.compTitle[1]}
               </em>
               {c.compTitle[2]}
@@ -881,7 +881,7 @@ export default async function SciencePage({
             <div>
               <h2 className="text-3xl font-light mb-6 text-ink-900">
                 {c.beyondTitle[0]}
-                <em className="font-playfair italic font-semibold">
+                <em>
                   {c.beyondTitle[1]}
                 </em>
               </h2>

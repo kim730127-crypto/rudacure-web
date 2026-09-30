@@ -762,7 +762,7 @@ export default async function IRPage({
             </p>
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
               Investor{" "}
-              <em className="italic font-semibold text-gradient-emerald">
+              <em>
                 Relations
               </em>
             </h1>
@@ -788,7 +788,7 @@ export default async function IRPage({
           {HIGHLIGHTS[locale].map((h, i) => (
             <ScrollReveal key={h.label} delay={i * 70} className="h-full">
             <div className="liquid-glass h-full p-5 text-center">
-              <div className="text-3xl font-bold text-gradient-emerald mb-1">
+              <div className="text-3xl font-bold text-accent-deep mb-1">
                 {h.value}
               </div>
               <div className="text-sm text-ink-600">{h.label}</div>
@@ -807,7 +807,7 @@ export default async function IRPage({
             {label(locale, TEXT_STRATEGIC_ROADMAP)}
           </p>
           <h2 className="text-3xl font-light mb-10 text-ink-900">
-            2026 <em className="italic font-semibold">Milestones</em>
+            2026 <em>Milestones</em>
           </h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -840,7 +840,7 @@ export default async function IRPage({
             {label(locale, TEXT_WHY_INVEST)}
           </p>
           <h2 className="text-3xl font-light mb-10 text-ink-900">
-            The Investment <em className="italic font-semibold">Case</em>
+            The Investment <em>Case</em>
           </h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -871,7 +871,7 @@ export default async function IRPage({
               {label(locale, TEXT_COMPANY_SNAPSHOT)}
             </p>
             <h2 className="text-3xl font-light mb-8 text-ink-900">
-              Key <em className="italic font-semibold">Facts</em>
+              Key <em>Facts</em>
             </h2>
             <div className="liquid-glass overflow-hidden">
               <table className="w-full">
