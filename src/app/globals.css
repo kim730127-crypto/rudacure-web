@@ -40,6 +40,13 @@
   --rc-hairline-strong: rgba(10, 15, 20, 0.14);
   --rc-hairline-dark: rgba(255, 255, 255, 0.09);
 
+  /* ── Status. Error only; success reuses the accent family so the page never
+     shows two greens. Value kept from the red-600 the contact form already
+     used (4.8:1 on white). ────────────────────────────────────────────── */
+  --rc-danger: #dc2626;
+  --rc-danger-tint: rgba(220, 38, 38, 0.06);
+  --rc-danger-line: rgba(220, 38, 38, 0.28);
+
   /* ── Elevation. Two-layer: tight contact shadow + wide ambient. ────────── */
   --rc-shadow-sm: 0 1px 2px rgba(10, 15, 20, 0.04),
     0 1px 1px rgba(10, 15, 20, 0.03);
@@ -70,6 +77,25 @@
   --color-accent: var(--rc-accent);
   --color-accent-deep: var(--rc-accent-deep);
   --color-ink: var(--rc-ink-800);
+  /* Token utilities (text-ink-600, bg-surface-sunken, border-hairline ...).
+     DESIGN.md lists these as the only colours components may use. */
+  --color-accent-bright: var(--rc-accent-bright);
+  --color-accent-tint: var(--rc-accent-tint);
+  --color-accent-line: var(--rc-accent-line);
+  --color-ink-900: var(--rc-ink-900);
+  --color-ink-800: var(--rc-ink-800);
+  --color-ink-700: var(--rc-ink-700);
+  --color-ink-600: var(--rc-ink-600);
+  --color-ink-500: var(--rc-ink-500);
+  --color-ink-400: var(--rc-ink-400);
+  --color-surface: var(--rc-surface);
+  --color-surface-sunken: var(--rc-surface-sunken);
+  --color-surface-dark: var(--rc-surface-dark);
+  --color-hairline: var(--rc-hairline);
+  --color-hairline-strong: var(--rc-hairline-strong);
+  --color-danger: var(--rc-danger);
+  --color-danger-tint: var(--rc-danger-tint);
+  --color-danger-line: var(--rc-danger-line);
   --font-sans: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui,
     -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;

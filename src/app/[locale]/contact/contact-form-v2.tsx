@@ -7,6 +7,25 @@ import { track } from "@vercel/analytics";
 import { trackContactFormStart } from "@/lib/analytics-events";
 import { submitContactForm } from "./actions";
 
+/** Every visible string in the form. Supplied per locale by page.tsx so the
+ *  component never renders English on a non-English page. */
+export interface ContactFormText {
+  stepOf: string; // "{n}" is replaced with the step number
+  contactTitle: string;
+  messageTitle: string;
+  next: string;
+  back: string;
+  sending: string;
+  placeholder: string;
+  trust: string;
+  success: string;
+  errType: string;
+  errName: string;
+  errEmail: string;
+  errMessage: string;
+  errGeneric: string;
+}
+
 interface ContactFormProps {
   c: {
     name: string;
@@ -16,6 +35,7 @@ interface ContactFormProps {
     message: string;
     submit: string;
     typeOptions: string[];
+    form: ContactFormText;
     [key: string]: unknown;
   };
   inputCls: string;
@@ -70,21 +90,23 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
   const alertRef = useRef<HTMLDivElement>(null);
 
   const typeOptions = Array.isArray(c.typeOptions) ? c.typeOptions : [];
+  const t = c.form;
+  const stepLabel = (n: number) => t.stepOf.replace("{n}", String(n));
 
   // 2026 Trend: Real-time validation
   const validateField = (name: string, value: string): string | null => {
     switch (name) {
       case "name":
         return value.trim().length < 2
-          ? "Name must be at least 2 characters"
+          ? t.errName
           : null;
       case "email":
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
           ? null
-          : "Invalid email address";
+          : t.errEmail;
       case "message":
         return value.trim().length < 10
-          ? "Message must be at least 10 characters"
+          ? t.errMessage
           : null;
       default:
         return null;
@@ -137,7 +159,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
         setFormState({
           loading: false,
           success: false,
-          error: "Please select an inquiry type",
+          error: t.errType,
         });
         return;
       }
@@ -209,35 +231,24 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
           setFormState((prev) => ({ ...prev, success: false }));
         }, 5000);
       } else {
+        // Server messages are English-only; show the localized one instead.
         setFormState({
           loading: false,
           success: false,
-          error: result.message,
+          error: t.errGeneric,
         });
       }
     } catch (error) {
       setFormState({
         loading: false,
         success: false,
-        error: "An error occurred. Please try again.",
+        error: t.errGeneric,
       });
     }
   };
 
-  const getLocalizedLoadingText = (): string => {
-    const loadingMessages: Record<string, string> = {
-      en: "Sending...",
-      ko: "전송 중...",
-      ja: "送信中...",
-      zh: "发送中...",
-      es: "Enviando...",
-      fr: "Envoi...",
-    };
-    const locale = Object.keys(c).find((k) => typeof c[k] === "string") || "en";
-    return loadingMessages[locale] || "Sending...";
-  };
-
-  // 2026 Trend: Progressive Disclosure animation variants
+  // Step transitions. Vertical offsets only, so RTL (ar) does not slide the
+  // wrong way.
   const containerVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
@@ -245,11 +256,11 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
   };
 
   const fieldVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: 8 },
     visible: (i: number) => ({
       opacity: 1,
-      x: 0,
-      transition: { delay: i * 0.1, duration: 0.3 },
+      y: 0,
+      transition: { delay: i * 0.06, duration: 0.24, ease: [0.16, 1, 0.3, 1] as const },
     }),
   };
 
@@ -267,17 +278,16 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
           y: formState.success || formState.error ? 0 : -10,
         }}
         transition={{ duration: 0.3 }}
-        className={`rounded-lg p-4 text-sm transition-colors ${
+        className={`rounded-xl border p-4 text-sm ${
           formState.success
-            ? "bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200"
+            ? "bg-accent-tint border-accent-line text-accent-deep"
             : formState.error
-              ? "bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200"
+              ? "bg-danger-tint border-danger-line text-danger"
               : "hidden"
         }`}
       >
-        {formState.success &&
-          "✓ Message sent successfully! We will get back to you soon."}
-        {formState.error && `✕ ${formState.error}`}
+        {formState.success && t.success}
+        {formState.error}
       </motion.div>
 
       {/* Honeypot */}
@@ -304,11 +314,11 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             className="space-y-4"
           >
             <div className="text-center mb-6">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+              <h3 className="text-lg font-semibold text-ink-900">
                 {c.type}
               </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Step 1 of 3
+              <p className="text-sm text-ink-500 mt-1">
+                {stepLabel(1)}
               </p>
             </div>
 
@@ -320,7 +330,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             >
               <label
                 htmlFor="contact-type"
-                className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-2"
+                className="text-xs font-medium text-ink-700 block mb-2"
               >
                 {c.type}
               </label>
@@ -329,7 +339,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 name="type"
                 value={formData.type}
                 onChange={handleChange}
-                className={`${inputCls} cursor-pointer`}
+                className={`${inputCls} border-hairline cursor-pointer`}
                 disabled={formState.loading}
               >
                 {typeOptions.map((opt, i) => (
@@ -348,9 +358,9 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
               type="button"
               onClick={handleNext}
               disabled={!formData.type || formState.loading}
-              className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-[box-shadow,opacity] hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
             >
-              Next
+              {t.next}
             </motion.button>
           </motion.div>
         )}
@@ -366,11 +376,11 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             className="space-y-4"
           >
             <div className="text-center mb-6">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                Contact Information
+              <h3 className="text-lg font-semibold text-ink-900">
+                {t.contactTitle}
               </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Step 2 of 3
+              <p className="text-sm text-ink-500 mt-1">
+                {stepLabel(2)}
               </p>
             </div>
 
@@ -383,7 +393,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             >
               <label
                 htmlFor="contact-name"
-                className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-2"
+                className="text-xs font-medium text-ink-700 block mb-2"
               >
                 {c.name}
               </label>
@@ -396,8 +406,8 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                   onChange={handleChange}
                   className={`${inputCls} ${
                     validationErrors.name
-                      ? "border-red-500 focus:ring-red-500/30"
-                      : "border-slate-200 dark:border-slate-700"
+                      ? "border-danger focus:border-danger focus:ring-danger/20"
+                      : "border-hairline"
                   }`}
                   disabled={formState.loading}
                   required
@@ -407,12 +417,14 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 <AnimatePresence>
                   {formData.name && !validationErrors.name && (
                     <motion.span
-                      initial={{ opacity: 0, scale: 0.5 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.5 }}
-                      className="absolute end-3 top-1/2 -translate-y-1/2 text-emerald-500"
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute end-3 top-1/2 -translate-y-1/2 text-accent"
+                      aria-hidden="true"
                     >
-                      ✓
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5l10 -10" /></svg>
                     </motion.span>
                   )}
                 </AnimatePresence>
@@ -423,7 +435,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    className="text-xs text-red-600 dark:text-red-400 mt-1"
+                    className="text-xs text-danger mt-1"
                   >
                     {validationErrors.name}
                   </motion.p>
@@ -440,7 +452,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             >
               <label
                 htmlFor="contact-email"
-                className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-2"
+                className="text-xs font-medium text-ink-700 block mb-2"
               >
                 {c.email}
               </label>
@@ -453,8 +465,8 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                   onChange={handleChange}
                   className={`${inputCls} ${
                     validationErrors.email
-                      ? "border-red-500 focus:ring-red-500/30"
-                      : "border-slate-200 dark:border-slate-700"
+                      ? "border-danger focus:border-danger focus:ring-danger/20"
+                      : "border-hairline"
                   }`}
                   disabled={formState.loading}
                   required
@@ -464,12 +476,14 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 <AnimatePresence>
                   {formData.email && !validationErrors.email && (
                     <motion.span
-                      initial={{ opacity: 0, scale: 0.5 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.5 }}
-                      className="absolute end-3 top-1/2 -translate-y-1/2 text-emerald-500"
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute end-3 top-1/2 -translate-y-1/2 text-accent"
+                      aria-hidden="true"
                     >
-                      ✓
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5l10 -10" /></svg>
                     </motion.span>
                   )}
                 </AnimatePresence>
@@ -480,7 +494,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    className="text-xs text-red-600 dark:text-red-400 mt-1"
+                    className="text-xs text-danger mt-1"
                   >
                     {validationErrors.email}
                   </motion.p>
@@ -497,7 +511,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             >
               <label
                 htmlFor="contact-company"
-                className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-2"
+                className="text-xs font-medium text-ink-700 block mb-2"
               >
                 {c.company}
               </label>
@@ -507,7 +521,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className={inputCls}
+                className={`${inputCls} border-hairline`}
                 disabled={formState.loading}
               />
             </motion.div>
@@ -524,9 +538,9 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 type="button"
                 onClick={handleBack}
                 disabled={formState.loading}
-                className="flex-1 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 py-3 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
+                className="btn btn-secondary flex-1 disabled:opacity-50"
               >
-                Back
+                {t.back}
               </button>
               <button
                 type="button"
@@ -534,9 +548,9 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 disabled={
                   !formData.name || !formData.email || formState.loading
                 }
-                className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-[box-shadow,opacity] hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
               >
-                Next
+                {t.next}
               </button>
             </motion.div>
           </motion.div>
@@ -553,11 +567,11 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             className="space-y-4"
           >
             <div className="text-center mb-6">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                Your Message
+              <h3 className="text-lg font-semibold text-ink-900">
+                {t.messageTitle}
               </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Step 3 of 3
+              <p className="text-sm text-ink-500 mt-1">
+                {stepLabel(3)}
               </p>
             </div>
 
@@ -569,7 +583,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
             >
               <label
                 htmlFor="contact-message"
-                className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-2"
+                className="text-xs font-medium text-ink-700 block mb-2"
               >
                 {c.message}
               </label>
@@ -579,12 +593,16 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 value={formData.message}
                 onChange={handleChange}
                 rows={5}
-                className={`${inputCls} resize-none`}
+                className={`${inputCls} resize-none ${
+                  validationErrors.message
+                    ? "border-danger focus:border-danger focus:ring-danger/20"
+                    : "border-hairline"
+                }`}
                 disabled={formState.loading}
                 required
                 aria-required="true"
                 aria-invalid={!!validationErrors.message}
-                placeholder="Tell us more about your inquiry..."
+                placeholder={t.placeholder}
               />
               <AnimatePresence>
                 {validationErrors.message && (
@@ -592,7 +610,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    className="text-xs text-red-600 dark:text-red-400 mt-1"
+                    className="text-xs text-danger mt-1"
                   >
                     {validationErrors.message}
                   </motion.p>
@@ -606,9 +624,9 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
               variants={fieldVariants}
               initial="hidden"
               animate="visible"
-              className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3 text-xs text-emerald-800 dark:text-emerald-200"
+              className="rounded-lg border border-hairline bg-surface-sunken p-3 text-xs text-ink-600"
             >
-              🔒 Secure submission • 2-business-day response time
+              {t.trust}
             </motion.div>
 
             {/* Navigation Buttons */}
@@ -623,35 +641,27 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 type="button"
                 onClick={handleBack}
                 disabled={formState.loading}
-                className="flex-1 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 py-3 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
+                className="btn btn-secondary flex-1 disabled:opacity-50"
               >
-                Back
+                {t.back}
               </button>
-              <motion.button
-                whileHover={{ scale: formState.loading ? 1 : 1.02 }}
-                whileTap={{ scale: formState.loading ? 1 : 0.98 }}
+              <button
                 type="submit"
                 disabled={formState.loading}
-                className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-600 dark:to-cyan-700 text-white py-3 rounded-lg font-semibold text-sm transition-[box-shadow,opacity] hover:shadow-lg hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
               >
                 {formState.loading ? (
                   <span className="flex items-center justify-center gap-2">
-                    <motion.span
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 1,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                    >
-                      ⌛
-                    </motion.span>
-                    {getLocalizedLoadingText()}
+                    <span
+                      className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin motion-reduce:animate-none"
+                      aria-hidden="true"
+                    />
+                    {t.sending}
                   </span>
                 ) : (
                   c.submit
                 )}
-              </motion.button>
+              </button>
             </motion.div>
           </motion.div>
         )}
@@ -662,14 +672,11 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
         {["type", "contact", "message"].map((s, i) => (
           <motion.div
             key={s}
-            className={`h-1 flex-1 rounded-full transition-colors ${
-              step === s
-                ? "bg-cyan-500 dark:bg-cyan-400"
-                : ["type", "contact", "message"].indexOf(step) > i
-                  ? "bg-emerald-500 dark:bg-emerald-400"
-                  : "bg-slate-200 dark:bg-slate-700"
+            className={`h-1 flex-1 rounded-full transition-colors duration-200 ${
+              ["type", "contact", "message"].indexOf(step) >= i
+                ? "bg-accent"
+                : "bg-hairline-strong"
             }`}
-            layoutId={`progress-${s}`}
           />
         ))}
       </motion.div>

@@ -42,6 +42,9 @@ const VALID_TYPES = new Set([
   '파트너십 / 라이선싱',
   '투자 / IR',
   'CRO 서비스',
+  'الشراكة / الترخيص',
+  'الاستثمار / علاقات المستثمرين',
+  'خدمات CRO',
 ])
 
 // Type recipient mapping
@@ -64,6 +67,9 @@ const TYPE_RECIPIENT_MAP: Record<string, string> = {
   '파트너십 / 라이선싱': 'sh.kim@rudacure.com',
   '투자 / IR': 'js.shin@rudacure.com',
   'CRO 서비스': 'jyshin@rudacure.com',
+  'الشراكة / الترخيص': 'sh.kim@rudacure.com',
+  'الاستثمار / علاقات المستثمرين': 'js.shin@rudacure.com',
+  'خدمات CRO': 'jyshin@rudacure.com',
 }
 
 // Zod validation schema

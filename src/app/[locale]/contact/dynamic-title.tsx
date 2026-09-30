@@ -25,8 +25,8 @@ export default function DynamicTitle({ title1, title2, titleByType }: DynamicTit
   }, [titleByType, title1, title2])
 
   return (
-    <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900 dark:text-slate-100">
-      <em className="font-playfair italic font-semibold">{displayTitle[0]}</em> {displayTitle[1]}
+    <h1 className="type-h1 text-ink-900 mb-6">
+      <em>{displayTitle[0]}</em> {displayTitle[1]}
     </h1>
   )
 }
