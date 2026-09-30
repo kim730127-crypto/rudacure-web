@@ -697,7 +697,7 @@ export default async function HomePage({
       {/* ===== Hero ===== The TRPV1 point cloud stays: it is the one visual
           asset built from real coordinates. What changes is the type system
           laid over it. */}
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-[#080c11] text-white">
+      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-surface-dark text-white">
         <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_8%,#122c31_0%,#0b1419_42%,#070a0e_100%)]" />
         <Trpv1Hero />
 
@@ -723,7 +723,7 @@ export default async function HomePage({
           >
             {t("hero.title1")}
             <br />
-            <span className="text-teal-300">{t("hero.title2")}</span>
+            <span className="text-accent-on-dark">{t("hero.title2")}</span>
           </h1>
 
           <div
@@ -731,7 +731,7 @@ export default async function HomePage({
             style={{ animationDelay: "0.24s" }}
           >
             <div className="col-span-12 md:col-span-6">
-              <p className="measure text-[1.0625rem] leading-[1.75] text-slate-300/90">
+              <p className="measure text-[1.0625rem] leading-[1.75] text-on-dark-strong/90">
                 {t("hero.description")}
               </p>
               <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">

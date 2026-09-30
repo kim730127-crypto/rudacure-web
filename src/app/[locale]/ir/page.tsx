@@ -754,19 +754,19 @@ export default async function IRPage({
     <div className="pt-24">
       <BreadcrumbJsonLd locale={loc} navKey="nav.ir" path="/ir" />
       {/* Header */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="section-label mb-4">
               {label(locale, TEXT_INVESTORS)}
             </p>
-            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
               Investor{" "}
               <em className="italic font-semibold text-gradient-emerald">
                 Relations
               </em>
             </h1>
-            <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+            <p className="text-lg text-ink-600 max-w-3xl leading-relaxed">
               {label(locale, TEXT_HEADER_DESC)}
             </p>
           </div>
@@ -783,7 +783,7 @@ export default async function IRPage({
       </section>
 
       {/* Key Highlights */}
-      <section className="px-6 pb-20 bg-white">
+      <section className="px-6 pb-20 bg-surface">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
           {HIGHLIGHTS[locale].map((h, i) => (
             <ScrollReveal key={h.label} delay={i * 70} className="h-full">
@@ -791,8 +791,8 @@ export default async function IRPage({
               <div className="text-3xl font-bold text-gradient-emerald mb-1">
                 {h.value}
               </div>
-              <div className="text-sm text-gray-600">{h.label}</div>
-              <div className="text-xs text-gray-600 mt-0.5">{h.sub}</div>
+              <div className="text-sm text-ink-600">{h.label}</div>
+              <div className="text-xs text-ink-600 mt-0.5">{h.sub}</div>
             </div>
             </ScrollReveal>
           ))}
@@ -800,13 +800,13 @@ export default async function IRPage({
       </section>
 
       {/* 2026 Roadmap */}
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+      <section className="py-20 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
           <p className="section-label mb-4">
             {label(locale, TEXT_STRATEGIC_ROADMAP)}
           </p>
-          <h2 className="text-3xl font-light mb-10 text-gray-900">
+          <h2 className="text-3xl font-light mb-10 text-ink-900">
             2026 <em className="italic font-semibold">Milestones</em>
           </h2>
           </ScrollReveal>
@@ -814,15 +814,15 @@ export default async function IRPage({
             {ROADMAP[locale].map((item, i) => (
               <ScrollReveal key={item.quarter} delay={i * 80} className="h-full">
               <div
-                className={`liquid-glass h-full p-5 ${item.status === "active" ? "border-teal-400" : ""}`}
+                className={`liquid-glass h-full p-5 ${item.status === "active" ? "border-accent" : ""}`}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <div
-                    className={`w-2 h-2 rounded-full ${item.status === "active" ? "bg-teal-500 animate-pulse" : "bg-gray-200"}`}
+                    className={`w-2 h-2 rounded-full ${item.status === "active" ? "bg-accent animate-pulse motion-reduce:animate-none" : "bg-hairline-strong"}`}
                   />
-                  <span className="text-xs text-gray-600">{item.quarter}</span>
+                  <span className="text-xs text-ink-600">{item.quarter}</span>
                 </div>
-                <p className="text-sm text-gray-700 font-medium leading-relaxed">
+                <p className="text-sm text-ink-700 font-medium leading-relaxed">
                   {item.title}
                 </p>
               </div>
@@ -833,13 +833,13 @@ export default async function IRPage({
       </section>
 
       {/* Investment Case */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
           <p className="section-label mb-4">
             {label(locale, TEXT_WHY_INVEST)}
           </p>
-          <h2 className="text-3xl font-light mb-10 text-gray-900">
+          <h2 className="text-3xl font-light mb-10 text-ink-900">
             The Investment <em className="italic font-semibold">Case</em>
           </h2>
           </ScrollReveal>
@@ -847,13 +847,13 @@ export default async function IRPage({
             {INVESTMENT_CASE[locale].map((item, i) => (
               <ScrollReveal key={item.title} delay={(i % 2) * 90} className="h-full">
               <div className="liquid-glass h-full p-6">
-                <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-accent-tint border border-accent-line flex items-center justify-center text-accent-deep mb-4">
                   {ICONS[item.icon]}
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                <h3 className="text-lg font-semibold mb-2 text-ink-900">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-ink-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -864,13 +864,13 @@ export default async function IRPage({
       </section>
 
       {/* Company Snapshot */}
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+      <section className="py-20 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <p className="section-label mb-4">
               {label(locale, TEXT_COMPANY_SNAPSHOT)}
             </p>
-            <h2 className="text-3xl font-light mb-8 text-gray-900">
+            <h2 className="text-3xl font-light mb-8 text-ink-900">
               Key <em className="italic font-semibold">Facts</em>
             </h2>
             <div className="liquid-glass overflow-hidden">
@@ -881,12 +881,12 @@ export default async function IRPage({
                       key={row.label}
                       className={
                         i < FINANCIALS[locale].length - 1
-                          ? "border-b border-gray-100"
+                          ? "border-b border-hairline"
                           : ""
                       }
                     >
-                      <td className="p-4 text-sm text-gray-600">{row.label}</td>
-                      <td className="p-4 text-sm text-gray-800 font-medium text-end">
+                      <td className="p-4 text-sm text-ink-600">{row.label}</td>
+                      <td className="p-4 text-sm text-ink-800 font-medium text-end">
                         {row.value}
                       </td>
                     </tr>
@@ -899,7 +899,7 @@ export default async function IRPage({
             <p className="section-label mb-4">
               {label(locale, TEXT_STRATEGIC_PARTNERS)}
             </p>
-            <h2 className="text-3xl font-light mb-8 text-gray-900">
+            <h2 className="text-3xl font-light mb-8 text-ink-900">
               {label(locale, TEXT_PARTNERS)}
             </h2>
             <div className="space-y-3">
@@ -908,10 +908,10 @@ export default async function IRPage({
                 <div
                   className="liquid-glass p-4 flex items-center justify-between"
                 >
-                  <span className="text-sm text-gray-700 font-medium">
+                  <span className="text-sm text-ink-700 font-medium">
                     {p.name}
                   </span>
-                  <span className="text-xs text-teal-600 px-2.5 py-0.5 rounded-full bg-teal-50 border border-teal-200">
+                  <span className="text-xs text-accent-deep px-2.5 py-0.5 rounded-full bg-accent-tint border border-accent-line">
                     {p.type}
                   </span>
                 </div>
@@ -923,13 +923,13 @@ export default async function IRPage({
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 text-center bg-white">
+      <section className="py-20 px-6 text-center bg-surface">
         <div className="max-w-2xl mx-auto">
-          <blockquote className="text-xl sm:text-2xl font-light italic text-gray-600 mb-8">
+          <blockquote className="text-xl sm:text-2xl font-light italic text-ink-600 mb-8">
             &ldquo;We don&rsquo;t just treat symptoms; we heal the source of
             sensory signals.&rdquo;
           </blockquote>
-          <p className="text-gray-600 mb-8">{label(locale, TEXT_CTA_DESC)}</p>
+          <p className="text-ink-600 mb-8">{label(locale, TEXT_CTA_DESC)}</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <IrContactLink
               href="mailto:js.shin@rudacure.com"

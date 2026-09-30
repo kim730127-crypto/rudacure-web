@@ -71,18 +71,18 @@ export function RecruitPopup() {
 
       {/* panel */}
       <div
-        className="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+        className="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-surface shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* header */}
-        <div className="flex items-start justify-between gap-4 border-b border-gray-100 px-6 py-5 sm:px-8">
+        <div className="flex items-start justify-between gap-4 border-b border-hairline px-6 py-5 sm:px-8">
           <div>
-            <span className="inline-block rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
+            <span className="inline-block rounded-full bg-accent-tint px-3 py-1 text-xs font-semibold text-accent-deep">
               상시채용 · 충원 시 마감
             </span>
             <h2
               id="recruit-title"
-              className="mt-2 text-xl font-bold text-gray-900 sm:text-2xl"
+              className="mt-2 text-xl font-bold text-ink-900 sm:text-2xl"
             >
               BD팀 채용 (1명)
             </h2>
@@ -91,7 +91,7 @@ export function RecruitPopup() {
             ref={closeRef}
             onClick={close}
             aria-label="채용 공고 닫기"
-            className="-me-1 shrink-0 rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
+            className="-me-1 shrink-0 rounded-lg p-2 text-ink-400 transition-colors hover:bg-surface-muted hover:text-ink-700"
           >
             <svg
               className="h-5 w-5"
@@ -110,7 +110,7 @@ export function RecruitPopup() {
         </div>
 
         {/* body (scrollable) */}
-        <div className="space-y-6 overflow-y-auto px-6 py-6 text-sm leading-relaxed text-gray-700 sm:px-8">
+        <div className="space-y-6 overflow-y-auto px-6 py-6 text-sm leading-relaxed text-ink-700 sm:px-8">
           <Section title="담당 업무">
             <ul className="list-disc space-y-1 ps-5">
               <li>
@@ -154,7 +154,7 @@ export function RecruitPopup() {
           <Section title="주요 업무">
             <ol className="space-y-4">
               <li>
-                <p className="font-semibold text-gray-900">
+                <p className="font-semibold text-ink-900">
                   1. 신약 파이프라인 기술이전 및 공동연구 추진
                 </p>
                 <ul className="mt-1 list-disc space-y-1 ps-5">
@@ -176,7 +176,7 @@ export function RecruitPopup() {
                 </ul>
               </li>
               <li>
-                <p className="font-semibold text-gray-900">
+                <p className="font-semibold text-ink-900">
                   2. 신사업 기획 및 파트너십 관리
                 </p>
                 <ul className="mt-1 list-disc space-y-1 ps-5">
@@ -196,7 +196,7 @@ export function RecruitPopup() {
                 </ul>
               </li>
               <li>
-                <p className="font-semibold text-gray-900">
+                <p className="font-semibold text-ink-900">
                   3. 기업 홍보 및 대외 협력
                 </p>
                 <ul className="mt-1 list-disc space-y-1 ps-5">
@@ -218,22 +218,22 @@ export function RecruitPopup() {
         </div>
 
         {/* footer / CTA */}
-        <div className="border-t border-gray-100 bg-gray-50 px-6 py-5 sm:px-8">
-          <p className="mb-3 text-sm text-gray-600">
+        <div className="border-t border-hairline bg-surface-sunken px-6 py-5 sm:px-8">
+          <p className="mb-3 text-sm text-ink-600">
             이력서와 자기소개서를{" "}
-            <span className="font-semibold text-gray-900">{APPLY_EMAIL}</span>{" "}
+            <span className="font-semibold text-ink-900">{APPLY_EMAIL}</span>{" "}
             으로 보내주시면 검토 후 개별적으로 연락드립니다.
           </p>
           <div className="flex flex-col gap-2 sm:flex-row">
             <a
               href={MAILTO}
-              className="inline-flex flex-1 items-center justify-center rounded-lg bg-teal-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-500"
+              className="inline-flex flex-1 items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
             >
               이메일로 지원하기
             </a>
             <button
               onClick={close}
-              className="rounded-lg px-6 py-3 text-sm font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700"
+              className="rounded-lg px-6 py-3 text-sm font-medium text-ink-500 transition-colors hover:bg-surface-muted hover:text-ink-700"
             >
               닫기
             </button>
@@ -253,7 +253,7 @@ function Section({
 }) {
   return (
     <section>
-      <h3 className="mb-2 text-base font-bold text-gray-900">{title}</h3>
+      <h3 className="mb-2 text-base font-bold text-ink-900">{title}</h3>
       {children}
     </section>
   );

@@ -40,7 +40,7 @@ export function MagazineGrid({
             onClick={() => setActive(mag)}
             className="group relative text-start"
           >
-            <div className="relative aspect-[3/4.24] rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow bg-gray-100">
+            <div className="relative aspect-[3/4.24] rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow bg-surface-muted">
               <Image
                 src={`/magazines/covers/vol${mag.vol}.jpg`}
                 alt={`RudaCure Magazine Vol.${mag.vol}`}
@@ -49,12 +49,12 @@ export function MagazineGrid({
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
               />
               {i === 0 && (
-                <span className="absolute top-2 start-2 text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full shadow">
+                <span className="absolute top-2 start-2 text-[10px] font-bold uppercase tracking-wider bg-accent text-white px-2 py-0.5 rounded-full shadow">
                   {latestLabel}
                 </span>
               )}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 bg-white/90 text-teal-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 bg-white/90 text-accent-deep text-xs font-semibold px-3 py-1.5 rounded-full shadow">
                   <svg
                     className="w-3.5 h-3.5"
                     fill="none"
@@ -73,10 +73,10 @@ export function MagazineGrid({
               </div>
             </div>
             <div className="mt-2 text-center">
-              <p className="text-xs font-semibold text-gray-800">
+              <p className="text-xs font-semibold text-ink-800">
                 Vol.{mag.vol}
               </p>
-              <p className="text-[11px] text-gray-400">{mag.quarter}</p>
+              <p className="text-[11px] text-ink-400">{mag.quarter}</p>
             </div>
           </button>
         ))}

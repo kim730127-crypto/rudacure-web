@@ -707,20 +707,20 @@ export default async function SciencePage({
         }}
       />
       <div className="pt-24">
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-surface">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="section-label mb-4">
                 {c.tag}
               </p>
-              <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+              <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
                 {c.title[0]}
                 <em className="font-playfair italic font-semibold text-gradient-emerald">
                   {c.title[1]}
                 </em>
                 {c.title[2]}
               </h1>
-              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+              <p className="text-lg text-ink-600 max-w-3xl leading-relaxed">
                 {c.description}
               </p>
             </div>
@@ -736,7 +736,7 @@ export default async function SciencePage({
           </div>
         </section>
 
-        <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+        <section className="py-16 px-6 bg-surface-sunken">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
             {caps.map((cap) => (
               <div key={cap.title} className="liquid-glass overflow-hidden">
@@ -750,10 +750,10 @@ export default async function SciencePage({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                  <h3 className="text-lg font-semibold mb-2 text-ink-900">
                     {cap.title}
                   </h3>
-                  <p className="text-[15px] text-gray-600 leading-relaxed">
+                  <p className="text-[15px] text-ink-600 leading-relaxed">
                     {cap.description}
                   </p>
                 </div>
@@ -766,7 +766,7 @@ export default async function SciencePage({
             ponytail: 3 muted loops (~7MB total) autoplay with preload="metadata".
             If Vercel bandwidth becomes an issue, switch to click-to-play or
             IntersectionObserver lazy-load (needs a client component). */}
-        <section className="py-20 px-6 bg-gray-950">
+        <section className="py-20 px-6 bg-surface-dark">
           <div className="max-w-6xl mx-auto">
             <p className="section-label on-dark mb-4">
               {c.mdTag}
@@ -777,7 +777,7 @@ export default async function SciencePage({
                 {c.mdTitle[1]}
               </em>
             </h2>
-            <p className="text-lg text-gray-300 max-w-3xl leading-relaxed mb-12">
+            <p className="text-lg text-on-dark-muted max-w-3xl leading-relaxed mb-12">
               {c.mdDesc}
             </p>
             <figure className="mb-12 rounded-2xl overflow-hidden bg-black/40 ring-1 ring-white/10">
@@ -793,7 +793,7 @@ export default async function SciencePage({
                 preload="metadata"
                 aria-label={c.mdFeatureCaption}
               />
-              <figcaption className="p-5 text-sm sm:text-[15px] text-gray-300 leading-relaxed">
+              <figcaption className="p-5 text-sm sm:text-[15px] text-on-dark-muted leading-relaxed">
                 {c.mdFeatureCaption}
               </figcaption>
             </figure>
@@ -814,7 +814,7 @@ export default async function SciencePage({
                     preload="metadata"
                     aria-label={c.mdCaptions[n - 1]}
                   />
-                  <figcaption className="p-4 text-sm text-gray-400 leading-relaxed">
+                  <figcaption className="p-4 text-sm text-ink-400 leading-relaxed">
                     {c.mdCaptions[n - 1]}
                   </figcaption>
                 </figure>
@@ -823,12 +823,12 @@ export default async function SciencePage({
           </div>
         </section>
 
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-surface">
           <div className="max-w-4xl mx-auto">
             <p className="section-label mb-4">
               {c.compTag}
             </p>
-            <h2 className="text-3xl font-light mb-10 text-gray-900">
+            <h2 className="text-3xl font-light mb-10 text-ink-900">
               {c.compTitle[0]}
               <em className="font-playfair italic font-semibold">
                 {c.compTitle[1]}
@@ -838,34 +838,34 @@ export default async function SciencePage({
             <div className="liquid-glass overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-100 bg-gray-50">
-                    <th className="text-start text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
+                  <tr className="border-b border-hairline bg-surface-sunken">
+                    <th className="text-start text-xs font-semibold text-ink-600 uppercase tracking-wider p-4">
                       {c.thMetric}
                     </th>
-                    <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4">
+                    <th className="text-center text-xs font-semibold text-ink-600 uppercase tracking-wider p-4">
                       {c.thTraditional}
                     </th>
-                    <th className="text-center text-xs font-semibold text-teal-600 uppercase tracking-wider p-4">
+                    <th className="text-center text-xs font-semibold text-accent-deep uppercase tracking-wider p-4">
                       {c.thRucia}
                     </th>
-                    <th className="text-center text-xs font-semibold text-gray-600 uppercase tracking-wider p-4 w-20">
+                    <th className="text-center text-xs font-semibold text-ink-600 uppercase tracking-wider p-4 w-20">
                       {c.thGap}
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {advs.map((a) => (
-                    <tr key={a.label} className="border-b border-gray-50">
-                      <td className="p-4 text-sm text-gray-600 font-medium">
+                    <tr key={a.label} className="border-b border-hairline">
+                      <td className="p-4 text-sm text-ink-600 font-medium">
                         {a.label}
                       </td>
-                      <td className="p-4 text-sm text-gray-600 text-center">
+                      <td className="p-4 text-sm text-ink-600 text-center">
                         {a.before}
                       </td>
-                      <td className="p-4 text-sm text-teal-600 text-center font-medium">
+                      <td className="p-4 text-sm text-accent-deep text-center font-medium">
                         {a.after}
                       </td>
-                      <td className="p-4 text-sm text-teal-500 text-center font-mono">
+                      <td className="p-4 text-sm text-accent text-center font-mono">
                         {a.reduction || "—"}
                       </td>
                     </tr>
@@ -876,17 +876,17 @@ export default async function SciencePage({
           </div>
         </section>
 
-        <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+        <section className="py-20 px-6 bg-surface-sunken">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-light mb-6 text-gray-900">
+              <h2 className="text-3xl font-light mb-6 text-ink-900">
                 {c.beyondTitle[0]}
                 <em className="font-playfair italic font-semibold">
                   {c.beyondTitle[1]}
                 </em>
               </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">{c.beyondP1}</p>
-              <p className="text-gray-600 leading-relaxed">{c.beyondP2}</p>
+              <p className="text-ink-600 leading-relaxed mb-4">{c.beyondP1}</p>
+              <p className="text-ink-600 leading-relaxed">{c.beyondP2}</p>
             </div>
             <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
               <Image

@@ -1924,50 +1924,50 @@ export default async function AboutPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
       />
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-4xl mx-auto">
           <p className="section-label mb-4">
             {c.tag}
           </p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
             {c.title1} <em className="italic font-semibold">{c.title2}</em>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
+          <p className="text-lg text-ink-600 max-w-2xl leading-relaxed">
             {c.description}
           </p>
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+      <section className="py-16 px-6 bg-surface-sunken">
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            <div className="absolute start-[7px] top-0 bottom-0 w-px bg-gray-200" />
+            <div className="absolute start-[7px] top-0 bottom-0 w-px bg-hairline-strong" />
             <div className="space-y-10">
               {timeline.map((item) => (
                 <div key={item.year} className="relative ps-10">
                   <div
-                    className={`absolute start-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 ${item.highlight ? "border-teal-500 bg-teal-50" : "border-gray-200 bg-white"}`}
+                    className={`absolute start-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 ${item.highlight ? "border-accent bg-accent-tint" : "border-hairline-strong bg-surface"}`}
                   />
                   <div className="liquid-glass p-6">
                     <span
-                      className={`text-sm font-medium ${item.highlight ? "text-teal-600" : "text-gray-600"}`}
+                      className={`text-sm font-medium ${item.highlight ? "text-accent-deep" : "text-ink-600"}`}
                     >
                       {item.year}
                     </span>
-                    <h3 className="text-xl font-semibold mt-1 mb-2 text-gray-900">
+                    <h3 className="text-xl font-semibold mt-1 mb-2 text-ink-900">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-ink-600 leading-relaxed">
                       {item.description}
                     </p>
                     {item.events && item.events.length > 0 && (
                       <div className="mt-4 space-y-2">
                         {item.events.map((event, idx) => (
                           <div key={idx} className="flex gap-3 text-sm">
-                            <span className="text-teal-600 font-medium w-10 shrink-0">
+                            <span className="text-accent-deep font-medium w-10 shrink-0">
                               {event.month}
                             </span>
-                            <span className="text-gray-600">{event.text}</span>
+                            <span className="text-ink-600">{event.text}</span>
                           </div>
                         ))}
                       </div>
@@ -1980,22 +1980,22 @@ export default async function AboutPage({
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-4xl mx-auto">
           <p className="section-label mb-4">
             {c.leaderTag}
           </p>
-          <h2 className="text-3xl font-light mb-10 text-gray-900">
+          <h2 className="text-3xl font-light mb-10 text-ink-900">
             Our <em className="italic font-semibold">{c.leaderTitle}</em>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {leaders.map((person) => (
               <div key={person.name} className="liquid-glass p-6">
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-semibold text-ink-900">
                   {person.name}
                 </h3>
-                <p className="text-teal-600 text-sm mb-3">{person.role}</p>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-accent-deep text-sm mb-3">{person.role}</p>
+                <p className="text-sm text-ink-600 leading-relaxed">
                   {person.description}
                 </p>
               </div>

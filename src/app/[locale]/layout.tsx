@@ -215,7 +215,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body
-        className={`${notoArabic.variable} bg-white text-gray-900 antialiased`}
+        className={`${notoArabic.variable} bg-surface text-ink-900 antialiased`}
       >
         <div className="scroll-progress" aria-hidden="true" />
         <Navbar locale={locale as Locale} />

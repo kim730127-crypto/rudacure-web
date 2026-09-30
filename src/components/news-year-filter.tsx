@@ -10,29 +10,14 @@ type Article = {
   category: string;
 };
 
-const CATEGORY_COLORS: Record<string, string> = {
-  Clinical: "bg-teal-50 text-teal-700 border border-teal-200",
-  Science: "bg-blue-50 text-blue-700 border border-blue-200",
-  Partnership: "bg-purple-50 text-purple-700 border border-purple-200",
-  IR: "bg-amber-50 text-amber-700 border border-amber-200",
-  Award: "bg-pink-50 text-pink-700 border border-pink-200",
-  Patent: "bg-cyan-50 text-cyan-700 border border-cyan-200",
-  CSR: "bg-orange-50 text-orange-700 border border-orange-200",
-  Company: "bg-slate-100 text-slate-600 border border-slate-200",
-  Industry: "bg-indigo-50 text-indigo-700 border border-indigo-200",
-};
-
-const CATEGORY_TAB_COLORS: Record<string, string> = {
-  Clinical: "bg-teal-600 text-white shadow-md",
-  Science: "bg-blue-600 text-white shadow-md",
-  Partnership: "bg-purple-600 text-white shadow-md",
-  IR: "bg-amber-600 text-white shadow-md",
-  Award: "bg-pink-600 text-white shadow-md",
-  Patent: "bg-cyan-600 text-white shadow-md",
-  CSR: "bg-orange-600 text-white shadow-md",
-  Company: "bg-slate-600 text-white shadow-md",
-  Industry: "bg-indigo-600 text-white shadow-md",
-};
+// DESIGN.md: one accent. Categories are told apart by their label, not by
+// nine hues; the selected tab is the only filled state.
+const CATEGORY_BADGE =
+  "bg-surface-sunken text-ink-600 border border-hairline-strong";
+const CATEGORY_BADGE_CLINICAL =
+  "bg-accent-tint text-accent-deep border border-accent-line";
+const badgeClass = (category: string) =>
+  category === "Clinical" ? CATEGORY_BADGE_CLINICAL : CATEGORY_BADGE;
 
 export function NewsYearFilter({
   articles,
@@ -67,8 +52,8 @@ export function NewsYearFilter({
               onClick={() => setSelected(cat)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 selected === cat
-                  ? CATEGORY_TAB_COLORS[cat] || "bg-teal-600 text-white shadow-md"
-                  : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                  ? "bg-accent text-white border border-transparent shadow-sm"
+                  : "bg-surface text-ink-600 hover:bg-surface-sunken border border-hairline-strong"
               }`}
             >
               {cat} ({count})
@@ -88,21 +73,18 @@ export function NewsYearFilter({
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 mb-1.5">
                 <span
-                  className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${
-                    CATEGORY_COLORS[article.category] ||
-                    "bg-gray-100 text-gray-600"
-                  }`}
+                  className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${badgeClass(article.category)}`}
                 >
                   {article.category}
                 </span>
-                <span className="text-xs text-gray-600">{article.date}</span>
+                <span className="text-xs text-ink-600">{article.date}</span>
               </div>
-              <h3 className="text-[15px] font-medium text-gray-700 group-hover:text-teal-600 transition-colors truncate">
+              <h3 className="text-[15px] font-medium text-ink-700 group-hover:text-accent-deep transition-colors truncate">
                 {article.title}
               </h3>
             </div>
             <svg
-              className="w-4 h-4 text-gray-200 group-hover:text-teal-500 transition-colors shrink-0"
+              className="w-4 h-4 text-ink-400 group-hover:text-accent transition-colors shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -118,7 +100,7 @@ export function NewsYearFilter({
         ))}
 
         {filtered.length === 0 && (
-          <p className="text-center text-gray-400 py-12">No articles found.</p>
+          <p className="text-center text-ink-400 py-12">No articles found.</p>
         )}
       </div>
     </>

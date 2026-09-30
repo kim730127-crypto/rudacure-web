@@ -1322,7 +1322,7 @@ export default async function PipelinePage({
         {/* Header */}
         <section className="py-20 px-6">
           <div className="max-w-5xl mx-auto">
-            <p className="text-teal-600 text-xs font-medium tracking-widest uppercase mb-4">
+            <p className="text-accent-deep text-xs font-medium tracking-widest uppercase mb-4">
               {h.tag}
             </p>
             <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6">
@@ -1331,7 +1331,7 @@ export default async function PipelinePage({
                 {h.title2}
               </em>
             </h1>
-            <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+            <p className="text-lg text-ink-600 max-w-3xl leading-relaxed">
               {h.description}
             </p>
           </div>
@@ -1345,12 +1345,12 @@ export default async function PipelinePage({
                 {stages.map((stage, i) => (
                   <div key={stage} className="flex-1 flex items-center">
                     <div className="text-center flex-1">
-                      <div className="text-xs text-gray-600 uppercase tracking-wider font-medium">
+                      <div className="text-xs text-ink-600 uppercase tracking-wider font-medium">
                         {stage}
                       </div>
                     </div>
                     {i < stages.length - 1 && (
-                      <div className="w-px h-4 bg-gray-200" />
+                      <div className="w-px h-4 bg-hairline-strong" />
                     )}
                   </div>
                 ))}
@@ -1359,33 +1359,17 @@ export default async function PipelinePage({
               <div className="mt-6 space-y-3">
                 {pipeline.map((p, i) => (
                   <div key={p.name} className="flex items-center gap-3">
-                    <span className="text-sm font-mono font-semibold text-gray-700 w-20">
+                    <span className="text-sm font-mono font-semibold text-ink-700 w-20">
                       {p.name}
                     </span>
-                    <div className="flex-1 h-8 bg-gray-100 rounded-full overflow-hidden relative">
+                    <div className="flex-1 h-8 bg-surface-muted rounded-full overflow-hidden relative">
                       <ProgressBar
                         progress={p.progress}
                         delay={i * 200}
-                        className={`h-full rounded-full flex items-center px-3 ${
-                          p.color === "emerald"
-                            ? "bg-teal-100"
-                            : p.color === "blue"
-                              ? "bg-blue-100"
-                              : p.color === "violet"
-                                ? "bg-violet-100"
-                                : "bg-indigo-100"
-                        }`}
+                        className="h-full rounded-full flex items-center px-3 bg-accent-tint"
                       >
                         <span
-                          className={`text-xs font-semibold whitespace-nowrap ${
-                            p.color === "emerald"
-                              ? "text-teal-700"
-                              : p.color === "blue"
-                                ? "text-blue-700"
-                                : p.color === "violet"
-                                  ? "text-violet-700"
-                                  : "text-indigo-700"
-                          }`}
+                          className="text-xs font-semibold whitespace-nowrap text-accent-deep"
                         >
                           {p.status}
                         </span>
@@ -1407,30 +1391,22 @@ export default async function PipelinePage({
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-4">
                       <span
-                        className={`text-sm font-medium px-4 py-1.5 rounded-full ${
-                          p.color === "emerald"
-                            ? "bg-teal-50 text-teal-600"
-                            : p.color === "blue"
-                              ? "bg-blue-50 text-blue-400"
-                              : p.color === "violet"
-                                ? "bg-violet-50 text-violet-500"
-                                : "bg-indigo-50 text-indigo-400"
-                        }`}
+                        className="pill pill-accent h-auto px-4 py-1.5 text-sm font-medium tracking-normal"
                       >
                         {p.indication}
                       </span>
-                      <span className="text-sm text-gray-600 font-medium">
+                      <span className="text-sm text-ink-600 font-medium">
                         {p.status}
                       </span>
                     </div>
 
-                    <h2 className="text-2xl font-semibold mb-2 text-gray-900">
+                    <h2 className="text-2xl font-semibold mb-2 text-ink-900">
                       {p.name}
                     </h2>
-                    <p className="text-base text-gray-600 mb-1">
+                    <p className="text-base text-ink-600 mb-1">
                       <span className="font-medium">Target:</span> {p.target}
                     </p>
-                    <p className="text-base text-gray-600 leading-relaxed mb-4">
+                    <p className="text-base text-ink-600 leading-relaxed mb-4">
                       {p.mechanism}
                     </p>
 
@@ -1441,16 +1417,16 @@ export default async function PipelinePage({
 
                     {/* Details */}
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
+                      <h4 className="text-sm font-semibold text-ink-700 uppercase tracking-wider mb-3">
                         {p.detailsLabel}
                       </h4>
                       <ul className="space-y-2">
                         {p.details.map((d, i) => (
                           <li
                             key={i}
-                            className="text-[15px] text-gray-600 flex items-start gap-2 leading-relaxed"
+                            className="text-[15px] text-ink-600 flex items-start gap-2 leading-relaxed"
                           >
-                            <span className="text-teal-600 mt-0.5">
+                            <span className="text-accent-deep mt-0.5">
                               &#8226;
                             </span>
                             {d}
@@ -1462,25 +1438,17 @@ export default async function PipelinePage({
 
                   {/* Milestones */}
                   <div className="md:w-72 shrink-0">
-                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
+                    <h4 className="text-sm font-semibold text-ink-700 uppercase tracking-wider mb-3">
                       {p.milestonesLabel}
                     </h4>
                     <div className="space-y-2.5">
                       {p.milestones.map((m, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-2 text-[15px] text-gray-600"
+                          className="flex items-center gap-2 text-[15px] text-ink-600"
                         >
                           <div
-                            className={`w-1.5 h-1.5 rounded-full ${
-                              p.color === "emerald"
-                                ? "bg-emerald-400"
-                                : p.color === "blue"
-                                  ? "bg-blue-400"
-                                  : p.color === "violet"
-                                    ? "bg-violet-400"
-                                    : "bg-indigo-400"
-                            }`}
+                            className="w-1.5 h-1.5 rounded-full bg-accent"
                           />
                           {m}
                         </div>
@@ -1488,7 +1456,7 @@ export default async function PipelinePage({
                       {p.name === "RCI001" && (
                         <Link
                           href={`/${loc}/news/192`}
-                          className="inline-block text-sm font-medium text-teal-700 underline underline-offset-4 hover:text-teal-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                          className="inline-block text-sm font-medium text-accent-deep underline underline-offset-4 hover:text-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
                         >
                           {APPROVAL_NEWS[locale] || APPROVAL_NEWS.en}
                         </Link>
@@ -1504,10 +1472,10 @@ export default async function PipelinePage({
         {/* Where to go next */}
         <section className="px-6 pb-32">
           <div className="max-w-5xl mx-auto liquid-glass p-10 text-center">
-            <h2 className="text-2xl sm:text-3xl font-light mb-4 text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-light mb-4 text-ink-900">
               {CTA_HEADING[locale] || CTA_HEADING.en}
             </h2>
-            <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-ink-600 leading-relaxed max-w-2xl mx-auto mb-8">
               {CTA_BODY[locale] || CTA_BODY.en}
             </p>
             <div className="flex items-center justify-center gap-4 flex-wrap">

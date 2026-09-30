@@ -142,29 +142,29 @@ export default async function NewsPage({
     <div className="pt-24">
       <BreadcrumbJsonLd locale={locale} navKey="nav.news" path="/news" />
       {/* Header */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-4xl mx-auto">
           <p className="section-label mb-4">
             {t("news.tag")}
           </p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
             {t("news.title1")}{" "}
             <em className="font-playfair italic font-semibold">
               {t("news.title2")}
             </em>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
+          <p className="text-lg text-ink-600 max-w-2xl leading-relaxed">
             {t("news.description")}
           </p>
         </div>
       </section>
 
       {/* Quarterly Magazines */}
-      <section className="px-6 py-16 bg-white">
+      <section className="px-6 py-16 bg-surface">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2">
             <svg
-              className="w-6 h-6 text-teal-600"
+              className="w-6 h-6 text-accent-deep"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -176,14 +176,14 @@ export default async function NewsPage({
                 d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
               />
             </svg>
-            <h2 className="text-2xl font-light text-gray-900">
+            <h2 className="text-2xl font-light text-ink-900">
               {mc.sectionTitle}
               <em className="font-playfair italic font-semibold">
                 {mc.sectionTitleEm}
               </em>
             </h2>
           </div>
-          <p className="text-gray-500 text-sm mb-8 ms-9">
+          <p className="text-ink-500 text-sm mb-8 ms-9">
             {mc.sectionDescription}
           </p>
 
@@ -197,7 +197,7 @@ export default async function NewsPage({
       </section>
 
       {/* News Articles */}
-      <section className="px-6 pb-32 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+      <section className="px-6 pb-32 bg-surface-sunken">
         <div className="max-w-4xl mx-auto pt-8">
           <NewsYearFilter
             articles={

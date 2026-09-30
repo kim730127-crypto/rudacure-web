@@ -184,7 +184,7 @@ export default function MagazineFlipbook({
             <a
               href={`${RELEASE_BASE}/${magazine.pdf}`}
               download
-              className="underline text-teal-300"
+              className="underline text-accent-on-dark"
             >
               PDF로 다운로드하기
             </a>
@@ -213,7 +213,7 @@ export default function MagazineFlipbook({
             className="shadow-2xl"
           >
             {pages.map((p, i) => (
-              <div key={i} className="bg-white">
+              <div key={i} className="bg-surface">
                 <img
                   src={p.src}
                   alt={`Vol.${magazine.vol} p.${i + 1}`}

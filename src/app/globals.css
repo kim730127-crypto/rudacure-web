@@ -18,6 +18,8 @@
   --rc-accent-bright: #14b8a6;
   --rc-accent-tint: rgba(11, 124, 114, 0.08);
   --rc-accent-line: rgba(11, 124, 114, 0.22);
+  /* Teal for text and icons on dark surfaces (hero, footer, CTA band). */
+  --rc-accent-on-dark: #5eead4;
 
   /* ── Ink scale (warm-neutral, not pure grey) ────────────────────────────
      Text uses ink-*, surfaces use surface-*. Never mix the two scales. */
@@ -31,9 +33,16 @@
   /* ── Surfaces ──────────────────────────────────────────────────────────── */
   --rc-surface: #ffffff;
   --rc-surface-sunken: #f7f8f9;
+  /* One step below sunken: tracks, image placeholders, hover on sunken. */
+  --rc-surface-muted: #eef0f2;
   --rc-surface-raised: rgba(255, 255, 255, 0.72);
   --rc-surface-dark: #080c11;
   --rc-surface-dark-raised: rgba(255, 255, 255, 0.04);
+
+  /* ── Text on dark surfaces. Same values the .on-dark rules already used. ── */
+  --rc-on-dark-strong: #e2e8f0;
+  --rc-on-dark-muted: rgba(226, 232, 240, 0.72);
+  --rc-on-dark-subtle: rgba(226, 232, 240, 0.55);
 
   /* ── Hairlines. Apple separates with 1px alpha, never a grey fill. ─────── */
   --rc-hairline: rgba(10, 15, 20, 0.08);
@@ -82,6 +91,11 @@
   --color-accent-bright: var(--rc-accent-bright);
   --color-accent-tint: var(--rc-accent-tint);
   --color-accent-line: var(--rc-accent-line);
+  --color-accent-on-dark: var(--rc-accent-on-dark);
+  --color-surface-muted: var(--rc-surface-muted);
+  --color-on-dark-strong: var(--rc-on-dark-strong);
+  --color-on-dark-muted: var(--rc-on-dark-muted);
+  --color-on-dark-subtle: var(--rc-on-dark-subtle);
   --color-ink-900: var(--rc-ink-900);
   --color-ink-800: var(--rc-ink-800);
   --color-ink-700: var(--rc-ink-700);
@@ -197,7 +211,7 @@ h4 em,
 .on-dark em,
 .on-dark h1 em,
 .on-dark h2 em {
-  color: #5eead4;
+  color: var(--rc-accent-on-dark);
 }
 
 /* Eyebrow / section label */
@@ -263,16 +277,16 @@ h4 em,
 
 .on-dark .type-body,
 .type-body.on-dark {
-  color: rgba(226, 232, 240, 0.72);
+  color: var(--rc-on-dark-muted);
 }
 
 .on-dark .type-caption,
 .type-caption.on-dark {
-  color: rgba(226, 232, 240, 0.55);
+  color: var(--rc-on-dark-subtle);
 }
 
 .section-label.on-dark {
-  color: #5eead4;
+  color: var(--rc-accent-on-dark);
 }
 
 /* The headline and footer signature are an English brand line in all seven
@@ -500,7 +514,7 @@ h4 em,
   border: 1px solid var(--rc-hairline);
 }
 .btn-secondary:hover {
-  background: #eef0f2;
+  background: var(--rc-surface-muted);
 }
 
 .btn-ghost-light {
@@ -692,8 +706,14 @@ h4 em,
     transform var(--rc-dur) var(--rc-ease);
 }
 
-.liquid-glass:hover,
-.liquid-glass-teal:hover {
+/* Lift only when the card is itself a link or button. Most .liquid-glass
+   elements are static divs (addresses, advisor bios, stat tiles), and a card
+   that rises under the pointer but does nothing on click is a false affordance
+   (DESIGN.md > Components > Content Card). */
+a.liquid-glass:hover,
+button.liquid-glass:hover,
+a.liquid-glass-teal:hover,
+button.liquid-glass-teal:hover {
   border-color: var(--rc-hairline-strong);
   box-shadow: var(--rc-shadow-md);
   transform: translateY(-2px);

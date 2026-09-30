@@ -95,13 +95,13 @@ export default function NotFoundPage() {
 
   return (
     <div className="pt-24">
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6 bg-surface">
         <div className="max-w-3xl mx-auto text-center">
           <p className="section-label mb-4">404</p>
-          <h1 className="text-4xl sm:text-5xl font-light leading-tight mb-6 text-gray-900">
+          <h1 className="text-4xl sm:text-5xl font-light leading-tight mb-6 text-ink-900">
             {TEXT_TITLE[locale]}
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed mb-12">
+          <p className="text-lg text-ink-600 leading-relaxed mb-12">
             {TEXT_BODY[locale]}
           </p>
 
@@ -110,14 +110,14 @@ export default function NotFoundPage() {
               <Link
                 key={r.path}
                 href={`/${locale}${r.path}`}
-                className="liquid-glass p-4 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                className="liquid-glass p-4 text-sm font-medium text-ink-700 hover:text-ink-900 transition-colors"
               >
                 {t(locale, r.key)}
               </Link>
             ))}
           </div>
 
-          <p className="text-gray-600 mb-6">{TEXT_ASK[locale]}</p>
+          <p className="text-ink-600 mb-6">{TEXT_ASK[locale]}</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link
               href={`/${locale}`}

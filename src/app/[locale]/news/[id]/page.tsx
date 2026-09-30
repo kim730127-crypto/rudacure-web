@@ -158,29 +158,29 @@ export default async function NewsArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-surface">
         <div className="max-w-3xl mx-auto">
           <Link
             href={`/${locale}/news`}
-            className="text-sm text-gray-600 hover:text-teal-600 transition-colors mb-8 inline-block"
+            className="text-sm text-ink-600 hover:text-accent-deep transition-colors mb-8 inline-block"
           >
             &larr; {t("news.back")}
           </Link>
 
-          <span className="text-xs font-medium px-3 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200 mb-4 inline-block">
+          <span className="text-xs font-medium px-3 py-1 rounded-full bg-accent-tint text-accent-deep border border-accent-line mb-4 inline-block">
             {article.category}
           </span>
 
-          <h1 className="text-3xl sm:text-4xl font-semibold leading-tight mb-4 text-gray-900">
+          <h1 className="text-3xl sm:text-4xl font-semibold leading-tight mb-4 text-ink-900">
             {article.title}
           </h1>
 
-          <p className="text-sm text-gray-600 mb-8">{article.date}</p>
+          <p className="text-sm text-ink-600 mb-8">{article.date}</p>
 
           <div className="section-divider mb-8" />
 
           <article
-            className="prose prose-gray max-w-none [&_p]:text-gray-600 [&_p]:leading-relaxed [&_p]:text-[15px] [&_h3]:text-gray-800 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-3 [&_a]:text-teal-600 [&_img]:rounded-lg [&_img]:my-4"
+            className="prose prose-gray max-w-none [&_p]:text-ink-600 [&_p]:leading-relaxed [&_p]:text-[15px] [&_h3]:text-ink-800 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-3 [&_a]:text-accent-deep [&_img]:rounded-lg [&_img]:my-4"
             dangerouslySetInnerHTML={{ __html: proxyImages(article.content) }}
           />
 
@@ -188,7 +188,7 @@ export default async function NewsArticlePage({
 
           <Link
             href={`/${locale}/news`}
-            className="text-sm text-gray-600 hover:text-teal-600 transition-colors"
+            className="text-sm text-ink-600 hover:text-accent-deep transition-colors"
           >
             &larr; {t("news.back")}
           </Link>

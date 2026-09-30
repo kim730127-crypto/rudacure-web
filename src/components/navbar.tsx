@@ -183,15 +183,15 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setLangOpen(false)}
               />
-              <div className="absolute end-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50 min-w-[120px]">
+              <div className="absolute end-0 top-full mt-1 bg-surface rounded-lg shadow-lg border border-hairline py-1 z-50 min-w-[120px]">
                 {LANG_OPTIONS.map((lang) => (
                   <Link
                     key={lang.locale}
                     href={`/${lang.locale}${pathWithoutLocale}`}
                     className={`flex items-center gap-2 px-3 py-2 text-xs font-medium transition-colors ${
                       locale === lang.locale
-                        ? "text-teal-700 bg-teal-50"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                        ? "text-accent-deep bg-accent-tint"
+                        : "text-ink-600 hover:text-ink-900 hover:bg-surface-sunken"
                     }`}
                     onClick={() => setLangOpen(false)}
                   >
@@ -242,20 +242,20 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
               href={link.href}
               className={`block text-sm font-medium py-2.5 px-3 rounded-lg transition-colors ${
                 pathname.startsWith(link.href)
-                  ? "text-teal-700 bg-teal-50"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  ? "text-accent-deep bg-accent-tint"
+                  : "text-ink-600 hover:text-ink-900 hover:bg-surface-sunken"
               }`}
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-          <div className="flex flex-wrap gap-2 pt-3 mt-2 border-t border-gray-100">
+          <div className="flex flex-wrap gap-2 pt-3 mt-2 border-t border-hairline">
             {LANG_OPTIONS.map((lang) => (
               <Link
                 key={lang.locale}
                 href={`/${lang.locale}${pathWithoutLocale}`}
-                className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === lang.locale ? "bg-teal-50 text-teal-700" : "text-gray-600"}`}
+                className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 ${locale === lang.locale ? "bg-accent-tint text-accent-deep" : "text-ink-600"}`}
                 onClick={() => setMobileOpen(false)}
               >
                 <Flag code={lang.flag} className="w-4 h-3 rounded-[2px]" />{" "}

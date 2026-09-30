@@ -484,19 +484,19 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
     <div className="pt-24">
       <BreadcrumbJsonLd locale={loc} navKey="nav.sab" path="/sab" />
       {/* Header */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">{h.tag}</p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
             {h.title1}{" "}
             <em className="font-playfair italic font-semibold text-gradient-emerald">{h.title2}</em>
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">{h.description}</p>
+          <p className="text-lg text-ink-600 max-w-3xl leading-relaxed">{h.description}</p>
         </div>
       </section>
 
       {/* Advisors */}
-      <section className="py-16 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+      <section className="py-16 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {advisors.map((advisor) => (
             <div key={advisor.name} className="liquid-glass p-8">
@@ -506,14 +506,14 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
                     <Image src={advisor.image} alt={advisor.name} width={80} height={80} className="object-cover w-full h-full" />
                   </div>
                 ) : (
-                  <div className="w-20 h-20 rounded-full bg-teal-50 border-2 border-teal-200 flex items-center justify-center shrink-0">
-                    <span className="text-teal-600 text-lg font-semibold">{advisor.name.split(" ").map(n => n[0]).slice(0, 2).join("")}</span>
+                  <div className="w-20 h-20 rounded-full bg-accent-tint border-2 border-accent-line flex items-center justify-center shrink-0">
+                    <span className="text-accent-deep text-lg font-semibold">{advisor.name.split(" ").map(n => n[0]).slice(0, 2).join("")}</span>
                   </div>
                 )}
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900">{advisor.name}</h3>
-                  <p className="text-teal-600 text-sm font-medium mt-1">{advisor.title}</p>
-                  <p className="text-sm text-gray-600 mt-0.5">{advisor.affiliation}</p>
+                  <h3 className="text-xl font-semibold text-ink-900">{advisor.name}</h3>
+                  <p className="text-accent-deep text-sm font-medium mt-1">{advisor.title}</p>
+                  <p className="text-sm text-ink-600 mt-0.5">{advisor.affiliation}</p>
                 </div>
               </div>
 
@@ -521,23 +521,23 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
                 {advisor.expertise.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-medium px-3 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200"
+                    className="text-xs font-medium px-3 py-1 rounded-full bg-accent-tint text-accent-deep border border-accent-line"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <p className="text-[15px] text-gray-600 leading-relaxed">{advisor.description}</p>
+              <p className="text-[15px] text-ink-600 leading-relaxed">{advisor.description}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* SAB Role */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-light mb-8 text-gray-900">
+          <h2 className="text-3xl font-light mb-8 text-ink-900">
             {h.roleTitle.split(" ")[0]}{" "}
             <em className="font-playfair italic font-semibold">
               {h.roleTitle.split(" ").slice(1).join(" ")}
@@ -546,10 +546,10 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {h.roleItems.map((item, i) => (
               <div key={i} className="liquid-glass p-6 flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shrink-0">
-                  <span className="text-teal-600 text-sm font-semibold">{i + 1}</span>
+                <div className="w-8 h-8 rounded-full bg-accent-tint border border-accent-line flex items-center justify-center shrink-0">
+                  <span className="text-accent-deep text-sm font-semibold">{i + 1}</span>
                 </div>
-                <p className="text-[15px] text-gray-600 leading-relaxed">{item}</p>
+                <p className="text-[15px] text-ink-600 leading-relaxed">{item}</p>
               </div>
             ))}
           </div>

@@ -1375,30 +1375,32 @@ export default async function PublicationsPage({
     string,
     { bg: string; text: string; border: string }
   > = {
+    // DESIGN.md: one accent. The lead family keeps it; the rest are neutral
+    // and are told apart by their label.
     emerald: {
-      bg: "bg-teal-50",
-      text: "text-teal-700",
-      border: "border-teal-200",
+      bg: "bg-accent-tint",
+      text: "text-accent-deep",
+      border: "border-accent-line",
     },
     blue: {
-      bg: "bg-blue-50",
-      text: "text-blue-700",
-      border: "border-blue-200",
+      bg: "bg-surface-sunken",
+      text: "text-ink-700",
+      border: "border-hairline-strong",
     },
     violet: {
-      bg: "bg-violet-50",
-      text: "text-violet-700",
-      border: "border-violet-200",
+      bg: "bg-surface-sunken",
+      text: "text-ink-700",
+      border: "border-hairline-strong",
     },
     rose: {
-      bg: "bg-rose-50",
-      text: "text-rose-700",
-      border: "border-rose-200",
+      bg: "bg-surface-sunken",
+      text: "text-ink-700",
+      border: "border-hairline-strong",
     },
     gray: {
-      bg: "bg-gray-50",
-      text: "text-gray-700",
-      border: "border-gray-200",
+      bg: "bg-surface-sunken",
+      text: "text-ink-700",
+      border: "border-hairline-strong",
     },
   };
 
@@ -1406,26 +1408,32 @@ export default async function PublicationsPage({
     string,
     { bg: string; text: string; border: string }
   > = {
+    // Granted is the only status that earns the accent. Pending states are
+    // neutral; expired is muted so it reads as inactive.
     granted: {
-      bg: "bg-teal-50",
-      text: "text-teal-700",
-      border: "border-teal-200",
+      bg: "bg-accent-tint",
+      text: "text-accent-deep",
+      border: "border-accent-line",
     },
     filed: {
-      bg: "bg-amber-50",
-      text: "text-amber-700",
-      border: "border-amber-200",
+      bg: "bg-surface-sunken",
+      text: "text-ink-700",
+      border: "border-hairline-strong",
     },
-    pct: { bg: "bg-blue-50", text: "text-blue-600", border: "border-blue-200" },
+    pct: {
+      bg: "bg-surface-sunken",
+      text: "text-ink-700",
+      border: "border-hairline-strong",
+    },
     expired: {
-      bg: "bg-gray-100",
-      text: "text-gray-500",
-      border: "border-gray-200",
+      bg: "bg-surface-muted",
+      text: "text-ink-500",
+      border: "border-hairline",
     },
     transferred: {
-      bg: "bg-purple-50",
-      text: "text-purple-600",
-      border: "border-purple-200",
+      bg: "bg-surface-sunken",
+      text: "text-ink-700",
+      border: "border-hairline-strong",
     },
   };
 
@@ -1482,18 +1490,18 @@ export default async function PublicationsPage({
       />
       <div className="pt-24">
         {/* Hero */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-surface">
           <div className="max-w-5xl mx-auto">
             <p className="section-label mb-4">
               {c.tag}
             </p>
-            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+            <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
               {c.title1}
               <em className="font-playfair italic font-semibold text-gradient-emerald">
                 {c.title2}
               </em>
             </h1>
-            <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">
+            <p className="text-lg text-ink-500 max-w-3xl leading-relaxed">
               {c.description}
             </p>
 
@@ -1528,11 +1536,11 @@ export default async function PublicationsPage({
               ].map((s) => (
                 <div key={s.label} className="liquid-glass p-5 text-center">
                   <p
-                    className={`text-3xl font-bold mb-1 ${s.accent ? "text-teal-600" : "text-gray-900"}`}
+                    className={`text-3xl font-bold mb-1 ${s.accent ? "text-accent-deep" : "text-ink-900"}`}
                   >
                     {s.value}
                   </p>
-                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">
+                  <p className="text-xs text-ink-500 font-medium uppercase tracking-wider">
                     {s.label}
                   </p>
                 </div>
@@ -1542,11 +1550,11 @@ export default async function PublicationsPage({
         </section>
 
         {/* Patents by Pipeline */}
-        <section className="py-16 px-6 bg-gray-50/50">
+        <section className="py-16 px-6 bg-surface-sunken">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-6 h-6 text-accent-deep"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1558,11 +1566,11 @@ export default async function PublicationsPage({
                   d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
                 />
               </svg>
-              <h2 className="text-3xl font-light text-gray-900">
+              <h2 className="text-3xl font-light text-ink-900">
                 {c.patentsTitle}
               </h2>
             </div>
-            <p className="text-gray-500 mb-10 ms-9">{c.patentsDescription}</p>
+            <p className="text-ink-500 mb-10 ms-9">{c.patentsDescription}</p>
 
             {Object.entries(pipelineGroups).map(([pipeline, families]) => {
               const pc =
@@ -1577,8 +1585,8 @@ export default async function PublicationsPage({
                     >
                       {pipeline}
                     </span>
-                    <div className="flex-1 h-px bg-gray-200" />
-                    <span className="text-xs text-gray-400">
+                    <div className="flex-1 h-px bg-hairline-strong" />
+                    <span className="text-xs text-ink-400">
                       {familyCountLabel(families.length, locale)}
                     </span>
                   </div>
@@ -1590,10 +1598,10 @@ export default async function PublicationsPage({
                         className="liquid-glass p-6 hover:shadow-md transition-shadow"
                       >
                         {/* Title */}
-                        <h3 className="text-base font-semibold text-gray-900 leading-snug mb-1">
+                        <h3 className="text-base font-semibold text-ink-900 leading-snug mb-1">
                           {fam[locale].title}
                         </h3>
-                        <p className="text-xs text-gray-400 mb-4">
+                        <p className="text-xs text-ink-400 mb-4">
                           {c.inventorsLabel}: {fam.inventors}
                         </p>
 
@@ -1610,14 +1618,14 @@ export default async function PublicationsPage({
                                 <span className={`font-semibold ${ss.text}`}>
                                   {countryName(fl)}
                                 </span>
-                                <span className="text-gray-400">|</span>
-                                <span className="text-gray-500 font-mono text-[11px]">
+                                <span className="text-ink-400">|</span>
+                                <span className="text-ink-500 font-mono text-[11px]">
                                   {fl.number}
                                 </span>
                                 {fl.status === "granted" && (
                                   <>
-                                    <span className="text-gray-400">|</span>
-                                    <span className="text-teal-600 font-medium">
+                                    <span className="text-ink-400">|</span>
+                                    <span className="text-accent-deep font-medium">
                                       {statusLabel(fl.status)}
                                     </span>
                                   </>
@@ -1629,9 +1637,9 @@ export default async function PublicationsPage({
                                     id={fl.number}
                                     locale={locale}
                                     title={`${countryName(fl)} ${c.certificateLabel}`}
-                                    className="inline-flex items-center gap-0.5 text-teal-600 hover:text-teal-800 transition-colors"
+                                    className="inline-flex items-center gap-0.5 text-accent-deep hover:text-ink-900 transition-colors"
                                   >
-                                    <span className="text-gray-400">|</span>
+                                    <span className="text-ink-400">|</span>
                                     <svg
                                       className="w-3.5 h-3.5"
                                       fill="none"
@@ -1664,10 +1672,10 @@ export default async function PublicationsPage({
             {/* Trademarks */}
             <div className="mt-12">
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-sm font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-700 border border-gray-200">
+                <span className="text-sm font-semibold px-3 py-1 rounded-full bg-surface-muted text-ink-700 border border-hairline-strong">
                   {c.trademarksTitle}
                 </span>
-                <div className="flex-1 h-px bg-gray-200" />
+                <div className="flex-1 h-px bg-hairline-strong" />
               </div>
               <div className="liquid-glass p-6">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -1679,13 +1687,13 @@ export default async function PublicationsPage({
                         className={`flex items-center gap-3 p-3 rounded-lg border ${ss.bg} ${ss.border}`}
                       >
                         <div>
-                          <span className="text-base font-bold text-gray-900">
+                          <span className="text-base font-bold text-ink-900">
                             {tm.name}
                           </span>
-                          <span className="text-xs text-gray-400 ms-2">
+                          <span className="text-xs text-ink-400 ms-2">
                             {tm.cls}
                           </span>
-                          <div className="text-xs text-gray-500 mt-0.5">
+                          <div className="text-xs text-ink-500 mt-0.5">
                             <span className="font-mono">{tm.number}</span>
                             {tm.registered !== "-" && (
                               <span className={`ms-2 font-medium ${ss.text}`}>
@@ -1704,11 +1712,11 @@ export default async function PublicationsPage({
         </section>
 
         {/* Papers */}
-        <section className="py-16 px-6 bg-white">
+        <section className="py-16 px-6 bg-surface">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <svg
-                className="w-6 h-6 text-teal-600"
+                className="w-6 h-6 text-accent-deep"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1720,11 +1728,11 @@ export default async function PublicationsPage({
                   d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
                 />
               </svg>
-              <h2 className="text-3xl font-light text-gray-900">
+              <h2 className="text-3xl font-light text-ink-900">
                 {c.papersTitle}
               </h2>
             </div>
-            <p className="text-gray-500 mb-8 ms-9">{c.papersDescription}</p>
+            <p className="text-ink-500 mb-8 ms-9">{c.papersDescription}</p>
 
             {[2025, 2024, 2023, 2022].map((year) => {
               const yearPapers = PAPERS.filter((p) => p.year === year);
@@ -1732,10 +1740,10 @@ export default async function PublicationsPage({
               return (
                 <div key={year} className="mb-10">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-2xl font-bold text-teal-600">
+                    <span className="text-2xl font-bold text-accent-deep">
                       {year}
                     </span>
-                    <div className="flex-1 h-px bg-gray-100" />
+                    <div className="flex-1 h-px bg-hairline" />
                   </div>
                   <div className="space-y-4">
                     {yearPapers.map((paper) => {
@@ -1755,29 +1763,29 @@ export default async function PublicationsPage({
                                   pp.type === "原著論文" ||
                                   pp.type === "Artículo Original" ||
                                   pp.type === "Article Original"
-                                    ? "bg-blue-50 text-blue-700 border border-blue-200"
+                                    ? "bg-accent-tint text-accent-deep border border-accent-line"
                                     : pp.type === "리뷰" ||
                                         pp.type === "Review" ||
                                         pp.type === "综述" ||
                                         pp.type === "総説" ||
                                         pp.type === "Revisión" ||
                                         pp.type === "Revue"
-                                      ? "bg-purple-50 text-purple-700 border border-purple-200"
-                                      : "bg-gray-50 text-gray-700 border border-gray-200"
+                                      ? "bg-surface-sunken text-ink-700 border border-hairline-strong"
+                                      : "bg-surface-sunken text-ink-700 border border-hairline-strong"
                                 }`}
                               >
                                 {pp.type}
                               </span>
                             </div>
                             <div className="flex-1">
-                              <h3 className="text-base font-semibold text-gray-900 leading-snug mb-2">
+                              <h3 className="text-base font-semibold text-ink-900 leading-snug mb-2">
                                 {pp.title}
                               </h3>
-                              <p className="text-sm text-gray-500 mb-1">
+                              <p className="text-sm text-ink-500 mb-1">
                                 {pp.authors}
                               </p>
-                              <div className="flex items-center gap-2 text-xs text-gray-400">
-                                <span className="font-medium text-gray-600 italic">
+                              <div className="flex items-center gap-2 text-xs text-ink-400">
+                                <span className="font-medium text-ink-600 italic">
                                   {pp.journal}
                                 </span>
                                 {paper.doi && (
@@ -1791,13 +1799,13 @@ export default async function PublicationsPage({
                               </div>
 
                               {/* Action buttons */}
-                              <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100">
+                              <div className="flex items-center gap-3 mt-3 pt-3 border-t border-hairline">
                                 {paper.doi && (
                                   <a
                                     href={`https://doi.org/${paper.doi}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-teal-600 hover:text-teal-800 transition-colors"
+                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-accent-deep hover:text-ink-900 transition-colors"
                                   >
                                     <svg
                                       className="w-3.5 h-3.5"
@@ -1823,7 +1831,7 @@ export default async function PublicationsPage({
                                     id={paper.pdf.slice(0, 48)}
                                     locale={locale}
                                     download
-                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors"
+                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-500 hover:text-ink-800 transition-colors"
                                   >
                                     <svg
                                       className="w-3.5 h-3.5"

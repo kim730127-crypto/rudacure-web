@@ -751,18 +751,18 @@ export default async function CROPage({
       />
 
       {/* Hero */}
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
+      <section className="py-20 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.tag}
           </p>
-          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-gray-900">
+          <h1 className="text-5xl sm:text-6xl font-light leading-tight mb-6 text-ink-900">
             {c.title1}{" "}
             <em className="font-playfair italic font-semibold text-gradient-emerald">
               {c.title2}
             </em>
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl leading-relaxed mb-12">
+          <p className="text-lg text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.description}
           </p>
 
@@ -772,7 +772,7 @@ export default async function CROPage({
                 <div className="text-3xl font-bold text-gradient-emerald mb-1">
                   {s.value}
                 </div>
-                <div className="text-xs text-gray-600 leading-snug">
+                <div className="text-xs text-ink-600 leading-snug">
                   {s.label}
                 </div>
               </div>
@@ -782,34 +782,34 @@ export default async function CROPage({
       </section>
 
       {/* About */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.intro.tag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-ink-900">
             <em className="italic font-semibold">{c.intro.heading}</em>
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-10">
+          <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-10">
             {c.intro.body}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {c.intro.sites.map((site) => (
               <div key={site.name} className="liquid-glass p-5">
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                <h3 className="text-sm font-semibold text-ink-900 mb-2">
                   {site.name}
                 </h3>
-                <p className="text-xs text-gray-600 leading-relaxed">
+                <p className="text-xs text-ink-600 leading-relaxed">
                   {site.address}
                 </p>
               </div>
             ))}
-            <div className="liquid-glass p-5 border border-teal-200">
-              <h3 className="text-sm font-semibold text-teal-700 mb-2">
+            <div className="liquid-glass p-5 border border-accent-line">
+              <h3 className="text-sm font-semibold text-accent-deep mb-2">
                 {c.intro.head.name}
               </h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <p className="text-xs text-ink-600 leading-relaxed">
                 {c.intro.head.role}
               </p>
             </div>
@@ -818,35 +818,35 @@ export default async function CROPage({
       </section>
 
       {/* 3 Core Services */}
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-cyan-50/20">
+      <section className="py-20 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.servicesTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
             <em className="italic font-semibold">{c.servicesTitle}</em>
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-12">
+          <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.servicesSub}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {c.services.map((s) => (
               <div key={s.id} className="liquid-glass p-6">
-                <div className="text-xs font-mono text-teal-600 mb-3">
+                <div className="text-xs font-mono text-accent-deep mb-3">
                   {s.id}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <h3 className="text-lg font-semibold text-ink-900 mb-3">
                   {s.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-5">
+                <p className="text-sm text-ink-600 leading-relaxed mb-5">
                   {s.description}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {s.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200"
+                      className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-accent-tint text-accent-deep border border-accent-line"
                     >
                       {tag}
                     </span>
@@ -859,15 +859,15 @@ export default async function CROPage({
       </section>
 
       {/* Service 01 — Pain Models */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.painTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
             <em className="italic font-semibold">{c.painTitle}</em>
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-12">
+          <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.painSub}
           </p>
 
@@ -878,13 +878,13 @@ export default async function CROPage({
                   {p.num}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-ink-900 mb-2">
                     {p.name}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                  <p className="text-sm text-ink-600 leading-relaxed mb-3">
                     {p.description}
                   </p>
-                  <p className="text-xs font-mono text-teal-600">{p.tags}</p>
+                  <p className="text-xs font-mono text-accent-deep">{p.tags}</p>
                 </div>
               </div>
             ))}
@@ -893,31 +893,31 @@ export default async function CROPage({
       </section>
 
       {/* Service 02 — In Vivo / In Vitro */}
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-teal-50/20">
+      <section className="py-20 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.invivoTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
             <em className="italic font-semibold">{c.invivoTitle}</em>
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-12">
+          <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.invivoSub}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {c.invivoGroups.map((g) => (
               <div key={g.title} className="liquid-glass p-5">
-                <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                <h3 className="text-sm font-semibold text-ink-900 mb-3">
                   {g.title}
                 </h3>
                 <ul className="space-y-1.5">
                   {g.items.map((item) => (
                     <li
                       key={item}
-                      className="text-xs text-gray-600 flex items-start gap-2"
+                      className="text-xs text-ink-600 flex items-start gap-2"
                     >
-                      <span className="text-teal-500 mt-0.5">·</span>
+                      <span className="text-accent mt-0.5">·</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -927,14 +927,14 @@ export default async function CROPage({
           </div>
 
           <div className="liquid-glass p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+            <h3 className="text-sm font-semibold text-ink-900 mb-4">
               {c.hematology.title}
             </h3>
             <div className="flex flex-wrap gap-2">
               {c.hematology.items.map((item) => (
                 <span
                   key={item}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-cyan-50 text-cyan-700 border border-cyan-200"
+                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-accent-tint text-accent-deep border border-accent-line"
                 >
                   {item}
                 </span>
@@ -945,31 +945,31 @@ export default async function CROPage({
       </section>
 
       {/* Disease Models */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.modelsTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
             <em className="italic font-semibold">{c.modelsTitle}</em>
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-12">
+          <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.modelsSub}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {c.modelGroups.map((g) => (
               <div key={g.title} className="liquid-glass p-5">
-                <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                <h3 className="text-sm font-semibold text-ink-900 mb-3">
                   {g.title}
                 </h3>
                 <ul className="space-y-1.5">
                   {g.items.map((item) => (
                     <li
                       key={item}
-                      className="text-xs text-gray-600 flex items-start gap-2"
+                      className="text-xs text-ink-600 flex items-start gap-2"
                     >
-                      <span className="text-teal-500 mt-0.5">·</span>
+                      <span className="text-accent mt-0.5">·</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -981,34 +981,34 @@ export default async function CROPage({
       </section>
 
       {/* Service 03 — FLIPR Penta */}
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 via-white to-cyan-50/30">
+      <section className="py-20 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.fliprTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
             <em className="italic font-semibold">{c.fliprTitle}</em>
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-12">
+          <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.fliprSub}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {c.fliprGroups.map((g) => (
               <div key={g.title} className="liquid-glass p-6">
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                <h3 className="text-sm font-semibold text-ink-900 mb-2">
                   {g.title}
                 </h3>
-                <p className="text-xs text-gray-500 leading-relaxed mb-4">
+                <p className="text-xs text-ink-500 leading-relaxed mb-4">
                   {g.description}
                 </p>
                 <ul className="space-y-1.5">
                   {g.items.map((item) => (
                     <li
                       key={item}
-                      className="text-xs text-gray-600 flex items-start gap-2"
+                      className="text-xs text-ink-600 flex items-start gap-2"
                     >
-                      <span className="text-cyan-500 mt-0.5">·</span>
+                      <span className="text-accent mt-0.5">·</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -1020,31 +1020,31 @@ export default async function CROPage({
       </section>
 
       {/* Track Record */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-surface">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.trackTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-4 text-ink-900">
             <em className="italic font-semibold">{c.trackTitle}</em>
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-12">
+          <p className="text-base text-ink-600 max-w-3xl leading-relaxed mb-12">
             {c.trackSub}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {c.trackGroups.map((g) => (
               <div key={g.title} className="liquid-glass p-6">
-                <h3 className="text-sm font-semibold text-gray-900 mb-4">
+                <h3 className="text-sm font-semibold text-ink-900 mb-4">
                   {g.title}
                 </h3>
                 <ul className="space-y-2">
                   {g.items.map((item) => (
                     <li
                       key={item}
-                      className="text-xs text-gray-600 flex items-start gap-2"
+                      className="text-xs text-ink-600 flex items-start gap-2"
                     >
-                      <span className="text-teal-500 mt-0.5 shrink-0">▸</span>
+                      <span className="text-accent mt-0.5 shrink-0">▸</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -1056,23 +1056,23 @@ export default async function CROPage({
       </section>
 
       {/* Global Partnership */}
-      <section className="py-20 px-6 bg-gradient-to-br from-teal-50/30 via-white to-cyan-50/30">
+      <section className="py-20 px-6 bg-surface-sunken">
         <div className="max-w-5xl mx-auto">
           <p className="section-label mb-4">
             {c.partnerTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-12 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-12 text-ink-900">
             <em className="italic font-semibold">{c.partnerTitle}</em>
           </h2>
 
           <div className="liquid-glass p-8">
-            <p className="text-xs font-mono text-cyan-600 mb-3">
+            <p className="text-xs font-mono text-accent-deep mb-3">
               {c.partner.period}
             </p>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-ink-900 mb-4">
               {c.partner.title}
             </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-ink-600 leading-relaxed">
               {c.partner.description}
             </p>
           </div>
@@ -1080,15 +1080,15 @@ export default async function CROPage({
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 text-center bg-white">
+      <section className="py-20 px-6 text-center bg-surface">
         <div className="max-w-2xl mx-auto">
           <p className="section-label mb-4">
             {c.ctaTag}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-ink-900">
             <em className="italic font-semibold">{c.ctaTitle}</em>
           </h2>
-          <p className="text-base text-gray-600 leading-relaxed mb-8">
+          <p className="text-base text-ink-600 leading-relaxed mb-8">
             {c.ctaBody}
           </p>
           <Link
