@@ -38,7 +38,7 @@ const translations = {
     "hero.title1": "막단백질 표적 신약개발",
     "hero.title2": "삶의 질을 되찾다",
     "hero.description":
-      "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업입니다. RuCIA 플랫폼으로 채널·수용체 선택성을 예측해 안구건조증(FDA 2상), 만성통증, 건선, 희귀 신경질환 치료제를 개발합니다. 하나의 표적 원리를 여러 질환에 적용해 기존 신약개발 대비 개발 기간을 70% 단축하고, 환자의 삶의 질을 회복합니다.",
+      "막단백질(이온채널·GPCR)을 표적하는 AI 신약개발 기업입니다. RuCIA 플랫폼으로 채널·수용체 선택성을 예측해 안구건조증(미국 FDA·국내 임상 2상 IND 승인), 만성통증, 건선, 희귀 신경질환 치료제를 개발합니다. 하나의 표적 원리를 여러 질환에 적용해 기존 신약개발 대비 개발 기간을 70% 단축하고, 환자의 삶의 질을 회복합니다.",
     "hero.cta.pipeline": "파이프라인 보기",
     "hero.cta.science": "핵심 기술 보기",
 
@@ -144,7 +144,7 @@ const translations = {
     "hero.title1": "Membrane Targets.",
     "hero.title2": "Quality of Life.",
     "hero.description":
-      "RudaCure is an AI drug discovery company targeting membrane proteins. The RuCIA platform predicts ion channel and GPCR selectivity to develop therapeutics for dry eye disease (FDA Phase 2), chronic pain, psoriasis and rare neurological disease. One targeting principle across many indications, 70% faster development, in service of patients' quality of life.",
+      "RudaCure is an AI drug discovery company targeting membrane proteins. The RuCIA platform predicts ion channel and GPCR selectivity to develop therapeutics for dry eye disease (US FDA and Korean Phase 2 IND approved), chronic pain, psoriasis and rare neurological disease. One targeting principle across many indications, 70% faster development, in service of patients' quality of life.",
     "hero.cta.pipeline": "Explore Pipeline",
     "hero.cta.science": "Our Science",
 
@@ -247,7 +247,7 @@ const translations = {
     "hero.title1": "膜蛋白靶向新药研发",
     "hero.title2": "重塑生活质量",
     "hero.description":
-      "RudaCure是靶向膜蛋白的AI新药研发企业。RuCIA平台预测离子通道与GPCR选择性，开发干眼症（FDA 2期）、慢性疼痛、银屑病及罕见神经疾病治疗药物。以同一靶点原理覆盖多个适应症，开发周期缩短70%，致力于恢复患者的生活质量。",
+      "RudaCure是靶向膜蛋白的AI新药研发企业。RuCIA平台预测离子通道与GPCR选择性，开发干眼症（美国FDA及韩国2期临床试验计划获批）、慢性疼痛、银屑病及罕见神经疾病治疗药物。以同一靶点原理覆盖多个适应症，开发周期缩短70%，致力于恢复患者的生活质量。",
     "hero.cta.pipeline": "探索管线",
     "hero.cta.science": "核心技术",
     "rucia.tag": "核心技术",
@@ -330,7 +330,7 @@ const translations = {
     "hero.title1": "膜タンパク質標的の創薬",
     "hero.title2": "生活の質を取り戻す",
     "hero.description":
-      "RudaCureは膜タンパク質を標的とするAI創薬企業です。RuCIAプラットフォームでイオンチャネル・GPCRの選択性を予測し、ドライアイ（FDA Phase 2）、慢性疼痛、乾癬、希少神経疾患の治療薬を開発しています。単一の標的原理を複数の適応症へ展開し、開発期間を70%短縮しながら、患者さんの生活の質の回復を目指します。",
+      "RudaCureは膜タンパク質を標的とするAI創薬企業です。RuCIAプラットフォームでイオンチャネル・GPCRの選択性を予測し、ドライアイ（米FDA・韓国第2相臨床試験計画承認）、慢性疼痛、乾癬、希少神経疾患の治療薬を開発しています。単一の標的原理を複数の適応症へ展開し、開発期間を70%短縮しながら、患者さんの生活の質の回復を目指します。",
     "hero.cta.pipeline": "パイプライン",
     "hero.cta.science": "コア技術",
     "rucia.tag": "コアテクノロジー",
@@ -416,7 +416,7 @@ const translations = {
     "hero.title1": "Proteínas de Membrana.",
     "hero.title2": "Calidad de Vida.",
     "hero.description":
-      "RudaCure es una empresa de descubrimiento de fármacos con IA dirigida a proteínas de membrana. La plataforma RuCIA predice la selectividad de canales iónicos y GPCR para desarrollar tratamientos del ojo seco (Fase 2 FDA), el dolor crónico, la psoriasis y enfermedades neurológicas raras. Un mismo principio de diana aplicado a múltiples indicaciones, con un 70% menos de tiempo de desarrollo, al servicio de la calidad de vida del paciente.",
+      "RudaCure es una empresa de descubrimiento de fármacos con IA dirigida a proteínas de membrana. La plataforma RuCIA predice la selectividad de canales iónicos y GPCR para desarrollar tratamientos del ojo seco (ensayos de fase 2 autorizados en EE. UU. y Corea), el dolor crónico, la psoriasis y enfermedades neurológicas raras. Un mismo principio de diana aplicado a múltiples indicaciones, con un 70% menos de tiempo de desarrollo, al servicio de la calidad de vida del paciente.",
     "hero.cta.pipeline": "Ver Pipeline",
     "hero.cta.science": "Nuestra Ciencia",
     "rucia.tag": "Tecnología Central",
@@ -490,7 +490,7 @@ const translations = {
     "hero.title1": "Protéines Membranaires.",
     "hero.title2": "Qualité de Vie.",
     "hero.description":
-      "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires. La plateforme RuCIA prédit la sélectivité des canaux ioniques et des RCPG pour développer des traitements de l'œil sec (Phase 2 FDA), de la douleur chronique, du psoriasis et de maladies neurologiques rares. Un même principe de ciblage appliqué à plusieurs indications, avec 70 % de temps de développement en moins, au service de la qualité de vie des patients.",
+      "RudaCure est une société de découverte de médicaments par IA ciblant les protéines membranaires. La plateforme RuCIA prédit la sélectivité des canaux ioniques et des RCPG pour développer des traitements de l'œil sec (essais de phase 2 autorisés aux États-Unis et en Corée), de la douleur chronique, du psoriasis et de maladies neurologiques rares. Un même principe de ciblage appliqué à plusieurs indications, avec 70 % de temps de développement en moins, au service de la qualité de vie des patients.",
     "hero.cta.pipeline": "Voir le Pipeline",
     "hero.cta.science": "Notre Science",
     "rucia.tag": "Technologie Clé",
