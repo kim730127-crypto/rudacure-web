@@ -19,6 +19,7 @@
 | Accent Bright | `#14b8a6` | `--rc-accent-bright` | - | 어두운 면 위 강조에만. 흰 바탕 글자에는 쓰지 않는다(대비 부족) |
 | Accent Tint | `rgba(11,124,114,0.08)` | `--rc-accent-tint` | `bg-accent-tint` | 선택 영역, 성공 안내 배경, pill-accent 배경 |
 | Accent Line | `rgba(11,124,114,0.22)` | `--rc-accent-line` | `border-accent-line` | 청록 계열 안내 상자와 pill 의 테두리 |
+| Accent on Dark | `#5eead4` | `--rc-accent-on-dark` | `text-accent-on-dark` | 어두운 면 위의 청록 글자와 hover. 밝은 면에는 쓰지 않는다 |
 | Ink 900 | `#0a0f14` | `--rc-ink-900` | `text-ink-900` | 제목 |
 | Ink 800 | `#16202b` | `--rc-ink-800` | `text-ink` / `text-ink-800` | 본문 기본색, 입력값 |
 | Ink 700 | `#2b3a49` | `--rc-ink-700` | `text-ink-700` | 폼 라벨, 보조 제목 |
@@ -26,15 +27,23 @@
 | Ink 500 | `#6b7b8c` | `--rc-ink-500` | `text-ink-500` | 캡션, 단계 표시, 메타 정보 |
 | Ink 400 | `#8e9cab` | `--rc-ink-400` | `text-ink-400` | placeholder, 비활성 글자. 읽어야 하는 글자에는 쓰지 않는다 |
 | Surface | `#ffffff` | `--rc-surface` | `bg-surface` | 페이지와 카드 |
-| Surface Sunken | `#f7f8f9` | `--rc-surface-sunken` | `bg-surface-sunken` | 입력칸, 교차 섹션, 보조 버튼 |
+| Surface Sunken | `#f7f8f9` | `--rc-surface-sunken` | `bg-surface-sunken` | 입력칸, 교차 섹션, 보조 버튼, 진행 막대 트랙 |
+| Surface Muted | `#eef0f2` | `--rc-surface-muted` | `bg-surface-muted` | 이미지 자리, sunken 위 hover, 만료 상태 pill |
 | Surface Dark | `#080c11` | `--rc-surface-dark` | `bg-surface-dark` | CTA 띠와 IR 하이라이트. 한 페이지 안의 "반전 섹션"이 아니라 페이지 끝 띠에만 |
 | Hairline | `rgba(10,15,20,0.08)` | `--rc-hairline` | `border-hairline` | 카드·행 구분선, 입력칸 테두리 |
-| Hairline Strong | `rgba(10,15,20,0.14)` | `--rc-hairline-strong` | `border-hairline-strong` | hover 테두리, 보조 버튼 테두리, stat 윗선 |
+| Hairline Strong | `rgba(10,15,20,0.14)` | `--rc-hairline-strong` | `border-hairline-strong` / `bg-hairline-strong` | hover 테두리, 무채색 pill 테두리, 1px 세로·가로 구분선 |
+| On Dark Strong | `#e2e8f0` | `--rc-on-dark-strong` | `text-on-dark-strong` | 어두운 면의 소제목, 히어로 본문 |
+| On Dark Muted | `rgba(226,232,240,0.72)` | `--rc-on-dark-muted` | `text-on-dark-muted` | 어두운 면의 본문, 푸터 링크 (`.on-dark .type-body` 와 같은 값) |
+| On Dark Subtle | `rgba(226,232,240,0.55)` | `--rc-on-dark-subtle` | `text-on-dark-subtle` | 어두운 면의 캡션, 저작권 줄 |
 | Danger | `#dc2626` | `--rc-danger` | `text-danger` / `border-danger` | 폼 오류 문구와 오류 입력칸 테두리. 장식에는 쓰지 않는다 |
 | Danger Tint | `rgba(220,38,38,0.06)` | `--rc-danger-tint` | `bg-danger-tint` | 오류 안내 상자 배경 |
 | Danger Line | `rgba(220,38,38,0.28)` | `--rc-danger-line` | `border-danger-line` | 오류 안내 상자 테두리 |
 
 성공 상태는 따로 초록을 두지 않고 Accent 계열로 표시한다. 한 화면에 청록과 초록이 같이 뜨면 브랜드 색이 둘로 보인다.
+
+**어두운 면 위에서는 ink 토큰을 쓰지 않는다.** ink 는 흰 바탕용이다. 푸터, 홈 히어로, 과학 페이지 MD 섹션처럼 `bg-surface-dark` 위에서는 On Dark 세 단계와 Accent on Dark 만 쓰고, 제목에는 `on-dark` 클래스를 붙여 `em` 강조가 밝은 청록으로 바뀌게 한다.
+
+**분류 색은 두지 않는다.** 자산, 특허 상태, 뉴스 카테고리, 논문 유형을 색으로 나누지 않는다. 한 무리에서 강조할 자리 하나만 Accent Tint pill(등록 특허, Clinical 카테고리, 원저, 선도 자산군, 선택된 탭)로 두고, 나머지는 무채색 pill(`bg-surface-sunken text-ink-700 border-hairline-strong`)이다. 구분은 라벨 글자가 한다.
 
 ## Tokens - Typography
 
@@ -92,7 +101,7 @@
 `.btn .btn-secondary`. Surface Sunken 배경, Hairline 테두리, Ink 800 글자. "이전", "취소" 처럼 주 행동이 아닌 버튼.
 
 ### Content Card
-`.card`. 흰 면, Hairline 테두리, 18px, `--rc-shadow-sm`. 클릭되는 카드만 `.card-interactive` 를 더해 hover 시 2px 뜬다. **입력 폼이나 주소처럼 클릭되지 않는 카드는 뜨지 않는다.** 예전 이름 `.liquid-glass` 는 hover 상승이 붙어 있으니 새 코드에 쓰지 않는다.
+`.card`. 흰 면, Hairline 테두리, 18px, `--rc-shadow-sm`. 클릭되는 카드만 `.card-interactive` 를 더해 hover 시 2px 뜬다. **입력 폼이나 주소처럼 클릭되지 않는 카드는 뜨지 않는다.** 예전 이름 `.liquid-glass` 는 남아 있는 31곳 호환용이다. hover 상승은 `a`·`button` 요소일 때만 걸리게 CSS 에서 막아 두었다. 새 코드는 `.card` 를 쓴다.
 
 ### Input Field
 Surface Sunken 배경, Hairline 테두리, 8px, 좌우 16px 상하 10px, 글자 Ink 800 14px, placeholder Ink 400. 포커스 시 테두리 Accent, 링 `ring-2 ring-accent/20`. 오류 시 테두리 Danger, 링 `ring-danger/20`, 아래 12px Danger 문구.
@@ -128,8 +137,10 @@ Surface Sunken 배경, Hairline 테두리, 8px, 좌우 16px 상하 10px, 글자 
 - 개발 단계, 특허, 논문은 근거 문서가 있는 것만 싣는다
 
 ### Don't
-- Tailwind 기본 팔레트(`slate-*`, `gray-*`, `cyan-*`, `emerald-*`, `teal-*`, `blue-*` ...)를 새 코드에 쓰지 않는다. 2026-09-30 기준 22개 파일에 562곳이 남아 있고 순차적으로 걷어 낸다
-- `dark:` 변형을 쓰지 않는다. 다크 테마가 없는데 `dark:` 만 있으면 OS 다크모드 방문자에게 흰 카드 위 흰 글자가 나온다(문의 페이지에서 실제로 났다)
+- Tailwind 기본 팔레트(`slate-*`, `gray-*`, `cyan-*`, `emerald-*`, `teal-*`, `blue-*` ...)를 쓰지 않는다. 2026-09-30 에 562곳을 걷어 내 0곳이 됐다. 아래 점검 명령이 아무것도 출력하지 않아야 한다
+- `dark:` 변형을 쓰지 않는다. 다크 테마가 없는데 `dark:` 만 있으면 OS 다크모드 방문자에게 흰 카드 위 흰 글자가 나온다(문의 페이지에서 실제로 났다). 현재 0곳
+- 임의 색 값(`bg-[#080c11]`, `text-[#...]`)을 쓰지 않는다. 같은 값의 토큰이 있으면 토큰으로, 없으면 토큰을 먼저 만든다. 예외는 홈 히어로의 radial-gradient 배경 한 곳이다
+- `.pill`, `.btn`, `.card`, `.section-label` 위에 크기·여백·상태 유틸리티를 얹어 덮어쓰려 하지 않는다. `globals.css` 의 컴포넌트 클래스는 레이어 밖이라 Tailwind 유틸리티보다 **항상 이긴다**(`.pill` 위의 `text-sm`, `.btn` 위의 `disabled:active:scale-100` 이 무시됐다). 변형이 필요하면 `globals.css` 에 변형 클래스를 만든다
 - 버튼에 그라디언트, `rounded-lg`, `hover:shadow-lg` 를 쓰지 않는다
 - 두 번째 채도 색(초록 성공색, 파랑 링크색, 보라 장식)을 들이지 않는다
 - 이모지(🔒 ✓ ⌛)를 UI 아이콘 대신 쓰지 않는다
@@ -196,4 +207,7 @@ DESIGN.md 기준으로 <파일> 을 검토해라.
 ```
 grep -rEc "\b(bg|text|border|ring|from|to|via)-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[0-9]{2,3}" src --include=*.tsx | grep -v ":0$"
 grep -rc "dark:" src --include=*.tsx | grep -v ":0$"
+grep -rnE "(bg|text|border)-\[#" src --include=*.tsx
 ```
+
+세 명령 모두 결과가 없어야 한다(세 번째는 홈 히어로 radial-gradient 한 줄만 허용).

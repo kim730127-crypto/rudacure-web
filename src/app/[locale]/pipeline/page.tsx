@@ -1456,7 +1456,7 @@ export default async function PipelinePage({
                       {p.name === "RCI001" && (
                         <Link
                           href={`/${loc}/news/192`}
-                          className="inline-block text-sm font-medium text-accent-deep underline underline-offset-4 hover:text-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                          className="inline-block text-sm font-medium text-accent-deep underline underline-offset-4 hover:text-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                         >
                           {APPROVAL_NEWS[locale] || APPROVAL_NEWS.en}
                         </Link>
