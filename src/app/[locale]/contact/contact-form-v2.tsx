@@ -358,7 +358,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
               type="button"
               onClick={handleNext}
               disabled={!formData.type || formState.loading}
-              className="btn btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
+              className="btn btn-primary w-full"
             >
               {t.next}
             </motion.button>
@@ -538,7 +538,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 type="button"
                 onClick={handleBack}
                 disabled={formState.loading}
-                className="btn btn-secondary flex-1 disabled:opacity-50"
+                className="btn btn-secondary flex-1"
               >
                 {t.back}
               </button>
@@ -548,7 +548,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 disabled={
                   !formData.name || !formData.email || formState.loading
                 }
-                className="btn btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
+                className="btn btn-primary flex-1"
               >
                 {t.next}
               </button>
@@ -641,14 +641,14 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 type="button"
                 onClick={handleBack}
                 disabled={formState.loading}
-                className="btn btn-secondary flex-1 disabled:opacity-50"
+                className="btn btn-secondary flex-1"
               >
                 {t.back}
               </button>
               <button
                 type="submit"
                 disabled={formState.loading}
-                className="btn btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
+                className="btn btn-primary flex-1"
               >
                 {formState.loading ? (
                   <span className="flex items-center justify-center gap-2">

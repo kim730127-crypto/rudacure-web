@@ -500,6 +500,19 @@ h4 em,
   transform: scale(0.97);
 }
 
+/* A disabled button must not answer a press. Declared here, not as a
+   `disabled:active:scale-100` utility, because these component classes are
+   unlayered and beat Tailwind's layered utilities. */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.btn:disabled:active,
+.btn[aria-disabled="true"]:active {
+  transform: none;
+}
+
 .btn-primary {
   background: var(--rc-accent);
   color: #fff;

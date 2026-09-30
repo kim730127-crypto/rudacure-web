@@ -1362,11 +1362,11 @@ export default async function PipelinePage({
                     <span className="text-sm font-mono font-semibold text-ink-700 w-20">
                       {p.name}
                     </span>
-                    <div className="flex-1 h-8 bg-surface-muted rounded-full overflow-hidden relative">
+                    <div className="flex-1 h-8 bg-surface-sunken rounded-full overflow-hidden relative">
                       <ProgressBar
                         progress={p.progress}
                         delay={i * 200}
-                        className="h-full rounded-full flex items-center px-3 bg-accent-tint"
+                        className="h-full rounded-full flex items-center px-3 bg-accent/20"
                       >
                         <span
                           className="text-xs font-semibold whitespace-nowrap text-accent-deep"
@@ -1391,7 +1391,7 @@ export default async function PipelinePage({
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-4">
                       <span
-                        className="pill pill-accent h-auto px-4 py-1.5 text-sm font-medium tracking-normal"
+                        className="text-sm font-medium px-4 py-1.5 rounded-full bg-accent-tint text-accent-deep"
                       >
                         {p.indication}
                       </span>
