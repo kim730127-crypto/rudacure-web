@@ -699,15 +699,31 @@ const TEXT_CONTACT_US: Record<IRLocale, string> = {
 };
 
 /* ── IR deck download ──
- * One English deck serves every locale, so the button always carries an EN
- * badge. The PDF lives on the ir-deck-v1 GitHub release (same pattern as the
- * magazines) rather than in the repo. To publish a new version, upload a new
- * release asset and change IR_DECK only. */
-const IR_DECK = {
-  href: "https://github.com/kim730127-crypto/rudacure-web/releases/download/ir-deck-v1/RudaCure_IR_Deck_EN_2026-10.pdf",
-  id: "ir_deck_en_2026_10",
-  meta: "PDF · 19 pages · 2.3 MB · Oct 2026",
-};
+ * Korean visitors get the Korean deck; every other locale gets the English one.
+ * The badge shows the language of the file, not of the page. PDFs live on the
+ * ir-deck-v1 GitHub release (same pattern as the magazines) rather than in the
+ * repo. To publish a new version, upload a release asset and edit IR_DECKS only. */
+const IR_DECK_BASE =
+  "https://github.com/kim730127-crypto/rudacure-web/releases/download/ir-deck-v1";
+
+const IR_DECKS = {
+  ko: {
+    href: `${IR_DECK_BASE}/RudaCure_IR_Deck_KR_2026-10.pdf`,
+    id: "ir_deck_ko_2026_10",
+    badge: "KR",
+    meta: "PDF · 19쪽 · 2.4MB · 2026년 10월",
+  },
+  en: {
+    href: `${IR_DECK_BASE}/RudaCure_IR_Deck_EN_2026-10.pdf`,
+    id: "ir_deck_en_2026_10",
+    badge: "EN",
+    meta: "PDF · 19 pages · 2.3 MB · Oct 2026",
+  },
+} as const;
+
+function irDeck(locale: IRLocale) {
+  return locale === "ko" ? IR_DECKS.ko : IR_DECKS.en;
+}
 
 const TEXT_DOWNLOAD_DECK: Record<IRLocale, string> = {
   ko: "IR 자료 다운로드",
@@ -720,7 +736,7 @@ const TEXT_DOWNLOAD_DECK: Record<IRLocale, string> = {
 };
 
 const TEXT_DECK_LANG: Record<IRLocale, string> = {
-  ko: "영문 자료",
+  ko: "국문 자료",
   en: "English",
   zh: "英文版",
   ja: "英語版",
@@ -730,13 +746,14 @@ const TEXT_DECK_LANG: Record<IRLocale, string> = {
 };
 
 function IrDeckButton({ locale, loc, variant }: { locale: IRLocale; loc: string; variant: "primary" | "outline" }) {
+  const deck = irDeck(locale);
   return (
     <DownloadLink
       kind="ir_deck"
-      id={IR_DECK.id}
+      id={deck.id}
       locale={loc}
-      href={IR_DECK.href}
-      title={`${label(locale, TEXT_DOWNLOAD_DECK)} (${label(locale, TEXT_DECK_LANG)}, ${IR_DECK.meta})`}
+      href={deck.href}
+      title={`${label(locale, TEXT_DOWNLOAD_DECK)} (${label(locale, TEXT_DECK_LANG)}, ${deck.meta})`}
       className={`${variant === "primary" ? "btn-primary" : "btn-outline border"} inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-semibold text-sm`}
     >
       <svg aria-hidden="true" className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -747,7 +764,7 @@ function IrDeckButton({ locale, loc, variant }: { locale: IRLocale; loc: string;
         className={`text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded ${variant === "primary" ? "bg-white/90 text-teal-700" : "bg-teal-600 text-white"}`}
         aria-hidden="true"
       >
-        EN
+        {deck.badge}
       </span>
       <span className="sr-only">({label(locale, TEXT_DECK_LANG)}, PDF)</span>
     </DownloadLink>
@@ -827,7 +844,7 @@ export default async function IRPage({
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
               <IrDeckButton locale={locale} loc={loc} variant="primary" />
-              <span className="text-xs text-gray-500">{IR_DECK.meta}</span>
+              <span className="text-xs text-gray-500">{irDeck(locale).meta}</span>
             </div>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
