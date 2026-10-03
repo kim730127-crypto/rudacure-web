@@ -16,6 +16,7 @@ import {
   trackDocumentDownload,
   type PipelineCtaTarget,
   type IrContactChannel,
+  type DocumentKind,
 } from "@/lib/analytics-events";
 
 type Base = {
@@ -75,7 +76,7 @@ export function DownloadLink({
   download,
   title,
 }: Base & {
-  kind: "patent" | "paper";
+  kind: DocumentKind;
   id: string;
   locale: string;
   download?: boolean;

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
-import { IrContactLink } from "@/components/tracked-link";
+import { IrContactLink, DownloadLink } from "@/components/tracked-link";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
@@ -698,6 +698,61 @@ const TEXT_CONTACT_US: Record<IRLocale, string> = {
   ar: "اتصل بنا",
 };
 
+/* ── IR deck download ──
+ * One English deck serves every locale, so the button always carries an EN
+ * badge. The PDF lives on the ir-deck-v1 GitHub release (same pattern as the
+ * magazines) rather than in the repo. To publish a new version, upload a new
+ * release asset and change IR_DECK only. */
+const IR_DECK = {
+  href: "https://github.com/kim730127-crypto/rudacure-web/releases/download/ir-deck-v1/RudaCure_IR_Deck_EN_2026-10.pdf",
+  id: "ir_deck_en_2026_10",
+  meta: "PDF · 19 pages · 2.3 MB · Oct 2026",
+};
+
+const TEXT_DOWNLOAD_DECK: Record<IRLocale, string> = {
+  ko: "IR 자료 다운로드",
+  en: "Download IR Deck",
+  zh: "下载IR资料",
+  ja: "IR資料をダウンロード",
+  es: "Descargar presentacion IR",
+  fr: "Telecharger la presentation IR",
+  ar: "تنزيل عرض المستثمرين",
+};
+
+const TEXT_DECK_LANG: Record<IRLocale, string> = {
+  ko: "영문 자료",
+  en: "English",
+  zh: "英文版",
+  ja: "英語版",
+  es: "En ingles",
+  fr: "En anglais",
+  ar: "باللغة الإنجليزية",
+};
+
+function IrDeckButton({ locale, loc, variant }: { locale: IRLocale; loc: string; variant: "primary" | "outline" }) {
+  return (
+    <DownloadLink
+      kind="ir_deck"
+      id={IR_DECK.id}
+      locale={loc}
+      href={IR_DECK.href}
+      title={`${label(locale, TEXT_DOWNLOAD_DECK)} (${label(locale, TEXT_DECK_LANG)}, ${IR_DECK.meta})`}
+      className={`${variant === "primary" ? "btn-primary" : "btn-outline border"} inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-semibold text-sm`}
+    >
+      <svg aria-hidden="true" className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" />
+      </svg>
+      <span>{label(locale, TEXT_DOWNLOAD_DECK)}</span>
+      <span
+        className={`text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded ${variant === "primary" ? "bg-white/90 text-teal-700" : "bg-teal-600 text-white"}`}
+        aria-label={label(locale, TEXT_DECK_LANG)}
+      >
+        EN
+      </span>
+    </DownloadLink>
+  );
+}
+
 const TEXT_META_TITLE: Record<IRLocale, string> = {
   ko: "투자자 정보 | RudaCure",
   en: "Investor Relations | RudaCure",
@@ -769,6 +824,10 @@ export default async function IRPage({
             <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
               {label(locale, TEXT_HEADER_DESC)}
             </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <IrDeckButton locale={locale} loc={loc} variant="primary" />
+              <span className="text-xs text-gray-500">{IR_DECK.meta}</span>
+            </div>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
             <Image
@@ -931,6 +990,7 @@ export default async function IRPage({
           </blockquote>
           <p className="text-gray-600 mb-8">{label(locale, TEXT_CTA_DESC)}</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
+            <IrDeckButton locale={locale} loc={loc} variant="outline" />
             <IrContactLink
               href="mailto:js.shin@rudacure.com"
               channel="email"
