@@ -3,7 +3,7 @@ import Image from "next/image";
 import { type Locale } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
-import { IrContactLink } from "@/components/tracked-link";
+import { IrContactLink, DownloadLink } from "@/components/tracked-link";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 /* ── Helper: resolve locale to a data key, defaulting non-ko to "en" ── */
@@ -698,6 +698,79 @@ const TEXT_CONTACT_US: Record<IRLocale, string> = {
   ar: "اتصل بنا",
 };
 
+/* ── IR deck download ──
+ * Korean visitors get the Korean deck; every other locale gets the English one.
+ * The badge shows the language of the file, not of the page. PDFs live on the
+ * ir-deck-v1 GitHub release (same pattern as the magazines) rather than in the
+ * repo. To publish a new version, upload a release asset and edit IR_DECKS only. */
+const IR_DECK_BASE =
+  "https://github.com/kim730127-crypto/rudacure-web/releases/download/ir-deck-v1";
+
+const IR_DECKS = {
+  ko: {
+    href: `${IR_DECK_BASE}/RudaCure_IR_Deck_KR_2026-10.pdf`,
+    id: "ir_deck_ko_2026_10",
+    badge: "KR",
+    meta: "PDF · 19쪽 · 2.4MB · 2026년 10월",
+  },
+  en: {
+    href: `${IR_DECK_BASE}/RudaCure_IR_Deck_EN_2026-10.pdf`,
+    id: "ir_deck_en_2026_10",
+    badge: "EN",
+    meta: "PDF · 19 pages · 2.3 MB · Oct 2026",
+  },
+} as const;
+
+function irDeck(locale: IRLocale) {
+  return locale === "ko" ? IR_DECKS.ko : IR_DECKS.en;
+}
+
+const TEXT_DOWNLOAD_DECK: Record<IRLocale, string> = {
+  ko: "IR 자료 다운로드",
+  en: "Download IR Deck",
+  zh: "下载IR资料",
+  ja: "IR資料をダウンロード",
+  es: "Descargar presentacion IR",
+  fr: "Telecharger la presentation IR",
+  ar: "تنزيل عرض المستثمرين",
+};
+
+const TEXT_DECK_LANG: Record<IRLocale, string> = {
+  ko: "국문 자료",
+  en: "English",
+  zh: "英文版",
+  ja: "英語版",
+  es: "En ingles",
+  fr: "En anglais",
+  ar: "باللغة الإنجليزية",
+};
+
+function IrDeckButton({ locale, loc, variant }: { locale: IRLocale; loc: string; variant: "primary" | "outline" }) {
+  const deck = irDeck(locale);
+  return (
+    <DownloadLink
+      kind="ir_deck"
+      id={deck.id}
+      locale={loc}
+      href={deck.href}
+      title={`${label(locale, TEXT_DOWNLOAD_DECK)} (${label(locale, TEXT_DECK_LANG)}, ${deck.meta})`}
+      className={`${variant === "primary" ? "btn-primary" : "btn-outline border"} inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-semibold text-sm`}
+    >
+      <svg aria-hidden="true" className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" />
+      </svg>
+      <span>{label(locale, TEXT_DOWNLOAD_DECK)}</span>
+      <span
+        className={`text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded ${variant === "primary" ? "bg-white/90 text-teal-700" : "bg-teal-600 text-white"}`}
+        aria-hidden="true"
+      >
+        {deck.badge}
+      </span>
+      <span className="sr-only">({label(locale, TEXT_DECK_LANG)}, PDF)</span>
+    </DownloadLink>
+  );
+}
+
 const TEXT_META_TITLE: Record<IRLocale, string> = {
   ko: "투자자 정보 | RudaCure",
   en: "Investor Relations | RudaCure",
@@ -769,6 +842,10 @@ export default async function IRPage({
             <p className="text-lg text-ink-600 max-w-3xl leading-relaxed">
               {label(locale, TEXT_HEADER_DESC)}
             </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <IrDeckButton locale={locale} loc={loc} variant="primary" />
+              <span className="text-xs text-gray-500">{irDeck(locale).meta}</span>
+            </div>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
             <Image
@@ -931,6 +1008,7 @@ export default async function IRPage({
           </blockquote>
           <p className="text-ink-600 mb-8">{label(locale, TEXT_CTA_DESC)}</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
+            <IrDeckButton locale={locale} loc={loc} variant="outline" />
             <IrContactLink
               href="mailto:js.shin@rudacure.com"
               channel="email"

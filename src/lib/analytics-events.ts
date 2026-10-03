@@ -31,9 +31,11 @@ export function trackIrContact(channel: IrContactChannel, locale: string) {
   track("ir_contact_click", { channel, locale });
 }
 
-/** A visitor downloaded a patent certificate or a paper PDF. */
+/** A visitor downloaded a patent certificate, a paper PDF or the IR deck. */
+export type DocumentKind = "patent" | "paper" | "ir_deck";
+
 export function trackDocumentDownload(
-  kind: "patent" | "paper",
+  kind: DocumentKind,
   id: string,
   locale: string,
 ) {
