@@ -745,10 +745,11 @@ function IrDeckButton({ locale, loc, variant }: { locale: IRLocale; loc: string;
       <span>{label(locale, TEXT_DOWNLOAD_DECK)}</span>
       <span
         className={`text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded ${variant === "primary" ? "bg-white/90 text-teal-700" : "bg-teal-600 text-white"}`}
-        aria-label={label(locale, TEXT_DECK_LANG)}
+        aria-hidden="true"
       >
         EN
       </span>
+      <span className="sr-only">({label(locale, TEXT_DECK_LANG)}, PDF)</span>
     </DownloadLink>
   );
 }
