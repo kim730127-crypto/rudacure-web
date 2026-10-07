@@ -25,8 +25,9 @@ export async function generateMetadata({
   };
 }
 
-/* ── Quarterly Magazines (Vol.16 = newest, Vol.1 = oldest) ── */
+/* ── Quarterly Magazines (Vol.17 = newest, Vol.1 = oldest) ── */
 const MAGAZINES = [
+  { vol: 17, quarter: "2026.3Q", pdf: "vol17.pdf" },
   { vol: 16, quarter: "2026.2Q", pdf: "vol16.pdf" },
   { vol: 15, quarter: "2026.1Q", pdf: "vol15.pdf" },
   { vol: 14, quarter: "2025.4Q", pdf: "vol14.pdf" },
