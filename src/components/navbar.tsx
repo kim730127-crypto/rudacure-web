@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getTranslations } from "@/lib/i18n";
 
@@ -56,6 +56,8 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
   const [langOpen, setLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const t = getTranslations(locale);
+  const menuToggle = useRef<HTMLButtonElement>(null);
+  const languageToggle = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     // 8px, not 20px: the bar must acquire its background before any body text
@@ -71,6 +73,9 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
     label: t(n.tKey),
   }));
 
+  const answerLink = { href: `/${locale === "ko" ? "ko" : "en"}/faq`, label: "Q&A" };
+  links.splice(links.length - 1, 0, answerLink);
+
   const pathWithoutLocale =
     pathname.replace(/^\/(ko|en|zh|ja|es|fr|ar)/, "") || "";
 
@@ -83,6 +88,12 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
 
   return (
     <nav
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          if (mobileOpen) { setMobileOpen(false); menuToggle.current?.focus(); }
+          if (langOpen) { setLangOpen(false); languageToggle.current?.focus(); }
+        }
+      }}
       className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
         overHero ? "navbar-top" : "navbar-scrolled"
       }`}
@@ -105,14 +116,18 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
           />
         </Link>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-5 xl:flex">
           {links.map((link) => {
             const active = pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-[0.8125rem] font-medium tracking-[-0.01em] transition-colors ${
+                hrefLang={link.label === "Q&A" ? (locale === "ko" ? "ko" : "en") : undefined}
+                lang={link.label === "Q&A" ? (locale === "ko" ? "ko" : "en") : undefined}
+                aria-current={active ? "page" : undefined}
+                aria-label={link.label === "Q&A" ? (locale === "ko" ? "질문과 답변" : "Questions and answers (English)") : undefined}
+                className={`rc-nav-link relative inline-flex min-h-11 items-center whitespace-nowrap tracking-[-0.01em] transition-colors ${link.label === "Q&A" ? "text-base font-semibold" : "text-[0.8125rem] font-medium"} ${
                   overHero
                     ? active
                       ? "text-white"
@@ -136,8 +151,11 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
         </div>
 
         {/* Language dropdown */}
-        <div className="hidden md:block relative">
+        <div className="hidden xl:block relative">
           <button
+            ref={languageToggle}
+            aria-expanded={langOpen}
+            aria-controls="site-language-menu"
             onClick={() => setLangOpen(!langOpen)}
             className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
               overHero
@@ -183,7 +201,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setLangOpen(false)}
               />
-              <div className="absolute end-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50 min-w-[120px]">
+              <div id="site-language-menu" className="absolute end-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50 min-w-[120px]">
                 {LANG_OPTIONS.map((lang) => (
                   <Link
                     key={lang.locale}
@@ -207,10 +225,14 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
           )}
         </div>
 
+        <div className="flex items-center gap-4 xl:hidden">
+          <Link href={answerLink.href} lang={locale === "ko" ? "ko" : "en"} hrefLang={locale === "ko" ? "ko" : "en"} aria-label={locale === "ko" ? "질문과 답변" : "Questions and answers (English)"} className={`rc-nav-link inline-flex min-h-11 min-w-11 items-center justify-center text-base font-semibold ${overHero ? "text-slate-100" : "text-[var(--rc-accent-deep)]"}`}>Q&A</Link>
         <button
+          ref={menuToggle}
+          aria-controls="mobile-site-menu"
           aria-label="Menu"
           aria-expanded={mobileOpen}
-          className={`transition-colors md:hidden ${
+          className={`rc-nav-link inline-flex min-h-11 min-w-11 items-center justify-center transition-colors xl:hidden ${
             overHero
               ? "text-white/80 hover:text-white"
               : "text-[var(--rc-ink-600)] hover:text-[var(--rc-ink-900)]"
@@ -232,15 +254,18 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
             )}
           </svg>
         </button>
+        </div>
       </div>
 
       {mobileOpen && (
-        <div className="material-chrome space-y-1 border-t border-[var(--rc-hairline)] px-6 py-5 shadow-lg md:hidden">
+        <div id="mobile-site-menu" className="material-chrome max-h-[calc(100dvh-68px)] overflow-y-auto space-y-1 border-t border-[var(--rc-hairline)] px-6 py-5 shadow-lg xl:hidden">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`block text-sm font-medium py-2.5 px-3 rounded-lg transition-colors ${
+              lang={link.label === "Q&A" ? (locale === "ko" ? "ko" : "en") : undefined}
+              hrefLang={link.label === "Q&A" ? (locale === "ko" ? "ko" : "en") : undefined}
+              className={`rc-nav-link block min-h-11 text-base font-medium py-2.5 px-3 rounded-lg transition-colors ${
                 pathname.startsWith(link.href)
                   ? "text-teal-700 bg-teal-50"
                   : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"

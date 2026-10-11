@@ -1,3 +1,4 @@
+import { AnswersIntro } from "@/components/answers-intro";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -780,6 +781,8 @@ export default async function HomePage({
           ))}
         </div>
       </div>
+
+      <AnswersIntro locale={locale as Locale} />
 
       {/* ===== 02 Core technology ===== */}
       <section className="lab-section">

@@ -72,4 +72,15 @@ const article = await get("/ko/news/192");
 check(graph(jsonLd(article.text)).some((node) => node["@type"] === "NewsArticle"), "Article schema parses after safe serialization");
 const home = await get("/ko");
 check(home.text.includes("<noscript><style>") && home.text.includes("opacity:1!important"), "No-JS reveal fallback present");
+for (const locale of ["ko", "en", "zh", "ja", "es", "fr", "ar"]) {
+  const homePage = await get(`/${locale}`);
+  const answerLocale = locale === "ko" ? "ko" : "en";
+  check(homePage.text.includes('id="questions"'), `${locale}: prominent homepage questions section`);
+  const navigation = homePage.text.match(/<nav[\s\S]*?<\/nav>/)?.[0] || "";
+  check(navigation.includes(`href="/${answerLocale}/faq"`), `${locale}: header links to actual FAQ language`);
+  check(navigation.includes(`hrefLang="${answerLocale}"`) || navigation.includes(`hreflang="${answerLocale}"`), `${locale}: FAQ link declares destination language`);
+  for (const id of ["rci001-stage", "platform", "company"]) {
+    check(homePage.text.includes(`href="/${answerLocale}/faq#${id}"`), `${locale}: homepage question deep-link ${id}`);
+  }
+}
 console.log(`AEO checks passed: ${checks}`);

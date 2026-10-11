@@ -1308,3 +1308,22 @@ h4 em,
 @media (hover: hover) and (pointer: fine) {
   .aeo-link:hover { color: var(--rc-ink-900); }
 }
+
+/* Homepage answer entry points inherit the existing paper/ink palette. */
+.answers-intro {
+  padding-block: 48px;
+  background: var(--lab-paper);
+  color: var(--lab-ink);
+  border-bottom: 1px solid var(--lab-line);
+}
+.answers-intro-button { background: var(--rc-accent-deep); color: var(--lab-paper); }
+.answers-intro-question { color: var(--lab-ink); text-decoration: underline; text-underline-offset: 5px; }
+.answers-intro-button:active { background: var(--lab-ink); }
+.answers-intro-question:active { color: var(--rc-accent-deep); }
+.answers-intro-button:focus-visible, .answers-intro-question:focus-visible { outline: 2px solid var(--rc-accent-deep); outline-offset: 5px; }
+.rc-nav-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.rc-nav-link:active { text-decoration: underline; text-underline-offset: 5px; }
+@media (hover: hover) and (pointer: fine) {
+  .answers-intro-button:hover { background: var(--lab-ink); }
+  .answers-intro-question:hover { color: var(--rc-accent-deep); }
+}
