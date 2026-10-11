@@ -1,3 +1,4 @@
+import { serializeJsonLd } from "@/lib/schema";
 import Image from "next/image";
 import { ogCard } from "@/lib/og";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
@@ -654,55 +655,14 @@ export default async function SciencePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "SoftwareApplication",
-                name: "RuCIA",
-                applicationCategory: "Drug Discovery AI Platform",
-                description:
-                  "RudaCure's proprietary AI platform for ion channel drug discovery. Combines AI-predicted molecular binding (structure-based virtual screening, molecular dynamics simulation) with high-throughput electrophysiology validation (FLIPR Penta, patch clamp). Enables 70% faster drug development vs traditional methods. Trained on ion channel-ligand interaction data for TRPV1, TRPA1, and Nav targets.",
-                operatingSystem: "Enterprise",
-                creator: {
-                  "@type": "Organization",
-                  name: "RudaCure Co., Ltd.",
-                  url: "https://www.rudacure.com",
-                },
-                featureList: [
-                  "AI-predicted ion channel-ligand binding",
-                  "Structure-based virtual screening",
-                  "Molecular dynamics simulation",
-                  "FLIPR Penta high-throughput fluorescence assay",
-                  "Patch clamp electrophysiology validation",
-                  "TRPV1, TRPA1, TRPV4, Nav channel targeting",
-                  "70% faster development timeline vs traditional methods",
-                ],
-              },
-              {
-                "@type": "ResearchProject",
-                name: "RudaCure Membrane Protein Drug Discovery Program",
-                description:
-                  "AI-powered membrane protein drug discovery program targeting TRPV1, TRPA1, and Nav channels for pain, dry eye disease, and dermatology. Uses RuCIA platform combining molecular simulation with high-throughput electrophysiology. Ion channels account for ~60% of approved drug targets but remain technically difficult to screen without specialized platforms.",
-                url: "https://www.rudacure.com/science",
-                foundingOrganization: {
-                  "@type": "Organization",
-                  name: "RudaCure Co., Ltd.",
-                  url: "https://www.rudacure.com",
-                },
-                knowsAbout: [
-                  "TRPV1",
-                  "TRPA1",
-                  "Nav channels",
-                  "ion channel pharmacology",
-                  "patch clamp electrophysiology",
-                  "FLIPR assay",
-                  "dry eye disease",
-                  "neuropathic pain",
-                  "CRPS",
-                ],
-              },
-            ],
+            "@type": "ResearchProject",
+            "@id": `https://www.rudacure.com/${locale}/science#rucia`,
+            name: "RuCIA",
+            url: `https://www.rudacure.com/${locale}/science`,
+            description: [c.description, ...caps.map((cap) => cap.description)].join(" "),
+            parentOrganization: { "@id": "https://www.rudacure.com/#organization" },
           }),
         }}
       />

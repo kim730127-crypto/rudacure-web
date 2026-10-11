@@ -14,7 +14,7 @@ import { SITE_URL } from "@/lib/seo";
 // address, the founder and the outbound identity links rather than a bare name.
 export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "Corporation", "MedicalOrganization"],
+  "@type": "Corporation",
   "@id": `${SITE_URL}/#organization`,
   name: "RudaCure",
   legalName: "RudaCure Inc.",
@@ -26,7 +26,7 @@ export const organizationSchema = {
   },
   image: `${SITE_URL}/og-image.jpg`,
   description:
-    "RudaCure is a biopharmaceutical company targeting membrane proteins — ion channels such as TRPV1/TRPV4 and GPCRs — with the AI-driven RuCIA platform, developing therapeutics for dry eye disease, chronic pain, psoriasis and rare neurological disease.",
+    "RudaCure is a biopharmaceutical company targeting membrane proteins, including ion channels such as TRPV1/TRPV4 and GPCRs, with the AI-driven RuCIA platform, developing therapeutics for dry eye disease, chronic pain, psoriasis and rare neurological disease.",
   // The company was founded in 2018 out of an ion-channel research laboratory
   // (see the About page timeline). The previous "2024" value was wrong and was
   // being served to every crawler as the company's age.
@@ -39,14 +39,20 @@ export const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "1001, 145 Gasandigital 1-ro, Geumcheon-gu",
-    addressLocality: "Seoul",
+    streetAddress: "Building 1, Room 302, 9 Songdo Mirae-ro, Yeonsu-gu",
+    addressLocality: "Incheon",
     addressCountry: "KR",
   },
   telephone: "+82-32-724-9070",
   email: "sh.kim@rudacure.com",
   sameAs: ["https://kr.linkedin.com/company/rudacure"],
+  location: {
+    "@type": "Place",
+    name: "Seoul Office",
+    address: { "@type": "PostalAddress", streetAddress: "1001, 145 Gasandigital 1-ro, Geumcheon-gu", addressLocality: "Seoul", addressCountry: "KR" },
+  },
   contactPoint: [
+    { "@type": "ContactPoint", contactType: "Investor Relations", email: "js.shin@rudacure.com", availableLanguage: ["Korean", "English"] },
     {
       "@type": "ContactPoint",
       contactType: "Business Development",
@@ -55,8 +61,8 @@ export const organizationSchema = {
     },
     {
       "@type": "ContactPoint",
-      contactType: "Scientific Inquiries",
-      email: "science@rudacure.com",
+      contactType: "CRO Services",
+      email: "jyshin@rudacure.com",
       availableLanguage: ["Korean", "English"],
     },
   ],
@@ -122,5 +128,36 @@ export function breadcrumbSchema(
       name: item.name,
       item: `${SITE_URL}/${locale}${item.path}`,
     })),
+  };
+}
+
+/** Safe for inline HTML script tags, including CMS/news content. */
+export function serializeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
+/** Read from the same localized items as the visible pipeline, not a second copy. */
+export function pipelineSchema(locale: string, items: readonly { name: string; indication: string; target: string; mechanism: string; status: string }[]) {
+  const url = `${SITE_URL}/${locale}/pipeline`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${url}#webpage`, url, inLanguage: locale,
+    name: "RudaCure therapeutic pipeline",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: {
+      "@type": "ItemList", numberOfItems: items.length,
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem", position: index + 1,
+        item: {
+          "@type": "MedicalEntity",
+          "@id": `${url}#${item.name.split(" ")[0]}`,
+          url: `${url}#${item.name.split(" ")[0]}`,
+          name: item.name,
+          description: [item.indication, item.target, item.mechanism, item.status].join(". "),
+        },
+      })),
+    },
   };
 }

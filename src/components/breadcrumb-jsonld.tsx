@@ -1,4 +1,4 @@
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, serializeJsonLd } from "@/lib/schema";
 import { getTranslations, isValidLocale, type Locale } from "@/lib/i18n";
 
 type NavKey =
@@ -39,7 +39,7 @@ export function BreadcrumbJsonLd({
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(
+        __html: serializeJsonLd(
           breadcrumbSchema(safeLocale, [{ name: t(navKey), path }]),
         ),
       }}

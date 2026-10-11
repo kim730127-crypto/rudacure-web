@@ -6,6 +6,7 @@ import {
   CRO_LOCALES,
 } from "@/lib/seo";
 import newsDataKo from "@/data/news.json";
+import { ANSWER_LOCALES, ANSWERS_REVIEWED } from "@/lib/answers";
 
 /**
  * Each route declares the locales it actually holds content for. A locale
@@ -40,26 +41,11 @@ function alternates(path: string, locales: readonly string[]) {
   return { languages };
 }
 
-// The newest news item is the site's real "content changed" marker. Stamping
-// every URL with `new Date()` told crawlers that all URLs changed on every
-// deploy, including deploys that only touched CSS — which is exactly the signal
-// that gets a sitemap's lastmod ignored.
-function latestNewsDate(): Date {
-  const newest = newsDataKo.reduce<string>(
-    (max, article) => (article.date > max ? article.date : max),
-    "1970-01-01",
-  );
-  const parsed = new Date(newest);
-  return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
-}
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = latestNewsDate();
-
   const staticRoutes = ROUTES.flatMap((route) =>
     route.locales.map((locale) => ({
       url: `${SITE_URL}/${locale}${route.path}`,
-      lastModified,
+      // Unknown per-page modification dates are omitted, never borrowed from news.
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: alternates(route.path, route.locales),
@@ -70,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const path = `/news/${article.id}`;
     const articleDate = new Date(article.date);
     const articleModified = Number.isNaN(articleDate.getTime())
-      ? lastModified
+      ? undefined
       : articleDate;
 
     return TRANSLATED_LOCALES.map((locale) => ({
@@ -82,5 +68,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
   });
 
-  return [...staticRoutes, ...newsRoutes];
+  const answerRoutes = ANSWER_LOCALES.map((locale) => ({
+    url: `${SITE_URL}/${locale}/faq`,
+    lastModified: ANSWERS_REVIEWED,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    alternates: alternates("/faq", ANSWER_LOCALES),
+  }));
+
+  return [...staticRoutes, ...answerRoutes, ...newsRoutes];
 }

@@ -1,4 +1,4 @@
-import { type Locale, toDataLocale } from "@/lib/i18n";
+import { isValidLocale } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import ContactForm from "./contact-form-v2";
 import DynamicTitle from "./dynamic-title";
@@ -175,6 +175,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   return {
     title: META_TITLE[locale] ?? META_TITLE.en,
+    description: (C[locale] ?? C.en).description,
     alternates: localizedAlternates(locale, "/contact", TRANSLATED_LOCALES),
   };
 }
@@ -184,7 +185,7 @@ const inputCls = "w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 d
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: loc } = await params;
-  const locale = toDataLocale(loc as Locale);
+  const locale = isValidLocale(loc) ? loc : "en";
   const c = C[locale];
 
   return (

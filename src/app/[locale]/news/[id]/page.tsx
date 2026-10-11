@@ -9,7 +9,7 @@ import newsDataFr from "@/data/news_fr.json";
 import newsDataAr from "@/data/news_ar.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, serializeJsonLd } from "@/lib/schema";
 
 const NEWS_MAP: Record<string, typeof newsDataKo> = {
   ko: newsDataKo,
@@ -144,7 +144,7 @@ export default async function NewsArticlePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
+          __html: serializeJsonLd(
             breadcrumbSchema(locale, [
               { name: t("nav.news"), path: "/news" },
               { name: article.title, path: `/news/${id}` },
@@ -154,7 +154,7 @@ export default async function NewsArticlePage({
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }}
       />
       <section className="py-16 px-6 bg-white">
         <div className="max-w-3xl mx-auto">

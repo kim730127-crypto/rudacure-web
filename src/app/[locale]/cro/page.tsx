@@ -1,3 +1,4 @@
+import { serializeJsonLd } from "@/lib/schema";
 import Link from "next/link";
 import { ogCard } from "@/lib/og";
 import { type Locale } from "@/lib/i18n";
@@ -747,7 +748,7 @@ export default async function CROPage({
       <BreadcrumbJsonLd locale={loc} navKey="nav.cro" path="/cro" />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceJsonLd) }}
       />
 
       {/* Hero */}

@@ -5,6 +5,7 @@ import { getTranslations } from "@/lib/i18n";
 export function Footer({ locale = "ko" }: { locale?: Locale }) {
   const t = getTranslations(locale);
   const companyLinks = [
+    { href: `/${locale === "ko" ? "ko" : "en"}/faq`, label: locale === "ko" ? "핵심 질문과 답변" : "Questions & answers (English)" },
     { href: `/${locale}/science`, label: t("nav.science") },
     { href: `/${locale}/pipeline`, label: t("nav.pipeline") },
     { href: `/${locale}/cro`, label: t("nav.cro") },

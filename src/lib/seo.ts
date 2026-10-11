@@ -19,7 +19,7 @@ export const SITE_URL = "https://www.rudacure.com";
  */
 export const ALL_LOCALES = LOCALES;
 
-/** Every page except the homepage and CRO: no Arabic content table exists. */
+/** Pages with complete content tables for all seven language editions. */
 export const TRANSLATED_LOCALES = [
   "ko",
   "en",

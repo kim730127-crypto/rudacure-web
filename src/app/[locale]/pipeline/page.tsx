@@ -1,3 +1,4 @@
+import { pipelineSchema, serializeJsonLd } from "@/lib/schema";
 import Link from "next/link";
 import { ProgressBar } from "@/components/progress-bar";
 import { StageRail } from "@/components/stage-rail";
@@ -1210,114 +1211,7 @@ export default async function PipelinePage({
   return (
     <>
       <BreadcrumbJsonLd locale={loc} navKey="nav.pipeline" path="/pipeline" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "ClinicalTrial",
-                "@id": "https://clinicaltrials.gov/study/NCT07068958",
-                name: "RCI001 for Dry Eye Disease — FDA Phase 2",
-                identifier: "NCT07068958",
-                description:
-                  "Phase 2 randomized controlled trial of RCI001 (0.25% topical ophthalmic solution, TRPV1-Rac1/NLRP3 downstream modulator) for moderate-to-severe dry eye disease. IND approved August 2025.",
-                url: "https://clinicaltrials.gov/study/NCT07068958",
-                status: "Recruiting",
-                phase: "Phase 2",
-                sponsor: {
-                  "@type": "Organization",
-                  name: "RudaCure Co., Ltd.",
-                  url: "https://www.rudacure.com",
-                },
-                studyDesign:
-                  "Randomized, double-blind, placebo-controlled, multicenter",
-                healthCondition: {
-                  "@type": "MedicalCondition",
-                  name: "Dry Eye Disease",
-                  alternateName: ["DED", "Keratoconjunctivitis sicca"],
-                },
-                drug: {
-                  "@type": "Drug",
-                  name: "RCI001",
-                  description:
-                    "TRPV1 downstream signal modulator (not a direct TRPV1 antagonist). Modulates Rac1/NLRP3 inflammatory cascade to restore tear film homeostasis and corneal epithelial healing without blocking thermosensation.",
-                  administrationRoute: "Topical ophthalmic",
-                  dosageForm: "0.25% eye drop solution",
-                  mechanismOfAction:
-                    "TRPV1-Rac1/NLRP3 downstream pathway modulation — neurogenic inflammation suppression",
-                  proprietaryName: "RCI001",
-                  manufacturer: {
-                    "@type": "Organization",
-                    name: "RudaCure Co., Ltd.",
-                  },
-                },
-              },
-              {
-                "@type": "Drug",
-                name: "RCI001",
-                description:
-                  "Non-steroidal topical ophthalmic solution for dry eye disease. TRPV1 downstream modulator. US FDA Phase 2 IND approved (Aug 2025; NCT07068958). Korean Phase 2 clinical trial plan approved Sep 22, 2026; enrollment preparations underway. Domestic co-research with Hanlim Pharma (KRW 15B). Patent granted: Korea, Japan, USA.",
-                mechanismOfAction: "TRPV1-Rac1/NLRP3 pathway modulation",
-                administrationRoute: "Topical ophthalmic",
-                drugClass: "TRPV1 downstream modulator",
-                clinicalPhase: "Phase 2",
-                manufacturer: {
-                  "@type": "Organization",
-                  name: "RudaCure Co., Ltd.",
-                  url: "https://www.rudacure.com",
-                },
-              },
-              {
-                "@type": "Drug",
-                name: "RCI001AH",
-                description:
-                  "Veterinary formulation of RCI001 for dry eye (keratoconjunctivitis sicca, KCS) in companion animals (dogs/cats). Same mechanism of action as RCI001 (TRPV1-Rac1/NLRP3 downstream modulation). PoC study complete; comparative study vs veterinary cyclosporine conducted. Preparing veterinary clinical trials. Co-developed with a multinational veterinary pharmaceutical company, targeting 2030 market.",
-                mechanismOfAction: "TRPV1-Rac1/NLRP3 pathway modulation",
-                administrationRoute: "Topical ophthalmic (veterinary)",
-                drugClass: "TRPV1 downstream modulator",
-                clinicalPhase: "Pre-clinical",
-                manufacturer: {
-                  "@type": "Organization",
-                  name: "RudaCure Co., Ltd.",
-                  url: "https://www.rudacure.com",
-                },
-              },
-              {
-                "@type": "Drug",
-                name: "RCI002",
-                description:
-                  "Chronic pain analgesic administered by intra-articular injection. High-potency mu-opioid receptor (MOR) agonist; analgesia is fully naloxone-reversible. Indications: CRPS, osteoarthritis, diabetic neuropathy, CIPN, fibromyalgia. FDA Orphan Drug Designation (ODD) submitted for CRPS. Global IND Q2 2026.",
-                mechanismOfAction:
-                  "Intra-articular MOR agonist — local analgesia with minimized systemic exposure",
-                drugClass: "Opioid analgesic (mu-opioid receptor agonist), intra-articular",
-                clinicalPhase: "Pre-clinical",
-                manufacturer: {
-                  "@type": "Organization",
-                  name: "RudaCure Co., Ltd.",
-                  url: "https://www.rudacure.com",
-                },
-              },
-              {
-                "@type": "Drug",
-                name: "RCI003",
-                description:
-                  "AI-discovered selective modulator of psoriasis target proteins. Leverages RudaCure's TRPV1 ion channel platform for skin disease. In collaboration with Syntekabio AI platform (STB), Sogang University, and Inje University. Discovery stage 2026-2028.",
-                mechanismOfAction:
-                  "Selective modulation of psoriasis target proteins via ion channel pathway",
-                drugClass: "Psoriasis modulator",
-                clinicalPhase: "Discovery",
-                manufacturer: {
-                  "@type": "Organization",
-                  name: "RudaCure Co., Ltd.",
-                  url: "https://www.rudacure.com",
-                },
-              },
-            ],
-          }),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(pipelineSchema(locale, pipeline)) }} />
       <div className="pt-24">
         {/* Header */}
         <section className="py-20 px-6">
@@ -1402,7 +1296,7 @@ export default async function PipelinePage({
         <section className="px-6 pb-32">
           <div className="max-w-5xl mx-auto space-y-8">
             {pipeline.map((p) => (
-              <div key={p.name} className="liquid-glass p-8">
+              <div key={p.name} id={p.name.split(" ")[0]} className="liquid-glass p-8 scroll-mt-28">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-4">

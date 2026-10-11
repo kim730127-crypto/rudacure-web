@@ -1,3 +1,4 @@
+import { serializeJsonLd } from "@/lib/schema";
 /* ── Locale helper: default to "en" for unsupported locales ── */
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
@@ -1478,7 +1479,7 @@ export default async function PublicationsPage({
       <BreadcrumbJsonLd locale={rawLocale} navKey="nav.publications" path="/publications" />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <div className="pt-24">
         {/* Hero */}

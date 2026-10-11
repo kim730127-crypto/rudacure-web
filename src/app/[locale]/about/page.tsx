@@ -1,4 +1,5 @@
-import { type Locale, toDataLocale } from "@/lib/i18n";
+import { serializeJsonLd } from "@/lib/schema";
+import { isValidLocale } from "@/lib/i18n";
 import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
@@ -1865,7 +1866,7 @@ export default async function AboutPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: loc } = await params;
-  const locale = toDataLocale(loc as Locale);
+  const locale = isValidLocale(loc) ? loc : "en";
   const c = CONTENT[locale];
   const timeline = TIMELINE[locale];
   const leaders = LEADERSHIP[locale];
@@ -1922,7 +1923,7 @@ export default async function AboutPage({
       <BreadcrumbJsonLd locale={loc} navKey="nav.about" path="/about" />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(aboutPageJsonLd) }}
       />
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto">

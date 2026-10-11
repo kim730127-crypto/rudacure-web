@@ -1295,3 +1295,16 @@ h4 em,
   }
 }
 }
+
+/* Source-linked answers: visible on first render, with no reveal dependency. */
+.aeo-link {
+  color: var(--rc-accent-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  border-radius: 4px;
+}
+.aeo-link:focus-visible { outline: 2px solid var(--rc-accent); outline-offset: 4px; }
+.aeo-link:active { color: var(--rc-ink-900); }
+@media (hover: hover) and (pointer: fine) {
+  .aeo-link:hover { color: var(--rc-ink-900); }
+}

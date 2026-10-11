@@ -4,7 +4,7 @@ import { Noto_Sans_Arabic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getDir, isValidLocale, LOCALES, type Locale } from "@/lib/i18n";
-import { organizationSchema, webSiteSchema } from "@/lib/schema";
+import { organizationSchema, webSiteSchema, serializeJsonLd } from "@/lib/schema";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import "../globals.css";
@@ -195,6 +195,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={getDir(locale)}>
       <head>
+        <noscript><style>{`.reveal-up,.reveal-left,.reveal-right,.scale-in{opacity:1!important;transform:none!important}`}</style></noscript>
         <link
           rel="alternate"
           type="text/plain"
@@ -204,13 +205,13 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html: serializeJsonLd(organizationSchema),
           }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(webSiteSchema),
+            __html: serializeJsonLd(webSiteSchema),
           }}
         />
       </head>
