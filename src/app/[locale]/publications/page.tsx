@@ -34,6 +34,7 @@ type PatentFamily = {
     country: string;
     countryEn: string;
     number: string;
+    applicationNumber?: string;
     filed: string;
     registered: string;
     status: "granted" | "filed" | "pct" | "expired" | "transferred";
@@ -264,10 +265,11 @@ const PATENT_FAMILIES: PatentFamily[] = [
       {
         country: "대한민국",
         countryEn: "Korea",
-        number: "10-2023-0167240",
+        number: "10-3037138",
+        applicationNumber: "10-2023-0167240",
         filed: "2023.11.27",
-        registered: "-",
-        status: "filed",
+        registered: "2026.10.20",
+        status: "granted",
       },
       {
         country: "PCT",
@@ -1450,7 +1452,8 @@ export default async function PublicationsPage({
       .map((fl) => ({
         "@type": "Patent",
         name: fam.en.title,
-        applicationNumber: fl.number,
+        applicationNumber: fl.applicationNumber ?? fl.number,
+        identifier: fl.number,
         countryOfOrigin: fl.countryEn,
         datePublished:
           fl.registered !== "-" ? fl.registered.replace(/\./g, "-") : undefined,
