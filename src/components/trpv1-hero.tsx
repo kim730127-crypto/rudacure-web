@@ -132,6 +132,44 @@ export function Trpv1Hero() {
         const scaled = new Float32Array(cloud.positions.length);
         for (let i = 0; i < scaled.length; i += 1) scaled[i] = cloud.positions[i] * 2.15;
         geometry.setAttribute("position", new THREE.BufferAttribute(scaled, 3));
+
+        // Scroll journey target: one of the four bound SB-366791 copies.
+        // Seed on the ligand atom furthest along +x, gather its copy within a
+        // radius well under the copy-to-copy spacing, and take the centroid.
+        // The protein's own x/z centroid is the channel axis, so the copy's
+        // angle around it gives the Y rotation that turns it toward camera.
+        let seed = -1;
+        let px = 0;
+        let pz = 0;
+        let pn = 0;
+        for (let i = 0; i < cloud.count; i += 1) {
+          if (cloud.kinds[i] === 2 && (seed < 0 || scaled[i * 3] > scaled[seed * 3])) seed = i;
+          if (cloud.kinds[i] === 0) {
+            px += scaled[i * 3];
+            pz += scaled[i * 3 + 2];
+            pn += 1;
+          }
+        }
+        const ligand = new THREE.Vector3();
+        let rotTarget = 0.6;
+        if (seed >= 0 && pn > 0) {
+          let n = 0;
+          for (let i = 0; i < cloud.count; i += 1) {
+            if (cloud.kinds[i] !== 2) continue;
+            const dx = scaled[i * 3] - scaled[seed * 3];
+            const dy = scaled[i * 3 + 1] - scaled[seed * 3 + 1];
+            const dz = scaled[i * 3 + 2] - scaled[seed * 3 + 2];
+            if (dx * dx + dy * dy + dz * dz < 0.7 * 0.7) {
+              ligand.x += scaled[i * 3];
+              ligand.y += scaled[i * 3 + 1];
+              ligand.z += scaled[i * 3 + 2];
+              n += 1;
+            }
+          }
+          ligand.multiplyScalar(1 / n);
+          const phi = Math.atan2(ligand.z - pz / pn, ligand.x - px / pn);
+          rotTarget = phi - Math.PI / 2;
+        }
         geometry.setAttribute("aColor", new THREE.BufferAttribute(colors, 3));
         geometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
         geometry.setAttribute("aAlpha", new THREE.BufferAttribute(alphas, 1));
@@ -142,6 +180,7 @@ export function Trpv1Hero() {
             uTime: { value: 0 },
             uPixelRatio: { value: renderer.getPixelRatio() },
             uOpacity: { value: 0 },
+            uFocus: { value: 0 },
           },
           vertexShader: `
             attribute vec3 aColor;
@@ -150,6 +189,7 @@ export function Trpv1Hero() {
             attribute float aSeed;
             uniform float uTime;
             uniform float uPixelRatio;
+            uniform float uFocus;
             varying vec3 vColor;
             varying float vFade;
             varying float vGlow;
@@ -166,11 +206,22 @@ export function Trpv1Hero() {
               vec4 mv = modelViewMatrix * vec4(p, 1.0);
               gl_Position = projectionMatrix * mv;
               float depth = -mv.z;
-              vFade = smoothstep(12.6, 4.8, depth);
-              vGlow = aAlpha > 0.9 ? 1.0 : 0.0;
-              vAlpha = aAlpha;
-              vColor = aColor;
-              gl_PointSize = aSize * uPixelRatio * (7.0 / depth);
+              // Near fade so atoms the camera flies past do not blow up.
+              vFade = smoothstep(12.6, 4.8, depth) * smoothstep(0.5, 1.6, depth);
+              // Ligand alpha is exactly 0.9 (ALPHA[2]); a strict > 0.9 test never
+              // matched, so the ligand highlight had silently never applied.
+              vGlow = aAlpha > 0.85 ? 1.0 : 0.0;
+              // Focus: during the fly-in the protein steps back and the
+              // bound ligand comes forward; the membrane stays as context.
+              float protein = aAlpha < 0.3 ? 1.0 : 0.0;
+              float lipid = (1.0 - protein) * (1.0 - vGlow);
+              vAlpha = aAlpha * mix(1.0, 0.22, uFocus * protein) * mix(1.0, 0.4, uFocus * lipid) * mix(1.0, 0.75, uFocus * vGlow);
+              // The ligand shares the teal family at rest; in focus it turns
+              // warm white so it separates from the membrane band.
+              vColor = mix(aColor, vec3(1.0, 0.86, 0.55), uFocus * vGlow);
+              float grow = 1.0 + 0.7 * uFocus * vGlow;
+              float cap = mix(30.0, 16.0, uFocus) * (1.0 + 0.5 * vGlow);
+              gl_PointSize = min(aSize * grow * uPixelRatio * (7.0 / depth), cap * uPixelRatio);
             }
           `,
           fragmentShader: `
@@ -197,6 +248,7 @@ export function Trpv1Hero() {
         const points = new THREE.Points(geometry, material);
         scene.add(points);
 
+        let baseX = 0;
         const resize = () => {
           const rect = canvas.getBoundingClientRect();
           const w = Math.max(1, Math.round(rect.width));
@@ -214,7 +266,8 @@ export function Trpv1Hero() {
           // puts the bilayer on the horizon, then it is nudged up so the
           // cytoplasmic domain has room to hang below it.
           const MEMBRANE_Y = -0.917;
-          points.position.x = wide.matches ? 1.95 : 0;
+          baseX = wide.matches ? 1.95 : 0;
+          points.position.x = baseX;
           points.position.y = MEMBRANE_Y + (wide.matches ? 0.42 : -0.05);
         };
         resize();
@@ -244,6 +297,16 @@ export function Trpv1Hero() {
 
         const start = performance.now();
         let raf = 0;
+        let lastT = 0;
+        let autoAngle = 0;
+        let lockAngle: number | null = null;
+        const camPos = new THREE.Vector3();
+        const camLook = new THREE.Vector3();
+        const flyPos = new THREE.Vector3();
+        const flyLook = new THREE.Vector3();
+        const ligandWorld = new THREE.Vector3();
+        const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+        const ease = (v: number) => (v <= 0 ? 0 : v >= 1 ? 1 : v * v * (3 - 2 * v));
         const frame = () => {
           raf = requestAnimationFrame(frame);
           if (!visible) return;
@@ -251,12 +314,47 @@ export function Trpv1Hero() {
           material.uniforms.uTime.value = t;
           material.uniforms.uOpacity.value = Math.min(1, t / 1.4);
           if (!reduceMotion.matches) {
-            points.rotation.y = t * 0.075;
+            const dt = Math.min(0.05, t - lastT);
+            lastT = t;
+            // Journey progress from HeroJourney; 0 when the journey is off.
+            const host = canvas.closest<HTMLElement>('[data-journey="on"]');
+            const jp = host ? parseFloat(host.style.getPropertyValue("--jp")) || 0 : 0;
+            const a = ease(clamp01((jp - 0.06) / 0.36));
+            const b = ease(clamp01((jp - 0.48) / 0.3));
+
+            // Auto rotation pauses once the fly-in starts, and the target
+            // angle is fixed at that moment so the turn never flips branch.
+            if (b === 0) {
+              autoAngle += dt * 0.075;
+              lockAngle = null;
+            } else if (lockAngle === null) {
+              let d = (rotTarget - autoAngle) % (Math.PI * 2);
+              if (d > Math.PI) d -= Math.PI * 2;
+              if (d < -Math.PI) d += Math.PI * 2;
+              lockAngle = autoAngle + d;
+            }
+            points.rotation.y = lockAngle === null ? autoAngle : autoAngle + (lockAngle - autoAngle) * b;
+
             curX += (targetX - curX) * 0.045;
             curY += (targetY - curY) * 0.045;
-            points.rotation.z = curX * 0.2;
-            camera.position.y = 0.7 + curY;
-            camera.lookAt(0, -0.05, 0);
+            points.rotation.z = curX * 0.2 * (1 - a);
+            // RTL captions sit on the right, so the structure goes left.
+            const side = document.documentElement.dir === "rtl" ? -1 : 1;
+            points.position.x = baseX + (0.9 * side - baseX) * a;
+
+            camPos.set(0, 0.7 + curY * (1 - a), 9.4 - 2.2 * a);
+            camLook.set(0, -0.05, 0);
+            if (b > 0) {
+              points.updateMatrixWorld();
+              ligandWorld.copy(ligand).applyMatrix4(points.matrixWorld);
+              flyPos.set(ligandWorld.x - 0.7 * side, ligandWorld.y + 0.25, ligandWorld.z + 3.4);
+              flyLook.set(ligandWorld.x - 0.7 * side, ligandWorld.y, ligandWorld.z);
+              camPos.lerp(flyPos, b);
+              camLook.lerp(flyLook, b);
+            }
+            camera.position.copy(camPos);
+            camera.lookAt(camLook);
+            material.uniforms.uFocus.value = b;
           } else {
             points.rotation.y = 0.6;
           }

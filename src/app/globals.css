@@ -1474,3 +1474,53 @@ h4 em,
     transform: none;
   }
 }
+
+/* Hero scroll journey (HeroJourney + Trpv1Hero read --jp). Off by default;
+   JS turns it on only for wide, tall, motion-allowed screens. */
+.rc-journey {
+  --jp: 0;
+}
+.rc-journey-cards,
+.rc-journey-hint {
+  display: none;
+}
+.rc-journey[data-journey="on"] {
+  height: 300vh;
+}
+.rc-journey[data-journey="on"] .rc-journey-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 0;
+}
+.rc-journey[data-journey="on"] .rc-journey-cards {
+  display: block;
+}
+.rc-journey[data-journey="on"] .rc-journey-hint {
+  display: flex;
+  opacity: clamp(0, calc(1 - var(--jp) * 25), 1);
+}
+.rc-journey[data-journey="on"] .hero-exit {
+  animation: none;
+  opacity: clamp(0, calc(1 - (var(--jp) - 0.03) * 7), 1);
+  transform: translate3d(0, calc(var(--jp) * -180px), 0);
+}
+.rc-journey[data-journey="on"] .rc-hero-scrim {
+  opacity: clamp(0.35, calc(1 - var(--jp) * 3), 1);
+}
+.rc-journey-card {
+  inset-inline-start: 0;
+  --rc-in: clamp(0, calc((var(--jp) - var(--a)) * 14), 1);
+  opacity: clamp(0, min(calc((var(--jp) - var(--a)) * 14), calc((var(--b) - var(--jp)) * 14)), 1);
+  transform: translate3d(0, calc(-50% + (1 - var(--rc-in)) * 28px), 0);
+}
+.rc-journey-source {
+  inset-inline-start: 0;
+  opacity: clamp(0, calc((var(--jp) - 0.2) * 10), 1);
+}
+.rc-journey-rail {
+  opacity: clamp(0, calc((var(--jp) - 0.05) * 10), 1);
+}
+.rc-journey-rail-fill {
+  height: calc(var(--jp) * 100%);
+}

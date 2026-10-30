@@ -8,6 +8,7 @@ import { StageRail } from "@/components/stage-rail";
 import { Trpv1Hero } from "@/components/trpv1-hero";
 import { PartnerLogo } from "@/components/partner-logo";
 import { PlatformRadial } from "@/components/platform-radial";
+import { HeroJourney } from "@/components/hero-journey";
 import { RecruitPopup } from "@/components/recruit-popup";
 import newsKo from "@/data/news.json";
 import newsEn from "@/data/news_en.json";
@@ -532,6 +533,80 @@ const CLINICAL_SITES: Record<"ko" | "en", Site[]> = {
 
 /* Micro-labels that did not exist before. ko and en only; the other locales
    fall back to English, which is also how the pipeline data behaves. */
+/* Hero scroll-journey captions. They describe only what is drawn: the public
+   cryo-EM structure of human TRPV1 (RCSB PDB 8GFA, CC0) in its lipid belt
+   with the reference antagonist SB-366791 bound. No RudaCure compound, MoA
+   or result is implied. The third card restates the RuCIA sentence already
+   in hero.description. */
+const JOURNEY: Record<
+  string,
+  { cards: { title: string; body: string }[]; source: string; hint: string }
+> = {
+  ko: {
+    cards: [
+      { title: "지질막 속의 이온채널", body: "인간 TRPV1 채널의 cryo-EM 구조입니다. 청록색 띠가 채널을 감싼 세포막, 곧 지질 이중층입니다." },
+      { title: "리간드가 앉는 자리", body: "밝게 빛나는 점은 결합 부위에 놓인 저분자 화합물(SB-366791)입니다. 막단백질 신약개발은 이런 자리를 원자 단위로 다룹니다." },
+      { title: "RuCIA", body: "루다큐어는 RuCIA 플랫폼으로 이온채널과 수용체의 선택성을 예측해 후보물질을 고릅니다." },
+    ],
+    source: "구조: 인간 TRPV1, RCSB PDB 8GFA (CC0). 화면의 리간드는 공개 구조의 참고 길항제입니다.",
+    hint: "스크롤해서 구조 살펴보기",
+  },
+  en: {
+    cards: [
+      { title: "An ion channel in its membrane", body: "The cryo-EM structure of human TRPV1. The teal band around it is the cell membrane, the lipid bilayer." },
+      { title: "Where a ligand sits", body: "The bright points are a small molecule (SB-366791) in the binding site. Membrane-target drug discovery works on sites like this atom by atom." },
+      { title: "RuCIA", body: "RudaCure uses the RuCIA platform to predict ion channel and receptor selectivity when choosing candidates." },
+    ],
+    source: "Structure: human TRPV1, RCSB PDB 8GFA (CC0). The ligand shown is the reference antagonist in that public structure.",
+    hint: "Scroll to explore the structure",
+  },
+  zh: {
+    cards: [
+      { title: "脂膜中的离子通道", body: "人源 TRPV1 通道的冷冻电镜结构。环绕通道的青色带是细胞膜，即脂质双分子层。" },
+      { title: "配体结合的位置", body: "发亮的点是位于结合位点的小分子化合物（SB-366791）。膜蛋白新药研发正是在原子层面处理这样的位点。" },
+      { title: "RuCIA", body: "RudaCure 利用 RuCIA 平台预测离子通道和受体的选择性，以此筛选候选物质。" },
+    ],
+    source: "结构：人源 TRPV1，RCSB PDB 8GFA（CC0）。图中配体为该公开结构中的参考拮抗剂。",
+    hint: "滚动查看结构",
+  },
+  ja: {
+    cards: [
+      { title: "脂質膜の中のイオンチャネル", body: "ヒト TRPV1 チャネルのクライオ電顕構造です。チャネルを取り巻く青緑の帯が細胞膜、つまり脂質二重層です。" },
+      { title: "リガンドが収まる場所", body: "明るく光る点は結合部位にある低分子化合物（SB-366791）です。膜タンパク質創薬はこうした部位を原子レベルで扱います。" },
+      { title: "RuCIA", body: "RudaCure は RuCIA プラットフォームでイオンチャネルと受容体の選択性を予測し、候補物質を選びます。" },
+    ],
+    source: "構造：ヒト TRPV1、RCSB PDB 8GFA（CC0）。表示されているリガンドは公開構造中の参照アンタゴニストです。",
+    hint: "スクロールして構造を見る",
+  },
+  es: {
+    cards: [
+      { title: "Un canal iónico en su membrana", body: "Estructura de crio-EM del TRPV1 humano. La banda verde azulada que lo rodea es la membrana celular, la bicapa lipídica." },
+      { title: "Donde se aloja un ligando", body: "Los puntos brillantes son una molécula pequeña (SB-366791) en el sitio de unión. El descubrimiento de fármacos contra dianas de membrana trabaja estos sitios átomo a átomo." },
+      { title: "RuCIA", body: "RudaCure usa la plataforma RuCIA para predecir la selectividad de canales iónicos y receptores al elegir candidatos." },
+    ],
+    source: "Estructura: TRPV1 humano, RCSB PDB 8GFA (CC0). El ligando mostrado es el antagonista de referencia de esa estructura pública.",
+    hint: "Desplácese para explorar la estructura",
+  },
+  fr: {
+    cards: [
+      { title: "Un canal ionique dans sa membrane", body: "Structure cryo-EM du TRPV1 humain. La bande bleu-vert qui l'entoure est la membrane cellulaire, la bicouche lipidique." },
+      { title: "Là où se loge un ligand", body: "Les points lumineux sont une petite molécule (SB-366791) dans le site de liaison. La découverte de médicaments sur cibles membranaires travaille ces sites atome par atome." },
+      { title: "RuCIA", body: "RudaCure utilise la plateforme RuCIA pour prédire la sélectivité des canaux ioniques et des récepteurs lors du choix des candidats." },
+    ],
+    source: "Structure : TRPV1 humain, RCSB PDB 8GFA (CC0). Le ligand affiché est l'antagoniste de référence de cette structure publique.",
+    hint: "Faites défiler pour explorer la structure",
+  },
+  ar: {
+    cards: [
+      { title: "قناة أيونية داخل غشائها", body: "بنية المجهر الإلكتروني بالتبريد لقناة TRPV1 البشرية. الشريط الأخضر المزرق المحيط بها هو غشاء الخلية، أي الطبقة الدهنية المزدوجة." },
+      { title: "حيث يستقر الربيط", body: "النقاط المضيئة جزيء صغير (SB-366791) في موقع الارتباط. يتعامل اكتشاف الأدوية المستهدفة لبروتينات الغشاء مع مثل هذه المواقع على مستوى الذرة." },
+      { title: "RuCIA", body: "تستخدم RudaCure منصة RuCIA للتنبؤ بانتقائية القنوات الأيونية والمستقبلات عند اختيار المرشحين." },
+    ],
+    source: "البنية: TRPV1 البشري، RCSB PDB 8GFA (CC0). الربيط المعروض هو المضاد المرجعي في تلك البنية العامة.",
+    hint: "مرّر لاستكشاف البنية",
+  },
+};
+
 const LAB_LABELS = {
   ko: {
     assets: "파이프라인 에셋",
@@ -737,7 +812,11 @@ export default async function HomePage({
       {/* ===== Hero ===== The TRPV1 point cloud stays: it is the one visual
           asset built from real coordinates. What changes is the type system
           laid over it. */}
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-[#080c11] text-white">
+      <HeroJourney
+        cards={(JOURNEY[locale] ?? JOURNEY.en).cards}
+        source={(JOURNEY[locale] ?? JOURNEY.en).source}
+        hint={(JOURNEY[locale] ?? JOURNEY.en).hint}
+      >
         <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_8%,#122c31_0%,#0b1419_42%,#070a0e_100%)]" />
         <Trpv1Hero />
 
@@ -814,7 +893,7 @@ export default async function HomePage({
             </dl>
           </div>
         </div>
-      </section>
+      </HeroJourney>
 
       {/* ===== Discipline strip ===== */}
       <div className="lab-marquee" aria-hidden="true">

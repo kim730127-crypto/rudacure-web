@@ -62,7 +62,12 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
   useEffect(() => {
     // 8px, not 20px: the bar must acquire its background before any body text
     // can slide underneath it.
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    // While the homepage scroll journey is pinned, the bar is still over the
+    // dark stage, so it keeps its over-hero look until the journey ends.
+    const onScroll = () => {
+      const j = document.querySelector<HTMLElement>('.rc-journey[data-journey="on"]');
+      setScrolled(j ? j.getBoundingClientRect().bottom < 72 : window.scrollY > 8);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
