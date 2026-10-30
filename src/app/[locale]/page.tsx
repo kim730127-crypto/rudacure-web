@@ -7,6 +7,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { StageRail } from "@/components/stage-rail";
 import { Trpv1Hero } from "@/components/trpv1-hero";
 import { PartnerLogo } from "@/components/partner-logo";
+import { PlatformRadial } from "@/components/platform-radial";
 import { RecruitPopup } from "@/components/recruit-popup";
 import newsKo from "@/data/news.json";
 import newsEn from "@/data/news_en.json";
@@ -14,6 +15,7 @@ import newsZh from "@/data/news_zh.json";
 import newsJa from "@/data/news_ja.json";
 import newsEs from "@/data/news_es.json";
 import newsFr from "@/data/news_fr.json";
+import newsAr from "@/data/news_ar.json";
 
 const PIPELINE = {
   ko: [
@@ -546,6 +548,8 @@ const LAB_LABELS = {
     colStage: "Stage",
     colMilestone: "Milestone",
     figure: "RuCIA 분자동역학 시뮬레이션",
+    radialCenter: "막단백질 표적 플랫폼",
+    radialFigure: "RuCIA 플랫폼과 파이프라인 에셋",
   },
   en: {
     assets: "Pipeline assets",
@@ -562,6 +566,8 @@ const LAB_LABELS = {
     colStage: "Stage",
     colMilestone: "Milestone",
     figure: "RuCIA molecular dynamics",
+    radialCenter: "Membrane-target platform",
+    radialFigure: "RuCIA platform and pipeline assets",
   },
 };
 
@@ -593,6 +599,23 @@ function ArrowOut({ className = "" }: { className?: string }) {
       <path strokeLinecap="square" d="M7 17L17 7M9 7h8v8" />
     </svg>
   );
+}
+
+/* Hero headline words. Splitting on spaces keeps each Korean eojeol whole;
+   CJK titles without spaces animate as one unit per line. */
+function wordCount(text: string) {
+  return text.split(" ").filter(Boolean).length;
+}
+function heroWords(text: string, start: number) {
+  const words = text.split(" ").filter(Boolean);
+  return words.map((w, i) => (
+    <span key={`${w}-${i}`}>
+      <span className="hero-word" style={{ animationDelay: `${(start + i * 0.08).toFixed(2)}s` }}>
+        {w}
+      </span>
+      {i < words.length - 1 ? " " : null}
+    </span>
+  ));
 }
 
 function SectionHead({
@@ -655,13 +678,29 @@ export default async function HomePage({
       ja: newsJa,
       es: newsEs,
       fr: newsFr,
+      ar: newsAr,
     }[locale] ?? newsEn
   ).slice(0, 5) as {
     id: number;
     title: string;
     date: string;
     category: string;
+    content: string;
   }[];
+
+  /* News feature: the newest of the five items that carries a photo in its
+     article body. Certificates and posters are skipped because they crop
+     badly as a cover; the item then leaves the list so it is shown once. */
+  const photoOf = (html: string) => {
+    const m = html.match(/<img[^>]+src="([^"]+)"/);
+    if (!m) return null;
+    const src = m[1];
+    if (!src.startsWith("/images/") || /cert|poster/i.test(src)) return null;
+    return src;
+  };
+  const featureIdx = news.findIndex((a) => photoOf(a.content));
+  const feature = featureIdx >= 0 ? { ...news[featureIdx], photo: photoOf(news[featureIdx].content)! } : null;
+  const newsRows = feature ? news.filter((_, i) => i !== featureIdx) : news;
 
   const CAPABILITIES = [
     { title: t("rucia.metric.time"), sub: t("rucia.metric.time.sub") },
@@ -718,13 +757,15 @@ export default async function HomePage({
             </span>
           </div>
 
-          <h1
-            className="lab-display animate-hero-blur-in mt-10 max-w-[15ch] md:mt-14"
-            style={{ animationDelay: "0.12s" }}
-          >
-            {t("hero.title1")}
+          {/* Words rise one after another (ref. MotionSites "Cognitra"). The
+              text stays a single h1; spaces remain real text nodes so Korean
+              keep-all wrapping is unchanged. */}
+          <h1 className="lab-display mt-10 max-w-[15ch] md:mt-14">
+            {heroWords(t("hero.title1"), 0.12)}
             <br />
-            <span className="text-teal-300">{t("hero.title2")}</span>
+            <span className="text-teal-300">
+              {heroWords(t("hero.title2"), 0.12 + 0.08 * wordCount(t("hero.title1")))}
+            </span>
           </h1>
 
           <div
@@ -752,7 +793,18 @@ export default async function HomePage({
                   className={`border-b border-white/15 py-5 ${i % 2 === 0 ? "pe-4 border-e" : "ps-5"}`}
                 >
                   <dt className="num text-[2rem] font-semibold leading-none tracking-[-0.03em] text-white md:text-[2.5rem]">
-                    {s.value}
+                    {/^\d+$/.test(s.value) ? (
+                      <>
+                        <span className="sr-only">{s.value}</span>
+                        <span
+                          aria-hidden="true"
+                          className="count-up"
+                          style={{ ["--to" as string]: s.value, ["--count-delay" as string]: `${0.45 + i * 0.1}s` }}
+                        />
+                      </>
+                    ) : (
+                      s.value
+                    )}
                   </dt>
                   <dd className="lab-label lab-label-i18n mt-3 text-white/55 normal-case tracking-[0.02em]">
                     {s.label}
@@ -844,6 +896,28 @@ export default async function HomePage({
               </figure>
             </ScrollReveal>
           </div>
+
+          {/* Fig. 02: platform-to-asset map. Spokes are the four pipeline
+              records rendered in section 03; stage text is their status. */}
+          <figure className="lab-figure mt-14 md:mt-20">
+            <div className="px-5 py-8 md:px-10 md:py-6">
+              <PlatformRadial
+                items={pipeline.map((p) => ({
+                  id: p.id,
+                  indication: p.indication,
+                  status: p.status,
+                  href: `/${locale}/pipeline#${p.id}`,
+                }))}
+                centerTitle="RuCIA"
+                centerCaption={L.radialCenter}
+                label={L.radialFigure}
+              />
+            </div>
+            <figcaption className="lab-label lab-label-i18n lab-muted flex justify-between border-t border-[var(--lab-line)] px-4 py-3 normal-case tracking-[0.02em]">
+              <span>Fig. 02</span>
+              <span>{L.radialFigure}</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -1012,9 +1086,49 @@ export default async function HomePage({
               }}
             />
           </ScrollReveal>
-          <div className="border-t border-[var(--lab-ink)]">
-            {news.map((a, i) => (
+          <div className={feature ? "lab-grid gap-y-8 md:items-start" : ""}>
+          {feature && (
+            <ScrollReveal className="col-span-12 md:col-span-5">
+              <Link
+                href={`/${locale}/news/${feature.id}`}
+                className="news-feature group block border-t border-[var(--lab-ink)] pt-5"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-[var(--lab-line)]">
+                  <Image
+                    src={feature.photo}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 440px, 100vw"
+                    className="news-feature-img object-cover object-top"
+                  />
+                </div>
+                <div className="mt-5 flex items-center justify-between gap-4">
+                  <span className="lab-label num text-[var(--rc-ink-600)]">{feature.date}</span>
+                  <span className="lab-label text-[var(--rc-accent)]">{feature.category}</span>
+                </div>
+                <h3 className="mt-3 text-[1.1875rem] font-semibold leading-snug tracking-[-0.01em] text-[var(--lab-ink)] transition-colors duration-200 group-hover:text-[var(--rc-accent-deep)]">
+                  {feature.title}
+                </h3>
+              </Link>
+            </ScrollReveal>
+          )}
+          <div className={`border-t border-[var(--lab-ink)] ${feature ? "col-span-12 md:col-span-7" : ""}`}>
+            {newsRows.map((a, i) => (
               <ScrollReveal key={a.id} delay={i * 50}>
+                {feature ? (
+                  /* Beside the photo card the column is narrow, so the title
+                     gets its own line and wraps instead of truncating. */
+                  <Link href={`/${locale}/news/${a.id}`} className="lab-row group block py-5">
+                    <span className="flex items-center gap-6">
+                      <span className="lab-label num text-[var(--rc-ink-600)]">{a.date}</span>
+                      <span className="lab-label text-[var(--rc-accent)]">{a.category}</span>
+                      <ArrowOut className="lab-row-arrow ms-auto h-5 w-5 text-[var(--rc-accent)]" />
+                    </span>
+                    <h3 className="mt-2.5 line-clamp-2 text-[1rem] font-medium leading-snug text-[var(--lab-ink)] transition-colors duration-200 group-hover:text-[var(--rc-accent-deep)]">
+                      {a.title}
+                    </h3>
+                  </Link>
+                ) : (
                 <Link href={`/${locale}/news/${a.id}`} className="lab-row lab-grid group items-center py-5">
                   <span className="lab-label num col-span-6 text-[var(--rc-ink-600)] md:col-span-2">
                     {a.date}
@@ -1029,8 +1143,10 @@ export default async function HomePage({
                     <ArrowOut className="lab-row-arrow h-5 w-5 text-[var(--rc-accent)]" />
                   </span>
                 </Link>
+                )}
               </ScrollReveal>
             ))}
+          </div>
           </div>
         </div>
       </section>

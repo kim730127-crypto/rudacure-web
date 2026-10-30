@@ -1327,3 +1327,150 @@ h4 em,
   .answers-intro-button:hover { background: var(--lab-ink); }
   .answers-intro-question:hover { color: var(--rc-accent-deep); }
 }
+
+/* ===== MotionSites-referenced motion, 2026-10-30 =====
+   All three pieces render their final state without JavaScript and switch
+   off under prefers-reduced-motion. Timing reuses --rc-ease. */
+
+/* Hero headline: words rise in sequence (ref. MotionSites "Cognitra"). */
+.hero-word {
+  display: inline-block;
+  animation: hero-rise 820ms var(--rc-ease) both;
+}
+
+/* Hero stats: integers count up from 0. The real number sits in an sr-only
+   span for assistive tech and crawlers; the counter is aria-hidden. Without
+   @property support the value simply appears at its final number. */
+@property --rc-count {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+.count-up {
+  --rc-count: var(--to);
+  counter-reset: rc-count var(--rc-count);
+  animation: rc-count-up 1100ms var(--rc-ease) var(--count-delay, 0.45s) backwards;
+}
+.count-up::after {
+  content: counter(rc-count);
+}
+@keyframes rc-count-up {
+  from {
+    --rc-count: 0;
+  }
+}
+
+/* Platform radial (homepage section 02, ref. MotionSites "Radial Diagram") */
+.rc-radial-ring {
+  fill: none;
+  stroke: var(--lab-ink);
+  stroke-opacity: 0.35;
+  stroke-width: 0.24;
+}
+.rc-radial-spoke line {
+  stroke: var(--lab-ink);
+  stroke-opacity: 0.28;
+  stroke-width: 0.24;
+  transition:
+    stroke 250ms var(--rc-ease),
+    stroke-opacity 250ms var(--rc-ease),
+    stroke-width 250ms var(--rc-ease);
+}
+.rc-radial-dot {
+  fill: var(--lab-ink);
+  opacity: 0.45;
+  transition:
+    fill 250ms var(--rc-ease),
+    opacity 250ms var(--rc-ease);
+}
+.rc-radial-spoke[data-active] line {
+  stroke: var(--rc-accent);
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+}
+.rc-radial-spoke[data-active] .rc-radial-dot {
+  fill: var(--rc-accent);
+  opacity: 1;
+}
+.rc-radial-label[data-active] .rc-radial-id {
+  color: var(--rc-accent-deep);
+}
+@media (min-width: 768px) {
+  .rc-radial-label {
+    top: var(--rc-t);
+    left: var(--rc-l, auto);
+    right: var(--rc-r, auto);
+  }
+}
+.rc-radial[data-phase="armed"] .rc-radial-ring,
+.rc-radial[data-phase="armed"] .rc-radial-spoke line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.rc-radial[data-phase="armed"] .rc-radial-dot,
+.rc-radial[data-phase="armed"] .rc-radial-center,
+.rc-radial[data-phase="armed"] .rc-radial-label {
+  opacity: 0;
+}
+.rc-radial[data-phase="in"] .rc-radial-ring {
+  stroke-dasharray: 1;
+  animation: rc-draw 700ms var(--rc-ease) backwards;
+}
+.rc-radial[data-phase="in"] .rc-radial-spoke line {
+  stroke-dasharray: 1;
+  animation: rc-draw 550ms var(--rc-ease) calc(0.35s + var(--i) * 0.12s) backwards;
+}
+.rc-radial[data-phase="in"] .rc-radial-dot {
+  animation: rc-fade 300ms var(--rc-ease) calc(0.8s + var(--i) * 0.12s) backwards;
+}
+.rc-radial[data-phase="in"] .rc-radial-center {
+  animation: rc-fade 500ms var(--rc-ease) 0.15s backwards;
+}
+.rc-radial[data-phase="in"] .rc-radial-label {
+  animation: rc-rise 600ms var(--rc-ease) calc(0.55s + var(--i) * 0.12s) backwards;
+}
+@keyframes rc-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes rc-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes rc-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}
+
+/* News feature card: photo eases in scale on hover only. */
+.news-feature-img {
+  transition: transform 600ms var(--rc-ease);
+}
+.news-feature:hover .news-feature-img,
+.news-feature:focus-visible .news-feature-img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .count-up,
+  .rc-radial *,
+  .rc-radial-label {
+    animation: none !important;
+  }
+  .rc-radial-spoke line,
+  .rc-radial-dot,
+  .news-feature-img {
+    transition: none;
+  }
+  .news-feature:hover .news-feature-img {
+    transform: none;
+  }
+}
