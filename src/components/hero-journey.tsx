@@ -18,7 +18,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 
 export type JourneyCard = { title: string; body: string };
 
-const MQ = "(min-width: 900px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)";
+const MQ = "(min-width: 900px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)";
 
 export function HeroJourney({
   children,
@@ -54,6 +54,15 @@ export function HeroJourney({
       if (mq.matches && !on) {
         on = true;
         el.dataset.journey = "on";
+        // The pinned stage is exactly one viewport. If the hero copy still
+        // does not fit after the compact rules, fall back to the normal hero
+        // rather than clip the headline or the stage stats.
+        const copy = el.querySelector<HTMLElement>(".hero-exit");
+        if (copy && copy.offsetHeight > window.innerHeight - 8) {
+          on = false;
+          delete el.dataset.journey;
+          return;
+        }
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll, { passive: true });
         update();

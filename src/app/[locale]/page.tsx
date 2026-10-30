@@ -848,7 +848,7 @@ export default async function HomePage({
           </h1>
 
           <div
-            className="lab-grid animate-hero-blur-in mt-10 gap-y-10 md:mt-14"
+            className="hero-body lab-grid animate-hero-blur-in mt-10 gap-y-10 md:mt-14"
             style={{ animationDelay: "0.24s" }}
           >
             <div className="col-span-12 md:col-span-6">

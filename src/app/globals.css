@@ -1524,3 +1524,18 @@ h4 em,
 .rc-journey-rail-fill {
   height: calc(var(--jp) * 100%);
 }
+
+/* Pinned stage is one viewport tall, so the hero copy tightens on shorter
+   screens instead of clipping. HeroJourney still checks the fit and falls
+   back to the normal hero if it overflows. */
+.rc-journey[data-journey="on"] .hero-exit {
+  padding-top: clamp(5.5rem, 14vh, 9rem);
+  padding-bottom: clamp(1.5rem, 6vh, 5rem);
+}
+.rc-journey[data-journey="on"] .hero-exit h1 {
+  margin-top: clamp(1.25rem, 4vh, 3.5rem);
+  font-size: min(clamp(2.75rem, 7.2vw, 6.5rem), 10.5vh);
+}
+.rc-journey[data-journey="on"] .hero-body {
+  margin-top: clamp(1.25rem, 4vh, 3.5rem);
+}
