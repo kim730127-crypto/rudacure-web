@@ -24,7 +24,7 @@ function Flag({
     sa: "/images/flag-sa.svg",
   };
   return (
-    <img src={src[code] || ""} alt={code.toUpperCase()} className={className} />
+    <img src={src[code] || ""} alt="" aria-hidden="true" className={className} />
   );
 }
 
@@ -126,7 +126,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                 hrefLang={link.label === "Q&A" ? (locale === "ko" ? "ko" : "en") : undefined}
                 lang={link.label === "Q&A" ? (locale === "ko" ? "ko" : "en") : undefined}
                 aria-current={active ? "page" : undefined}
-                aria-label={link.label === "Q&A" ? (locale === "ko" ? "질문과 답변" : "Questions and answers (English)") : undefined}
+                aria-label={link.label === "Q&A" ? (locale === "ko" ? "Q&A 질문과 답변" : "Q&A, Questions and answers") : undefined}
                 className={`rc-nav-link relative inline-flex min-h-11 items-center whitespace-nowrap tracking-[-0.01em] transition-colors ${link.label === "Q&A" ? "text-base font-semibold" : "text-[0.8125rem] font-medium"} ${
                   overHero
                     ? active
@@ -226,7 +226,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
         </div>
 
         <div className="flex items-center gap-4 xl:hidden">
-          <Link href={answerLink.href} lang={locale === "ko" ? "ko" : "en"} hrefLang={locale === "ko" ? "ko" : "en"} aria-label={locale === "ko" ? "질문과 답변" : "Questions and answers (English)"} className={`rc-nav-link inline-flex min-h-11 min-w-11 items-center justify-center text-base font-semibold ${overHero ? "text-slate-100" : "text-[var(--rc-accent-deep)]"}`}>Q&A</Link>
+          <Link href={answerLink.href} lang={locale === "ko" ? "ko" : "en"} hrefLang={locale === "ko" ? "ko" : "en"} aria-label={locale === "ko" ? "Q&A 질문과 답변" : "Q&A, Questions and answers"} className={`rc-nav-link inline-flex min-h-11 min-w-11 items-center justify-center text-base font-semibold ${overHero ? "text-slate-100" : "text-[var(--rc-accent-deep)]"}`}>Q&A</Link>
         <button
           ref={menuToggle}
           aria-controls="mobile-site-menu"

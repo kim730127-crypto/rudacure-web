@@ -25,7 +25,7 @@
   --rc-ink-800: #16202b;
   --rc-ink-700: #2b3a49;
   --rc-ink-600: #4a5b6d;
-  --rc-ink-500: #6b7b8c;
+  --rc-ink-500: #5e6f82;
   --rc-ink-400: #8e9cab;
 
   /* ── Surfaces ──────────────────────────────────────────────────────────── */
@@ -372,10 +372,12 @@ h4 em,
     transform var(--rc-dur) var(--rc-ease);
 }
 
-.card-interactive:hover {
-  border-color: var(--rc-hairline-strong);
-  box-shadow: var(--rc-shadow-md);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .card-interactive:hover {
+    border-color: var(--rc-hairline-strong);
+    box-shadow: var(--rc-shadow-md);
+    transform: translateY(-2px);
+  }
 }
 
 .card-interactive:active {
@@ -423,8 +425,10 @@ h4 em,
 .row:last-child {
   border-bottom: 0;
 }
-.row:hover {
-  background: var(--rc-surface-sunken);
+@media (hover: hover) {
+  .row:hover {
+    background: var(--rc-surface-sunken);
+  }
 }
 
 /* Dark-surface card, for the CTA band and IR highlights. */
@@ -456,8 +460,8 @@ h4 em,
     transform var(--rc-dur-fast) var(--rc-ease);
 }
 
-.btn:active {
-  transform: scale(0.97);
+.btn:not(:disabled):active {
+  transform: scale(0.96);
 }
 
 .btn-primary {
@@ -1326,4 +1330,9 @@ h4 em,
 @media (hover: hover) and (pointer: fine) {
   .answers-intro-button:hover { background: var(--lab-ink); }
   .answers-intro-question:hover { color: var(--rc-accent-deep); }
+}
+
+/* Headings balance their line breaks so a two-line Korean title does not leave a single word stranded. */
+h1, h2, h3 {
+  text-wrap: balance;
 }
