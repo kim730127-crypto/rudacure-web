@@ -30,6 +30,13 @@ export const TRANSLATED_LOCALES = [
   "ar",
 ] as const;
 
+/**
+ * News articles published in Korean only (no translations). Their non-Korean
+ * URLs redirect to the Korean article and are left out of hreflang and the
+ * sitemap, so crawlers never see a translation that does not exist.
+ */
+export const KO_ONLY_NEWS_IDS: ReadonlySet<number> = new Set([196]);
+
 /** The CRO page is authored in Korean and English only. */
 export const CRO_LOCALES = ["ko", "en"] as const;
 

@@ -4,6 +4,7 @@ import {
   ALL_LOCALES,
   TRANSLATED_LOCALES,
   CRO_LOCALES,
+  KO_ONLY_NEWS_IDS,
 } from "@/lib/seo";
 import newsDataKo from "@/data/news.json";
 import { ANSWER_LOCALES, ANSWERS_REVIEWED } from "@/lib/answers";
@@ -59,12 +60,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ? undefined
       : articleDate;
 
-    return TRANSLATED_LOCALES.map((locale) => ({
+    const locales = KO_ONLY_NEWS_IDS.has(article.id)
+      ? (["ko"] as const)
+      : TRANSLATED_LOCALES;
+
+    return locales.map((locale) => ({
       url: `${SITE_URL}/${locale}${path}`,
       lastModified: articleModified,
       changeFrequency: "yearly" as const,
       priority: 0.65,
-      alternates: alternates(path, TRANSLATED_LOCALES),
+      alternates: alternates(path, locales),
     }));
   });
 

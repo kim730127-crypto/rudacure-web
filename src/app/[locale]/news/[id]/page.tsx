@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import newsDataKo from "@/data/news.json";
 import newsDataEn from "@/data/news_en.json";
 import newsDataZh from "@/data/news_zh.json";
@@ -8,7 +8,7 @@ import newsDataEs from "@/data/news_es.json";
 import newsDataFr from "@/data/news_fr.json";
 import newsDataAr from "@/data/news_ar.json";
 import { type Locale, getTranslations } from "@/lib/i18n";
-import { localizedAlternates, TRANSLATED_LOCALES } from "@/lib/seo";
+import { localizedAlternates, TRANSLATED_LOCALES, KO_ONLY_NEWS_IDS } from "@/lib/seo";
 import { breadcrumbSchema, serializeJsonLd } from "@/lib/schema";
 
 const NEWS_MAP: Record<string, typeof newsDataKo> = {
@@ -35,7 +35,9 @@ function proxyImages(html: string): string {
 export function generateStaticParams() {
   const locales = ["ko", "en", "zh", "ja", "es", "fr"];
   return locales.flatMap((locale) =>
-    newsDataKo.map((article) => ({ locale, id: String(article.id) })),
+    newsDataKo
+      .filter((article) => locale === "ko" || !KO_ONLY_NEWS_IDS.has(article.id))
+      .map((article) => ({ locale, id: String(article.id) })),
   );
 }
 
@@ -58,6 +60,7 @@ export async function generateMetadata({
   const data = getNewsData(locale);
   const article = data.find((a: { id: number }) => String(a.id) === id);
   if (!article) return { title: "Not Found" };
+  const koOnly = KO_ONLY_NEWS_IDS.has(article.id);
 
   const title = `${article.title} | RudaCure`;
   const description = stripHtml(article.content);
@@ -66,7 +69,11 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: localizedAlternates(locale, `/news/${id}`, TRANSLATED_LOCALES),
+    alternates: localizedAlternates(
+      locale,
+      `/news/${id}`,
+      koOnly ? ["ko"] : TRANSLATED_LOCALES,
+    ),
     openGraph: {
       title: article.title,
       description,
@@ -101,7 +108,11 @@ export default async function NewsArticlePage({
   const { locale, id } = await params;
   const data = getNewsData(locale);
   const article = data.find((a: { id: number }) => String(a.id) === id);
-  if (!article) notFound();
+  if (!article) {
+    // Korean-only articles: send other locales to the Korean original.
+    if (KO_ONLY_NEWS_IDS.has(Number(id))) redirect(`/ko/news/${id}`);
+    notFound();
+  }
 
   const t = getTranslations(locale as Locale);
 
