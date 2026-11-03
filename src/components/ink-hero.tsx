@@ -22,7 +22,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const DATA_URL = "/data/trpv1.bin";
-const PLUMES = 6000;
+const PLUMES = 9000;
 
 type Cloud = { positions: Float32Array; kinds: Uint8Array; count: number };
 
@@ -103,20 +103,26 @@ export function InkHero() {
         });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        const SCALE = 2.15;
+        // Dantora's helix fills the screen on a diagonal. The channel does the
+        // same here: scaled up to span most of the hero height and tilted, with
+        // an inner group that spins about the channel's own axis.
+        const SCALE = 2.9;
         const group = new THREE.Group();
+        group.rotation.z = -0.42;
         scene.add(group);
+        const spin = new THREE.Group();
+        group.add(spin);
 
         /* ---------- Core: the channel itself, drawn as ink dots ---------- */
         // Dark ink for protein, accent teal for the lipid belt, deep accent
         // for the bound antagonist. Colours are the --rc-* tokens.
         const PALETTE = [
-          [0.06, 0.16, 0.19], // protein   - ink
-          [0.043, 0.486, 0.447], // POPC  - --rc-accent #0b7c72
+          [0.043, 0.486, 0.447], // protein   - --rc-accent #0b7c72
+          [0.078, 0.722, 0.651], // POPC      - --rc-accent-bright #14b8a6
           [0.039, 0.373, 0.345], // SB-366791 - --rc-accent-deep #0a5f58
         ];
-        const SIZES = [4.4, 6.4, 8.5];
-        const ALPHA = [0.5, 0.85, 1.0];
+        const SIZES = [4.6, 6.4, 10.0];
+        const ALPHA = [0.92, 1.0, 1.0];
 
         const n = cloud.count;
         const corePos = new Float32Array(n * 3);
@@ -124,6 +130,7 @@ export function InkHero() {
         const coreSize = new Float32Array(n);
         const coreAlpha = new Float32Array(n);
         const coreSeed = new Float32Array(n);
+        const coreScatter = new Float32Array(n * 3);
         for (let i = 0; i < n; i += 1) {
           const k = cloud.kinds[i];
           corePos[i * 3] = cloud.positions[i * 3] * SCALE;
@@ -133,6 +140,15 @@ export function InkHero() {
           coreSize[i] = SIZES[k];
           coreAlpha[i] = ALPHA[k];
           coreSeed[i] = Math.random() * Math.PI * 2;
+          // Where each atom starts before the drop "assembles": flung outward
+          // along a random direction, so the intro reads as ink gathering.
+          const u = Math.random() * 2 - 1;
+          const th = Math.random() * Math.PI * 2;
+          const s = Math.sqrt(1 - u * u);
+          const r = 3.5 + Math.random() * 4.5;
+          coreScatter[i * 3] = corePos[i * 3] * 1.6 + s * Math.cos(th) * r;
+          coreScatter[i * 3 + 1] = corePos[i * 3 + 1] * 1.6 + u * r;
+          coreScatter[i * 3 + 2] = corePos[i * 3 + 2] * 1.6 + s * Math.sin(th) * r;
         }
 
         const uniforms = {
@@ -142,6 +158,7 @@ export function InkHero() {
           uMouse: { value: new THREE.Vector2(9, 9) },
           uMouseOn: { value: 0 },
           uAspect: { value: 1 },
+          uAssemble: { value: 0 },
         };
 
         const coreGeo = new THREE.BufferGeometry();
@@ -150,6 +167,7 @@ export function InkHero() {
         coreGeo.setAttribute("aSize", new THREE.BufferAttribute(coreSize, 1));
         coreGeo.setAttribute("aAlpha", new THREE.BufferAttribute(coreAlpha, 1));
         coreGeo.setAttribute("aSeed", new THREE.BufferAttribute(coreSeed, 1));
+        coreGeo.setAttribute("aScatter", new THREE.BufferAttribute(coreScatter, 3));
 
         const coreMat = new THREE.ShaderMaterial({
           uniforms,
@@ -158,13 +176,18 @@ export function InkHero() {
             attribute float aSize;
             attribute float aAlpha;
             attribute float aSeed;
+            attribute vec3 aScatter;
             uniform float uTime;
             uniform float uPixelRatio;
+            uniform float uAssemble;
             varying vec3 vColor;
             varying float vAlpha;
             ${PART_GLSL}
             void main() {
-              vec3 p = position;
+              // Staggered per atom so the structure condenses like a drop.
+              float a = clamp(uAssemble * 1.35 - fract(aSeed * 7.13) * 0.35, 0.0, 1.0);
+              float e = 1.0 - pow(1.0 - a, 3.0);
+              vec3 p = mix(aScatter, position, e);
               p += 0.012 * vec3(
                 sin(uTime * 0.7 + aSeed),
                 cos(uTime * 0.6 + aSeed * 1.3),
@@ -174,7 +197,7 @@ export function InkHero() {
               vec4 clip = projectionMatrix * mv;
               gl_Position = partAroundCursor(clip, 0.35);
               float depth = -mv.z;
-              vAlpha = aAlpha * smoothstep(13.0, 5.0, depth);
+              vAlpha = aAlpha * smoothstep(15.0, 4.0, depth) * mix(0.25, 1.0, e);
               vColor = aColor;
               gl_PointSize = aSize * uPixelRatio * (7.0 / depth);
             }
@@ -188,14 +211,14 @@ export function InkHero() {
               vec2 d = gl_PointCoord - vec2(0.5);
               float r = dot(d, d);
               if (r > 0.25) discard;
-              float a = smoothstep(0.25, 0.04, r) * vAlpha * uOpacity;
+              float a = smoothstep(0.25, 0.14, r) * vAlpha * uOpacity;
               gl_FragColor = vec4(vColor, a);
             }
           `,
           transparent: true,
           depthWrite: false,
         });
-        group.add(new THREE.Points(coreGeo, coreMat));
+        spin.add(new THREE.Points(coreGeo, coreMat));
 
         /* ---------- Plumes: ink that keeps leaving the structure ---------- */
         // Each plume particle is born on a real atom, lives for a few seconds
@@ -211,7 +234,7 @@ export function InkHero() {
           origin[i * 3 + 1] = corePos[a * 3 + 1];
           origin[i * 3 + 2] = corePos[a * 3 + 2];
           pSeed[i] = Math.random();
-          pRate[i] = 0.06 + Math.random() * 0.07;
+          pRate[i] = 0.05 + Math.random() * 0.08;
           pKind[i] = cloud.kinds[a] === 1 ? 1 : 0;
         }
         const plumeGeo = new THREE.BufferGeometry();
@@ -228,6 +251,7 @@ export function InkHero() {
             attribute float aKind;
             uniform float uTime;
             uniform float uPixelRatio;
+            uniform float uAssemble;
             varying float vAlpha;
             varying float vKind;
             ${PART_GLSL}
@@ -254,9 +278,9 @@ export function InkHero() {
               float depth = -mv.z;
               float born = smoothstep(0.0, 0.12, life);
               float fade = pow(1.0 - life, 1.6);
-              vAlpha = born * fade * smoothstep(13.0, 5.0, depth);
+              vAlpha = born * fade * smoothstep(15.0, 4.0, depth) * smoothstep(0.6, 1.0, uAssemble);
               vKind = aKind;
-              gl_PointSize = mix(4.0, 46.0, life) * uPixelRatio * (7.0 / depth);
+              gl_PointSize = mix(2.5, 7.0, life) * uPixelRatio * (7.0 / depth);
             }
           `,
           fragmentShader: `
@@ -268,15 +292,15 @@ export function InkHero() {
               vec2 d = gl_PointCoord - vec2(0.5);
               float r = dot(d, d);
               if (r > 0.25) discard;
-              float soft = exp(-r * 10.0);
-              vec3 ink = mix(vec3(0.07, 0.30, 0.31), vec3(0.043, 0.486, 0.447), vKind);
-              gl_FragColor = vec4(ink, soft * vAlpha * 0.11 * uOpacity);
+              float soft = smoothstep(0.25, 0.0, r);
+              vec3 ink = mix(vec3(0.043, 0.486, 0.447), vec3(0.078, 0.722, 0.651), vKind);
+              gl_FragColor = vec4(ink, soft * vAlpha * 0.38 * uOpacity);
             }
           `,
           transparent: true,
           depthWrite: false,
         });
-        group.add(new THREE.Points(plumeGeo, plumeMat));
+        spin.add(new THREE.Points(plumeGeo, plumeMat));
 
         const resize = () => {
           const rect = canvas.getBoundingClientRect();
@@ -287,9 +311,10 @@ export function InkHero() {
           renderer.setSize(w, h, false);
           uniforms.uAspect.value = w / h;
           // Same membrane-to-horizon offset as the production hero.
-          const MEMBRANE_Y = -0.917;
-          group.position.x = wide.matches ? 1.95 : 0;
-          group.position.y = MEMBRANE_Y + (wide.matches ? 0.72 : -0.05);
+          // Centre the scaled channel on the right half (left half on narrow
+          // screens it sits behind the copy, which the scrim protects).
+          group.position.x = wide.matches ? 2.7 : 0.4;
+          group.position.y = wide.matches ? 0.35 : -0.6;
         };
         resize();
         const ro = new ResizeObserver(resize);
@@ -327,17 +352,22 @@ export function InkHero() {
           if (!visible) return;
           const t = (performance.now() - start) / 1000;
           uniforms.uTime.value = t;
-          uniforms.uOpacity.value = Math.min(1, t / 1.2);
+          uniforms.uOpacity.value = Math.min(1, t / 0.6);
+          uniforms.uAssemble.value = Math.min(1, t / 2.8);
+          // Scrolling the hero away turns the channel faster and pulls it in.
+          const sp = Math.min(1, window.scrollY / window.innerHeight);
+          group.scale.setScalar(1 + sp * 0.25);
           uniforms.uMouse.value.lerp(target, 0.12);
           uniforms.uMouseOn.value += (mouseOn - uniforms.uMouseOn.value) * 0.08;
-          group.rotation.y = t * 0.06;
+          spin.rotation.y = t * 0.09 + sp * 1.4;
           renderer.render(scene, camera);
         };
 
         if (reduceMotion.matches) {
           uniforms.uOpacity.value = 1;
           uniforms.uTime.value = 6.0;
-          group.rotation.y = 0.6;
+          uniforms.uAssemble.value = 1;
+          spin.rotation.y = 0.6;
           renderer.render(scene, camera);
         } else {
           raf = requestAnimationFrame(frame);

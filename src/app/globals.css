@@ -1344,15 +1344,12 @@ h1, h2, h3 {
    library is used. Colours stay on the --rc-* / --lab-* tokens. */
 
 .ink-hero {
-  background: #f3f6f5;
+  background: #ffffff;
 }
 .ink-hero-water {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(70% 60% at 72% 46%, rgba(11, 124, 114, 0.09) 0%, rgba(11, 124, 114, 0.03) 45%, transparent 72%),
-    radial-gradient(90% 80% at 10% 0%, #ffffff 0%, transparent 60%),
-    linear-gradient(180deg, #f6f8f7 0%, #eef3f1 100%);
+  background: #ffffff;
 }
 .ink-hero-scrim {
   position: absolute;
@@ -1360,25 +1357,25 @@ h1, h2, h3 {
   pointer-events: none;
   background: linear-gradient(
     100deg,
-    rgba(246, 248, 247, 0.96) 0%,
-    rgba(246, 248, 247, 0.86) 28%,
-    rgba(246, 248, 247, 0.4) 48%,
-    transparent 66%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.78) 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 62%
   );
 }
 @media (max-width: 899px) {
   .ink-hero-scrim {
     background: linear-gradient(
       180deg,
-      rgba(246, 248, 247, 0.94) 0%,
-      rgba(246, 248, 247, 0.78) 40%,
-      rgba(246, 248, 247, 0.3) 66%,
+      rgba(255, 255, 255, 0.94) 0%,
+      rgba(255, 255, 255, 0.8) 40%,
+      rgba(255, 255, 255, 0.3) 66%,
       transparent 84%
     );
   }
 }
 .ink-hero-stats {
-  background: rgba(246, 248, 247, 0.6);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(6px);
 }
 .lab-btn-ghost-ink {
@@ -1518,10 +1515,10 @@ h1, h2, h3 {
 .ink-stack.is-stacking > section {
   position: sticky;
   background: #fbfaf8;
-  border-radius: var(--rc-radius-xl) var(--rc-radius-xl) 0 0;
-  box-shadow: 0 -18px 48px rgba(10, 15, 20, 0.07);
+  border-radius: 40px 40px 0 0;
+  box-shadow: 0 -24px 60px rgba(10, 15, 20, 0.12);
   transform-origin: 50% 100%;
-  transform: scale(calc(1 - var(--cover, 0) * 0.05));
+  transform: scale(calc(1 - var(--cover, 0) * 0.1));
 }
 .ink-stack.is-stacking > section.lab-section-paper {
   background: var(--lab-paper);
@@ -1533,7 +1530,7 @@ h1, h2, h3 {
   pointer-events: none;
   border-radius: inherit;
   background: var(--lab-ink);
-  opacity: calc(var(--cover, 0) * 0.18);
+  opacity: calc(var(--cover, 0) * 0.45);
 }
 
 @media (prefers-reduced-motion: reduce) {
