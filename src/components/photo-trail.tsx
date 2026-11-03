@@ -25,7 +25,7 @@ const PHOTOS = [
 ];
 
 const thumb = (src: string) =>
-  `/_next/image?url=${encodeURIComponent(src)}&w=384&q=70`;
+  `/_next/image?url=${encodeURIComponent(src)}&w=384&q=75`;
 
 const STEP = 110; // px of pointer travel between frames
 const LIFE = 1100; // ms a frame stays on screen
