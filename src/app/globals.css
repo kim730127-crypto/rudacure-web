@@ -1336,3 +1336,211 @@ h4 em,
 h1, h2, h3 {
   text-wrap: balance;
 }
+
+/* ═══ Design preview: Dantora-inspired homepage (2026-11) ════════════════
+   Staging ideas only (ink-in-water hero, pointer photo trail, scroll-scrubbed
+   rail, sections riding over the previous one), adapted from the public
+   description of GetLayers "Dantora". No prompt, code or media from that
+   library is used. Colours stay on the --rc-* / --lab-* tokens. */
+
+.ink-hero {
+  background: #f3f6f5;
+}
+.ink-hero-water {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 60% at 72% 46%, rgba(11, 124, 114, 0.09) 0%, rgba(11, 124, 114, 0.03) 45%, transparent 72%),
+    radial-gradient(90% 80% at 10% 0%, #ffffff 0%, transparent 60%),
+    linear-gradient(180deg, #f6f8f7 0%, #eef3f1 100%);
+}
+.ink-hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(246, 248, 247, 0.96) 0%,
+    rgba(246, 248, 247, 0.86) 28%,
+    rgba(246, 248, 247, 0.4) 48%,
+    transparent 66%
+  );
+}
+@media (max-width: 899px) {
+  .ink-hero-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(246, 248, 247, 0.94) 0%,
+      rgba(246, 248, 247, 0.78) 40%,
+      rgba(246, 248, 247, 0.3) 66%,
+      transparent 84%
+    );
+  }
+}
+.ink-hero-stats {
+  background: rgba(246, 248, 247, 0.6);
+  backdrop-filter: blur(6px);
+}
+.lab-btn-ghost-ink {
+  color: var(--lab-ink);
+  border-color: var(--lab-line);
+}
+.lab-btn-ghost-ink:hover {
+  border-color: var(--lab-ink);
+}
+
+/* Photo trail */
+.photo-trail {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+.photo-trail-frame {
+  position: absolute;
+  width: 168px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--rc-radius-sm);
+  box-shadow: var(--rc-shadow-lg);
+  transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(0.6);
+  opacity: 0;
+  animation: photo-trail 1100ms var(--rc-ease) forwards;
+}
+@keyframes photo-trail {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(0.6);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(1);
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -38%) rotate(calc(var(--tilt, 0deg) * 1.6)) scale(0.92);
+  }
+}
+
+/* Scroll-scrubbed pipeline rail */
+.ink-rail-section {
+  padding-block: 0;
+}
+.scrub-rail-frame {
+  padding-block: 88px 56px;
+}
+.scrub-rail.is-pinned .scrub-rail-frame {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 72px 40px;
+}
+.scrub-rail-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(24px, calc((100vw - 1120px) / 2 + 40px));
+  scrollbar-width: none;
+}
+.scrub-rail-viewport::-webkit-scrollbar {
+  display: none;
+}
+.scrub-rail.is-pinned .scrub-rail-viewport {
+  overflow: visible;
+  scroll-snap-type: none;
+}
+.scrub-rail-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding-inline: max(24px, calc((100vw - 1120px) / 2 + 40px));
+  will-change: transform;
+}
+.rail-card {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: min(78vw, 400px);
+  min-height: 440px;
+  padding: 28px;
+  background: #fbfaf8;
+  border: 1px solid var(--lab-line);
+  border-radius: var(--rc-radius-lg);
+  transition:
+    border-color var(--rc-dur-fast) var(--rc-ease),
+    transform var(--rc-dur) var(--rc-ease);
+}
+.rail-card:hover {
+  border-color: var(--rc-accent);
+  transform: translateY(-4px);
+}
+.rail-card:hover .lab-row-arrow {
+  opacity: 1;
+}
+.rail-card-id {
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--lab-ink);
+}
+.rail-card:hover .rail-card-id {
+  color: var(--rc-accent-deep);
+}
+.scrub-rail-progress {
+  display: none;
+}
+.scrub-rail.is-pinned .scrub-rail-progress {
+  display: block;
+  margin-top: 36px;
+  height: 2px;
+  background: var(--lab-line);
+}
+.scrub-rail-progress span {
+  display: block;
+  height: 100%;
+  background: var(--rc-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+[dir="rtl"] .scrub-rail-progress span {
+  transform-origin: right;
+}
+
+/* Sections riding over the previous one */
+.ink-stack.is-stacking > section {
+  position: sticky;
+  background: #fbfaf8;
+  border-radius: var(--rc-radius-xl) var(--rc-radius-xl) 0 0;
+  box-shadow: 0 -18px 48px rgba(10, 15, 20, 0.07);
+  transform-origin: 50% 100%;
+  transform: scale(calc(1 - var(--cover, 0) * 0.05));
+}
+.ink-stack.is-stacking > section.lab-section-paper {
+  background: var(--lab-paper);
+}
+.ink-stack.is-stacking > section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: var(--lab-ink);
+  opacity: calc(var(--cover, 0) * 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-trail {
+    display: none;
+  }
+  .ink-stack > section {
+    transform: none !important;
+  }
+}

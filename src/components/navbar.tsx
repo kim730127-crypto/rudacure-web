@@ -84,7 +84,11 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
      previously it was fully transparent at rest on every route, so scrolled
      body text collided with the logo and the menu. */
   const isHome = pathWithoutLocale === "" || pathWithoutLocale === "/";
-  const overHero = isHome && !scrolled;
+  /* Design preview (Dantora ink hero): the homepage now opens on a light
+     ground, so the bar keeps its light material there too. The transparent
+     dark-hero state is kept for routes that opt back in. */
+  const homeHeroIsDark = false;
+  const overHero = homeHeroIsDark && isHome && !scrolled;
 
   return (
     <nav

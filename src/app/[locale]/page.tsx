@@ -5,7 +5,10 @@ import type { ReactNode } from "react";
 import { type Locale, getTranslations, toDataLocale } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { StageRail } from "@/components/stage-rail";
-import { Trpv1Hero } from "@/components/trpv1-hero";
+import { InkHero } from "@/components/ink-hero";
+import { PhotoTrail } from "@/components/photo-trail";
+import { ScrubRail } from "@/components/scrub-rail";
+import { StackSections } from "@/components/stack-sections";
 import { PartnerLogo } from "@/components/partner-logo";
 import { RecruitPopup } from "@/components/recruit-popup";
 import newsKo from "@/data/news.json";
@@ -695,25 +698,25 @@ export default async function HomePage({
     <div className="lab">
       {locale === "ko" && <RecruitPopup />}
 
-      {/* ===== Hero ===== The TRPV1 point cloud stays: it is the one visual
-          asset built from real coordinates. What changes is the type system
-          laid over it. */}
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-[#080c11] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_8%,#122c31_0%,#0b1419_42%,#070a0e_100%)]" />
-        <Trpv1Hero />
+      {/* ===== Hero ===== Design preview (2026-11): Dantora-style ink in
+          water. Same 8GFA coordinates as production, now on a light ground
+          with plumes that part around the cursor and a photo trail. */}
+      <section className="ink-hero relative flex min-h-[92vh] items-end overflow-hidden text-[var(--lab-ink)]">
+        <InkHero />
+        <PhotoTrail />
 
         <div className="lab-container hero-exit relative z-10 w-full pt-36 pb-16 md:pb-20">
           <div className="lab-grid items-end pb-3 animate-hero-blur-in">
-            <span className="lab-label col-span-6 text-white/80 md:col-span-3">
+            <span className="lab-label col-span-6 text-[var(--rc-ink-700)] md:col-span-3">
               No. 01 / {String(TOTAL).padStart(2, "0")}
             </span>
-            <span className="lab-label lab-label-i18n col-span-6 text-end text-white/55 md:col-span-9">
+            <span className="lab-label lab-label-i18n col-span-6 text-end text-[var(--rc-ink-500)] md:col-span-9">
               {t("hero.tagline")}
             </span>
           </div>
           <div className="lab-rule-accent lab-rule-draw" />
           <div className="lab-grid pt-3">
-            <span className="lab-label col-span-12 text-white/50 md:col-span-8">
+            <span className="lab-label col-span-12 text-[var(--rc-ink-500)] md:col-span-8">
               {pipeline.map((p) => p.id).join(" · ")}
             </span>
           </div>
@@ -724,7 +727,7 @@ export default async function HomePage({
           >
             {t("hero.title1")}
             <br />
-            <span className="text-teal-300">{t("hero.title2")}</span>
+            <span className="text-[var(--rc-accent)]">{t("hero.title2")}</span>
           </h1>
 
           <div
@@ -732,7 +735,7 @@ export default async function HomePage({
             style={{ animationDelay: "0.24s" }}
           >
             <div className="col-span-12 md:col-span-6">
-              <p className="measure text-[1.0625rem] leading-[1.75] text-slate-300/90">
+              <p className="measure text-[1.0625rem] leading-[1.75] text-[var(--rc-ink-700)]">
                 {t("hero.description")}
               </p>
               <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
@@ -740,21 +743,21 @@ export default async function HomePage({
                   {t("hero.cta.pipeline")}
                   <ArrowOut className="h-4 w-4" />
                 </Link>
-                <Link href={`/${locale}/science`} className="lab-btn lab-btn-ghost">
+                <Link href={`/${locale}/science`} className="lab-btn lab-btn-ghost-ink">
                   {t("hero.cta.science")}
                 </Link>
               </div>
             </div>
-            <dl className="col-span-12 grid grid-cols-2 border-t border-white/15 md:col-span-5 md:col-start-8 md:self-end">
+            <dl className="ink-hero-stats col-span-12 grid grid-cols-2 border-t border-[var(--lab-line)] md:col-span-5 md:col-start-8 md:self-end">
               {HERO_STATS.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`border-b border-white/15 py-5 ${i % 2 === 0 ? "pe-4 border-e" : "ps-5"}`}
+                  className={`border-b border-[var(--lab-line)] py-5 ${i % 2 === 0 ? "pe-4 border-e" : "ps-5"}`}
                 >
-                  <dt className="num text-[2rem] font-semibold leading-none tracking-[-0.03em] text-white md:text-[2.5rem]">
+                  <dt className="num text-[2rem] font-semibold leading-none tracking-[-0.03em] text-[var(--lab-ink)] md:text-[2.5rem]">
                     {s.value}
                   </dt>
-                  <dd className="lab-label lab-label-i18n mt-3 text-white/55 normal-case tracking-[0.02em]">
+                  <dd className="lab-label lab-label-i18n mt-3 text-[var(--rc-ink-600)] normal-case tracking-[0.02em]">
                     {s.label}
                   </dd>
                 </div>
@@ -784,6 +787,7 @@ export default async function HomePage({
 
       <AnswersIntro locale={locale as Locale} />
 
+      <StackSections>
       {/* ===== 02 Core technology ===== */}
       <section className="lab-section">
         <div className="lab-container">
@@ -847,10 +851,13 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== 03 Pipeline index ===== */}
-      <section className="lab-section lab-section-paper">
-        <div className="lab-container">
-          <ScrollReveal>
+      {/* ===== 03 Pipeline rail ===== Design preview: the index becomes a
+          rail of asset cards that scrubs sideways under vertical scroll.
+          Same data and labels as the production index. */}
+      <section className="lab-section lab-section-paper ink-rail-section">
+        <ScrubRail
+          count={pipeline.length}
+          head={
             <SectionHead
               no={3}
               total={TOTAL}
@@ -865,51 +872,44 @@ export default async function HomePage({
                 label: stripArrow(t("pipeline.view_news")),
               }}
             />
-          </ScrollReveal>
-
-          <div className="border-t border-[var(--lab-ink)]">
-            <div className="lab-grid lab-label lab-muted hidden border-b border-[var(--lab-line)] py-3 md:grid">
-              <span className="col-span-1">№</span>
-              <span className="col-span-2">{L.colAsset}</span>
-              <span className="col-span-3">{L.colIndication}</span>
-              <span className="col-span-3">{L.colStage}</span>
-              <span className="col-span-2">{L.colMilestone}</span>
-              <span className="col-span-1 text-end">↗</span>
-            </div>
-            {pipeline.map((p, i) => (
-              <ScrollReveal key={p.id} delay={i * 80}>
-                <Link href={`/${locale}/pipeline`} className="lab-row lab-grid group items-start py-7">
-                  <span className="lab-label col-span-2 pt-1.5 text-[var(--rc-accent)] md:col-span-1">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="num col-span-10 text-[1.625rem] font-semibold leading-none tracking-[-0.02em] text-[var(--lab-ink)] transition-colors duration-200 group-hover:text-[var(--rc-accent-deep)] md:col-span-2 md:text-[1.75rem]">
-                    {p.id}
-                  </span>
-                  <span className="col-span-12 mt-3 md:col-span-3 md:mt-0">
-                    <span className="block text-[1.0625rem] font-semibold text-[var(--lab-ink)]">
-                      {p.indication}
-                    </span>
-                    <span className="lab-label lab-label-i18n lab-muted mt-2 block normal-case tracking-[0.02em]">
-                      {p.target}
-                    </span>
-                  </span>
-                  <span className="col-span-12 mt-4 md:col-span-3 md:mt-0">
-                    <span className="block text-[0.875rem] text-[var(--rc-ink-700)]">
-                      {p.status}
-                    </span>
-                    <StageRail asset={p.id} showLabels={false} className="mt-3" />
-                  </span>
-                  <span className="lab-label lab-label-i18n col-span-10 mt-4 normal-case tracking-[0.02em] text-[var(--rc-ink-600)] md:col-span-2 md:mt-0">
-                    {p.milestone}
-                  </span>
-                  <span className="col-span-2 mt-4 flex justify-end md:col-span-1 md:mt-0">
-                    <ArrowOut className="lab-row-arrow h-6 w-6 text-[var(--rc-accent)]" />
-                  </span>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
+          }
+        >
+          {pipeline.map((p, i) => (
+            <Link
+              key={p.id}
+              href={`/${locale}/pipeline`}
+              className="rail-card group"
+            >
+              <div className="flex items-start justify-between">
+                <span dir="ltr" className="lab-label text-[var(--rc-accent)]">
+                  {String(i + 1).padStart(2, "0")} / {String(pipeline.length).padStart(2, "0")}
+                </span>
+                <ArrowOut className="lab-row-arrow h-6 w-6 text-[var(--rc-accent)]" />
+              </div>
+              <span className="num rail-card-id">{p.id}</span>
+              <div>
+                <span className="lab-label lab-muted block">{L.colIndication}</span>
+                <span className="mt-2 block text-[1.125rem] font-semibold text-[var(--lab-ink)]">
+                  {p.indication}
+                </span>
+                <span className="lab-label lab-label-i18n lab-muted mt-2 block normal-case tracking-[0.02em]">
+                  {p.target}
+                </span>
+              </div>
+              <div className="mt-auto">
+                <span className="lab-label lab-muted block">{L.colStage}</span>
+                <span className="mt-2 block text-[0.9375rem] text-[var(--rc-ink-700)]">
+                  {p.status}
+                </span>
+                <StageRail asset={p.id} showLabels={false} className="mt-3" />
+                <span className="lab-label lab-muted mt-6 block">{L.colMilestone}</span>
+                <span className="lab-label lab-label-i18n mt-2 block normal-case tracking-[0.02em] text-[var(--rc-ink-600)]">
+                  {p.milestone}
+                </span>
+              </div>
+            </Link>
+          ))}
+        </ScrubRail>
       </section>
 
       {/* ===== 04 Partners: hairline-gap grid ===== */}
@@ -1057,6 +1057,7 @@ export default async function HomePage({
           </div>
         </div>
       </section>
+      </StackSections>
     </div>
   );
 }
