@@ -2,6 +2,7 @@
 
 import { z } from 'zod'
 import { headers } from 'next/headers'
+import { checkBotId } from 'botid/server'
 
 // ============================================================================
 // Type Definitions & Validation
@@ -185,11 +186,15 @@ const sendViaGraph = async (args: {
 }
 
 // ============================================================================
-// Rate Limiting (Simple In-Memory)
+// Rate Limiting
 // ============================================================================
-// For production with high volume, use Upstash Rate Limit:
-// import { Ratelimit } from '@upstash/ratelimit'
-// const ratelimit = new Ratelimit({...})
+// 2026-11-04 보안 점검 F-04 반영. 방어는 네 겹이다.
+//  1. Vercel Firewall 규칙 `contact-form-rate-limit` : 문의 페이지 POST 를 IP 당 10분 5회로
+//     엣지에서 제한한다. 인스턴스가 여러 개여도 공유되는 유일한 카운터다(대시보드 설정).
+//  2. BotID : 브라우저에서 실행된 요청인지 서버에서 확인한다(instrumentation-client.ts).
+//  3. 아래 메모리 카운터 : IP 당 시간 3회, 같은 회신 주소 시간 3회, 인스턴스 전체 시간 30회.
+//     서버리스 인스턴스마다 따로 세므로 보조 수단이다.
+//  4. honeypot 과 링크 개수 검사.
 
 interface RateLimitEntry {
   count: number
@@ -200,7 +205,10 @@ const rateLimitStore = new Map<string, RateLimitEntry>()
 const RATE_LIMIT_WINDOW = 3600000 // 1 hour in ms
 const RATE_LIMIT_MAX = 3 // 3 submissions per hour per IP
 
-const checkRateLimit = (ip: string): boolean => {
+const GLOBAL_KEY = '__all__'
+const GLOBAL_MAX = 30 // 인스턴스 한 개가 한 시간에 보내는 상한
+
+const checkRateLimit = (ip: string, max: number = RATE_LIMIT_MAX): boolean => {
   const now = Date.now()
   const entry = rateLimitStore.get(ip)
 
@@ -210,7 +218,7 @@ const checkRateLimit = (ip: string): boolean => {
     return true
   }
 
-  if (entry.count < RATE_LIMIT_MAX) {
+  if (entry.count < max) {
     entry.count++
     return true
   }
@@ -222,15 +230,26 @@ const checkRateLimit = (ip: string): boolean => {
 // Helper Functions
 // ============================================================================
 
+/**
+ * 사이트는 Cloudflare 없이 Vercel 에 바로 붙어 있다(2026-11-04 DNS·응답 헤더 확인).
+ * Vercel 이 직접 채우는 x-vercel-forwarded-for, x-real-ip 를 먼저 읽는다.
+ * cf-connecting-ip 는 Cloudflare 를 거치지 않는 구성에서는 방문자가 마음대로 넣을 수
+ * 있는 값이라 읽지 않는다.
+ */
 const getClientIp = async (): Promise<string> => {
   const headersList = await headers()
   return (
+    headersList.get('x-vercel-forwarded-for')?.split(',')[0].trim() ||
+    headersList.get('x-real-ip')?.trim() ||
     headersList.get('x-forwarded-for')?.split(',')[0].trim() ||
-    headersList.get('x-real-ip') ||
-    headersList.get('cf-connecting-ip') ||
     'unknown'
   )
 }
+
+/** 본문 링크가 이보다 많으면 스팸으로 보고 조용히 버린다. */
+const MAX_LINKS = 5
+const countLinks = (text: string): number =>
+  (text.match(/(https?:\/\/|www\.)/gi) || []).length
 
 const sanitizeHeaderValue = (value: string): string => {
   // Remove newlines, tabs, and other header injection characters
@@ -326,9 +345,19 @@ const generateEmailHtml = (data: ContactFormData): string => {
 
 export async function submitContactForm(formData: unknown): Promise<SubmitResult> {
   try {
+    // ========== SECURITY: Bot check (Vercel BotID) ==========
+    const verification = await checkBotId()
+    if (verification.isBot) {
+      console.warn('Contact form blocked by BotID')
+      return {
+        success: false,
+        message: 'Your request could not be verified. Please email us directly.',
+      }
+    }
+
     // ========== SECURITY: Rate Limiting ==========
     const ip = await getClientIp()
-    if (!checkRateLimit(ip)) {
+    if (!checkRateLimit(GLOBAL_KEY, GLOBAL_MAX) || !checkRateLimit(ip)) {
       return {
         success: false,
         message: 'Too many submissions. Please try again in 1 hour.',
@@ -355,6 +384,22 @@ export async function submitContactForm(formData: unknown): Promise<SubmitResult
     }
 
     const data = parseResult.data
+
+    // ========== SECURITY: Per-sender limit and link spam ==========
+    if (!checkRateLimit(`email:${data.email}`)) {
+      return {
+        success: false,
+        message: 'Too many submissions. Please try again in 1 hour.',
+      }
+    }
+    if (countLinks(data.message) > MAX_LINKS) {
+      // 봇에게 판정 결과를 알려 주지 않는다.
+      console.warn('Contact form dropped: too many links')
+      return {
+        success: true,
+        message: 'Your message has been sent successfully! We will get back to you soon.',
+      }
+    }
 
     // ========== SECURITY: Type Validation ==========
     if (!VALID_TYPES.has(data.type)) {

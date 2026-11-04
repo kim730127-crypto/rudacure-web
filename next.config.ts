@@ -200,16 +200,61 @@ function buildRedirects(): Rule[] {
 }
 
 /**
- * 보안 헤더. 2026-09-22 기준 응답에는 Cloudflare 가 붙이는 HSTS 말고는 아무것도 없었다.
+ * 보안 헤더.
  *
- * CSP 는 넣지 않았다. 홈페이지 three.js hero, TMap 지도 iframe, Google Analytics 가 모두
- * 인라인·외부 스크립트를 쓰기 때문에 지금 바로 걸면 화면이 깨진다. CSP 를 넣으려면
- * Report-Only 로 한 주 관측한 뒤 확정하는 별도 작업이 필요하다.
+ * 2026-11-04 CSP 를 추가했다(보안 점검 F-05). 넣기 전에 운영 16개 페이지(7개 언어 홈,
+ * 회사·문의·뉴스·뉴스 상세·파이프라인·사이언스·CRO·IR·논문·SAB·FAQ)를 브라우저로 열어
+ * 실제로 불러오는 출처를 모았다. 외부 출처는 문의 페이지의 Google 지도 iframe 하나였다.
+ * 2026-09-22 주석에 적혀 있던 TMap 지도와 Google Analytics 는 지금 코드에 없다.
  *
- * X-Frame-Options 대신 frame-ancestors 를 쓰는 방향이 최신이지만, 그것도 CSP 이므로
- * 여기서는 전통 헤더로 클릭재킹만 먼저 막는다.
+ * - script-src: Next 가 페이지마다 인라인 스크립트(하이드레이션 데이터, JSON-LD)를 넣고
+ *   대부분 페이지가 정적 생성이라 nonce 를 쓸 수 없다. 그래서 'unsafe-inline' 은 남기되
+ *   외부 스크립트 출처는 하나도 허용하지 않는다. 'wasm-unsafe-eval' 은 pdf.js 의 이미지
+ *   디코더(WebAssembly)용이다.
+ * - img-src https: : 뉴스 본문 사진 일부가 언론사 서버에서 바로 온다. 이미지는 스크립트를
+ *   실행할 수 없으므로 출처를 넓게 둔다.
+ * - frame-src: 문의 페이지 Google 지도.
+ * - frame-ancestors 'self': X-Frame-Options SAMEORIGIN 과 같은 뜻. 구형 브라우저용으로 둘 다 둔다.
+ * - preview 배포에는 Vercel 툴바(vercel.live)를 허용한다. 운영에는 넣지 않는다.
  */
+const isPreview = process.env.VERCEL_ENV === "preview";
+const isDev = process.env.NODE_ENV === "development";
+const VERCEL_LIVE = isPreview ? ["https://vercel.live"] : [];
+
+const CSP_DIRECTIVES: Record<string, string[]> = {
+  "default-src": ["'self'"],
+  "script-src": [
+    "'self'",
+    "'unsafe-inline'",
+    "'wasm-unsafe-eval'",
+    ...(isDev ? ["'unsafe-eval'"] : []),
+    ...VERCEL_LIVE,
+  ],
+  "style-src": ["'self'", "'unsafe-inline'", ...VERCEL_LIVE],
+  "img-src": ["'self'", "data:", "blob:", "https:"],
+  "font-src": ["'self'", "data:", ...(isPreview ? ["https://vercel.live", "https://assets.vercel.com"] : [])],
+  "connect-src": [
+    "'self'",
+    ...(isPreview ? ["https://vercel.live", "wss://ws-us3.pusher.com"] : []),
+    ...(isDev ? ["ws:"] : []),
+  ],
+  "media-src": ["'self'"],
+  "worker-src": ["'self'", "blob:"],
+  "frame-src": ["https://www.google.com", ...VERCEL_LIVE],
+  "frame-ancestors": ["'self'"],
+  "object-src": ["'none'"],
+  "base-uri": ["'self'"],
+  "form-action": ["'self'"],
+  "manifest-src": ["'self'"],
+};
+
+const CONTENT_SECURITY_POLICY =
+  Object.entries(CSP_DIRECTIVES)
+    .map(([k, v]) => `${k} ${v.join(" ")}`)
+    .join("; ") + (isDev ? "" : "; upgrade-insecure-requests");
+
 const SECURITY_HEADERS = [
+  { key: "Content-Security-Policy", value: CONTENT_SECURITY_POLICY },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
