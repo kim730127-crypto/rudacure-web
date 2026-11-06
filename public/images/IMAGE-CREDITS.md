@@ -166,3 +166,10 @@ bundles two additional aliased copies of three.js.
   has a solved or docked pose that legal is willing to publish, swapping it in
   would make the hero unambiguously ours. Until then no on-page caption claims
   the bound molecule is a RudaCure asset.
+
+## Press photography (used with the press item it came from)
+
+| File | Used on | Source |
+|---|---|---|
+| `news/yakup-2026-11-ceo-interview-1.jpg`, `news/yakup-2026-11-ceo-interview-2.jpg` | News 197 (7 locales) | Yakup News, 2026-11-05 interview with CEO Yongho Kim, photos by Kwon Hyuk-jin (©약업신문). Added at the user's direction 2026-11-06; credited in the article body. Converted PNG to JPEG, no crop. |
+
