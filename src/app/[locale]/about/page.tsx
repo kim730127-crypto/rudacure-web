@@ -1955,9 +1955,9 @@ export default async function AboutPage({
                     >
                       {item.year}
                     </span>
-                    <h3 className="text-xl font-semibold mt-1 mb-2 text-gray-900">
+                    <h2 className="text-xl font-semibold mt-1 mb-2 text-gray-900">
                       {item.title}
-                    </h3>
+                    </h2>
                     <p className="text-sm text-gray-600 leading-relaxed">
                       {item.description}
                     </p>

@@ -511,7 +511,7 @@ export default async function SABPage({ params }: { params: Promise<{ locale: st
                   </div>
                 )}
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900">{advisor.name}</h3>
+                  <h2 className="text-xl font-semibold text-gray-900">{advisor.name}</h2>
                   <p className="text-teal-600 text-sm font-medium mt-1">{advisor.title}</p>
                   <p className="text-sm text-gray-600 mt-0.5">{advisor.affiliation}</p>
                 </div>

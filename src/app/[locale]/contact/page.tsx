@@ -207,7 +207,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             <div className="space-y-6">
               {/* 2026 Trend: Liquid Glass + Dark Mode */}
               <div className="liquid-glass p-6 dark:bg-slate-900/40 dark:backdrop-blur-lg dark:border dark:border-slate-700/50">
-                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-3">{c.hq}</h3>
+                <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-3">{c.hq}</h2>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{c.hqAddr}</p>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">Tel: 032-724-9070 | Fax: 032-724-9071</p>
                 <div className="mt-4 rounded-lg overflow-hidden">
@@ -225,7 +225,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               </div>
               {/* 2026 Trend: Liquid Glass + Dark Mode */}
               <div className="liquid-glass p-6 dark:bg-slate-900/40 dark:backdrop-blur-lg dark:border dark:border-slate-700/50">
-                <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.seoul}</h3>
+                <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.seoul}</h2>
                 <p className="text-gray-600 text-sm leading-relaxed">{c.seoulAddr}</p>
                 <p className="text-gray-600 text-sm mt-2">Tel: 02-2138-2115 | Fax: 02-2138-2551</p>
                 <div className="mt-4 rounded-lg overflow-hidden">
@@ -243,7 +243,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               </div>
               {/* 2026 Trend: Liquid Glass + Dark Mode */}
               <div className="liquid-glass p-6 dark:bg-slate-900/40 dark:backdrop-blur-lg dark:border dark:border-slate-700/50">
-                <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.inquiries}</h3>
+                <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">{c.inquiries}</h2>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-3"><span className="text-gray-600 w-24">{c.business}</span><span className="text-teal-600 font-medium">sh.kim@rudacure.com</span></div>
                   <div className="flex items-center gap-3"><span className="text-gray-600 w-24">{c.ir}</span><span className="text-teal-600 font-medium">js.shin@rudacure.com</span></div>
@@ -253,7 +253,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             </div>
 
             <div className="liquid-glass p-6">
-              <h3 className="text-lg font-semibold mb-6 text-gray-900">{c.formTitle}</h3>
+              <h2 className="text-lg font-semibold mb-6 text-gray-900">{c.formTitle}</h2>
               <ContactForm c={c} inputCls={inputCls} />
             </div>
           </div>

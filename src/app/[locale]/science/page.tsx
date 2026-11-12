@@ -710,9 +710,9 @@ export default async function SciencePage({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                  <h2 className="text-lg font-semibold mb-2 text-gray-900">
                     {cap.title}
-                  </h3>
+                  </h2>
                   <p className="text-[15px] text-gray-600 leading-relaxed">
                     {cap.description}
                   </p>
