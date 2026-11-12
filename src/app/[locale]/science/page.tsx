@@ -825,7 +825,7 @@ export default async function SciencePage({
                       <td className="p-4 text-sm text-teal-600 text-center font-medium">
                         {a.after}
                       </td>
-                      <td className="p-4 text-sm text-teal-500 text-center font-mono">
+                      <td className="p-4 text-sm text-teal-700 text-center font-mono">
                         {a.reduction || "—"}
                       </td>
                     </tr>

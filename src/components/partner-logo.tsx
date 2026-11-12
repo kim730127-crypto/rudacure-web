@@ -16,7 +16,7 @@ import { useState } from "react";
 
 function MonogramTile({ initials }: { initials: string }) {
   return (
-    <span className="text-[0.8125rem] font-semibold tracking-[0.04em] text-[var(--rc-ink-500)]">
+    <span className="text-[0.8125rem] font-semibold tracking-[0.04em] text-[var(--rc-ink-700)]">
       {initials}
     </span>
   );

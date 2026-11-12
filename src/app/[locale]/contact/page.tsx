@@ -212,6 +212,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">Tel: 032-724-9070 | Fax: 032-724-9071</p>
                 <div className="mt-4 rounded-lg overflow-hidden">
                   <iframe
+                    title="Map: Songdo headquarters"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.5!2d126.656!3d37.381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7d5c5e5c5c5d%3A0x0!2z7J247LKc6rSR7Jet7IucIOyXsOyImOq1rCDrr7jrnpjroZwgOQ!5e0!3m2!1sko!2skr!4v1"
                     width="100%"
                     height="180"
@@ -229,6 +230,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 <p className="text-gray-600 text-sm mt-2">Tel: 02-2138-2115 | Fax: 02-2138-2551</p>
                 <div className="mt-4 rounded-lg overflow-hidden">
                   <iframe
+                    title="Map: Seoul office"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.5!2d126.882!3d37.478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3e5e5e5e5e5%3A0x0!2z7ISc7Jq47IucIOq4iOyynOq1rCDqsIDsgrDrlJTsp4Dthrgx66GcIDE0NQ!5e0!3m2!1sko!2skr!4v1"
                     width="100%"
                     height="180"

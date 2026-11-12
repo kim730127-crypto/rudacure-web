@@ -1067,7 +1067,7 @@ export default async function CROPage({
           </h2>
 
           <div className="liquid-glass p-8">
-            <p className="text-xs font-mono text-cyan-600 mb-3">
+            <p className="text-xs font-mono text-cyan-700 mb-3">
               {c.partner.period}
             </p>
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">

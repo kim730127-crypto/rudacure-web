@@ -167,7 +167,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
                 : "text-[var(--rc-ink-600)] hover:bg-[var(--rc-surface-sunken)] hover:text-[var(--rc-ink-900)]"
             }`}
           >
-            <svg
+            <svg aria-hidden="true"
               className="h-3.5 w-3.5 opacity-60"
               fill="none"
               viewBox="0 0 24 24"
@@ -185,7 +185,7 @@ export function Navbar({ locale = "ko" }: { locale?: Locale }) {
               className="w-4 h-3 rounded-[2px] overflow-hidden shadow-sm"
             />
             {LANG_OPTIONS.find((l) => l.locale === locale)?.label || "EN"}
-            <svg
+            <svg aria-hidden="true"
               className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`}
               fill="none"
               viewBox="0 0 24 24"

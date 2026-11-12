@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "./pretendard-subset.css";
 
+/* The site is light-only. Tailwind's default `dark:` variant follows the OS
+   setting, which put light text on white surfaces on the contact page for
+   visitors in dark mode. Match only an explicit .dark class instead, and tell
+   the browser to draw native controls (select, inputs) light as well. */
+@custom-variant dark (&:where(.dark, .dark *));
+html {
+  color-scheme: light;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    RudaCure Design System
    ---------------------------------------------------------------------------
@@ -69,6 +78,9 @@
 @theme inline {
   --color-accent: var(--rc-accent);
   --color-accent-deep: var(--rc-accent-deep);
+  /* teal-600 (#009689) is 3.7:1 on white. Small body-size text uses it across
+     legacy pages, so the utility is pointed at the brand accent (5.1:1). */
+  --color-teal-600: var(--rc-accent);
   --color-ink: var(--rc-ink-800);
   --font-sans: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui,
     -apple-system, "Segoe UI", sans-serif;
@@ -719,6 +731,11 @@ h4 em,
   color: var(--rc-accent-deep);
 }
 
+/* accent-deep is for light surfaces only; on the near-black sections it is 2.7:1. */
+.bg-gray-950 .text-gradient-emerald {
+  color: var(--rc-accent-bright);
+}
+
 .hero-gradient-text {
   color: #fff;
 }
@@ -812,7 +829,7 @@ h4 em,
   font-size: 0.625rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--rc-ink-400);
+  color: var(--rc-ink-500);
 }
 
 .stage-labels span {

@@ -1305,10 +1305,10 @@ export default async function PipelinePage({
                           p.color === "emerald"
                             ? "bg-teal-50 text-teal-600"
                             : p.color === "blue"
-                              ? "bg-blue-50 text-blue-400"
+                              ? "bg-blue-50 text-blue-700"
                               : p.color === "violet"
-                                ? "bg-violet-50 text-violet-500"
-                                : "bg-indigo-50 text-indigo-400"
+                                ? "bg-violet-50 text-violet-700"
+                                : "bg-indigo-50 text-indigo-700"
                         }`}
                       >
                         {p.indication}
@@ -1335,9 +1335,9 @@ export default async function PipelinePage({
 
                     {/* Details */}
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
+                      <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
                         {p.detailsLabel}
-                      </h4>
+                      </h3>
                       <ul className="space-y-2">
                         {p.details.map((d, i) => (
                           <li
@@ -1356,9 +1356,9 @@ export default async function PipelinePage({
 
                   {/* Milestones */}
                   <div className="md:w-72 shrink-0">
-                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
+                    <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
                       {p.milestonesLabel}
-                    </h4>
+                    </h3>
                     <div className="space-y-2.5">
                       {p.milestones.map((m, i) => (
                         <div

@@ -261,7 +261,7 @@ const ROADMAP: Record<
 
 const ICONS = {
   handshake: (
-    <svg
+    <svg aria-hidden="true"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -278,7 +278,7 @@ const ICONS = {
     </svg>
   ),
   chart: (
-    <svg
+    <svg aria-hidden="true"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -292,7 +292,7 @@ const ICONS = {
     </svg>
   ),
   ai: (
-    <svg
+    <svg aria-hidden="true"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -307,7 +307,7 @@ const ICONS = {
     </svg>
   ),
   target: (
-    <svg
+    <svg aria-hidden="true"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

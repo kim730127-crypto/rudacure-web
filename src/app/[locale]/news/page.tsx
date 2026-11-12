@@ -164,7 +164,7 @@ export default async function NewsPage({
       <section className="px-6 py-16 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2">
-            <svg
+            <svg aria-hidden="true"
               className="w-6 h-6 text-teal-600"
               fill="none"
               viewBox="0 0 24 24"

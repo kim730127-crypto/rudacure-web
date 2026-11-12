@@ -1549,7 +1549,7 @@ export default async function PublicationsPage({
         <section className="py-16 px-6 bg-gray-50/50">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
-              <svg
+              <svg aria-hidden="true"
                 className="w-6 h-6 text-teal-600"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -1582,7 +1582,7 @@ export default async function PublicationsPage({
                       {pipeline}
                     </span>
                     <div className="flex-1 h-px bg-gray-200" />
-                    <span className="text-xs text-gray-400">
+                    <span className="text-xs text-gray-500">
                       {familyCountLabel(families.length, locale)}
                     </span>
                   </div>
@@ -1597,7 +1597,7 @@ export default async function PublicationsPage({
                         <h3 className="text-base font-semibold text-gray-900 leading-snug mb-1">
                           {fam[locale].title}
                         </h3>
-                        <p className="text-xs text-gray-400 mb-4">
+                        <p className="text-xs text-gray-500 mb-4">
                           {c.inventorsLabel}: {fam.inventors}
                         </p>
 
@@ -1614,13 +1614,13 @@ export default async function PublicationsPage({
                                 <span className={`font-semibold ${ss.text}`}>
                                   {countryName(fl)}
                                 </span>
-                                <span className="text-gray-400">|</span>
-                                <span className="text-gray-500 font-mono text-[11px]">
+                                <span className="text-gray-500">|</span>
+                                <span className="text-gray-600 font-mono text-[11px]">
                                   {fl.number}
                                 </span>
                                 {fl.status === "granted" && (
                                   <>
-                                    <span className="text-gray-400">|</span>
+                                    <span className="text-gray-500">|</span>
                                     <span className="text-teal-600 font-medium">
                                       {statusLabel(fl.status)}
                                     </span>
@@ -1635,8 +1635,8 @@ export default async function PublicationsPage({
                                     title={`${countryName(fl)} ${c.certificateLabel}`}
                                     className="inline-flex items-center gap-0.5 text-teal-600 hover:text-teal-800 transition-colors"
                                   >
-                                    <span className="text-gray-400">|</span>
-                                    <svg
+                                    <span className="text-gray-500">|</span>
+                                    <svg aria-hidden="true"
                                       className="w-3.5 h-3.5"
                                       fill="none"
                                       viewBox="0 0 24 24"
@@ -1686,7 +1686,7 @@ export default async function PublicationsPage({
                           <span className="text-base font-bold text-gray-900">
                             {tm.name}
                           </span>
-                          <span className="text-xs text-gray-400 ms-2">
+                          <span className="text-xs text-gray-500 ms-2">
                             {tm.cls}
                           </span>
                           <div className="text-xs text-gray-500 mt-0.5">
@@ -1711,7 +1711,7 @@ export default async function PublicationsPage({
         <section className="py-16 px-6 bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
-              <svg
+              <svg aria-hidden="true"
                 className="w-6 h-6 text-teal-600"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -1780,7 +1780,7 @@ export default async function PublicationsPage({
                               <p className="text-sm text-gray-500 mb-1">
                                 {pp.authors}
                               </p>
-                              <div className="flex items-center gap-2 text-xs text-gray-400">
+                              <div className="flex items-center gap-2 text-xs text-gray-500">
                                 <span className="font-medium text-gray-600 italic">
                                   {pp.journal}
                                 </span>
@@ -1803,7 +1803,7 @@ export default async function PublicationsPage({
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-1.5 text-xs font-medium text-teal-600 hover:text-teal-800 transition-colors"
                                   >
-                                    <svg
+                                    <svg aria-hidden="true"
                                       className="w-3.5 h-3.5"
                                       fill="none"
                                       viewBox="0 0 24 24"
@@ -1829,7 +1829,7 @@ export default async function PublicationsPage({
                                     download
                                     className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors"
                                   >
-                                    <svg
+                                    <svg aria-hidden="true"
                                       className="w-3.5 h-3.5"
                                       fill="none"
                                       viewBox="0 0 24 24"

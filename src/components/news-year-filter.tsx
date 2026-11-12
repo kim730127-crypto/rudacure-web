@@ -101,7 +101,7 @@ export function NewsYearFilter({
                 {article.title}
               </h3>
             </div>
-            <svg
+            <svg aria-hidden="true"
               className="w-4 h-4 text-gray-200 group-hover:text-teal-500 transition-colors shrink-0"
               fill="none"
               stroke="currentColor"

@@ -55,7 +55,7 @@ export function MagazineGrid({
               )}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 bg-white/90 text-teal-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow">
-                  <svg
+                  <svg aria-hidden="true"
                     className="w-3.5 h-3.5"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -76,7 +76,7 @@ export function MagazineGrid({
               <p className="text-xs font-semibold text-gray-800">
                 Vol.{mag.vol}
               </p>
-              <p className="text-[11px] text-gray-400">{mag.quarter}</p>
+              <p className="text-[11px] text-gray-500">{mag.quarter}</p>
             </div>
           </button>
         ))}

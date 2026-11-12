@@ -68,9 +68,9 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
 
           {/* Company */}
           <div className="md:col-span-3">
-            <h4 className="mb-5 text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-slate-500">
+            <h2 className="mb-5 text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-slate-400">
               {locale === "ko" ? "회사" : "Company"}
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.href}>
@@ -87,9 +87,9 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
 
           {/* Social */}
           <div className="md:col-span-4">
-            <h4 className="mb-5 text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-slate-500">
+            <h2 className="mb-5 text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-slate-400">
               {locale === "ko" ? "소셜" : "Social"}
-            </h4>
+            </h2>
             <div className="flex gap-3">
               <a
                 href="https://kr.linkedin.com/company/rudacure"
@@ -113,14 +113,14 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
 
         <div className="mt-14 mb-6 h-px bg-[var(--rc-hairline-dark)]" />
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-400">
             &copy; {new Date().getFullYear()} RudaCure Co., Ltd. All rights
             reserved.
           </p>
           {/* Mirrors the hero line. The previous tagline ("Redefining Pain,
               Restoring Sensation") scoped the company to a single therapeutic
               area, which the pipeline outgrew. */}
-          <p className="brand-line text-xs tracking-[0.02em] text-slate-500">
+          <p className="brand-line text-xs tracking-[0.02em] text-slate-400">
             Membrane Targets. Quality of Life.
           </p>
         </div>
