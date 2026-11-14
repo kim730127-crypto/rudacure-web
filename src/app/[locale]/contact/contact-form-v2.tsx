@@ -608,7 +608,11 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
               animate="visible"
               className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3 text-xs text-emerald-800 dark:text-emerald-200"
             >
-              🔒 Secure submission • 2-business-day response time
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="me-1.5 inline-block h-3.5 w-3.5 align-[-2px]">
+                <rect x="5" y="11" width="14" height="9" rx="2" />
+                <path d="M8 11V8a4 4 0 118 0v3" />
+              </svg>
+              Secure submission • 2-business-day response time
             </motion.div>
 
             {/* Navigation Buttons */}
@@ -637,6 +641,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 {formState.loading ? (
                   <span className="flex items-center justify-center gap-2">
                     <motion.span
+                      className="inline-flex"
                       animate={{ rotate: 360 }}
                       transition={{
                         duration: 1,
@@ -644,7 +649,9 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                         ease: "linear",
                       }}
                     >
-                      ⌛
+                      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" className="h-4 w-4">
+                        <path d="M12 3a9 9 0 109 9" />
+                      </svg>
                     </motion.span>
                     {getLocalizedLoadingText()}
                   </span>

@@ -49,7 +49,7 @@ export function MagazineGrid({
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
               />
               {i === 0 && (
-                <span className="absolute top-2 start-2 text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full shadow">
+                <span className="absolute top-2 start-2 text-[11px] font-bold uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full shadow">
                   {latestLabel}
                 </span>
               )}

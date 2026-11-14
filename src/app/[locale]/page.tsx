@@ -701,7 +701,7 @@ export default async function HomePage({
       {/* ===== Hero ===== Design preview (2026-11): Dantora-style ink in
           water. Same 8GFA coordinates as production, now on a light ground
           with plumes that part around the cursor and a photo trail. */}
-      <section className="ink-hero relative flex min-h-[92vh] items-end overflow-hidden text-[var(--lab-ink)]">
+      <section className="ink-hero relative flex min-h-[92svh] items-end overflow-hidden text-[var(--lab-ink)]">
         <InkHero />
         <PhotoTrail />
 

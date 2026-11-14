@@ -761,7 +761,7 @@ function IrDeckButton({ locale, loc, variant }: { locale: IRLocale; loc: string;
       </svg>
       <span>{label(locale, TEXT_DOWNLOAD_DECK)}</span>
       <span
-        className={`text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded ${variant === "primary" ? "bg-white/90 text-teal-700" : "bg-teal-600 text-white"}`}
+        className={`text-[11px] font-bold tracking-wider px-1.5 py-0.5 rounded ${variant === "primary" ? "bg-white/90 text-teal-700" : "bg-teal-600 text-white"}`}
         aria-hidden="true"
       >
         {deck.badge}

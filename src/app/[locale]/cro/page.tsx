@@ -847,7 +847,7 @@ export default async function CROPage({
                   {s.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200"
+                      className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200"
                     >
                       {tag}
                     </span>
