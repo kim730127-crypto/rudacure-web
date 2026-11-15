@@ -403,6 +403,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                   required
                   aria-required="true"
                   aria-invalid={!!validationErrors.name}
+                  aria-describedby={validationErrors.name ? "contact-name-error" : undefined}
                 />
                 <AnimatePresence>
                   {formData.name && !validationErrors.name && (
@@ -411,6 +412,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.5 }}
                       className="absolute end-3 top-1/2 -translate-y-1/2 text-emerald-500"
+                      aria-hidden="true"
                     >
                       ✓
                     </motion.span>
@@ -423,6 +425,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
+                    id="contact-name-error"
                     className="text-xs text-red-600 dark:text-red-400 mt-1"
                   >
                     {validationErrors.name}
@@ -460,6 +463,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                   required
                   aria-required="true"
                   aria-invalid={!!validationErrors.email}
+                  aria-describedby={validationErrors.email ? "contact-email-error" : undefined}
                 />
                 <AnimatePresence>
                   {formData.email && !validationErrors.email && (
@@ -468,6 +472,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.5 }}
                       className="absolute end-3 top-1/2 -translate-y-1/2 text-emerald-500"
+                      aria-hidden="true"
                     >
                       ✓
                     </motion.span>
@@ -480,6 +485,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
+                    id="contact-email-error"
                     className="text-xs text-red-600 dark:text-red-400 mt-1"
                   >
                     {validationErrors.email}
@@ -584,6 +590,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                 required
                 aria-required="true"
                 aria-invalid={!!validationErrors.message}
+                aria-describedby={validationErrors.message ? "contact-message-error" : undefined}
                 placeholder="Tell us more about your inquiry..."
               />
               <AnimatePresence>
@@ -592,6 +599,7 @@ export default function ContactForm({ c, inputCls }: ContactFormProps) {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
+                    id="contact-message-error"
                     className="text-xs text-red-600 dark:text-red-400 mt-1"
                   >
                     {validationErrors.message}

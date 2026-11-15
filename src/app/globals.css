@@ -99,6 +99,18 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* `keep-all` is a Hangul rule. Japanese and Chinese have no spaces, so with it a
+   heading such as 「RudaCureについて知りたいことは？」 cannot break at all and the
+   mobile layout widens to 486px. These locales break by their own line rules;
+   the explicit `.break-keep` utility is overridden for the same reason. */
+html:lang(ja),
+html:lang(zh),
+:lang(ja) .break-keep,
+:lang(zh) .break-keep {
+  word-break: normal;
+  line-break: strict;
+}
+
 body {
   background: var(--rc-surface);
   color: var(--rc-ink-800);
@@ -1126,6 +1138,16 @@ h4 em,
 .lab-link:hover {
   color: var(--rc-accent);
   border-color: var(--rc-accent);
+}
+/* 23px tall text link: the invisible hit area brings it past the WCAG 2.5.8
+   24px minimum (44px recommended) without moving the underline. */
+.lab-link {
+  position: relative;
+}
+.lab-link::before {
+  content: "";
+  position: absolute;
+  inset: -12px -6px;
 }
 
 /* Square buttons: the spec forbids radius. */

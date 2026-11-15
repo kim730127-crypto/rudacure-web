@@ -59,7 +59,7 @@ export function Footer({ locale = "ko" }: { locale?: Locale }) {
               </p>
               <a
                 href="mailto:sh.kim@rudacure.com"
-                className="text-xs text-slate-400 transition-colors hover:text-teal-300"
+                className="inline-block py-1.5 text-xs text-slate-400 transition-colors hover:text-teal-300"
               >
                 sh.kim@rudacure.com
               </a>
