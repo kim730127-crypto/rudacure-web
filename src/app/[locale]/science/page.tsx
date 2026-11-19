@@ -34,7 +34,7 @@ const CAPABILITIES: Record<
       title: "전기생리학 검증",
       description:
         "패치클램프 기반 고처리량 전기생리학 검증. AI 예측 결과를 실제 이온채널 활성 데이터로 확인합니다.",
-      image: "/images/science/assay-bench.jpg",
+      image: "/images/science/ephys-trace.jpg",
     },
     {
       title: "CRO 서비스",
@@ -60,7 +60,7 @@ const CAPABILITIES: Record<
       title: "Electrophysiology Validation",
       description:
         "High-throughput electrophysiology validation using patch clamp technology. Confirms AI predictions against actual ion channel activity data.",
-      image: "/images/science/assay-bench.jpg",
+      image: "/images/science/ephys-trace.jpg",
     },
     {
       title: "CRO Services",
@@ -86,7 +86,7 @@ const CAPABILITIES: Record<
       title: "电生理学验证",
       description:
         "基于膜片钳的高通量电生理学验证。以实际离子通道活性数据确认AI预测结果。",
-      image: "/images/science/assay-bench.jpg",
+      image: "/images/science/ephys-trace.jpg",
     },
     {
       title: "CRO服务",
@@ -112,7 +112,7 @@ const CAPABILITIES: Record<
       title: "電気生理学検証",
       description:
         "パッチクランプベースのハイスループット電気生理学検証。AI予測結果を実際のイオンチャネル活性データで確認します。",
-      image: "/images/science/assay-bench.jpg",
+      image: "/images/science/ephys-trace.jpg",
     },
     {
       title: "CROサービス",
@@ -138,7 +138,7 @@ const CAPABILITIES: Record<
       title: "Validación Electrofisiológica",
       description:
         "Validación electrofisiológica de alto rendimiento mediante tecnología patch clamp. Confirma las predicciones de IA con datos reales de actividad de canales iónicos.",
-      image: "/images/science/assay-bench.jpg",
+      image: "/images/science/ephys-trace.jpg",
     },
     {
       title: "Servicios CRO",
@@ -164,7 +164,7 @@ const CAPABILITIES: Record<
       title: "Validation Électrophysiologique",
       description:
         "Validation électrophysiologique à haut débit par technologie patch clamp. Confirme les prédictions de l'IA avec les données réelles d'activité des canaux ioniques.",
-      image: "/images/science/assay-bench.jpg",
+      image: "/images/science/ephys-trace.jpg",
     },
     {
       title: "Services CRO",
@@ -190,7 +190,7 @@ const CAPABILITIES: Record<
       title: "التحقق عبر الفيزيولوجيا الكهربائية",
       description:
         "تحقق عالية الإنتاجية عبر الفيزيولوجيا الكهربائية باستخدام تقنية المقطع المقفل. يؤكد تنبؤات الذكاء الاصطناعي مقابل بيانات نشاط قنوات الأيونات الفعلية.",
-      image: "/images/science/assay-bench.jpg",
+      image: "/images/science/ephys-trace.jpg",
     },
     {
       title: "خدمات CRO",

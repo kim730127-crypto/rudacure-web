@@ -26,6 +26,7 @@ company milestones not yet achieved, or data not actually measured. See the
 |---|---|---|
 | `science/membrane-md.jpg` | Membrane protein in an explicit lipid bilayer, MD simulation | RuCIA output. Also the homepage Core Technology figure and the poster frame for `videos/rucia/membrane-turntable.mp4`. |
 | `science/md-ligand.jpg` | Protein with bound ligand, MD frame | RuCIA output; frame from `videos/rucia/md-sim-1.mp4`. |
+| `science/ephys-trace.jpg` | Whole-cell patch-clamp current trace (Science - electrophysiology card) | Plotted on 2026-11-19 directly from RudaCure raw data: `01_중앙연구소/01_Project/RCI002 프로젝트/1. 시험계획서 및 보고서/RCI002-011_.../보관문서/5. Patch clamp datafile.zip` -> `1. Control/21131015.abf` (Axon ABF, voltage-clamp gap-free, 10 kHz, Im_scaled channel). Window 45-135 s, baseline-subtracted (median of 45-60 s), min/max envelope for display only; no smoothing, no compound-treated trace. Scale bars (10 s, 500 pA) are in data units. No agonist or cell label is drawn because the control file does not record them. Script output in the 2026-11-19 Aside session. |
 | `videos/rucia/*` | MD simulation videos and poster frames | RuCIA output. |
 | `logo*.png`, `favicon` | Corporate marks | RudaCure. |
 | `sab/*.jpg` | Scientific Advisory Board portraits | Supplied by each advisor. Confirm written consent is on file before publication. |
@@ -42,7 +43,6 @@ size. Paths below are relative to `02_회사소개자료/05_사진/`.
 |---|---|---|---|
 | `science/lab-bench.jpg` | Science — CRO capability card | 2400×1600 | `연구소 및 사무실 사진/20201103 실험장비 사진/KakaoTalk_20201203_165726341.jpg` (3024×4032) |
 | `science/scientist.jpg` | Science — page header | 2400×1800 | `연구소 및 사무실 사진/20201103 실험장비 사진/KakaoTalk_20201203_165726341_17.jpg` (4032×3024) |
-| `science/assay-bench.jpg` | Science — assay / electrophysiology card | 1280×853 | `연구소 및 사무실 사진/2021 연구소, 본사 사진/분자세포실험실.jpg` (1280×960) |
 | `ir-capital-markets.jpg` | IR — page header | 2400×1600 | `연구소 및 사무실 사진/2022 서울사무실 인테리어/interior/in (13).jpg` (4527×3015) |
 
 `science/lab-bench.jpg` and `science/scientist.jpg` show a ZEISS LUMERA
@@ -50,9 +50,7 @@ ophthalmic surgical microscope in use on a rodent cornea. This is the actual
 procedure behind the CRO claim — ocular disease animal models and bespoke
 efficacy evaluation — so the picture and the caption describe the same thing.
 
-`science/assay-bench.jpg` is the 분자세포실험실 at the Central Research Institute.
-It does not depict a patch-clamp rig, because no photograph of one exists on the
-NAS; see "Open questions".
+`science/assay-bench.jpg` (the 분자세포실험실 bench photo) was retired on 2026-11-19; see "Removed".
 
 `ir-capital-markets.jpg` comes from the 2022 Seoul office interior shoot, the
 only professionally lit photography on the NAS. The rest of that set (53 frames
@@ -69,6 +67,7 @@ folders are near-duplicates and the smaller one is easy to grab by mistake.
 
 | File | Reason |
 |---|---|
+| `science/assay-bench.jpg` | Retired 2026-11-19 at the user's request. A general wet-lab bench said nothing about electrophysiology; replaced by `science/ephys-trace.jpg`, a trace plotted from RudaCure's own patch-clamp raw data. |
 | `unnamed.jpg` | AI-generated image of a **KOSDAQ listing ceremony that has not happened**, carrying a fabricated price chart, a fabricated closing price of 98,500 KRW, a fabricated "+30.00% 상한가", and a fabricated date of 2026-03-25. It was published on the Investor Relations page under the alt text "KOSDAQ IPO Listing Celebration". A depiction of an unachieved listing with invented pricing does not belong on an IR page. |
 | `Gemini_Generated_Image_2hkt252hkt252hkt.png` | AI-generated diagram, 8.9 MB, shipped uncompressed to every visitor of the Science page. Replaced by the in-house MD render. |
 | `membrane_target_moa.png` | 8.9 MB unused earlier revision of the MoA diagram. |
@@ -86,13 +85,7 @@ folders are near-duplicates and the smaller one is easy to grab by mistake.
   It is an AI illustration with baked-in English labels; if the RCI002
   mechanism needs a figure, commission a properly drawn one rather than
   restoring this.
-- **The electrophysiology card has no matching photograph.** Its caption claims
-  "패치클램프 기반 고처리량 전기생리학 검증", but the NAS holds no picture of a
-  patch-clamp rig; the only patch-clamp records found are outsourced study
-  reports (`RCIP-24-004 티앤알바이오팹`, and the RCI002 patch-clamp efficacy
-  reports). The card currently carries a general bench photograph, which claims
-  nothing it cannot support. If the rig exists in Songdo, photograph it. If the
-  work is contracted out, the caption is the thing to revise, not the picture.
+- **The electrophysiology card now shows data, not a rig.** No photograph of a patch-clamp rig exists on the NAS, so the card uses a trace plotted from in-house raw data (RCI002-002 names a RudaCure researcher for DRG culture and patch clamp). RudaCure also owns a FLIPR Penta (purchased 2022), but the only footage of it is the Molecular Devices co-branded promo video `02_회사소개자료/04_영상자료/02_홍보 동영상/FLIPR-RudaCure (1080p).mp4`, whose lab shots may be vendor footage; a photo of the actual unit would be a good addition.
 - The bench and office photographs date from 2021 and were taken on a phone.
   They are honest but not art-directed. A half-day shoot at Songdo would lift
   the whole site; the ophthalmic microscope frames are the standard to match.
